@@ -26,6 +26,6 @@ all_places: raw/shapefiles/cb_2015_17_place_500k.shp postgis
 
 final/places.geojson: all_places places.csv 
 	query=$$(eval csvcut -c 2 places.csv | tail -n +2 | \
-		sed -e ':a' -e 'N' -e '$$!ba' -e 's/\n/, /g' | \
-		sed -e 's/^/select * from "$<" where PLACEFP in \[/' -e 's/$$/\]/')
+		sed -e ':a' -e 'N' -e '$$!ba' -e "s/\n/', '/g" | \
+		sed -e "s/^/select * from $< where placefp in \('/" -e "s/$$/'\)/") && \
 	ogr2ogr -f "GeoJSON" $@ PG:"dbname=$(PG_DB)" -s_srs EPSG:4269 -t_srs EPSG:4326 -sql "$$query"
