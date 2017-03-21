@@ -1,0 +1,458 @@
+Place,District,District Id,Class Size - Kindergarten,Class Size - First,Class Size - Second,Class Size - Third,Class Size - Fourth,Class Size - Fifth,Class Size - Sixth,Class Size - Seventh,Class Size - Eighth,Class Size - High School,Class Size - Overall,Percent Meets-Exceeds - English,Percent Meets-Exceeds - Reading,Percent Meets-Exceeds - Math,Percent Meets-Exceeds - Science,Percent Meets-Exceeds - All,Teacher Salary,ACT Composite,ACT English,ACT Math,ACT Reading,ACT Science,Proportion of Place Covered by District
+"Addison village, Illinois",DuPage High School District 88,0220880,,,,,,,,,,21.8,21.8,57.9,34.9,34.3,29.8,18.7,"$92,959.00",19.9,19.2,19.9,20.0,20.0,0.794166408581208
+"Addison village, Illinois",Glenbard Township High School District 87,0220870,,,,,,,,,,22.7,22.7,67.4,48.9,51.4,44.5,33.2,"$96,313.00",21.8,21.1,22.0,21.9,21.7,0.144407785162842
+"Algonquin village, Illinois",Community Unit School District 300,0453000,20.1,21.0,21.4,23.1,22.4,24.0,25.4,26.0,25.8,19.6,22.5,63.7,39.5,42.8,37.6,25.6,"$55,361.00",20.7,20.0,20.7,20.7,20.8,0.855168013957596
+"Algonquin village, Illinois",Huntley Consolidated School District 158,0631580,16.2,20.1,21.5,21.8,21.6,22.9,23.3,22.3,23.3,23.6,21.1,79.2,49.5,56.4,49.2,34.1,"$54,761.00",22.4,22.4,22.6,22.0,22.3,0.144797460083548
+"Alsip village, Illinois",Community High School District 218,0162180,,,,,,,,,,19.5,19.5,49.1,26.7,23.8,23.7,14.0,"$83,554.00",18.7,18.1,18.6,18.8,18.9,1.0
+"Antioch village, Illinois",Antioch Community High School District 117,0491170,,,,,,,,,,20.8,20.8,76.0,47.6,51.8,48.7,34.3,"$61,620.00",21.9,21.6,21.9,21.8,22.0,1.0
+"Arlington Heights village, Illinois",Township High School District 214,0162140,,,,,,,,,,20.5,20.5,77.7,53.6,63.1,52.7,40.5,"$98,687.00",23.1,22.9,23.6,22.6,22.6,0.979329583436216
+"Aurora city, Illinois",Aurora East Unit School District 131,0451310,18.1,19.7,21.3,20.1,21.9,22.2,25.7,25.3,24.5,20.5,21.9,35.6,17.0,15.5,14.8,6.9,"$55,523.00",17.1,15.9,17.6,17.3,17.3,0.238607547017776
+"Aurora city, Illinois",Aurora West Unit School District 129,0451290,18.7,19.9,21.8,20.7,22.5,22.8,19.9,21.3,21.2,22.1,21.2,51.0,27.7,25.3,22.5,14.0,"$65,939.00",18.7,18.2,18.7,18.9,18.6,0.292932598485856
+"Aurora city, Illinois",Batavia Unit School District 101,0451010,17.9,20.7,21.4,24.9,25.8,27.6,29.0,27.6,26.8,24.5,24.5,82.7,58.8,69.2,60.6,45.1,"$73,326.00",23.4,23.0,23.7,23.3,22.9,0.0553996283263672
+"Aurora city, Illinois",Indian Prairie Community Unit School District 204,0222040,24.0,25.0,25.7,26.1,27.0,27.5,27.0,27.9,27.8,27.1,26.8,85.3,66.3,68.9,63.0,52.2,"$64,997.00",24.5,24.5,24.5,24.4,24.0,0.311452921463434
+"Aurora city, Illinois",Oswego Community Unit School District 308,0473080,22.7,22.7,23.0,23.9,25.4,25.5,21.2,20.8,20.7,23.8,23.0,64.5,41.9,41.3,39.0,25.6,"$51,648.00",20.8,20.3,20.7,20.9,20.8,0.0874881695715314
+"Bannockburn village, Illinois",Township High School District 113,0491130,,,,,,,,,,18.0,18.0,87.6,74.6,77.0,72.1,61.6,"$107,529.00",25.8,25.9,25.6,25.9,25.3,0.989870548207852
+"Barrington village, Illinois",Barrington Community Unit School District 220,0492200,19.5,19.6,19.7,21.1,21.2,23.4,20.3,20.0,19.0,23.7,21.5,82.0,62.9,70.4,62.7,50.2,"$78,692.00",24.4,24.1,24.7,24.2,24.0,0.996628305056632
+"Barrington Hills village, Illinois",Barrington Community Unit School District 220,0492200,19.5,19.6,19.7,21.1,21.2,23.4,20.3,20.0,19.0,23.7,21.5,82.0,62.9,70.4,62.7,50.2,"$78,692.00",24.4,24.1,24.7,24.2,24.0,0.918738449792773
+"Barrington Hills village, Illinois",Community Unit School District 300,0453000,20.1,21.0,21.4,23.1,22.4,24.0,25.4,26.0,25.8,19.6,22.5,63.7,39.5,42.8,37.6,25.6,"$55,361.00",20.7,20.0,20.7,20.7,20.8,0.0800950037067108
+"Bartlett village, Illinois",School District U-46,0450460,19.1,23.6,22.5,23.6,23.7,24.3,25.3,22.0,24.9,19.5,22.0,52.2,32.2,34.7,29.4,19.3,"$63,851.00",19.4,18.5,19.8,19.3,19.4,0.993533830661184
+"Batavia city, Illinois",Batavia Unit School District 101,0451010,17.9,20.7,21.4,24.9,25.8,27.6,29.0,27.6,26.8,24.5,24.5,82.7,58.8,69.2,60.6,45.1,"$73,326.00",23.4,23.0,23.7,23.3,22.9,0.869607889787938
+"Batavia city, Illinois",Geneva Community Unit School District 304,0453040,19.7,21.6,22.4,22.8,23.6,24.9,19.9,24.6,22.2,21.1,21.9,90.4,70.6,66.0,62.0,50.2,"$69,734.00",24.3,24.7,23.8,24.7,23.6,0.128868292522515
+"Beach Park village, Illinois",Waukegan Community Unit School District 60,0490600,20.2,21.2,21.3,21.7,24.1,24.4,20.6,22.1,20.7,16.9,20.3,37.1,16.1,14.8,13.9,6.7,"$55,576.00",17.3,16.4,17.4,17.1,17.9,0.247611938396749
+"Beach Park village, Illinois",Zion-Benton Township High School District 126,0491260,,,,,,,,,,18.1,18.1,51.9,25.0,24.7,19.0,10.6,"$56,338.00",18.6,18.3,18.4,18.6,18.6,0.723499741697266
+"Bedford Park village, Illinois",Argo Community High School District 217,0162170,,,,,,,,,,21.6,21.6,46.7,24.5,31.1,24.7,14.9,"$84,224.00",18.7,17.5,19.2,18.4,19.1,0.353577845541829
+"Bedford Park village, Illinois",Reavis Township High School District 220,0162200,,,,,,,,,,21.4,21.4,44.4,24.7,32.7,24.7,14.3,"$98,806.00",18.7,17.3,19.3,18.5,19.1,0.646422154458171
+"Beecher village, Illinois",Beecher Community Unit School District 200U,099200U,19.7,21.0,22.0,24.0,25.7,20.3,26.3,18.8,23.8,17.6,20.4,78.2,50.5,42.6,42.6,27.7,"$57,130.00",21.5,21.9,20.5,21.5,21.4,1.0
+"Bellwood village, Illinois",Proviso Township High School District 209,0162090,,,,,,,,,,20.2,20.2,41.8,17.9,18.4,15.9,7.0,"$65,885.00",17.7,16.9,17.9,17.6,18.1,1.0
+"Bensenville village, Illinois",Elmhurst School District 205,0222050,20.0,20.3,20.1,22.3,22.9,22.7,24.0,23.2,20.1,22.5,22.2,82.4,63.2,66.8,60.6,50.0,"$72,629.00",24.2,23.9,24.1,24.1,24.0,0.0681124330425682
+"Bensenville village, Illinois",Fenton Community High School District 100,0221000,,,,,,,,,,19.6,19.6,53.8,32.9,40.2,27.4,17.3,"$106,311.00",19.8,18.7,20.5,19.8,19.8,0.911186642459033
+"Berkeley village, Illinois",Proviso Township High School District 209,0162090,,,,,,,,,,20.2,20.2,41.8,17.9,18.4,15.9,7.0,"$65,885.00",17.7,16.9,17.9,17.6,18.1,1.0
+"Berwyn city, Illinois",J. Sterling Morton High School District 201,0162010,,,,,,,,,,23.4,23.4,33.8,16.1,11.6,11.1,5.1,"$74,797.00",16.9,15.9,16.9,17.1,17.2,1.0
+"Big Rock village, Illinois",Hinckley-Big Rock Community Unit School District 429,0194290,16.3,21.5,19.0,24.0,22.0,19.3,17.7,15.3,18.7,16.8,18.2,82.4,62.7,70.6,62.7,47.1,"$51,753.00",23.1,22.9,22.8,23.5,22.8,0.999293171345361
+"Bloomingdale village, Illinois",Glenbard Township High School District 87,0220870,,,,,,,,,,22.7,22.7,67.4,48.9,51.4,44.5,33.2,"$96,313.00",21.8,21.1,22.0,21.9,21.7,0.47761314095476
+"Bloomingdale village, Illinois",Lake Park Community High School District 108,0221080,,,,,,,,,,18.7,18.7,75.7,51.9,53.7,51.1,35.3,"$88,565.00",22.4,22.1,22.1,22.5,22.3,0.52238685904524
+"Blue Island city, Illinois",Community High School District 218,0162180,,,,,,,,,,19.5,19.5,49.1,26.7,23.8,23.7,14.0,"$83,554.00",18.7,18.1,18.6,18.8,18.9,0.919006732656263
+"Blue Island city, Illinois",Thornton Township High School District 205,0162050,,,,,,,,,,17.5,17.5,32.5,11.5,9.4,6.3,2.5,"$72,811.00",16.5,15.8,16.8,16.4,16.6,0.0771237338695252
+"Bolingbrook village, Illinois",Naperville Community Unit District 203,0222030,22.1,22.5,23.0,24.3,23.6,22.9,22.3,22.9,24.4,20.6,22.3,84.4,68.8,71.8,66.6,55.2,"$70,084.00",24.9,24.5,24.9,25.0,24.6,0.05144208520009
+"Bolingbrook village, Illinois",Plainfield School District 202,0992020,19.6,22.6,22.1,23.5,24.1,25.1,23.1,24.1,23.3,22.6,23.0,65.4,41.6,43.0,36.8,25.1,"$56,681.00",20.8,20.1,20.9,20.8,20.6,0.225807787939689
+"Bolingbrook village, Illinois",Valley View Community Unit School District 365U,099365U,21.9,21.7,20.8,23.8,23.6,22.6,23.1,24.4,22.5,18.9,21.3,52.5,30.5,31.8,25.3,16.8,"$59,049.00",19.3,18.5,19.5,19.4,19.2,0.667465102957985
+"Braceville village, Illinois",Gardner-South Wilmington Township High School District,0320730,,,,,,,,,,11.9,11.9,60.0,40.0,42.5,35.0,20.0,"$46,538.00",20.6,19.9,20.9,20.3,20.3,0.538842382321762
+"Braceville village, Illinois",Reed Custer Community Unit School District 255U,099255U,18.4,21.2,22.4,21.4,26.0,24.6,22.5,19.6,19.7,17.6,20.3,63.0,38.6,34.6,35.4,16.5,"$60,432.00",20.3,20.2,19.9,20.2,20.7,0.461157617678237
+"Braidwood city, Illinois",Coal City Community Unit School District 1,0320010,19.1,20.6,19.9,19.9,22.4,23.4,20.9,21.9,22.5,15.0,20.0,70.7,44.3,49.3,42.1,29.3,"$59,980.00",21.1,20.8,20.8,21.1,21.1,0.103814016195349
+"Braidwood city, Illinois",Reed Custer Community Unit School District 255U,099255U,18.4,21.2,22.4,21.4,26.0,24.6,22.5,19.6,19.7,17.6,20.3,63.0,38.6,34.6,35.4,16.5,"$60,432.00",20.3,20.2,19.9,20.2,20.7,0.892407564211967
+"Bridgeview village, Illinois",Argo Community High School District 217,0162170,,,,,,,,,,21.6,21.6,46.7,24.5,31.1,24.7,14.9,"$84,224.00",18.7,17.5,19.2,18.4,19.1,0.583737677253175
+"Bridgeview village, Illinois",Consolidated High School District 230,0162300,,,,,,,,,,18.1,18.1,68.4,47.4,50.5,42.4,30.7,"$84,781.00",21.5,21.1,21.6,21.6,21.3,0.302633582681841
+"Bridgeview village, Illinois",Oak Lawn Community High School District 229,0162290,,,,,,,,,,20.9,20.9,50.4,31.2,32.4,27.4,14.7,"$90,960.00",19.2,18.5,19.5,19.2,19.2,0.0709874303766931
+"Broadview village, Illinois",Proviso Township High School District 209,0162090,,,,,,,,,,20.2,20.2,41.8,17.9,18.4,15.9,7.0,"$65,885.00",17.7,16.9,17.9,17.6,18.1,0.991240231101096
+"Brookfield village, Illinois",Lyons Township High School District 204,0162040,,,,,,,,,,21.4,21.4,81.4,64.4,70.0,61.5,51.7,"$101,033.00",24.3,23.9,24.7,24.3,23.9,0.336983109869539
+"Brookfield village, Illinois",Riverside Brookfield Township School District 208,0162080,,,,,,,,,,24.3,24.3,85.6,57.5,61.9,57.5,43.1,"$92,543.00",23.3,23.3,22.9,23.5,23.1,0.663016890130462
+"Buffalo Grove village, Illinois",Adlai E. Stevenson High School District 125,0491250,,,,,,,,,,17.0,17.0,90.9,76.7,80.6,73.4,64.4,"$92,403.00",26.5,26.5,26.8,26.3,25.8,0.775830826194481
+"Buffalo Grove village, Illinois",Township High School District 214,0162140,,,,,,,,,,20.5,20.5,77.7,53.6,63.1,52.7,40.5,"$98,687.00",23.1,22.9,23.6,22.6,22.6,0.224169173805519
+"Bull Valley village, Illinois",Community High School District 155,0631550,,,,,,,,,,19.2,19.2,79.5,54.2,59.6,53.3,39.1,"$85,211.00",22.9,22.8,22.9,22.5,22.8,0.140905703108484
+"Bull Valley village, Illinois",McHenry Community High School District 156,0631560,,,,,,,,,,19.0,19.0,62.5,36.6,40.1,32.6,23.1,"$69,309.00",20.4,19.9,20.4,20.2,20.4,0.293046705328337
+"Bull Valley village, Illinois",Woodstock Community Unit School District 200,0632000,22.1,19.3,19.1,18.4,20.3,22.1,20.1,20.1,21.8,17.0,20.0,66.9,40.0,38.4,38.6,25.3,"$58,133.00",20.9,20.5,20.3,20.9,21.1,0.566047591563182
+"Burbank city, Illinois",Reavis Township High School District 220,0162200,,,,,,,,,,21.4,21.4,44.4,24.7,32.7,24.7,14.3,"$98,806.00",18.7,17.3,19.3,18.5,19.1,1.0
+"Burlington village, Illinois",Central Community Unit School District 301,0453010,20.9,20.7,21.9,21.9,23.6,23.7,28.8,28.4,19.9,22.9,22.7,78.6,56.1,66.3,53.7,42.5,"$54,740.00",22.9,22.4,23.5,22.8,22.4,0.999254641387001
+"Burnham village, Illinois",Thornton Fractional Township High School District 215,0162150,,,,,,,,,,20.7,20.7,37.9,19.9,17.0,12.6,6.9,"$84,307.00",17.5,16.4,17.7,17.6,17.5,0.873745212450817
+"Burnham village, Illinois",Thornton Township High School District 205,0162050,,,,,,,,,,17.5,17.5,32.5,11.5,9.4,6.3,2.5,"$72,811.00",16.5,15.8,16.8,16.4,16.6,0.126254787549182
+"Burr Ridge village, Illinois",Hinsdale Township High School District 86,0220860,,,,,,,,,,20.5,20.5,85.0,71.3,72.3,68.4,56.8,"$108,227.00",25.3,25.3,25.2,25.5,24.9,0.700833092842893
+"Burr Ridge village, Illinois",Lyons Township High School District 204,0162040,,,,,,,,,,21.4,21.4,81.4,64.4,70.0,61.5,51.7,"$101,033.00",24.3,23.9,24.7,24.3,23.9,0.299166907157108
+"Calumet City city, Illinois",Thornton Fractional Township High School District 215,0162150,,,,,,,,,,20.7,20.7,37.9,19.9,17.0,12.6,6.9,"$84,307.00",17.5,16.4,17.7,17.6,17.5,0.654626152491359
+"Calumet City city, Illinois",Thornton Township High School District 205,0162050,,,,,,,,,,17.5,17.5,32.5,11.5,9.4,6.3,2.5,"$72,811.00",16.5,15.8,16.8,16.4,16.6,0.345373847508639
+"Calumet Park village, Illinois",Community High School District 218,0162180,,,,,,,,,,19.5,19.5,49.1,26.7,23.8,23.7,14.0,"$83,554.00",18.7,18.1,18.6,18.8,18.9,0.999999999999999
+"Campton Hills village, Illinois",Central Community Unit School District 301,0453010,20.9,20.7,21.9,21.9,23.6,23.7,28.8,28.4,19.9,22.9,22.7,78.6,56.1,66.3,53.7,42.5,"$54,740.00",22.9,22.4,23.5,22.8,22.4,0.189710054083093
+"Campton Hills village, Illinois",St. Charles Community Unit School District 303,0453030,22.0,21.8,23.5,23.0,23.7,22.1,24.4,24.7,24.7,19.9,22.2,82.0,59.4,65.6,55.7,42.4,"$63,082.00",23.3,22.8,23.5,23.4,23.1,0.790005772529667
+"Carol Stream village, Illinois",Community High School District 94,0220940,,,,,,,,,,20.8,20.8,46.7,29.9,30.8,26.5,17.0,"$64,340.00",19.1,17.8,19.5,19.3,19.3,0.0751953085661155
+"Carol Stream village, Illinois",Community Unit School District 200,0222000,19.4,22.2,21.9,21.8,22.7,23.4,24.7,25.9,26.1,23.5,23.6,77.5,59.3,61.7,56.0,44.2,"$73,350.00",23.4,23.1,23.4,23.4,22.9,0.144866996517851
+"Carol Stream village, Illinois",Glenbard Township High School District 87,0220870,,,,,,,,,,22.7,22.7,67.4,48.9,51.4,44.5,33.2,"$96,313.00",21.8,21.1,22.0,21.9,21.7,0.705003510081042
+"Carol Stream village, Illinois",School District U-46,0450460,19.1,23.6,22.5,23.6,23.7,24.3,25.3,22.0,24.9,19.5,22.0,52.2,32.2,34.7,29.4,19.3,"$63,851.00",19.4,18.5,19.8,19.3,19.4,0.074934184834993
+"Carpentersville village, Illinois",Barrington Community Unit School District 220,0492200,19.5,19.6,19.7,21.1,21.2,23.4,20.3,20.0,19.0,23.7,21.5,82.0,62.9,70.4,62.7,50.2,"$78,692.00",24.4,24.1,24.7,24.2,24.0,0.0586664012878075
+"Carpentersville village, Illinois",Community Unit School District 300,0453000,20.1,21.0,21.4,23.1,22.4,24.0,25.4,26.0,25.8,19.6,22.5,63.7,39.5,42.8,37.6,25.6,"$55,361.00",20.7,20.0,20.7,20.7,20.8,0.940223817444784
+"Cary village, Illinois",Community High School District 155,0631550,,,,,,,,,,19.2,19.2,79.5,54.2,59.6,53.3,39.1,"$85,211.00",22.9,22.8,22.9,22.5,22.8,0.917389566189031
+"Cary village, Illinois",Community Unit School District 300,0453000,20.1,21.0,21.4,23.1,22.4,24.0,25.4,26.0,25.8,19.6,22.5,63.7,39.5,42.8,37.6,25.6,"$55,361.00",20.7,20.0,20.7,20.7,20.8,0.0826104338109685
+"Channahon village, Illinois",Minooka Community High School District 111,0321110,,,,,,,,,,20.5,20.5,75.3,48.8,46.0,45.5,30.3,"$63,724.00",21.8,22.0,21.2,21.8,21.6,0.766342084049019
+"Channahon village, Illinois",Morris Community High School District 101,0321010,,,,,,,,,,20.3,20.3,71.5,49.4,46.4,45.6,30.1,"$55,190.00",21.6,21.5,21.1,21.8,21.6,0.157725342315832
+"Chicago city, Illinois",Chicago Public School District 299,0162990,24.8,24.7,24.9,25.6,25.3,25.8,26.1,24.8,26.2,21.9,24.2,46.0,22.1,23.3,19.1,11.7,"$68,968.00",18.2,17.7,18.3,18.0,18.3,0.996851154605148
+"Chicago Heights city, Illinois",Bloom Township High School District 206,0162060,,,,,,,,,,17.1,17.1,36.2,17.9,11.9,11.1,4.7,"$73,366.00",16.9,16.0,17.0,17.2,17.1,0.919931428170681
+"Chicago Ridge village, Illinois",Community High School District 218,0162180,,,,,,,,,,19.5,19.5,49.1,26.7,23.8,23.7,14.0,"$83,554.00",18.7,18.1,18.6,18.8,18.9,0.879300828673723
+"Chicago Ridge village, Illinois",Oak Lawn Community High School District 229,0162290,,,,,,,,,,20.9,20.9,50.4,31.2,32.4,27.4,14.7,"$90,960.00",19.2,18.5,19.5,19.2,19.2,0.120699171326278
+"Cicero town, Illinois",J. Sterling Morton High School District 201,0162010,,,,,,,,,,23.4,23.4,33.8,16.1,11.6,11.1,5.1,"$74,797.00",16.9,15.9,16.9,17.1,17.2,1.0
+"Clarendon Hills village, Illinois",Hinsdale Township High School District 86,0220860,,,,,,,,,,20.5,20.5,85.0,71.3,72.3,68.4,56.8,"$108,227.00",25.3,25.3,25.2,25.5,24.9,0.935499649550373
+"Clarendon Hills village, Illinois",Westmont Community Unit School District 201,0222010,18.4,16.8,17.2,25.5,21.3,20.0,16.7,19.0,16.8,16.5,18.0,67.0,50.5,46.2,40.7,28.6,"$82,718.00",21.7,21.0,21.5,22.2,21.9,0.0645003504496269
+"Coal City village, Illinois",Coal City Community Unit School District 1,0320010,19.1,20.6,19.9,19.9,22.4,23.4,20.9,21.9,22.5,15.0,20.0,70.7,44.3,49.3,42.1,29.3,"$59,980.00",21.1,20.8,20.8,21.1,21.1,0.999379754493205
+"Country Club Hills city, Illinois",Bremen Community High School District 228,0162280,,,,,,,,,,20.0,20.0,46.1,26.7,24.7,23.5,13.2,"$94,202.00",18.5,17.5,18.6,18.6,18.9,0.668718813668753
+"Country Club Hills city, Illinois",Rich Township High School District 227,0162270,,,,,,,,,,11.4,11.4,38.9,20.8,16.3,13.3,7.0,"$61,210.00",17.4,16.4,17.7,17.8,17.4,0.331281186331246
+"Countryside city, Illinois",Lyons Township High School District 204,0162040,,,,,,,,,,21.4,21.4,81.4,64.4,70.0,61.5,51.7,"$101,033.00",24.3,23.9,24.7,24.3,23.9,1.0
+"Crest Hill city, Illinois",Lockport Township High School District 205,0992050,,,,,,,,,,22.1,22.1,75.8,47.8,52.0,45.1,31.8,"$71,754.00",21.8,21.8,21.8,21.6,21.6,0.803962863547325
+"Crest Hill city, Illinois",Plainfield School District 202,0992020,19.6,22.6,22.1,23.5,24.1,25.1,23.1,24.1,23.3,22.6,23.0,65.4,41.6,43.0,36.8,25.1,"$56,681.00",20.8,20.1,20.9,20.8,20.6,0.0527098540933524
+"Crest Hill city, Illinois",Valley View Community Unit School District 365U,099365U,21.9,21.7,20.8,23.8,23.6,22.6,23.1,24.4,22.5,18.9,21.3,52.5,30.5,31.8,25.3,16.8,"$59,049.00",19.3,18.5,19.5,19.4,19.2,0.114562148021948
+"Crestwood village, Illinois",Bremen Community High School District 228,0162280,,,,,,,,,,20.0,20.0,46.1,26.7,24.7,23.5,13.2,"$94,202.00",18.5,17.5,18.6,18.6,18.9,0.104194517106216
+"Crestwood village, Illinois",Community High School District 218,0162180,,,,,,,,,,19.5,19.5,49.1,26.7,23.8,23.7,14.0,"$83,554.00",18.7,18.1,18.6,18.8,18.9,0.895805482893785
+"Crete village, Illinois",Crete-Monee Community Unit School District 201-U,099201U,18.2,19.4,18.0,16.6,18.4,23.5,27.1,21.8,23.2,20.6,20.5,57.5,31.2,22.2,18.4,11.7,"$53,200.00",19.0,19.0,18.6,19.2,18.5,0.969395070784731
+"Crystal Lake city, Illinois",Community High School District 155,0631550,,,,,,,,,,19.2,19.2,79.5,54.2,59.6,53.3,39.1,"$85,211.00",22.9,22.8,22.9,22.5,22.8,0.933026840089383
+"Crystal Lake city, Illinois",Woodstock Community Unit School District 200,0632000,22.1,19.3,19.1,18.4,20.3,22.1,20.1,20.1,21.8,17.0,20.0,66.9,40.0,38.4,38.6,25.3,"$58,133.00",20.9,20.5,20.3,20.9,21.1,0.0614395068278308
+"Darien city, Illinois",Community High School District 99,0220990,,,,,,,,,,19.9,19.9,75.4,54.0,58.9,49.1,38.0,"$87,880.00",22.6,22.2,23.0,22.7,22.2,0.395651638680608
+"Darien city, Illinois",Hinsdale Township High School District 86,0220860,,,,,,,,,,20.5,20.5,85.0,71.3,72.3,68.4,56.8,"$108,227.00",25.3,25.3,25.2,25.5,24.9,0.567860929660676
+"Deerfield village, Illinois",Northfield Township High School District 225,0162250,,,,,,,,,,19.2,19.2,89.4,70.7,76.2,68.9,58.1,"$101,998.00",25.4,25.6,25.4,25.2,24.8,0.0845683859952232
+"Deerfield village, Illinois",Township High School District 113,0491130,,,,,,,,,,18.0,18.0,87.6,74.6,77.0,72.1,61.6,"$107,529.00",25.8,25.9,25.6,25.9,25.3,0.915431614004777
+"Deer Park village, Illinois",Barrington Community Unit School District 220,0492200,19.5,19.6,19.7,21.1,21.2,23.4,20.3,20.0,19.0,23.7,21.5,82.0,62.9,70.4,62.7,50.2,"$78,692.00",24.4,24.1,24.7,24.2,24.0,0.370630456121771
+"Deer Park village, Illinois",Lake Zurich Community Unit School District 95,0490950,17.9,22.4,21.1,22.9,23.4,22.9,22.3,20.1,20.2,21.9,21.5,84.6,64.7,71.3,62.5,52.5,"$71,223.00",24.2,23.8,24.6,24.1,23.8,0.626035960999641
+"Des Plaines city, Illinois",Maine Township High School District 207,0162070,,,,,,,,,,21.0,21.0,71.2,49.2,52.6,48.2,35.0,"$109,065.00",22.0,21.5,22.1,21.9,21.9,0.802562618463655
+"Des Plaines city, Illinois",Township High School District 214,0162140,,,,,,,,,,20.5,20.5,77.7,53.6,63.1,52.7,40.5,"$98,687.00",23.1,22.9,23.6,22.6,22.6,0.197437381536345
+"Diamond village, Illinois",Coal City Community Unit School District 1,0320010,19.1,20.6,19.9,19.9,22.4,23.4,20.9,21.9,22.5,15.0,20.0,70.7,44.3,49.3,42.1,29.3,"$59,980.00",21.1,20.8,20.8,21.1,21.1,0.665134846596646
+"Diamond village, Illinois",Reed Custer Community Unit School District 255U,099255U,18.4,21.2,22.4,21.4,26.0,24.6,22.5,19.6,19.7,17.6,20.3,63.0,38.6,34.6,35.4,16.5,"$60,432.00",20.3,20.2,19.9,20.2,20.7,0.24766500364256
+"Diamond village, Illinois",Wilmington Community Unit School District 209U,099209U,19.0,20.4,22.3,25.0,25.0,24.3,21.8,18.2,24.6,23.2,22.3,66.4,37.2,34.5,32.7,20.4,"$44,010.00",20.0,20.0,19.5,20.1,19.9,0.0872001497607949
+"Dixmoor village, Illinois",Thornton Township High School District 205,0162050,,,,,,,,,,17.5,17.5,32.5,11.5,9.4,6.3,2.5,"$72,811.00",16.5,15.8,16.8,16.4,16.6,0.999999999999999
+"Dolton village, Illinois",Thornton Township High School District 205,0162050,,,,,,,,,,17.5,17.5,32.5,11.5,9.4,6.3,2.5,"$72,811.00",16.5,15.8,16.8,16.4,16.6,1.0
+"Downers Grove village, Illinois",Community High School District 99,0220990,,,,,,,,,,19.9,19.9,75.4,54.0,58.9,49.1,38.0,"$87,880.00",22.6,22.2,23.0,22.7,22.2,0.940606502539323
+"East Dundee village, Illinois",Community Unit School District 300,0453000,20.1,21.0,21.4,23.1,22.4,24.0,25.4,26.0,25.8,19.6,22.5,63.7,39.5,42.8,37.6,25.6,"$55,361.00",20.7,20.0,20.7,20.7,20.8,1.0
+"East Hazel Crest village, Illinois",Thornton Township High School District 205,0162050,,,,,,,,,,17.5,17.5,32.5,11.5,9.4,6.3,2.5,"$72,811.00",16.5,15.8,16.8,16.4,16.6,0.999999999999999
+"Elburn village, Illinois",Kaneland Community Unit School District 302,0453020,20.7,23.4,23.4,21.9,24.1,22.1,24.9,30.7,26.2,23.9,24.3,71.6,42.3,42.3,33.6,21.0,"$60,130.00",21.1,21.0,20.7,21.3,20.8,1.0
+"Elgin city, Illinois",Central Community Unit School District 301,0453010,20.9,20.7,21.9,21.9,23.6,23.7,28.8,28.4,19.9,22.9,22.7,78.6,56.1,66.3,53.7,42.5,"$54,740.00",22.9,22.4,23.5,22.8,22.4,0.191745316651869
+"Elgin city, Illinois",Community Unit School District 300,0453000,20.1,21.0,21.4,23.1,22.4,24.0,25.4,26.0,25.8,19.6,22.5,63.7,39.5,42.8,37.6,25.6,"$55,361.00",20.7,20.0,20.7,20.7,20.8,0.143849759152459
+"Elgin city, Illinois",School District U-46,0450460,19.1,23.6,22.5,23.6,23.7,24.3,25.3,22.0,24.9,19.5,22.0,52.2,32.2,34.7,29.4,19.3,"$63,851.00",19.4,18.5,19.8,19.3,19.4,0.648186808949606
+"Elk Grove Village village, Illinois",Fenton Community High School District 100,0221000,,,,,,,,,,19.6,19.6,53.8,32.9,40.2,27.4,17.3,"$106,311.00",19.8,18.7,20.5,19.8,19.8,0.0618789873385137
+"Elk Grove Village village, Illinois",Township High School District 211,0162110,,,,,,,,,,21.4,21.4,72.2,52.4,58.8,50.4,39.6,"$85,221.00",22.6,22.0,23.2,22.4,22.4,0.223520802678067
+"Elk Grove Village village, Illinois",Township High School District 214,0162140,,,,,,,,,,20.5,20.5,77.7,53.6,63.1,52.7,40.5,"$98,687.00",23.1,22.9,23.6,22.6,22.6,0.714600209983418
+"Elmhurst city, Illinois",DuPage High School District 88,0220880,,,,,,,,,,21.8,21.8,57.9,34.9,34.3,29.8,18.7,"$92,959.00",19.9,19.2,19.9,20.0,20.0,0.0771367302643394
+"Elmhurst city, Illinois",Elmhurst School District 205,0222050,20.0,20.3,20.1,22.3,22.9,22.7,24.0,23.2,20.1,22.5,22.2,82.4,63.2,66.8,60.6,50.0,"$72,629.00",24.2,23.9,24.1,24.1,24.0,0.920013729965433
+"Elmwood Park village, Illinois",Elmwood Park Community Unit School District 401,0164010,16.1,20.7,22.1,22.3,24.5,27.4,24.7,22.4,18.8,21.4,21.6,66.9,32.2,39.3,27.7,16.5,"$78,938.00",20.0,20.0,20.2,19.7,19.7,1.0
+"Elwood village, Illinois",Joliet Township High School District 204,0992040,,,,,,,,,,24.6,24.6,49.9,28.1,24.7,24.7,13.4,"$74,868.00",18.7,18.0,18.7,18.8,19.0,0.921463011544529
+"Elwood village, Illinois",Wilmington Community Unit School District 209U,099209U,19.0,20.4,22.3,25.0,25.0,24.3,21.8,18.2,24.6,23.2,22.3,66.4,37.2,34.5,32.7,20.4,"$44,010.00",20.0,20.0,19.5,20.1,19.9,0.0785369884554706
+"Evanston city, Illinois",Evanston Township High School District 202,0162020,,,,,,,,,,19.6,19.6,74.2,61.8,60.9,54.4,48.0,"$99,629.00",23.9,23.8,23.8,24.1,23.4,1.0
+"Evergreen Park village, Illinois",Evergreen Park Community High School District 231,0162310,,,,,,,,,,21.8,21.8,69.1,38.1,40.8,30.9,22.9,"$79,850.00",20.5,21.1,20.4,20.1,19.8,1.0
+"Flossmoor village, Illinois",Homewood-Flossmoor Community High School District 233,0162330,,,,,,,,,,17.3,17.3,68.3,40.6,35.4,33.9,22.5,"$83,973.00",20.7,21.0,19.9,20.9,20.3,0.999610961228178
+"Ford Heights village, Illinois",Bloom Township High School District 206,0162060,,,,,,,,,,17.1,17.1,36.2,17.9,11.9,11.1,4.7,"$73,366.00",16.9,16.0,17.0,17.2,17.1,1.0
+"Forest Park village, Illinois",Proviso Township High School District 209,0162090,,,,,,,,,,20.2,20.2,41.8,17.9,18.4,15.9,7.0,"$65,885.00",17.7,16.9,17.9,17.6,18.1,0.999999999999999
+"Forest View village, Illinois",J. Sterling Morton High School District 201,0162010,,,,,,,,,,23.4,23.4,33.8,16.1,11.6,11.1,5.1,"$74,797.00",16.9,15.9,16.9,17.1,17.2,0.746668127529652
+"Forest View village, Illinois",Reavis Township High School District 220,0162200,,,,,,,,,,21.4,21.4,44.4,24.7,32.7,24.7,14.3,"$98,806.00",18.7,17.3,19.3,18.5,19.1,0.253331872470349
+"Fox Lake village, Illinois",Antioch Community High School District 117,0491170,,,,,,,,,,20.8,20.8,76.0,47.6,51.8,48.7,34.3,"$61,620.00",21.9,21.6,21.9,21.8,22.0,0.0943578057939171
+"Fox Lake village, Illinois",Grant Community High School District 124,0491240,,,,,,,,,,19.5,19.5,62.2,40.3,43.4,35.9,25.7,"$61,138.00",20.9,20.3,20.8,20.8,21.1,0.6670836985564
+"Fox Lake village, Illinois",Richmond-Burton Community High School District 157,0631570,,,,,,,,,,19.9,19.9,75.9,49.7,59.3,58.8,37.7,"$53,026.00",22.5,22.0,22.8,21.8,22.9,0.238558495649682
+"Fox River Grove village, Illinois",Barrington Community Unit School District 220,0492200,19.5,19.6,19.7,21.1,21.2,23.4,20.3,20.0,19.0,23.7,21.5,82.0,62.9,70.4,62.7,50.2,"$78,692.00",24.4,24.1,24.7,24.2,24.0,0.187979807852931
+"Fox River Grove village, Illinois",Community High School District 155,0631550,,,,,,,,,,19.2,19.2,79.5,54.2,59.6,53.3,39.1,"$85,211.00",22.9,22.8,22.9,22.5,22.8,0.811373974852893
+"Frankfort village, Illinois",Lincoln Way Community High School District 210,0992100,,,,,,,,,,21.8,21.8,81.0,56.4,55.8,50.3,37.5,"$80,622.00",22.8,22.8,22.3,23.1,22.6,0.890897206351156
+"Frankfort village, Illinois",Peotone Community Unit School District 207U,099207U,20.5,18.6,21.6,22.4,19.6,25.0,11.6,17.1,17.0,17.9,17.6,68.9,48.6,33.8,40.5,25.0,"$45,126.00",21.0,21.4,19.8,21.3,20.9,0.0707438726009579
+"Franklin Park village, Illinois",Leyden Community High School District 212,0162120,,,,,,,,,,19.7,19.7,52.2,29.6,34.6,26.9,15.2,"$81,667.00",19.3,18.4,19.6,19.1,19.4,0.999999999999998
+"Geneva city, Illinois",Geneva Community Unit School District 304,0453040,19.7,21.6,22.4,22.8,23.6,24.9,19.9,24.6,22.2,21.1,21.9,90.4,70.6,66.0,62.0,50.2,"$69,734.00",24.3,24.7,23.8,24.7,23.6,0.999470783985796
+"Gilberts village, Illinois",Community Unit School District 300,0453000,20.1,21.0,21.4,23.1,22.4,24.0,25.4,26.0,25.8,19.6,22.5,63.7,39.5,42.8,37.6,25.6,"$55,361.00",20.7,20.0,20.7,20.7,20.8,0.840591168054027
+"Gilberts village, Illinois",Huntley Consolidated School District 158,0631580,16.2,20.1,21.5,21.8,21.6,22.9,23.3,22.3,23.3,23.6,21.1,79.2,49.5,56.4,49.2,34.1,"$54,761.00",22.4,22.4,22.6,22.0,22.3,0.159408831945974
+"Glencoe village, Illinois",New Trier Township High School District 203,0162030,,,,,,,,,,21.4,21.4,96.2,86.3,88.3,82.9,75.4,"$105,850.00",27.5,27.9,27.4,27.5,26.7,1.0
+"Glendale Heights village, Illinois",Glenbard Township High School District 87,0220870,,,,,,,,,,22.7,22.7,67.4,48.9,51.4,44.5,33.2,"$96,313.00",21.8,21.1,22.0,21.9,21.7,0.998564962184774
+"Glen Ellyn village, Illinois",Glenbard Township High School District 87,0220870,,,,,,,,,,22.7,22.7,67.4,48.9,51.4,44.5,33.2,"$96,313.00",21.8,21.1,22.0,21.9,21.7,0.999281650664238
+"Glenview village, Illinois",Northfield Township High School District 225,0162250,,,,,,,,,,19.2,19.2,89.4,70.7,76.2,68.9,58.1,"$101,998.00",25.4,25.6,25.4,25.2,24.8,0.922648664501031
+"Glenwood village, Illinois",Bloom Township High School District 206,0162060,,,,,,,,,,17.1,17.1,36.2,17.9,11.9,11.1,4.7,"$73,366.00",16.9,16.0,17.0,17.2,17.1,0.847300557166829
+"Glenwood village, Illinois",Homewood-Flossmoor Community High School District 233,0162330,,,,,,,,,,17.3,17.3,68.3,40.6,35.4,33.9,22.5,"$83,973.00",20.7,21.0,19.9,20.9,20.3,0.152699442833168
+"Godley village, Illinois",Gardner-South Wilmington Township High School District,0320730,,,,,,,,,,11.9,11.9,60.0,40.0,42.5,35.0,20.0,"$46,538.00",20.6,19.9,20.9,20.3,20.3,0.418277981369235
+"Godley village, Illinois",Reed Custer Community Unit School District 255U,099255U,18.4,21.2,22.4,21.4,26.0,24.6,22.5,19.6,19.7,17.6,20.3,63.0,38.6,34.6,35.4,16.5,"$60,432.00",20.3,20.2,19.9,20.2,20.7,0.562804629994006
+"Golf village, Illinois",Northfield Township High School District 225,0162250,,,,,,,,,,19.2,19.2,89.4,70.7,76.2,68.9,58.1,"$101,998.00",25.4,25.6,25.4,25.2,24.8,1.0
+"Grayslake village, Illinois",Grayslake Community High School District 127,0491270,,,,,,,,,,20.7,20.7,74.8,53.9,55.8,44.2,33.9,"$68,237.00",22.5,22.4,22.5,22.6,22.0,0.826248224638138
+"Grayslake village, Illinois",Mundelein Consolidated High School District 120,0491200,,,,,,,,,,21.5,21.5,65.6,45.7,38.5,41.0,25.5,"$81,553.00",21.0,20.7,20.5,21.3,20.9,0.137820099395138
+"Green Oaks village, Illinois",Libertyville Community High School District 128,0491280,,,,,,,,,,21.1,21.1,89.1,72.8,77.4,66.7,57.1,"$97,763.00",25.4,25.6,25.5,25.4,24.6,0.997715776021105
+"Greenwood village, Illinois",Woodstock Community Unit School District 200,0632000,22.1,19.3,19.1,18.4,20.3,22.1,20.1,20.1,21.8,17.0,20.0,66.9,40.0,38.4,38.6,25.3,"$58,133.00",20.9,20.5,20.3,20.9,21.1,1.0
+"Gurnee village, Illinois",Warren Township High School District 121,0491210,,,,,,,,,,19.9,19.9,78.6,51.8,54.5,48.3,36.4,"$70,184.00",22.5,22.6,22.3,22.5,22.1,0.99970109510945
+"Hainesville village, Illinois",Grayslake Community High School District 127,0491270,,,,,,,,,,20.7,20.7,74.8,53.9,55.8,44.2,33.9,"$68,237.00",22.5,22.4,22.5,22.6,22.0,0.462547873283584
+"Hainesville village, Illinois",Round Lake Community Unit School District 116,0491160,22.8,24.0,25.2,24.4,23.3,25.8,19.5,17.7,19.2,15.9,19.3,40.5,20.7,25.8,15.8,10.7,"$63,299.00",18.0,16.8,18.8,17.8,18.0,0.537452126716416
+"Hampshire village, Illinois",Community Unit School District 300,0453000,20.1,21.0,21.4,23.1,22.4,24.0,25.4,26.0,25.8,19.6,22.5,63.7,39.5,42.8,37.6,25.6,"$55,361.00",20.7,20.0,20.7,20.7,20.8,0.985233745761732
+"Hanover Park village, Illinois",Glenbard Township High School District 87,0220870,,,,,,,,,,22.7,22.7,67.4,48.9,51.4,44.5,33.2,"$96,313.00",21.8,21.1,22.0,21.9,21.7,0.147873050506238
+"Hanover Park village, Illinois",Lake Park Community High School District 108,0221080,,,,,,,,,,18.7,18.7,75.7,51.9,53.7,51.1,35.3,"$88,565.00",22.4,22.1,22.1,22.5,22.3,0.230715739139574
+"Hanover Park village, Illinois",School District U-46,0450460,19.1,23.6,22.5,23.6,23.7,24.3,25.3,22.0,24.9,19.5,22.0,52.2,32.2,34.7,29.4,19.3,"$63,851.00",19.4,18.5,19.8,19.3,19.4,0.402769461058792
+"Hanover Park village, Illinois",Township High School District 211,0162110,,,,,,,,,,21.4,21.4,72.2,52.4,58.8,50.4,39.6,"$85,221.00",22.6,22.0,23.2,22.4,22.4,0.218641749295395
+"Harvard city, Illinois",Harvard Community Unit School District 50,0630500,24.3,23.6,23.8,23.4,22.2,25.0,21.9,24.4,22.8,10.2,17.0,41.8,20.3,19.0,22.9,9.2,"$47,240.00",17.9,16.8,17.7,18.2,18.3,1.0
+"Harvey city, Illinois",Bremen Community High School District 228,0162280,,,,,,,,,,20.0,20.0,46.1,26.7,24.7,23.5,13.2,"$94,202.00",18.5,17.5,18.6,18.6,18.9,0.0725406274438923
+"Harvey city, Illinois",Thornton Township High School District 205,0162050,,,,,,,,,,17.5,17.5,32.5,11.5,9.4,6.3,2.5,"$72,811.00",16.5,15.8,16.8,16.4,16.6,0.927459372556109
+"Harwood Heights village, Illinois",Maine Township High School District 207,0162070,,,,,,,,,,21.0,21.0,71.2,49.2,52.6,48.2,35.0,"$109,065.00",22.0,21.5,22.1,21.9,21.9,0.307852030839397
+"Harwood Heights village, Illinois",Ridgewood Community High School District 234,0162340,,,,,,,,,,18.2,18.2,69.7,39.8,36.8,38.3,19.9,"$75,665.00",20.5,20.5,20.2,20.4,20.4,0.692147969160603
+"Hawthorn Woods village, Illinois",Adlai E. Stevenson High School District 125,0491250,,,,,,,,,,17.0,17.0,90.9,76.7,80.6,73.4,64.4,"$92,403.00",26.5,26.5,26.8,26.3,25.8,0.253771886709979
+"Hawthorn Woods village, Illinois",Lake Zurich Community Unit School District 95,0490950,17.9,22.4,21.1,22.9,23.4,22.9,22.3,20.1,20.2,21.9,21.5,84.6,64.7,71.3,62.5,52.5,"$71,223.00",24.2,23.8,24.6,24.1,23.8,0.524787473121175
+"Hawthorn Woods village, Illinois",Mundelein Consolidated High School District 120,0491200,,,,,,,,,,21.5,21.5,65.6,45.7,38.5,41.0,25.5,"$81,553.00",21.0,20.7,20.5,21.3,20.9,0.221440640168846
+"Hazel Crest village, Illinois",Bremen Community High School District 228,0162280,,,,,,,,,,20.0,20.0,46.1,26.7,24.7,23.5,13.2,"$94,202.00",18.5,17.5,18.6,18.6,18.9,0.707694179824561
+"Hazel Crest village, Illinois",Homewood-Flossmoor Community High School District 233,0162330,,,,,,,,,,17.3,17.3,68.3,40.6,35.4,33.9,22.5,"$83,973.00",20.7,21.0,19.9,20.9,20.3,0.135661384715688
+"Hazel Crest village, Illinois",Thornton Township High School District 205,0162050,,,,,,,,,,17.5,17.5,32.5,11.5,9.4,6.3,2.5,"$72,811.00",16.5,15.8,16.8,16.4,16.6,0.156644435459751
+"Hebron village, Illinois",Alden-Hebron School District 19,0630190,25.0,23.0,19.0,22.5,16.0,16.5,18.0,16.0,30.0,16.1,18.6,54.8,38.7,38.7,35.5,25.8,"$39,487.00",19.8,18.8,19.9,21.1,19.1,1.0
+"Hickory Hills city, Illinois",Argo Community High School District 217,0162170,,,,,,,,,,21.6,21.6,46.7,24.5,31.1,24.7,14.9,"$84,224.00",18.7,17.5,19.2,18.4,19.1,0.146335060857485
+"Hickory Hills city, Illinois",Consolidated High School District 230,0162300,,,,,,,,,,18.1,18.1,68.4,47.4,50.5,42.4,30.7,"$84,781.00",21.5,21.1,21.6,21.6,21.3,0.853664939142516
+"Highland Park city, Illinois",Township High School District 113,0491130,,,,,,,,,,18.0,18.0,87.6,74.6,77.0,72.1,61.6,"$107,529.00",25.8,25.9,25.6,25.9,25.3,1.0
+"Highwood city, Illinois",Township High School District 113,0491130,,,,,,,,,,18.0,18.0,87.6,74.6,77.0,72.1,61.6,"$107,529.00",25.8,25.9,25.6,25.9,25.3,1.0
+"Hillside village, Illinois",Proviso Township High School District 209,0162090,,,,,,,,,,20.2,20.2,41.8,17.9,18.4,15.9,7.0,"$65,885.00",17.7,16.9,17.9,17.6,18.1,1.0
+"Hinsdale village, Illinois",Hinsdale Township High School District 86,0220860,,,,,,,,,,20.5,20.5,85.0,71.3,72.3,68.4,56.8,"$108,227.00",25.3,25.3,25.2,25.5,24.9,0.979602169868427
+"Hodgkins village, Illinois",Lyons Township High School District 204,0162040,,,,,,,,,,21.4,21.4,81.4,64.4,70.0,61.5,51.7,"$101,033.00",24.3,23.9,24.7,24.3,23.9,0.999999999999999
+"Hoffman Estates village, Illinois",Barrington Community Unit School District 220,0492200,19.5,19.6,19.7,21.1,21.2,23.4,20.3,20.0,19.0,23.7,21.5,82.0,62.9,70.4,62.7,50.2,"$78,692.00",24.4,24.1,24.7,24.2,24.0,0.157693790162245
+"Hoffman Estates village, Illinois",Community Unit School District 300,0453000,20.1,21.0,21.4,23.1,22.4,24.0,25.4,26.0,25.8,19.6,22.5,63.7,39.5,42.8,37.6,25.6,"$55,361.00",20.7,20.0,20.7,20.7,20.8,0.111000736357263
+"Hoffman Estates village, Illinois",School District U-46,0450460,19.1,23.6,22.5,23.6,23.7,24.3,25.3,22.0,24.9,19.5,22.0,52.2,32.2,34.7,29.4,19.3,"$63,851.00",19.4,18.5,19.8,19.3,19.4,0.229845386289449
+"Hoffman Estates village, Illinois",Township High School District 211,0162110,,,,,,,,,,21.4,21.4,72.2,52.4,58.8,50.4,39.6,"$85,221.00",22.6,22.0,23.2,22.4,22.4,0.501460087191043
+"Holiday Hills village, Illinois",McHenry Community High School District 156,0631560,,,,,,,,,,19.0,19.0,62.5,36.6,40.1,32.6,23.1,"$69,309.00",20.4,19.9,20.4,20.2,20.4,1.0
+"Homer Glen village, Illinois",Lockport Township High School District 205,0992050,,,,,,,,,,22.1,22.1,75.8,47.8,52.0,45.1,31.8,"$71,754.00",21.8,21.8,21.8,21.6,21.6,0.992964094715998
+"Hometown city, Illinois",Oak Lawn Community High School District 229,0162290,,,,,,,,,,20.9,20.9,50.4,31.2,32.4,27.4,14.7,"$90,960.00",19.2,18.5,19.5,19.2,19.2,1.0
+"Homewood village, Illinois",Homewood-Flossmoor Community High School District 233,0162330,,,,,,,,,,17.3,17.3,68.3,40.6,35.4,33.9,22.5,"$83,973.00",20.7,21.0,19.9,20.9,20.3,0.948068610091324
+"Huntley village, Illinois",Community Unit School District 300,0453000,20.1,21.0,21.4,23.1,22.4,24.0,25.4,26.0,25.8,19.6,22.5,63.7,39.5,42.8,37.6,25.6,"$55,361.00",20.7,20.0,20.7,20.7,20.8,0.0670196122553269
+"Huntley village, Illinois",Huntley Consolidated School District 158,0631580,16.2,20.1,21.5,21.8,21.6,22.9,23.3,22.3,23.3,23.6,21.1,79.2,49.5,56.4,49.2,34.1,"$54,761.00",22.4,22.4,22.6,22.0,22.3,0.932980387744672
+"Indian Creek village, Illinois",Libertyville Community High School District 128,0491280,,,,,,,,,,21.1,21.1,89.1,72.8,77.4,66.7,57.1,"$97,763.00",25.4,25.6,25.5,25.4,24.6,0.554576192478868
+"Indian Creek village, Illinois",Mundelein Consolidated High School District 120,0491200,,,,,,,,,,21.5,21.5,65.6,45.7,38.5,41.0,25.5,"$81,553.00",21.0,20.7,20.5,21.3,20.9,0.421333052715593
+"Indian Head Park village, Illinois",Lyons Township High School District 204,0162040,,,,,,,,,,21.4,21.4,81.4,64.4,70.0,61.5,51.7,"$101,033.00",24.3,23.9,24.7,24.3,23.9,1.0
+"Inverness village, Illinois",Barrington Community Unit School District 220,0492200,19.5,19.6,19.7,21.1,21.2,23.4,20.3,20.0,19.0,23.7,21.5,82.0,62.9,70.4,62.7,50.2,"$78,692.00",24.4,24.1,24.7,24.2,24.0,0.27233329123048
+"Inverness village, Illinois",Township High School District 211,0162110,,,,,,,,,,21.4,21.4,72.2,52.4,58.8,50.4,39.6,"$85,221.00",22.6,22.0,23.2,22.4,22.4,0.72766670876952
+"Island Lake village, Illinois",McHenry Community High School District 156,0631560,,,,,,,,,,19.0,19.0,62.5,36.6,40.1,32.6,23.1,"$69,309.00",20.4,19.9,20.4,20.2,20.4,0.136633862504457
+"Island Lake village, Illinois",Wauconda Community Unit School District 118,0491180,21.0,20.8,20.6,21.5,24.9,26.0,22.5,22.4,24.3,20.9,22.2,78.7,49.5,52.6,47.1,33.3,"$74,393.00",22.0,22.1,21.8,21.8,21.6,0.863366137495542
+"Itasca village, Illinois",Fenton Community High School District 100,0221000,,,,,,,,,,19.6,19.6,53.8,32.9,40.2,27.4,17.3,"$106,311.00",19.8,18.7,20.5,19.8,19.8,0.0984220540308412
+"Itasca village, Illinois",Lake Park Community High School District 108,0221080,,,,,,,,,,18.7,18.7,75.7,51.9,53.7,51.1,35.3,"$88,565.00",22.4,22.1,22.1,22.5,22.3,0.90034678828111
+"Johnsburg village, Illinois",Johnsburg Community Unit School District 12,0630120,18.3,16.9,15.1,24.5,26.0,25.8,26.5,25.8,29.5,19.9,22.5,68.4,45.0,37.4,40.9,25.7,"$57,563.00",20.7,20.4,19.9,20.9,20.9,0.956124562209097
+"Joliet city, Illinois",Joliet Township High School District 204,0992040,,,,,,,,,,24.6,24.6,49.9,28.1,24.7,24.7,13.4,"$74,868.00",18.7,18.0,18.7,18.8,19.0,0.681582022999892
+"Joliet city, Illinois",Minooka Community High School District 111,0321110,,,,,,,,,,20.5,20.5,75.3,48.8,46.0,45.5,30.3,"$63,724.00",21.8,22.0,21.2,21.8,21.6,0.0650389778904317
+"Joliet city, Illinois",Oswego Community Unit School District 308,0473080,22.7,22.7,23.0,23.9,25.4,25.5,21.2,20.8,20.7,23.8,23.0,64.5,41.9,41.3,39.0,25.6,"$51,648.00",20.8,20.3,20.7,20.9,20.8,0.058276774869309
+"Joliet city, Illinois",Plainfield School District 202,0992020,19.6,22.6,22.1,23.5,24.1,25.1,23.1,24.1,23.3,22.6,23.0,65.4,41.6,43.0,36.8,25.1,"$56,681.00",20.8,20.1,20.9,20.8,20.6,0.173734266487262
+"Justice village, Illinois",Argo Community High School District 217,0162170,,,,,,,,,,21.6,21.6,46.7,24.5,31.1,24.7,14.9,"$84,224.00",18.7,17.5,19.2,18.4,19.1,1.0
+"Kaneville village, Illinois",Kaneland Community Unit School District 302,0453020,20.7,23.4,23.4,21.9,24.1,22.1,24.9,30.7,26.2,23.9,24.3,71.6,42.3,42.3,33.6,21.0,"$60,130.00",21.1,21.0,20.7,21.3,20.8,1.0
+"Kenilworth village, Illinois",New Trier Township High School District 203,0162030,,,,,,,,,,21.4,21.4,96.2,86.3,88.3,82.9,75.4,"$105,850.00",27.5,27.9,27.4,27.5,26.7,1.0
+"Kildeer village, Illinois",Adlai E. Stevenson High School District 125,0491250,,,,,,,,,,17.0,17.0,90.9,76.7,80.6,73.4,64.4,"$92,403.00",26.5,26.5,26.8,26.3,25.8,0.469887894961404
+"Kildeer village, Illinois",Lake Zurich Community Unit School District 95,0490950,17.9,22.4,21.1,22.9,23.4,22.9,22.3,20.1,20.2,21.9,21.5,84.6,64.7,71.3,62.5,52.5,"$71,223.00",24.2,23.8,24.6,24.1,23.8,0.530112105038595
+"La Grange village, Illinois",Lyons Township High School District 204,0162040,,,,,,,,,,21.4,21.4,81.4,64.4,70.0,61.5,51.7,"$101,033.00",24.3,23.9,24.7,24.3,23.9,1.0
+"La Grange Park village, Illinois",Lyons Township High School District 204,0162040,,,,,,,,,,21.4,21.4,81.4,64.4,70.0,61.5,51.7,"$101,033.00",24.3,23.9,24.7,24.3,23.9,0.823215802154763
+"La Grange Park village, Illinois",Riverside Brookfield Township School District 208,0162080,,,,,,,,,,24.3,24.3,85.6,57.5,61.9,57.5,43.1,"$92,543.00",23.3,23.3,22.9,23.5,23.1,0.173156837181303
+"Lake Barrington village, Illinois",Barrington Community Unit School District 220,0492200,19.5,19.6,19.7,21.1,21.2,23.4,20.3,20.0,19.0,23.7,21.5,82.0,62.9,70.4,62.7,50.2,"$78,692.00",24.4,24.1,24.7,24.2,24.0,0.913342594026139
+"Lake Barrington village, Illinois",Wauconda Community Unit School District 118,0491180,21.0,20.8,20.6,21.5,24.9,26.0,22.5,22.4,24.3,20.9,22.2,78.7,49.5,52.6,47.1,33.3,"$74,393.00",22.0,22.1,21.8,21.8,21.6,0.086373418092499
+"Lake Bluff village, Illinois",Lake Forest Community High School District 115,0491150,,,,,,,,,,18.5,18.5,92.3,79.8,79.3,74.2,64.6,"$97,820.00",26.1,26.3,26.1,26.3,25.3,0.999799202594314
+"Lake Forest city, Illinois",Lake Forest Community High School District 115,0491150,,,,,,,,,,18.5,18.5,92.3,79.8,79.3,74.2,64.6,"$97,820.00",26.1,26.3,26.1,26.3,25.3,0.946657814074275
+"Lake in the Hills village, Illinois",Community High School District 155,0631550,,,,,,,,,,19.2,19.2,79.5,54.2,59.6,53.3,39.1,"$85,211.00",22.9,22.8,22.9,22.5,22.8,0.237404051923618
+"Lake in the Hills village, Illinois",Community Unit School District 300,0453000,20.1,21.0,21.4,23.1,22.4,24.0,25.4,26.0,25.8,19.6,22.5,63.7,39.5,42.8,37.6,25.6,"$55,361.00",20.7,20.0,20.7,20.7,20.8,0.391978414379976
+"Lake in the Hills village, Illinois",Huntley Consolidated School District 158,0631580,16.2,20.1,21.5,21.8,21.6,22.9,23.3,22.3,23.3,23.6,21.1,79.2,49.5,56.4,49.2,34.1,"$54,761.00",22.4,22.4,22.6,22.0,22.3,0.370617533696404
+"Lakemoor village, Illinois",Grant Community High School District 124,0491240,,,,,,,,,,19.5,19.5,62.2,40.3,43.4,35.9,25.7,"$61,138.00",20.9,20.3,20.8,20.8,21.1,0.25766018418701
+"Lakemoor village, Illinois",McHenry Community High School District 156,0631560,,,,,,,,,,19.0,19.0,62.5,36.6,40.1,32.6,23.1,"$69,309.00",20.4,19.9,20.4,20.2,20.4,0.571430399822278
+"Lakemoor village, Illinois",Wauconda Community Unit School District 118,0491180,21.0,20.8,20.6,21.5,24.9,26.0,22.5,22.4,24.3,20.9,22.2,78.7,49.5,52.6,47.1,33.3,"$74,393.00",22.0,22.1,21.8,21.8,21.6,0.140922970598992
+"Lake Villa village, Illinois",Antioch Community High School District 117,0491170,,,,,,,,,,20.8,20.8,76.0,47.6,51.8,48.7,34.3,"$61,620.00",21.9,21.6,21.9,21.8,22.0,0.756507003064426
+"Lake Villa village, Illinois",Grant Community High School District 124,0491240,,,,,,,,,,19.5,19.5,62.2,40.3,43.4,35.9,25.7,"$61,138.00",20.9,20.3,20.8,20.8,21.1,0.128092279352125
+"Lake Villa village, Illinois",Grayslake Community High School District 127,0491270,,,,,,,,,,20.7,20.7,74.8,53.9,55.8,44.2,33.9,"$68,237.00",22.5,22.4,22.5,22.6,22.0,0.115400717583448
+"Lakewood village, Illinois",Community High School District 155,0631550,,,,,,,,,,19.2,19.2,79.5,54.2,59.6,53.3,39.1,"$85,211.00",22.9,22.8,22.9,22.5,22.8,0.743189990990373
+"Lakewood village, Illinois",Huntley Consolidated School District 158,0631580,16.2,20.1,21.5,21.8,21.6,22.9,23.3,22.3,23.3,23.6,21.1,79.2,49.5,56.4,49.2,34.1,"$54,761.00",22.4,22.4,22.6,22.0,22.3,0.09924754083647
+"Lakewood village, Illinois",Woodstock Community Unit School District 200,0632000,22.1,19.3,19.1,18.4,20.3,22.1,20.1,20.1,21.8,17.0,20.0,66.9,40.0,38.4,38.6,25.3,"$58,133.00",20.9,20.5,20.3,20.9,21.1,0.15756246817316
+"Lake Zurich village, Illinois",Lake Zurich Community Unit School District 95,0490950,17.9,22.4,21.1,22.9,23.4,22.9,22.3,20.1,20.2,21.9,21.5,84.6,64.7,71.3,62.5,52.5,"$71,223.00",24.2,23.8,24.6,24.1,23.8,0.969472889920082
+"Lansing village, Illinois",Thornton Fractional Township High School District 215,0162150,,,,,,,,,,20.7,20.7,37.9,19.9,17.0,12.6,6.9,"$84,307.00",17.5,16.4,17.7,17.6,17.5,0.92016561889643
+"Lansing village, Illinois",Thornton Township High School District 205,0162050,,,,,,,,,,17.5,17.5,32.5,11.5,9.4,6.3,2.5,"$72,811.00",16.5,15.8,16.8,16.4,16.6,0.055871301791328
+"Lemont village, Illinois",Lemont Township High School District 210,0162100,,,,,,,,,,21.0,21.0,78.1,55.9,54.4,47.0,35.1,"$75,559.00",22.4,22.0,22.2,22.8,22.2,0.957192935555011
+"Libertyville village, Illinois",Libertyville Community High School District 128,0491280,,,,,,,,,,21.1,21.1,89.1,72.8,77.4,66.7,57.1,"$97,763.00",25.4,25.6,25.5,25.4,24.6,0.864149695843639
+"Libertyville village, Illinois",Mundelein Consolidated High School District 120,0491200,,,,,,,,,,21.5,21.5,65.6,45.7,38.5,41.0,25.5,"$81,553.00",21.0,20.7,20.5,21.3,20.9,0.110834360834831
+"Lily Lake village, Illinois",Central Community Unit School District 301,0453010,20.9,20.7,21.9,21.9,23.6,23.7,28.8,28.4,19.9,22.9,22.7,78.6,56.1,66.3,53.7,42.5,"$54,740.00",22.9,22.4,23.5,22.8,22.4,0.999664581771707
+"Lincolnshire village, Illinois",Adlai E. Stevenson High School District 125,0491250,,,,,,,,,,17.0,17.0,90.9,76.7,80.6,73.4,64.4,"$92,403.00",26.5,26.5,26.8,26.3,25.8,0.99474139260678
+"Lincolnwood village, Illinois",Niles Township Community High School District 219,0162190,,,,,,,,,,19.1,19.1,71.4,48.7,49.4,45.5,31.8,"$105,577.00",22.0,21.6,21.8,21.9,22.0,1.0
+"Lindenhurst village, Illinois",Antioch Community High School District 117,0491170,,,,,,,,,,20.8,20.8,76.0,47.6,51.8,48.7,34.3,"$61,620.00",21.9,21.6,21.9,21.8,22.0,0.749228444186285
+"Lindenhurst village, Illinois",Grayslake Community High School District 127,0491270,,,,,,,,,,20.7,20.7,74.8,53.9,55.8,44.2,33.9,"$68,237.00",22.5,22.4,22.5,22.6,22.0,0.243120094483509
+"Lisle village, Illinois",Community High School District 99,0220990,,,,,,,,,,19.9,19.9,75.4,54.0,58.9,49.1,38.0,"$87,880.00",22.6,22.2,23.0,22.7,22.2,0.0576670233119732
+"Lisle village, Illinois",Lisle Community Unit School District 202,0222020,14.2,20.2,19.0,20.2,19.4,22.6,17.5,18.2,21.2,17.8,18.6,82.9,52.0,56.9,52.8,39.8,"$68,134.00",23.1,23.2,22.6,23.1,23.0,0.549389177557123
+"Lisle village, Illinois",Naperville Community Unit District 203,0222030,22.1,22.5,23.0,24.3,23.6,22.9,22.3,22.9,24.4,20.6,22.3,84.4,68.8,71.8,66.6,55.2,"$70,084.00",24.9,24.5,24.9,25.0,24.6,0.378017368705943
+"Lockport city, Illinois",Lockport Township High School District 205,0992050,,,,,,,,,,22.1,22.1,75.8,47.8,52.0,45.1,31.8,"$71,754.00",21.8,21.8,21.8,21.6,21.6,0.994314959532878
+"Lombard village, Illinois",DuPage High School District 88,0220880,,,,,,,,,,21.8,21.8,57.9,34.9,34.3,29.8,18.7,"$92,959.00",19.9,19.2,19.9,20.0,20.0,0.272613942556642
+"Lombard village, Illinois",Glenbard Township High School District 87,0220870,,,,,,,,,,22.7,22.7,67.4,48.9,51.4,44.5,33.2,"$96,313.00",21.8,21.1,22.0,21.9,21.7,0.71612719467418
+"Long Grove village, Illinois",Adlai E. Stevenson High School District 125,0491250,,,,,,,,,,17.0,17.0,90.9,76.7,80.6,73.4,64.4,"$92,403.00",26.5,26.5,26.8,26.3,25.8,0.952003615916722
+"Lynwood village, Illinois",Bloom Township High School District 206,0162060,,,,,,,,,,17.1,17.1,36.2,17.9,11.9,11.1,4.7,"$73,366.00",16.9,16.0,17.0,17.2,17.1,0.789009476253022
+"Lynwood village, Illinois",Thornton Fractional Township High School District 215,0162150,,,,,,,,,,20.7,20.7,37.9,19.9,17.0,12.6,6.9,"$84,307.00",17.5,16.4,17.7,17.6,17.5,0.210990523746979
+"Lyons village, Illinois",Argo Community High School District 217,0162170,,,,,,,,,,21.6,21.6,46.7,24.5,31.1,24.7,14.9,"$84,224.00",18.7,17.5,19.2,18.4,19.1,0.105761808196202
+"Lyons village, Illinois",J. Sterling Morton High School District 201,0162010,,,,,,,,,,23.4,23.4,33.8,16.1,11.6,11.1,5.1,"$74,797.00",16.9,15.9,16.9,17.1,17.2,0.852481143712015
+"McCook village, Illinois",J. Sterling Morton High School District 201,0162010,,,,,,,,,,23.4,23.4,33.8,16.1,11.6,11.1,5.1,"$74,797.00",16.9,15.9,16.9,17.1,17.2,0.245921443895451
+"McCook village, Illinois",Lyons Township High School District 204,0162040,,,,,,,,,,21.4,21.4,81.4,64.4,70.0,61.5,51.7,"$101,033.00",24.3,23.9,24.7,24.3,23.9,0.754078556104549
+"McCullom Lake village, Illinois",Johnsburg Community Unit School District 12,0630120,18.3,16.9,15.1,24.5,26.0,25.8,26.5,25.8,29.5,19.9,22.5,68.4,45.0,37.4,40.9,25.7,"$57,563.00",20.7,20.4,19.9,20.9,20.9,0.127293392656396
+"McCullom Lake village, Illinois",McHenry Community High School District 156,0631560,,,,,,,,,,19.0,19.0,62.5,36.6,40.1,32.6,23.1,"$69,309.00",20.4,19.9,20.4,20.2,20.4,0.872706607343604
+"McHenry city, Illinois",McHenry Community High School District 156,0631560,,,,,,,,,,19.0,19.0,62.5,36.6,40.1,32.6,23.1,"$69,309.00",20.4,19.9,20.4,20.2,20.4,0.993165513999886
+"Manhattan village, Illinois",Lincoln Way Community High School District 210,0992100,,,,,,,,,,21.8,21.8,81.0,56.4,55.8,50.3,37.5,"$80,622.00",22.8,22.8,22.3,23.1,22.6,0.817307661072432
+"Manhattan village, Illinois",Peotone Community Unit School District 207U,099207U,20.5,18.6,21.6,22.4,19.6,25.0,11.6,17.1,17.0,17.9,17.6,68.9,48.6,33.8,40.5,25.0,"$45,126.00",21.0,21.4,19.8,21.3,20.9,0.182692338927568
+"Maple Park village, Illinois",Kaneland Community Unit School District 302,0453020,20.7,23.4,23.4,21.9,24.1,22.1,24.9,30.7,26.2,23.9,24.3,71.6,42.3,42.3,33.6,21.0,"$60,130.00",21.1,21.0,20.7,21.3,20.8,1.0
+"Marengo city, Illinois",Marengo Community High School District 154,0631540,,,,,,,,,,18.6,18.6,72.9,42.9,44.1,42.9,27.6,"$67,747.00",21.3,21.3,21.3,20.7,21.3,1.0
+"Markham city, Illinois",Bremen Community High School District 228,0162280,,,,,,,,,,20.0,20.0,46.1,26.7,24.7,23.5,13.2,"$94,202.00",18.5,17.5,18.6,18.6,18.9,0.803238726484849
+"Markham city, Illinois",Thornton Township High School District 205,0162050,,,,,,,,,,17.5,17.5,32.5,11.5,9.4,6.3,2.5,"$72,811.00",16.5,15.8,16.8,16.4,16.6,0.19676127351515
+"Matteson village, Illinois",Rich Township High School District 227,0162270,,,,,,,,,,11.4,11.4,38.9,20.8,16.3,13.3,7.0,"$61,210.00",17.4,16.4,17.7,17.8,17.4,0.99815244380097
+"Maywood village, Illinois",Proviso Township High School District 209,0162090,,,,,,,,,,20.2,20.2,41.8,17.9,18.4,15.9,7.0,"$65,885.00",17.7,16.9,17.9,17.6,18.1,1.0
+"Melrose Park village, Illinois",Leyden Community High School District 212,0162120,,,,,,,,,,19.7,19.7,52.2,29.6,34.6,26.9,15.2,"$81,667.00",19.3,18.4,19.6,19.1,19.4,0.30347516366656
+"Melrose Park village, Illinois",Proviso Township High School District 209,0162090,,,,,,,,,,20.2,20.2,41.8,17.9,18.4,15.9,7.0,"$65,885.00",17.7,16.9,17.9,17.6,18.1,0.69652483633344
+"Merrionette Park village, Illinois",Community High School District 218,0162180,,,,,,,,,,19.5,19.5,49.1,26.7,23.8,23.7,14.0,"$83,554.00",18.7,18.1,18.6,18.8,18.9,1.0
+"Mettawa village, Illinois",Adlai E. Stevenson High School District 125,0491250,,,,,,,,,,17.0,17.0,90.9,76.7,80.6,73.4,64.4,"$92,403.00",26.5,26.5,26.8,26.3,25.8,0.296751869973382
+"Mettawa village, Illinois",Libertyville Community High School District 128,0491280,,,,,,,,,,21.1,21.1,89.1,72.8,77.4,66.7,57.1,"$97,763.00",25.4,25.6,25.5,25.4,24.6,0.701984491551045
+"Midlothian village, Illinois",Bremen Community High School District 228,0162280,,,,,,,,,,20.0,20.0,46.1,26.7,24.7,23.5,13.2,"$94,202.00",18.5,17.5,18.6,18.6,18.9,0.999999999999999
+"Minooka village, Illinois",Minooka Community High School District 111,0321110,,,,,,,,,,20.5,20.5,75.3,48.8,46.0,45.5,30.3,"$63,724.00",21.8,22.0,21.2,21.8,21.6,1.0
+"Mokena village, Illinois",Lincoln Way Community High School District 210,0992100,,,,,,,,,,21.8,21.8,81.0,56.4,55.8,50.3,37.5,"$80,622.00",22.8,22.8,22.3,23.1,22.6,1.0
+"Monee village, Illinois",Crete-Monee Community Unit School District 201-U,099201U,18.2,19.4,18.0,16.6,18.4,23.5,27.1,21.8,23.2,20.6,20.5,57.5,31.2,22.2,18.4,11.7,"$53,200.00",19.0,19.0,18.6,19.2,18.5,1.0
+"Montgomery village, Illinois",Aurora East Unit School District 131,0451310,18.1,19.7,21.3,20.1,21.9,22.2,25.7,25.3,24.5,20.5,21.9,35.6,17.0,15.5,14.8,6.9,"$55,523.00",17.1,15.9,17.6,17.3,17.3,0.0999160809786644
+"Montgomery village, Illinois",Aurora West Unit School District 129,0451290,18.7,19.9,21.8,20.7,22.5,22.8,19.9,21.3,21.2,22.1,21.2,51.0,27.7,25.3,22.5,14.0,"$65,939.00",18.7,18.2,18.7,18.9,18.6,0.297162630058556
+"Montgomery village, Illinois",Kaneland Community Unit School District 302,0453020,20.7,23.4,23.4,21.9,24.1,22.1,24.9,30.7,26.2,23.9,24.3,71.6,42.3,42.3,33.6,21.0,"$60,130.00",21.1,21.0,20.7,21.3,20.8,0.113954505605225
+"Montgomery village, Illinois",Oswego Community Unit School District 308,0473080,22.7,22.7,23.0,23.9,25.4,25.5,21.2,20.8,20.7,23.8,23.0,64.5,41.9,41.3,39.0,25.6,"$51,648.00",20.8,20.3,20.7,20.9,20.8,0.369655521726635
+"Montgomery village, Illinois",Yorkville Community Unit School District 115,0471150,17.6,21.7,20.6,19.9,23.7,23.7,23.2,20.2,16.7,16.4,18.5,67.2,46.0,37.4,39.1,23.7,"$54,260.00",20.8,20.3,20.2,21.4,20.9,0.11931126163092
+"Morton Grove village, Illinois",Maine Township High School District 207,0162070,,,,,,,,,,21.0,21.0,71.2,49.2,52.6,48.2,35.0,"$109,065.00",22.0,21.5,22.1,21.9,21.9,0.183471154739202
+"Morton Grove village, Illinois",Niles Township Community High School District 219,0162190,,,,,,,,,,19.1,19.1,71.4,48.7,49.4,45.5,31.8,"$105,577.00",22.0,21.6,21.8,21.9,22.0,0.816528845260796
+"Mount Prospect village, Illinois",Township High School District 214,0162140,,,,,,,,,,20.5,20.5,77.7,53.6,63.1,52.7,40.5,"$98,687.00",23.1,22.9,23.6,22.6,22.6,0.997806476261178
+"Mundelein village, Illinois",Mundelein Consolidated High School District 120,0491200,,,,,,,,,,21.5,21.5,65.6,45.7,38.5,41.0,25.5,"$81,553.00",21.0,20.7,20.5,21.3,20.9,0.945293848607126
+"Naperville city, Illinois",Indian Prairie Community Unit School District 204,0222040,24.0,25.0,25.7,26.1,27.0,27.5,27.0,27.9,27.8,27.1,26.8,85.3,66.3,68.9,63.0,52.2,"$64,997.00",24.5,24.5,24.5,24.4,24.0,0.487615074033421
+"Naperville city, Illinois",Naperville Community Unit District 203,0222030,22.1,22.5,23.0,24.3,23.6,22.9,22.3,22.9,24.4,20.6,22.3,84.4,68.8,71.8,66.6,55.2,"$70,084.00",24.9,24.5,24.9,25.0,24.6,0.477455371338374
+"New Lenox village, Illinois",Lincoln Way Community High School District 210,0992100,,,,,,,,,,21.8,21.8,81.0,56.4,55.8,50.3,37.5,"$80,622.00",22.8,22.8,22.3,23.1,22.6,0.916882049731124
+"New Lenox village, Illinois",Lockport Township High School District 205,0992050,,,,,,,,,,22.1,22.1,75.8,47.8,52.0,45.1,31.8,"$71,754.00",21.8,21.8,21.8,21.6,21.6,0.0515800626445027
+"Niles village, Illinois",Maine Township High School District 207,0162070,,,,,,,,,,21.0,21.0,71.2,49.2,52.6,48.2,35.0,"$109,065.00",22.0,21.5,22.1,21.9,21.9,0.502946299607351
+"Niles village, Illinois",Niles Township Community High School District 219,0162190,,,,,,,,,,19.1,19.1,71.4,48.7,49.4,45.5,31.8,"$105,577.00",22.0,21.6,21.8,21.9,22.0,0.497053700392648
+"Norridge village, Illinois",Maine Township High School District 207,0162070,,,,,,,,,,21.0,21.0,71.2,49.2,52.6,48.2,35.0,"$109,065.00",22.0,21.5,22.1,21.9,21.9,0.0828129778885559
+"Norridge village, Illinois",Ridgewood Community High School District 234,0162340,,,,,,,,,,18.2,18.2,69.7,39.8,36.8,38.3,19.9,"$75,665.00",20.5,20.5,20.2,20.4,20.4,0.917187022111444
+"North Aurora village, Illinois",Aurora West Unit School District 129,0451290,18.7,19.9,21.8,20.7,22.5,22.8,19.9,21.3,21.2,22.1,21.2,51.0,27.7,25.3,22.5,14.0,"$65,939.00",18.7,18.2,18.7,18.9,18.6,0.970539483519548
+"North Barrington village, Illinois",Barrington Community Unit School District 220,0492200,19.5,19.6,19.7,21.1,21.2,23.4,20.3,20.0,19.0,23.7,21.5,82.0,62.9,70.4,62.7,50.2,"$78,692.00",24.4,24.1,24.7,24.2,24.0,0.799675717165589
+"North Barrington village, Illinois",Lake Zurich Community Unit School District 95,0490950,17.9,22.4,21.1,22.9,23.4,22.9,22.3,20.1,20.2,21.9,21.5,84.6,64.7,71.3,62.5,52.5,"$71,223.00",24.2,23.8,24.6,24.1,23.8,0.200324282834411
+"Northbrook village, Illinois",Northfield Township High School District 225,0162250,,,,,,,,,,19.2,19.2,89.4,70.7,76.2,68.9,58.1,"$101,998.00",25.4,25.6,25.4,25.2,24.8,0.961081141657467
+"North Chicago city, Illinois",North Chicago School District 187,0491870,21.7,17.7,20.6,23.0,20.1,20.7,19.0,15.2,18.4,18.4,19.2,24.8,7.8,5.9,5.2,1.3,"$54,941.00",15.9,14.9,16.1,15.8,16.2,0.942703583419515
+"Northfield village, Illinois",New Trier Township High School District 203,0162030,,,,,,,,,,21.4,21.4,96.2,86.3,88.3,82.9,75.4,"$105,850.00",27.5,27.9,27.4,27.5,26.7,0.971672310781221
+"Northlake city, Illinois",Leyden Community High School District 212,0162120,,,,,,,,,,19.7,19.7,52.2,29.6,34.6,26.9,15.2,"$81,667.00",19.3,18.4,19.6,19.1,19.4,0.742421039998932
+"Northlake city, Illinois",Proviso Township High School District 209,0162090,,,,,,,,,,20.2,20.2,41.8,17.9,18.4,15.9,7.0,"$65,885.00",17.7,16.9,17.9,17.6,18.1,0.257578960001067
+"North Riverside village, Illinois",Proviso Township High School District 209,0162090,,,,,,,,,,20.2,20.2,41.8,17.9,18.4,15.9,7.0,"$65,885.00",17.7,16.9,17.9,17.6,18.1,0.118642006642672
+"North Riverside village, Illinois",Riverside Brookfield Township School District 208,0162080,,,,,,,,,,24.3,24.3,85.6,57.5,61.9,57.5,43.1,"$92,543.00",23.3,23.3,22.9,23.5,23.1,0.881357993357328
+"Oak Brook village, Illinois",Community High School District 99,0220990,,,,,,,,,,19.9,19.9,75.4,54.0,58.9,49.1,38.0,"$87,880.00",22.6,22.2,23.0,22.7,22.2,0.118870509221512
+"Oak Brook village, Illinois",DuPage High School District 88,0220880,,,,,,,,,,21.8,21.8,57.9,34.9,34.3,29.8,18.7,"$92,959.00",19.9,19.2,19.9,20.0,20.0,0.0857927909436132
+"Oak Brook village, Illinois",Elmhurst School District 205,0222050,20.0,20.3,20.1,22.3,22.9,22.7,24.0,23.2,20.1,22.5,22.2,82.4,63.2,66.8,60.6,50.0,"$72,629.00",24.2,23.9,24.1,24.1,24.0,0.100814952295045
+"Oak Brook village, Illinois",Hinsdale Township High School District 86,0220860,,,,,,,,,,20.5,20.5,85.0,71.3,72.3,68.4,56.8,"$108,227.00",25.3,25.3,25.2,25.5,24.9,0.687443065751012
+"Oakbrook Terrace city, Illinois",DuPage High School District 88,0220880,,,,,,,,,,21.8,21.8,57.9,34.9,34.3,29.8,18.7,"$92,959.00",19.9,19.2,19.9,20.0,20.0,0.996076158527016
+"Oak Forest city, Illinois",Bremen Community High School District 228,0162280,,,,,,,,,,20.0,20.0,46.1,26.7,24.7,23.5,13.2,"$94,202.00",18.5,17.5,18.6,18.6,18.9,0.88580916074745
+"Oak Forest city, Illinois",Consolidated High School District 230,0162300,,,,,,,,,,18.1,18.1,68.4,47.4,50.5,42.4,30.7,"$84,781.00",21.5,21.1,21.6,21.6,21.3,0.114190839252552
+"Oak Lawn village, Illinois",Community High School District 218,0162180,,,,,,,,,,19.5,19.5,49.1,26.7,23.8,23.7,14.0,"$83,554.00",18.7,18.1,18.6,18.8,18.9,0.424715191930826
+"Oak Lawn village, Illinois",Oak Lawn Community High School District 229,0162290,,,,,,,,,,20.9,20.9,50.4,31.2,32.4,27.4,14.7,"$90,960.00",19.2,18.5,19.5,19.2,19.2,0.575284808069173
+"Oak Park village, Illinois",Oak Park and River Forest District 200,0162000,,,,,,,,,,17.0,17.0,78.8,62.6,58.5,55.4,46.2,"$98,729.00",23.8,24.1,23.2,24.4,23.1,1.0
+"Oakwood Hills village, Illinois",Community High School District 155,0631550,,,,,,,,,,19.2,19.2,79.5,54.2,59.6,53.3,39.1,"$85,211.00",22.9,22.8,22.9,22.5,22.8,1.0
+"Old Mill Creek village, Illinois",Antioch Community High School District 117,0491170,,,,,,,,,,20.8,20.8,76.0,47.6,51.8,48.7,34.3,"$61,620.00",21.9,21.6,21.9,21.8,22.0,0.125343828061917
+"Old Mill Creek village, Illinois",Warren Township High School District 121,0491210,,,,,,,,,,19.9,19.9,78.6,51.8,54.5,48.3,36.4,"$70,184.00",22.5,22.6,22.3,22.5,22.1,0.850869456848508
+"Olympia Fields village, Illinois",Homewood-Flossmoor Community High School District 233,0162330,,,,,,,,,,17.3,17.3,68.3,40.6,35.4,33.9,22.5,"$83,973.00",20.7,21.0,19.9,20.9,20.3,0.0868365560449917
+"Olympia Fields village, Illinois",Rich Township High School District 227,0162270,,,,,,,,,,11.4,11.4,38.9,20.8,16.3,13.3,7.0,"$61,210.00",17.4,16.4,17.7,17.8,17.4,0.89796874605673
+"Orland Hills village, Illinois",Consolidated High School District 230,0162300,,,,,,,,,,18.1,18.1,68.4,47.4,50.5,42.4,30.7,"$84,781.00",21.5,21.1,21.6,21.6,21.3,1.0
+"Orland Park village, Illinois",Consolidated High School District 230,0162300,,,,,,,,,,18.1,18.1,68.4,47.4,50.5,42.4,30.7,"$84,781.00",21.5,21.1,21.6,21.6,21.3,0.97384656787404
+"Palatine village, Illinois",Township High School District 211,0162110,,,,,,,,,,21.4,21.4,72.2,52.4,58.8,50.4,39.6,"$85,221.00",22.6,22.0,23.2,22.4,22.4,0.999313658471621
+"Palos Heights city, Illinois",Community High School District 218,0162180,,,,,,,,,,19.5,19.5,49.1,26.7,23.8,23.7,14.0,"$83,554.00",18.7,18.1,18.6,18.8,18.9,0.496224995851552
+"Palos Heights city, Illinois",Consolidated High School District 230,0162300,,,,,,,,,,18.1,18.1,68.4,47.4,50.5,42.4,30.7,"$84,781.00",21.5,21.1,21.6,21.6,21.3,0.503775004148449
+"Palos Hills city, Illinois",Consolidated High School District 230,0162300,,,,,,,,,,18.1,18.1,68.4,47.4,50.5,42.4,30.7,"$84,781.00",21.5,21.1,21.6,21.6,21.3,1.0
+"Palos Park village, Illinois",Consolidated High School District 230,0162300,,,,,,,,,,18.1,18.1,68.4,47.4,50.5,42.4,30.7,"$84,781.00",21.5,21.1,21.6,21.6,21.3,0.848361886855553
+"Palos Park village, Illinois",Lemont Township High School District 210,0162100,,,,,,,,,,21.0,21.0,78.1,55.9,54.4,47.0,35.1,"$75,559.00",22.4,22.0,22.2,22.8,22.2,0.151638113144447
+"Park City city, Illinois",Warren Township High School District 121,0491210,,,,,,,,,,19.9,19.9,78.6,51.8,54.5,48.3,36.4,"$70,184.00",22.5,22.6,22.3,22.5,22.1,0.759407222218067
+"Park City city, Illinois",Waukegan Community Unit School District 60,0490600,20.2,21.2,21.3,21.7,24.1,24.4,20.6,22.1,20.7,16.9,20.3,37.1,16.1,14.8,13.9,6.7,"$55,576.00",17.3,16.4,17.4,17.1,17.9,0.240592777781933
+"Park Forest village, Illinois",Crete-Monee Community Unit School District 201-U,099201U,18.2,19.4,18.0,16.6,18.4,23.5,27.1,21.8,23.2,20.6,20.5,57.5,31.2,22.2,18.4,11.7,"$53,200.00",19.0,19.0,18.6,19.2,18.5,0.217157555075059
+"Park Forest village, Illinois",Rich Township High School District 227,0162270,,,,,,,,,,11.4,11.4,38.9,20.8,16.3,13.3,7.0,"$61,210.00",17.4,16.4,17.7,17.8,17.4,0.782842444924942
+"Park Ridge city, Illinois",Maine Township High School District 207,0162070,,,,,,,,,,21.0,21.0,71.2,49.2,52.6,48.2,35.0,"$109,065.00",22.0,21.5,22.1,21.9,21.9,0.999437291333927
+"Peotone village, Illinois",Peotone Community Unit School District 207U,099207U,20.5,18.6,21.6,22.4,19.6,25.0,11.6,17.1,17.0,17.9,17.6,68.9,48.6,33.8,40.5,25.0,"$45,126.00",21.0,21.4,19.8,21.3,20.9,1.0
+"Phoenix village, Illinois",Thornton Township High School District 205,0162050,,,,,,,,,,17.5,17.5,32.5,11.5,9.4,6.3,2.5,"$72,811.00",16.5,15.8,16.8,16.4,16.6,1.0
+"Pingree Grove village, Illinois",Community Unit School District 300,0453000,20.1,21.0,21.4,23.1,22.4,24.0,25.4,26.0,25.8,19.6,22.5,63.7,39.5,42.8,37.6,25.6,"$55,361.00",20.7,20.0,20.7,20.7,20.8,0.976184629312264
+"Plainfield village, Illinois",Oswego Community Unit School District 308,0473080,22.7,22.7,23.0,23.9,25.4,25.5,21.2,20.8,20.7,23.8,23.0,64.5,41.9,41.3,39.0,25.6,"$51,648.00",20.8,20.3,20.7,20.9,20.8,0.202997307058916
+"Plainfield village, Illinois",Plainfield School District 202,0992020,19.6,22.6,22.1,23.5,24.1,25.1,23.1,24.1,23.3,22.6,23.0,65.4,41.6,43.0,36.8,25.1,"$56,681.00",20.8,20.1,20.9,20.8,20.6,0.790739803325494
+"Port Barrington village, Illinois",Barrington Community Unit School District 220,0492200,19.5,19.6,19.7,21.1,21.2,23.4,20.3,20.0,19.0,23.7,21.5,82.0,62.9,70.4,62.7,50.2,"$78,692.00",24.4,24.1,24.7,24.2,24.0,0.284042136504427
+"Port Barrington village, Illinois",Wauconda Community Unit School District 118,0491180,21.0,20.8,20.6,21.5,24.9,26.0,22.5,22.4,24.3,20.9,22.2,78.7,49.5,52.6,47.1,33.3,"$74,393.00",22.0,22.1,21.8,21.8,21.6,0.715957863495573
+"Posen village, Illinois",Bremen Community High School District 228,0162280,,,,,,,,,,20.0,20.0,46.1,26.7,24.7,23.5,13.2,"$94,202.00",18.5,17.5,18.6,18.6,18.9,0.92758692134788
+"Posen village, Illinois",Thornton Township High School District 205,0162050,,,,,,,,,,17.5,17.5,32.5,11.5,9.4,6.3,2.5,"$72,811.00",16.5,15.8,16.8,16.4,16.6,0.0724130786521204
+"Prairie Grove village, Illinois",Community High School District 155,0631550,,,,,,,,,,19.2,19.2,79.5,54.2,59.6,53.3,39.1,"$85,211.00",22.9,22.8,22.9,22.5,22.8,0.980215487992357
+"Prospect Heights city, Illinois",Township High School District 214,0162140,,,,,,,,,,20.5,20.5,77.7,53.6,63.1,52.7,40.5,"$98,687.00",23.1,22.9,23.6,22.6,22.6,0.952927302025272
+"Richmond village, Illinois",Richmond-Burton Community High School District 157,0631570,,,,,,,,,,19.9,19.9,75.9,49.7,59.3,58.8,37.7,"$53,026.00",22.5,22.0,22.8,21.8,22.9,1.0
+"Richton Park village, Illinois",Rich Township High School District 227,0162270,,,,,,,,,,11.4,11.4,38.9,20.8,16.3,13.3,7.0,"$61,210.00",17.4,16.4,17.7,17.8,17.4,1.0
+"Ringwood village, Illinois",Johnsburg Community Unit School District 12,0630120,18.3,16.9,15.1,24.5,26.0,25.8,26.5,25.8,29.5,19.9,22.5,68.4,45.0,37.4,40.9,25.7,"$57,563.00",20.7,20.4,19.9,20.9,20.9,0.908901514171406
+"Ringwood village, Illinois",McHenry Community High School District 156,0631560,,,,,,,,,,19.0,19.0,62.5,36.6,40.1,32.6,23.1,"$69,309.00",20.4,19.9,20.4,20.2,20.4,0.0910984858285944
+"Riverdale village, Illinois",Thornton Township High School District 205,0162050,,,,,,,,,,17.5,17.5,32.5,11.5,9.4,6.3,2.5,"$72,811.00",16.5,15.8,16.8,16.4,16.6,0.999999999999999
+"River Forest village, Illinois",Oak Park and River Forest District 200,0162000,,,,,,,,,,17.0,17.0,78.8,62.6,58.5,55.4,46.2,"$98,729.00",23.8,24.1,23.2,24.4,23.1,0.970954731792036
+"River Grove village, Illinois",Elmwood Park Community Unit School District 401,0164010,16.1,20.7,22.1,22.3,24.5,27.4,24.7,22.4,18.8,21.4,21.6,66.9,32.2,39.3,27.7,16.5,"$78,938.00",20.0,20.0,20.2,19.7,19.7,0.0700108027053692
+"River Grove village, Illinois",Leyden Community High School District 212,0162120,,,,,,,,,,19.7,19.7,52.2,29.6,34.6,26.9,15.2,"$81,667.00",19.3,18.4,19.6,19.1,19.4,0.92998919729463
+"Riverside village, Illinois",Riverside Brookfield Township School District 208,0162080,,,,,,,,,,24.3,24.3,85.6,57.5,61.9,57.5,43.1,"$92,543.00",23.3,23.3,22.9,23.5,23.1,1.0
+"Riverwoods village, Illinois",Adlai E. Stevenson High School District 125,0491250,,,,,,,,,,17.0,17.0,90.9,76.7,80.6,73.4,64.4,"$92,403.00",26.5,26.5,26.8,26.3,25.8,0.143732050114786
+"Riverwoods village, Illinois",Township High School District 113,0491130,,,,,,,,,,18.0,18.0,87.6,74.6,77.0,72.1,61.6,"$107,529.00",25.8,25.9,25.6,25.9,25.3,0.856267949885214
+"Robbins village, Illinois",Community High School District 218,0162180,,,,,,,,,,19.5,19.5,49.1,26.7,23.8,23.7,14.0,"$83,554.00",18.7,18.1,18.6,18.8,18.9,0.994153437807928
+"Rockdale village, Illinois",Joliet Township High School District 204,0992040,,,,,,,,,,24.6,24.6,49.9,28.1,24.7,24.7,13.4,"$74,868.00",18.7,18.0,18.7,18.8,19.0,1.0
+"Rolling Meadows city, Illinois",Township High School District 211,0162110,,,,,,,,,,21.4,21.4,72.2,52.4,58.8,50.4,39.6,"$85,221.00",22.6,22.0,23.2,22.4,22.4,0.387233757443932
+"Rolling Meadows city, Illinois",Township High School District 214,0162140,,,,,,,,,,20.5,20.5,77.7,53.6,63.1,52.7,40.5,"$98,687.00",23.1,22.9,23.6,22.6,22.6,0.612766242556066
+"Romeoville village, Illinois",Lockport Township High School District 205,0992050,,,,,,,,,,22.1,22.1,75.8,47.8,52.0,45.1,31.8,"$71,754.00",21.8,21.8,21.8,21.6,21.6,0.0626604526507462
+"Romeoville village, Illinois",Plainfield School District 202,0992020,19.6,22.6,22.1,23.5,24.1,25.1,23.1,24.1,23.3,22.6,23.0,65.4,41.6,43.0,36.8,25.1,"$56,681.00",20.8,20.1,20.9,20.8,20.6,0.151422679581243
+"Romeoville village, Illinois",Valley View Community Unit School District 365U,099365U,21.9,21.7,20.8,23.8,23.6,22.6,23.1,24.4,22.5,18.9,21.3,52.5,30.5,31.8,25.3,16.8,"$59,049.00",19.3,18.5,19.5,19.4,19.2,0.785916867768011
+"Roselle village, Illinois",Lake Park Community High School District 108,0221080,,,,,,,,,,18.7,18.7,75.7,51.9,53.7,51.1,35.3,"$88,565.00",22.4,22.1,22.1,22.5,22.3,0.861780873578574
+"Roselle village, Illinois",Township High School District 211,0162110,,,,,,,,,,21.4,21.4,72.2,52.4,58.8,50.4,39.6,"$85,221.00",22.6,22.0,23.2,22.4,22.4,0.138219126421426
+"Rosemont village, Illinois",Leyden Community High School District 212,0162120,,,,,,,,,,19.7,19.7,52.2,29.6,34.6,26.9,15.2,"$81,667.00",19.3,18.4,19.6,19.1,19.4,0.790135361254427
+"Rosemont village, Illinois",Maine Township High School District 207,0162070,,,,,,,,,,21.0,21.0,71.2,49.2,52.6,48.2,35.0,"$109,065.00",22.0,21.5,22.1,21.9,21.9,0.209048965970424
+"Round Lake village, Illinois",Grant Community High School District 124,0491240,,,,,,,,,,19.5,19.5,62.2,40.3,43.4,35.9,25.7,"$61,138.00",20.9,20.3,20.8,20.8,21.1,0.263243782194892
+"Round Lake village, Illinois",Grayslake Community High School District 127,0491270,,,,,,,,,,20.7,20.7,74.8,53.9,55.8,44.2,33.9,"$68,237.00",22.5,22.4,22.5,22.6,22.0,0.236297605244233
+"Round Lake village, Illinois",Mundelein Consolidated High School District 120,0491200,,,,,,,,,,21.5,21.5,65.6,45.7,38.5,41.0,25.5,"$81,553.00",21.0,20.7,20.5,21.3,20.9,0.105804349427951
+"Round Lake village, Illinois",Round Lake Community Unit School District 116,0491160,22.8,24.0,25.2,24.4,23.3,25.8,19.5,17.7,19.2,15.9,19.3,40.5,20.7,25.8,15.8,10.7,"$63,299.00",18.0,16.8,18.8,17.8,18.0,0.394654263132925
+"Round Lake Beach village, Illinois",Grant Community High School District 124,0491240,,,,,,,,,,19.5,19.5,62.2,40.3,43.4,35.9,25.7,"$61,138.00",20.9,20.3,20.8,20.8,21.1,0.051991832427942
+"Round Lake Beach village, Illinois",Grayslake Community High School District 127,0491270,,,,,,,,,,20.7,20.7,74.8,53.9,55.8,44.2,33.9,"$68,237.00",22.5,22.4,22.5,22.6,22.0,0.38682329137061
+"Round Lake Beach village, Illinois",Round Lake Community Unit School District 116,0491160,22.8,24.0,25.2,24.4,23.3,25.8,19.5,17.7,19.2,15.9,19.3,40.5,20.7,25.8,15.8,10.7,"$63,299.00",18.0,16.8,18.8,17.8,18.0,0.561184876201447
+"Round Lake Heights village, Illinois",Grant Community High School District 124,0491240,,,,,,,,,,19.5,19.5,62.2,40.3,43.4,35.9,25.7,"$61,138.00",20.9,20.3,20.8,20.8,21.1,0.588036810895356
+"Round Lake Heights village, Illinois",Round Lake Community Unit School District 116,0491160,22.8,24.0,25.2,24.4,23.3,25.8,19.5,17.7,19.2,15.9,19.3,40.5,20.7,25.8,15.8,10.7,"$63,299.00",18.0,16.8,18.8,17.8,18.0,0.411963189104643
+"Round Lake Park village, Illinois",Grayslake Community High School District 127,0491270,,,,,,,,,,20.7,20.7,74.8,53.9,55.8,44.2,33.9,"$68,237.00",22.5,22.4,22.5,22.6,22.0,0.375584496992605
+"Round Lake Park village, Illinois",Mundelein Consolidated High School District 120,0491200,,,,,,,,,,21.5,21.5,65.6,45.7,38.5,41.0,25.5,"$81,553.00",21.0,20.7,20.5,21.3,20.9,0.219468108242258
+"Round Lake Park village, Illinois",Round Lake Community Unit School District 116,0491160,22.8,24.0,25.2,24.4,23.3,25.8,19.5,17.7,19.2,15.9,19.3,40.5,20.7,25.8,15.8,10.7,"$63,299.00",18.0,16.8,18.8,17.8,18.0,0.404947394765137
+"St. Charles city, Illinois",St. Charles Community Unit School District 303,0453030,22.0,21.8,23.5,23.0,23.7,22.1,24.4,24.7,24.7,19.9,22.2,82.0,59.4,65.6,55.7,42.4,"$63,082.00",23.3,22.8,23.5,23.4,23.1,0.998883650785466
+"Sauk Village village, Illinois",Bloom Township High School District 206,0162060,,,,,,,,,,17.1,17.1,36.2,17.9,11.9,11.1,4.7,"$73,366.00",16.9,16.0,17.0,17.2,17.1,0.996423332101727
+"Schaumburg village, Illinois",Township High School District 211,0162110,,,,,,,,,,21.4,21.4,72.2,52.4,58.8,50.4,39.6,"$85,221.00",22.6,22.0,23.2,22.4,22.4,0.967205074560685
+"Schiller Park village, Illinois",Leyden Community High School District 212,0162120,,,,,,,,,,19.7,19.7,52.2,29.6,34.6,26.9,15.2,"$81,667.00",19.3,18.4,19.6,19.1,19.4,1.0
+"Shorewood village, Illinois",Joliet Township High School District 204,0992040,,,,,,,,,,24.6,24.6,49.9,28.1,24.7,24.7,13.4,"$74,868.00",18.7,18.0,18.7,18.8,19.0,0.513499617770556
+"Shorewood village, Illinois",Minooka Community High School District 111,0321110,,,,,,,,,,20.5,20.5,75.3,48.8,46.0,45.5,30.3,"$63,724.00",21.8,22.0,21.2,21.8,21.6,0.486500382229445
+"Skokie village, Illinois",Evanston Township High School District 202,0162020,,,,,,,,,,19.6,19.6,74.2,61.8,60.9,54.4,48.0,"$99,629.00",23.9,23.8,23.8,24.1,23.4,0.113048797935749
+"Skokie village, Illinois",Niles Township Community High School District 219,0162190,,,,,,,,,,19.1,19.1,71.4,48.7,49.4,45.5,31.8,"$105,577.00",22.0,21.6,21.8,21.9,22.0,0.886951202064249
+"Sleepy Hollow village, Illinois",Community Unit School District 300,0453000,20.1,21.0,21.4,23.1,22.4,24.0,25.4,26.0,25.8,19.6,22.5,63.7,39.5,42.8,37.6,25.6,"$55,361.00",20.7,20.0,20.7,20.7,20.8,1.0
+"South Barrington village, Illinois",Barrington Community Unit School District 220,0492200,19.5,19.6,19.7,21.1,21.2,23.4,20.3,20.0,19.0,23.7,21.5,82.0,62.9,70.4,62.7,50.2,"$78,692.00",24.4,24.1,24.7,24.2,24.0,0.938765508953615
+"South Chicago Heights village, Illinois",Bloom Township High School District 206,0162060,,,,,,,,,,17.1,17.1,36.2,17.9,11.9,11.1,4.7,"$73,366.00",16.9,16.0,17.0,17.2,17.1,1.0
+"South Elgin village, Illinois",School District U-46,0450460,19.1,23.6,22.5,23.6,23.7,24.3,25.3,22.0,24.9,19.5,22.0,52.2,32.2,34.7,29.4,19.3,"$63,851.00",19.4,18.5,19.8,19.3,19.4,0.618150384915706
+"South Elgin village, Illinois",St. Charles Community Unit School District 303,0453030,22.0,21.8,23.5,23.0,23.7,22.1,24.4,24.7,24.7,19.9,22.2,82.0,59.4,65.6,55.7,42.4,"$63,082.00",23.3,22.8,23.5,23.4,23.1,0.381849615084294
+"South Holland village, Illinois",Thornton Township High School District 205,0162050,,,,,,,,,,17.5,17.5,32.5,11.5,9.4,6.3,2.5,"$72,811.00",16.5,15.8,16.8,16.4,16.6,1.0
+"Spring Grove village, Illinois",Richmond-Burton Community High School District 157,0631570,,,,,,,,,,19.9,19.9,75.9,49.7,59.3,58.8,37.7,"$53,026.00",22.5,22.0,22.8,21.8,22.9,0.992441154721946
+"Steger village, Illinois",Bloom Township High School District 206,0162060,,,,,,,,,,17.1,17.1,36.2,17.9,11.9,11.1,4.7,"$73,366.00",16.9,16.0,17.0,17.2,17.1,0.995788779570286
+"Stickney village, Illinois",J. Sterling Morton High School District 201,0162010,,,,,,,,,,23.4,23.4,33.8,16.1,11.6,11.1,5.1,"$74,797.00",16.9,15.9,16.9,17.1,17.2,0.999999999999999
+"Stone Park village, Illinois",Proviso Township High School District 209,0162090,,,,,,,,,,20.2,20.2,41.8,17.9,18.4,15.9,7.0,"$65,885.00",17.7,16.9,17.9,17.6,18.1,1.0
+"Streamwood village, Illinois",School District U-46,0450460,19.1,23.6,22.5,23.6,23.7,24.3,25.3,22.0,24.9,19.5,22.0,52.2,32.2,34.7,29.4,19.3,"$63,851.00",19.4,18.5,19.8,19.3,19.4,0.979956867942601
+"Sugar Grove village, Illinois",Hinckley-Big Rock Community Unit School District 429,0194290,16.3,21.5,19.0,24.0,22.0,19.3,17.7,15.3,18.7,16.8,18.2,82.4,62.7,70.6,62.7,47.1,"$51,753.00",23.1,22.9,22.8,23.5,22.8,0.113945666655078
+"Sugar Grove village, Illinois",Kaneland Community Unit School District 302,0453020,20.7,23.4,23.4,21.9,24.1,22.1,24.9,30.7,26.2,23.9,24.3,71.6,42.3,42.3,33.6,21.0,"$60,130.00",21.1,21.0,20.7,21.3,20.8,0.848057518320893
+"Summit village, Illinois",Argo Community High School District 217,0162170,,,,,,,,,,21.6,21.6,46.7,24.5,31.1,24.7,14.9,"$84,224.00",18.7,17.5,19.2,18.4,19.1,0.888573424268335
+"Summit village, Illinois",Lyons Township High School District 204,0162040,,,,,,,,,,21.4,21.4,81.4,64.4,70.0,61.5,51.7,"$101,033.00",24.3,23.9,24.7,24.3,23.9,0.107433193891657
+"Symerton village, Illinois",Wilmington Community Unit School District 209U,099209U,19.0,20.4,22.3,25.0,25.0,24.3,21.8,18.2,24.6,23.2,22.3,66.4,37.2,34.5,32.7,20.4,"$44,010.00",20.0,20.0,19.5,20.1,19.9,1.0
+"Third Lake village, Illinois",Grayslake Community High School District 127,0491270,,,,,,,,,,20.7,20.7,74.8,53.9,55.8,44.2,33.9,"$68,237.00",22.5,22.4,22.5,22.6,22.0,0.850402516062005
+"Third Lake village, Illinois",Warren Township High School District 121,0491210,,,,,,,,,,19.9,19.9,78.6,51.8,54.5,48.3,36.4,"$70,184.00",22.5,22.6,22.3,22.5,22.1,0.149597483937996
+"Thornton village, Illinois",Homewood-Flossmoor Community High School District 233,0162330,,,,,,,,,,17.3,17.3,68.3,40.6,35.4,33.9,22.5,"$83,973.00",20.7,21.0,19.9,20.9,20.3,0.0781628935456249
+"Thornton village, Illinois",Thornton Township High School District 205,0162050,,,,,,,,,,17.5,17.5,32.5,11.5,9.4,6.3,2.5,"$72,811.00",16.5,15.8,16.8,16.4,16.6,0.921837106454375
+"Tinley Park village, Illinois",Bremen Community High School District 228,0162280,,,,,,,,,,20.0,20.0,46.1,26.7,24.7,23.5,13.2,"$94,202.00",18.5,17.5,18.6,18.6,18.9,0.207884602137971
+"Tinley Park village, Illinois",Consolidated High School District 230,0162300,,,,,,,,,,18.1,18.1,68.4,47.4,50.5,42.4,30.7,"$84,781.00",21.5,21.1,21.6,21.6,21.3,0.46560868810222
+"Tinley Park village, Illinois",Lincoln Way Community High School District 210,0992100,,,,,,,,,,21.8,21.8,81.0,56.4,55.8,50.3,37.5,"$80,622.00",22.8,22.8,22.3,23.1,22.6,0.211156162577498
+"Tinley Park village, Illinois",Rich Township High School District 227,0162270,,,,,,,,,,11.4,11.4,38.9,20.8,16.3,13.3,7.0,"$61,210.00",17.4,16.4,17.7,17.8,17.4,0.115350547182311
+"Tower Lakes village, Illinois",Barrington Community Unit School District 220,0492200,19.5,19.6,19.7,21.1,21.2,23.4,20.3,20.0,19.0,23.7,21.5,82.0,62.9,70.4,62.7,50.2,"$78,692.00",24.4,24.1,24.7,24.2,24.0,0.999999999999999
+"Trout Valley village, Illinois",Community High School District 155,0631550,,,,,,,,,,19.2,19.2,79.5,54.2,59.6,53.3,39.1,"$85,211.00",22.9,22.8,22.9,22.5,22.8,1.0
+"Union village, Illinois",Marengo Community High School District 154,0631540,,,,,,,,,,18.6,18.6,72.9,42.9,44.1,42.9,27.6,"$67,747.00",21.3,21.3,21.3,20.7,21.3,1.0
+"University Park village, Illinois",Crete-Monee Community Unit School District 201-U,099201U,18.2,19.4,18.0,16.6,18.4,23.5,27.1,21.8,23.2,20.6,20.5,57.5,31.2,22.2,18.4,11.7,"$53,200.00",19.0,19.0,18.6,19.2,18.5,0.990018165040996
+"Vernon Hills village, Illinois",Adlai E. Stevenson High School District 125,0491250,,,,,,,,,,17.0,17.0,90.9,76.7,80.6,73.4,64.4,"$92,403.00",26.5,26.5,26.8,26.3,25.8,0.295007832777669
+"Vernon Hills village, Illinois",Libertyville Community High School District 128,0491280,,,,,,,,,,21.1,21.1,89.1,72.8,77.4,66.7,57.1,"$97,763.00",25.4,25.6,25.5,25.4,24.6,0.689642716233991
+"Villa Park village, Illinois",DuPage High School District 88,0220880,,,,,,,,,,21.8,21.8,57.9,34.9,34.3,29.8,18.7,"$92,959.00",19.9,19.2,19.9,20.0,20.0,0.989215472439324
+"Virgil village, Illinois",Central Community Unit School District 301,0453010,20.9,20.7,21.9,21.9,23.6,23.7,28.8,28.4,19.9,22.9,22.7,78.6,56.1,66.3,53.7,42.5,"$54,740.00",22.9,22.4,23.5,22.8,22.4,0.18179011912468
+"Virgil village, Illinois",Kaneland Community Unit School District 302,0453020,20.7,23.4,23.4,21.9,24.1,22.1,24.9,30.7,26.2,23.9,24.3,71.6,42.3,42.3,33.6,21.0,"$60,130.00",21.1,21.0,20.7,21.3,20.8,0.81820988087532
+"Volo village, Illinois",Grant Community High School District 124,0491240,,,,,,,,,,19.5,19.5,62.2,40.3,43.4,35.9,25.7,"$61,138.00",20.9,20.3,20.8,20.8,21.1,0.435057134581707
+"Volo village, Illinois",Wauconda Community Unit School District 118,0491180,21.0,20.8,20.6,21.5,24.9,26.0,22.5,22.4,24.3,20.9,22.2,78.7,49.5,52.6,47.1,33.3,"$74,393.00",22.0,22.1,21.8,21.8,21.6,0.563175120694552
+"Wadsworth village, Illinois",Warren Township High School District 121,0491210,,,,,,,,,,19.9,19.9,78.6,51.8,54.5,48.3,36.4,"$70,184.00",22.5,22.6,22.3,22.5,22.1,0.562690200102447
+"Wadsworth village, Illinois",Zion-Benton Township High School District 126,0491260,,,,,,,,,,18.1,18.1,51.9,25.0,24.7,19.0,10.6,"$56,338.00",18.6,18.3,18.4,18.6,18.6,0.437309799897554
+"Warrenville city, Illinois",Community Unit School District 200,0222000,19.4,22.2,21.9,21.8,22.7,23.4,24.7,25.9,26.1,23.5,23.6,77.5,59.3,61.7,56.0,44.2,"$73,350.00",23.4,23.1,23.4,23.4,22.9,0.816217795801745
+"Warrenville city, Illinois",Naperville Community Unit District 203,0222030,22.1,22.5,23.0,24.3,23.6,22.9,22.3,22.9,24.4,20.6,22.3,84.4,68.8,71.8,66.6,55.2,"$70,084.00",24.9,24.5,24.9,25.0,24.6,0.121529099937333
+"Wauconda village, Illinois",Mundelein Consolidated High School District 120,0491200,,,,,,,,,,21.5,21.5,65.6,45.7,38.5,41.0,25.5,"$81,553.00",21.0,20.7,20.5,21.3,20.9,0.183317403813189
+"Wauconda village, Illinois",Wauconda Community Unit School District 118,0491180,21.0,20.8,20.6,21.5,24.9,26.0,22.5,22.4,24.3,20.9,22.2,78.7,49.5,52.6,47.1,33.3,"$74,393.00",22.0,22.1,21.8,21.8,21.6,0.816682596186812
+"Waukegan city, Illinois",Libertyville Community High School District 128,0491280,,,,,,,,,,21.1,21.1,89.1,72.8,77.4,66.7,57.1,"$97,763.00",25.4,25.6,25.5,25.4,24.6,0.080840844658651
+"Waukegan city, Illinois",Warren Township High School District 121,0491210,,,,,,,,,,19.9,19.9,78.6,51.8,54.5,48.3,36.4,"$70,184.00",22.5,22.6,22.3,22.5,22.1,0.248278131032667
+"Waukegan city, Illinois",Waukegan Community Unit School District 60,0490600,20.2,21.2,21.3,21.7,24.1,24.4,20.6,22.1,20.7,16.9,20.3,37.1,16.1,14.8,13.9,6.7,"$55,576.00",17.3,16.4,17.4,17.1,17.9,0.630398275678373
+"Wayne village, Illinois",School District U-46,0450460,19.1,23.6,22.5,23.6,23.7,24.3,25.3,22.0,24.9,19.5,22.0,52.2,32.2,34.7,29.4,19.3,"$63,851.00",19.4,18.5,19.8,19.3,19.4,0.79715573511597
+"Wayne village, Illinois",St. Charles Community Unit School District 303,0453030,22.0,21.8,23.5,23.0,23.7,22.1,24.4,24.7,24.7,19.9,22.2,82.0,59.4,65.6,55.7,42.4,"$63,082.00",23.3,22.8,23.5,23.4,23.1,0.202844264884029
+"Westchester village, Illinois",Proviso Township High School District 209,0162090,,,,,,,,,,20.2,20.2,41.8,17.9,18.4,15.9,7.0,"$65,885.00",17.7,16.9,17.9,17.6,18.1,0.986394073158895
+"West Chicago city, Illinois",Community High School District 94,0220940,,,,,,,,,,20.8,20.8,46.7,29.9,30.8,26.5,17.0,"$64,340.00",19.1,17.8,19.5,19.3,19.3,0.753718476242788
+"West Chicago city, Illinois",St. Charles Community Unit School District 303,0453030,22.0,21.8,23.5,23.0,23.7,22.1,24.4,24.7,24.7,19.9,22.2,82.0,59.4,65.6,55.7,42.4,"$63,082.00",23.3,22.8,23.5,23.4,23.1,0.196452976424128
+"West Dundee village, Illinois",Community Unit School District 300,0453000,20.1,21.0,21.4,23.1,22.4,24.0,25.4,26.0,25.8,19.6,22.5,63.7,39.5,42.8,37.6,25.6,"$55,361.00",20.7,20.0,20.7,20.7,20.8,1.0
+"Western Springs village, Illinois",Lyons Township High School District 204,0162040,,,,,,,,,,21.4,21.4,81.4,64.4,70.0,61.5,51.7,"$101,033.00",24.3,23.9,24.7,24.3,23.9,0.985102861711252
+"Westmont village, Illinois",Community High School District 99,0220990,,,,,,,,,,19.9,19.9,75.4,54.0,58.9,49.1,38.0,"$87,880.00",22.6,22.2,23.0,22.7,22.2,0.283610144401005
+"Westmont village, Illinois",Hinsdale Township High School District 86,0220860,,,,,,,,,,20.5,20.5,85.0,71.3,72.3,68.4,56.8,"$108,227.00",25.3,25.3,25.2,25.5,24.9,0.169128412413656
+"Westmont village, Illinois",Westmont Community Unit School District 201,0222010,18.4,16.8,17.2,25.5,21.3,20.0,16.7,19.0,16.8,16.5,18.0,67.0,50.5,46.2,40.7,28.6,"$82,718.00",21.7,21.0,21.5,22.2,21.9,0.547261443185339
+"Wheaton city, Illinois",Community Unit School District 200,0222000,19.4,22.2,21.9,21.8,22.7,23.4,24.7,25.9,26.1,23.5,23.6,77.5,59.3,61.7,56.0,44.2,"$73,350.00",23.4,23.1,23.4,23.4,22.9,0.8944611578851
+"Wheaton city, Illinois",Glenbard Township High School District 87,0220870,,,,,,,,,,22.7,22.7,67.4,48.9,51.4,44.5,33.2,"$96,313.00",21.8,21.1,22.0,21.9,21.7,0.105447860453523
+"Wheeling village, Illinois",Township High School District 214,0162140,,,,,,,,,,20.5,20.5,77.7,53.6,63.1,52.7,40.5,"$98,687.00",23.1,22.9,23.6,22.6,22.6,0.995121115786695
+"Willowbrook village, Illinois",Hinsdale Township High School District 86,0220860,,,,,,,,,,20.5,20.5,85.0,71.3,72.3,68.4,56.8,"$108,227.00",25.3,25.3,25.2,25.5,24.9,1.0
+"Willow Springs village, Illinois",Argo Community High School District 217,0162170,,,,,,,,,,21.6,21.6,46.7,24.5,31.1,24.7,14.9,"$84,224.00",18.7,17.5,19.2,18.4,19.1,0.398123999296127
+"Willow Springs village, Illinois",Consolidated High School District 230,0162300,,,,,,,,,,18.1,18.1,68.4,47.4,50.5,42.4,30.7,"$84,781.00",21.5,21.1,21.6,21.6,21.3,0.168501950439733
+"Willow Springs village, Illinois",Lemont Township High School District 210,0162100,,,,,,,,,,21.0,21.0,78.1,55.9,54.4,47.0,35.1,"$75,559.00",22.4,22.0,22.2,22.8,22.2,0.0520625580135251
+"Willow Springs village, Illinois",Lyons Township High School District 204,0162040,,,,,,,,,,21.4,21.4,81.4,64.4,70.0,61.5,51.7,"$101,033.00",24.3,23.9,24.7,24.3,23.9,0.381311492250616
+"Wilmette village, Illinois",New Trier Township High School District 203,0162030,,,,,,,,,,21.4,21.4,96.2,86.3,88.3,82.9,75.4,"$105,850.00",27.5,27.9,27.4,27.5,26.7,1.0
+"Wilmington city, Illinois",Wilmington Community Unit School District 209U,099209U,19.0,20.4,22.3,25.0,25.0,24.3,21.8,18.2,24.6,23.2,22.3,66.4,37.2,34.5,32.7,20.4,"$44,010.00",20.0,20.0,19.5,20.1,19.9,0.988153746779034
+"Winfield village, Illinois",Community High School District 94,0220940,,,,,,,,,,20.8,20.8,46.7,29.9,30.8,26.5,17.0,"$64,340.00",19.1,17.8,19.5,19.3,19.3,0.64210276613815
+"Winfield village, Illinois",Community Unit School District 200,0222000,19.4,22.2,21.9,21.8,22.7,23.4,24.7,25.9,26.1,23.5,23.6,77.5,59.3,61.7,56.0,44.2,"$73,350.00",23.4,23.1,23.4,23.4,22.9,0.355260697017911
+"Winnetka village, Illinois",New Trier Township High School District 203,0162030,,,,,,,,,,21.4,21.4,96.2,86.3,88.3,82.9,75.4,"$105,850.00",27.5,27.9,27.4,27.5,26.7,1.0
+"Winthrop Harbor village, Illinois",Zion-Benton Township High School District 126,0491260,,,,,,,,,,18.1,18.1,51.9,25.0,24.7,19.0,10.6,"$56,338.00",18.6,18.3,18.4,18.6,18.6,0.989229984231811
+"Wonder Lake village, Illinois",McHenry Community High School District 156,0631560,,,,,,,,,,19.0,19.0,62.5,36.6,40.1,32.6,23.1,"$69,309.00",20.4,19.9,20.4,20.2,20.4,0.50561166631538
+"Wonder Lake village, Illinois",Woodstock Community Unit School District 200,0632000,22.1,19.3,19.1,18.4,20.3,22.1,20.1,20.1,21.8,17.0,20.0,66.9,40.0,38.4,38.6,25.3,"$58,133.00",20.9,20.5,20.3,20.9,21.1,0.49438833368462
+"Wood Dale city, Illinois",DuPage High School District 88,0220880,,,,,,,,,,21.8,21.8,57.9,34.9,34.3,29.8,18.7,"$92,959.00",19.9,19.2,19.9,20.0,20.0,0.123947482108668
+"Wood Dale city, Illinois",Fenton Community High School District 100,0221000,,,,,,,,,,19.6,19.6,53.8,32.9,40.2,27.4,17.3,"$106,311.00",19.8,18.7,20.5,19.8,19.8,0.850035991525863
+"Woodridge village, Illinois",Community High School District 99,0220990,,,,,,,,,,19.9,19.9,75.4,54.0,58.9,49.1,38.0,"$87,880.00",22.6,22.2,23.0,22.7,22.2,0.684540684214293
+"Woodridge village, Illinois",Lemont Township High School District 210,0162100,,,,,,,,,,21.0,21.0,78.1,55.9,54.4,47.0,35.1,"$75,559.00",22.4,22.0,22.2,22.8,22.2,0.169588046747162
+"Woodridge village, Illinois",Valley View Community Unit School District 365U,099365U,21.9,21.7,20.8,23.8,23.6,22.6,23.1,24.4,22.5,18.9,21.3,52.5,30.5,31.8,25.3,16.8,"$59,049.00",19.3,18.5,19.5,19.4,19.2,0.0995269683243737
+"Woodstock city, Illinois",Woodstock Community Unit School District 200,0632000,22.1,19.3,19.1,18.4,20.3,22.1,20.1,20.1,21.8,17.0,20.0,66.9,40.0,38.4,38.6,25.3,"$58,133.00",20.9,20.5,20.3,20.9,21.1,1.0
+"Worth village, Illinois",Community High School District 218,0162180,,,,,,,,,,19.5,19.5,49.1,26.7,23.8,23.7,14.0,"$83,554.00",18.7,18.1,18.6,18.8,18.9,0.70038420419142
+"Worth village, Illinois",Consolidated High School District 230,0162300,,,,,,,,,,18.1,18.1,68.4,47.4,50.5,42.4,30.7,"$84,781.00",21.5,21.1,21.6,21.6,21.3,0.299615795808579
+"Zion city, Illinois",Zion-Benton Township High School District 126,0491260,,,,,,,,,,18.1,18.1,51.9,25.0,24.7,19.0,10.6,"$56,338.00",18.6,18.3,18.4,18.6,18.6,1.0
