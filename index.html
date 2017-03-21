@@ -1,0 +1,31 @@
+---
+layout: base
+---
+
+<div class="row">
+    <div class="col-xs-12">
+        <div id="map"></div>
+    </div>
+</div>
+
+<style id="boundary-styles">
+    #boundaries{
+    polygon-fill: #ffffcc;
+    polygon-opacity: 0.75;
+    line-color: #FFF;
+    line-width: 1;
+    line-opacity: 0.75;
+    [zoom<12] {polygon-fill: #ffff99;}
+    [zoom<12] {polygon-opacity: 0.9;}
+    [zoom<12] {line-color: #FFD654;}
+    [zoom<12] {line-width: 2;}
+    [zoom>14] {polygon-opacity: 0.5;}
+    }
+</style>
+
+<script src="js/wheretobuy.js"></script>
+<script>
+    $(function() {
+        WhereToBuy.initialize();
+    });
+</script>

@@ -1,0 +1,131 @@
+body {
+    font-size: 18px;
+    font-family: 'Lato', sans-serif;
+    color: #333333;
+    position: relative;
+}
+
+#map { 
+    width: 100%; 
+    height: 500px;
+    margin-top: 5px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+
+p {
+    font-size: 1.2em;
+}
+
+.sans {
+    font-family: inherit;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+#search_address {
+    width: 500px;
+}
+
+.btn-primary {
+    background-color: #333;
+    border-color: #333;
+    text-transform: none;
+    font-size: 15px;
+    max-width: 100%;
+}
+
+.btn-primary:hover {
+    background-color: #555;
+    border-color: #555;
+}
+
+.btn-info {
+    background-color: #1aace3;
+    border-color: #1aace3;
+    text-transform: none;
+    font-size: 0.9em;
+}
+
+.btn-info:hover {
+    background-color: #1f9bca;
+    border-color: #1f9bca;
+}
+
+.modal-text p {
+    margin-bottom:1.2em;
+    line-height: 1.5em;
+}
+
+/* leaflet legend styles */
+.info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,1);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+
+.info h4 {
+    margin: 0 0 5px;
+    color: #777;
+}
+
+.legend span {
+    width: 15px;
+    height: 15px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.5;
+}
+
+.legend {
+    width: 150px;
+    padding: 6px 8px;
+    background: white;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+
+/* Responsive forms (adapted from Bootswitch Journal Theme) */
+
+.input-group-btn {
+    position: relative;
+    font-size: 0;
+    white-space: nowrap;
+}
+
+.multiline-btn {
+    white-space: normal;
+}
+
+.input-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+}
+
+/* Additional text color styling */
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
+
+.orange {
+    color: darkorange;
+}
+
+/* Remove carto watermark */
+.cartodb-logo {
+    display:none!important;
+}
+
