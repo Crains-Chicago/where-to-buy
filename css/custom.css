@@ -27,8 +27,8 @@ p {
     text-transform: uppercase;
 }
 
-#search_address {
-    width: 500px;
+#search-address, #search-button {
+    margin-bottom:15px;
 }
 
 .btn-primary {
@@ -59,6 +59,12 @@ p {
 .modal-text p {
     margin-bottom:1.2em;
     line-height: 1.5em;
+}
+
+.footer-text {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    background-color: #ededed;
 }
 
 /* leaflet legend styles */
