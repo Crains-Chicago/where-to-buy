@@ -7,7 +7,7 @@ body {
 
 #map { 
     width: 100%; 
-    height: 400px;
+    height: 350px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -29,6 +29,14 @@ p {
 
 #search-address, #search-button {
     margin-bottom:15px;
+}
+
+.search-text {
+    font-size: 0.8em;
+}
+
+#best-communities tbody td:hover {
+    cursor: pointer;
 }
 
 .btn-primary {
@@ -138,5 +146,52 @@ p {
 /* Remove carto watermark */
 .cartodb-logo {
     display:none!important;
+}
+
+/* Profile carousel */
+
+.carousel {
+    margin-bottom: 40px;
+    background: #eee;
+    border-radius: 10px;
+}
+
+.carousel-cell {
+    width: 300px;
+    height: 200px;
+    margin-right: 10px;
+    background: #8bc4dc;
+}
+
+/* Priority grid */
+
+.grid-item {
+    width: 100%;
+    height: 50px;
+    border: 2px solid #8bc4dc;
+    background: #cde5ef;
+    border-radius: 10px;
+    padding-top: 10px;
+}
+
+.grid-item:hover {
+    cursor: move; /* fallback if grab cursor is unsupported */
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+}
+
+.grid-item.is-dragging,
+.grid-item.is-positioning-post-drag {
+    background: #8cc6de;
+    z-index: 2; 
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+}
+
+/* Override bootstrap badge color */
+.badge {
+    background-color: #348daf !important;
 }
 

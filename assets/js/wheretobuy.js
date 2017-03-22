@@ -5,7 +5,7 @@ var WhereToBuy = {
 
     // Map config
     map: null,
-    mapCentroid: [41.790, -87.636],
+    mapCentroid: [41.9, -87.8],
     googleStyles: [{
                         stylers: [
                             { saturation: -100 },
