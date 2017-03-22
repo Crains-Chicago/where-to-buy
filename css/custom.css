@@ -7,8 +7,7 @@ body {
 
 #map { 
     width: 100%; 
-    height: 500px;
-    margin-top: 5px;
+    height: 400px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -109,6 +108,12 @@ p {
     position: relative;
     display: table;
     border-collapse: separate;
+}
+
+/* Fix table border */
+
+.table-bordered th, .table-bordered td {
+    border: 1px solid #ddd!important
 }
 
 /* Additional text color styling */

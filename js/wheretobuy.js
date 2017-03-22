@@ -6,7 +6,7 @@ var WhereToBuy = {
     // Map config
     map: null,
     map_centroid: [41.790, -87.636],
-    defaultZoom: 10,
+    defaultZoom: 8,
     lastClickedLayer: null,
     legend: null,
     locationScope: 'Chicago',
