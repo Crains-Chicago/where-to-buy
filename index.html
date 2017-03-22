@@ -33,7 +33,8 @@ layout: base
 
 <div class="row">
   <div class="col-md-3 text-center">
-    <h3>My priorities are:</h3>
+    <h3>My priorities</h3>
+    <p class="small help-block">Drag to change</p>
   </div>
   <div class="col-md-5 text-center">
     <form>
@@ -50,7 +51,8 @@ layout: base
       </form>
   </div>
   <div class="col-md-4 text-center">
-    <h3>Best communities for me:</h3>
+    <h3>Best communities</h3>
+    <p class="small help-block">Based on your priorities</p>
   </div>
 </div>
 
@@ -145,6 +147,17 @@ layout: base
           var drag = new Draggabilly(gridItem);
           $grid.packery('bindDraggabillyEvents', drag);
       });
+
+      // show item order after layout
+      function rankPriorities() {
+        var items = $grid.packery('getItemElements');
+        $(items).each(function(i, item) {
+            $(item).find('span').html(i+1);
+        });
+      }
+
+      $grid.on('layoutComplete', rankPriorities);
+      $grid.on('dragItemPositioned', rankPriorities);
 
       $('.ranking').click(function() {
           $('.modal').modal();

@@ -124,10 +124,18 @@ p {
     border-collapse: separate;
 }
 
-/* Fix table border */
+/* Fix table styles */
 
 .table-bordered th, .table-bordered td {
-    border: 1px solid #ddd!important
+    border: 1px solid #ddd!important;
+}
+
+.table tr {
+    height: 60px !important;
+}
+
+.table > tbody > tr > td {
+    vertical-align: middle;
 }
 
 /* Additional text color styling */
