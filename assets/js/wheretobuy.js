@@ -18,7 +18,7 @@ var WhereToBuy = {
     locationScope: 'Chicago',
 
     // Carto databases
-    chicagoBoundaries: 'nf_qia_boundary',
+    chicagoBoundaries: 'chicago_community_areas',
     suburbBoundaries: 'suburb_boundaries',
 
     // Layer styles
