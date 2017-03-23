@@ -171,6 +171,23 @@ p {
     background: #8bc4dc;
 }
 
+.carousel-title {
+    top: 20px;
+    position: relative;
+    padding: 5px;
+    background-color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.75);
+}
+
+.carousel a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.carousel a:hover {
+    text-decoration: none;
+}
+
 /* Priority grid */
 
 .grid-item {
@@ -180,6 +197,7 @@ p {
     background: #cde5ef;
     border-radius: 10px;
     padding-top: 10px;
+    z-index: 1;
 }
 
 .grid-item:hover {
@@ -196,6 +214,15 @@ p {
     cursor: grabbing;
     cursor: -moz-grabbing;
     cursor: -webkit-grabbing;
+}
+
+.packery-drop-placeholder {
+  background: #d0d6d8;
+  border-radius: 10px;
+  z-index: 0;
+  /* transition position changing */
+  /*-webkit-transition: -webkit-transform 0.2s;*/
+          /*transition: transform 0.2s;*/
 }
 
 /* Override bootstrap badge color */
