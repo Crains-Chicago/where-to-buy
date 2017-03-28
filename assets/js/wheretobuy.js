@@ -92,7 +92,13 @@ var WhereToBuy = {
 
         // Define GeoJSON feature UX
         var highlightFeature = function(e) {
-            var layer = e.target;
+            // Different behavior based on the input
+            var layer;
+            if (e.target) {
+                layer = e.target;
+            } else {
+                layer = e;
+            }
 
             layer.setStyle({
                 color: '#666',
@@ -108,8 +114,16 @@ var WhereToBuy = {
         };
 
         var resetHighlight = function(e) {
-            suburbLayer.resetStyle(e.target);
-            chicagoLayer.resetStyle(e.target);
+            // Different behavior based on the input
+            var layer;
+            if (e.target) {
+                layer = e.target;
+            } else {
+                layer = e;
+            }
+
+            suburbLayer.resetStyle(layer);
+            chicagoLayer.resetStyle(layer);
         };
 
         // Bind GeoJSON UX to the feature
@@ -156,10 +170,16 @@ var WhereToBuy = {
 
         // Allow ranking list to interact with the map
         $('.ranking').on('mouseover', function() {
-            var community = $(this).children('span').html();
+            var community = $(this).children('span').html().toLowerCase();
+            console.log('Highlighting community: ' + community);
+            console.log('Its layer is: ');
+            console.log(WhereToBuy.layerMap[community]);
+            highlightFeature(WhereToBuy.layerMap[community]);
         });
 
         $('.ranking').on('mouseout', function() {
+            var community = $(this).children('span').html().toLowerCase();
+            resetHighlight(WhereToBuy.layerMap[community]);
         });
 
         // Construct Carto query
