@@ -211,8 +211,73 @@ p {
     cursor: -webkit-grab;
 }
 
+.grid-item .badge {
+    margin-left: 5px !important;
+}
+
+.grid-item.rank-1 {
+    background: #cde5ef;
+    background: hsla(214, 47%, 49%, 0.2);
+    border: 2px solid #8bc4dc;
+    border: 2px solid hsla(214, 47%, 49%, 0.4);
+}
+
+.grid-item.rank-1 .badge {
+    background-color: #348daf !important;
+    background-color: hsla(214, 47%, 49%, 1) !important;
+}
+
+.grid-item.rank-2 {
+    background: #cde5ef;
+    background: hsla(203, 53%, 71%, 0.2);
+    border: 2px solid #8bc4dc;
+    border: 2px solid hsla(203, 53%, 71%, 0.5);
+}
+
+.grid-item.rank-2 .badge {
+    background-color: #348daf !important;
+    background-color: hsla(208, 38%, 57%, 1) !important;
+}
+
+.grid-item.rank-3 {
+    background: #cde5ef;
+    background: hsla(45, 100%, 77%, 0.2);
+    border: 2px solid #8bc4dc;
+    border: 2px solid hsla(45, 100%, 77%, 0.7);
+}
+
+.grid-item.rank-3 .badge {
+    background-color: #348daf !important;
+    background-color: hsla(45, 59%, 45%, 1) !important;
+}
+
+.grid-item.rank-4 {
+    background: #cde5ef;
+    background: hsla(21, 99%, 66%, 0.2);
+    border: 2px solid #8bc4dc;
+    border: 2px solid hsla(21, 99%, 66%, 0.5);
+}
+
+.grid-item.rank-4 .badge {
+    background-color: #348daf !important;
+    background-color: hsla(21, 99%, 66%, 1) !important;
+}
+
+.grid-item.rank-5 {
+    background: #cde5ef;
+    background: hsla(5, 77%, 48%, 0.2);
+    border: 2px solid #8bc4dc;
+    border: 2px solid hsla(5, 77%, 48%, 0.4);
+}
+
+.grid-item.rank-5 .badge {
+    background-color: #348daf !important;
+    background-color: hsla(5, 77%, 48%, 1) !important;
+}
+
 .grid-item.is-dragging,
 .grid-item.is-positioning-post-drag {
+    border: 2px solid #8bc4dc;
     background: #8cc6de;
     z-index: 2; 
     cursor: grabbing;
@@ -227,10 +292,5 @@ p {
   /* transition position changing */
   /*-webkit-transition: -webkit-transform 0.2s;*/
           /*transition: transform 0.2s;*/
-}
-
-/* Override bootstrap badge color */
-.badge {
-    background-color: #348daf !important;
 }
 

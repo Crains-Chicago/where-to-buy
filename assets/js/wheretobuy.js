@@ -7,11 +7,11 @@ var WhereToBuy = {
     map: null,
     mapCentroid: [41.9, -87.8],
     googleStyles: [{
-                        stylers: [
-                            { saturation: -100 },
-                            { lightness: 40 }
-                        ]
-                      }],
+        stylers: [
+            { saturation: -100 },
+            { lightness: 40 }
+        ]
+    }],
     defaultZoom: 8,
     lastClickedLayer: null,
     legend: null,
@@ -23,17 +23,6 @@ var WhereToBuy = {
     workplace: null,
     layerMap: {},
     marker: null,
-
-    // Carto databases
-    chicagoBoundaries: 'chicago_community_areas',
-    suburbBoundaries: 'suburb_boundaries',
-
-    // Layer styles
-    boundaries: {
-        cartocss: $('#boundary-styles').html().trim(),
-        color: '#ffffcc',
-        opacity: 0.75
-    },
 
     initialize: function() {
 

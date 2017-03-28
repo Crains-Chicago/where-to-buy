@@ -78,11 +78,11 @@ layout: base
 <div class="row">
   <div class="col-md-3 well" style="height:350px;">
     <div class="grid">
-      <div class="grid-item text-center" id="diversity"><span class="badge">1</span> High Diversity</div>
-      <div class="grid-item text-center" id="schools"><span class="badge">2</span> Good Schools</div>
-      <div class="grid-item text-center" id="crime"><span class="badge">3</span> Low Crime</div>
-      <div class="grid-item text-center" id="price"><span class="badge">4</span> Solid Price Growth</div>
-      <div class="grid-item text-center" id="commute"><span class="badge">5</span> Short Commutes</div>
+      <div class="grid-item text-center" id="diversity"><span class="badge pull-left"></span> High Diversity</div>
+      <div class="grid-item text-center" id="schools"><span class="badge pull-left"></span> Good Schools</div>
+      <div class="grid-item text-center" id="crime"><span class="badge pull-left"></span> Low Crime</div>
+      <div class="grid-item text-center" id="price"><span class="badge pull-left"></span> Solid Price Growth</div>
+      <div class="grid-item text-center" id="commute"><span class="badge pull-left"></span> Short Commutes</div>
     </div>
   </div>
   <div class="col-md-5">
@@ -131,16 +131,6 @@ layout: base
   </div>
 </div>
 
-<style id="boundary-styles">
-  #places{
-  polygon-fill: #FF6600;
-  polygon-opacity: 0.7;
-  line-color: #FFF;
-  line-width: 0.5;
-  line-opacity: 1;
-  }
-</style>
-
 <script src="assets/js/leaflet.js"></script>
 <script src="assets/js/leaflet-google.js"></script>
 <script src="assets/js/tether.min.js"></script>
@@ -158,6 +148,7 @@ layout: base
       // Get the profile and priority widgets going
       var $carousel = $('.carousel').flickity();
       var $grid = $('.grid').packery({
+          isInitLayout: false,
           percentPosition: true,
           itemSelector: '.grid-item',
           gutter: 10,
@@ -171,8 +162,11 @@ layout: base
 
       // Show priority order after layout
       function rankPriorities() {
+        console.log('Ranking priorities!');
         var items = $grid.packery('getItemElements');
+        console.log(items);
         $(items).each(function(i, item) {
+            $(item).removeClass('rank-1 rank-2 rank-3 rank-4 rank-5').addClass('rank-' + (i+1).toString());
             $(item).find('span').html(i+1);
         });
       }
@@ -180,6 +174,9 @@ layout: base
       // Init priority order
       $grid.on('layoutComplete', rankPriorities);
       $grid.on('dragItemPositioned', rankPriorities);
+
+      // Trigger initial priority layout
+      $grid.packery();
 
       // Define UX for the community rankings
       $('.ranking').click(function() {
