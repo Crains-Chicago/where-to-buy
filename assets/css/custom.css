@@ -90,6 +90,10 @@ p {
     color: #777;
 }
 
+.info p {
+    margin-bottom: 2px;
+}
+
 .legend span {
     width: 15px;
     height: 15px;

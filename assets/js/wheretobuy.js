@@ -18,6 +18,7 @@ var WhereToBuy = {
     locationScope: 'Chicago',
     dataDir: '../../data/final/',
     geojsonLayer: null,
+    info: null,
 
     // Carto databases
     chicagoBoundaries: 'chicago_community_areas',
@@ -49,6 +50,32 @@ var WhereToBuy = {
         WhereToBuy.streets = new L.Google('ROADMAP', {mapOptions: {styles: WhereToBuy.googleStyles}});
         WhereToBuy.map.addLayer(WhereToBuy.streets);
 
+        // Create the community infobox and define its interactivity
+        WhereToBuy.info = L.control({position: 'topright'});
+
+        WhereToBuy.info.onAdd = function() {
+            this._div = L.DomUtil.create('div', 'info');
+            this.update();
+            return this._div;
+        };
+
+        WhereToBuy.info.update = function(props) {
+            var text = '<p class="small">Hover over a community</p>';
+            if (props) {
+                text = '';
+                if (props.name) {
+                    text += '<p class="small">' + props.name + '</p>';
+                }
+            }
+            this._div.innerHTML = text;
+        };
+
+        WhereToBuy.info.clear = function() {
+            this._div.innerHTML = '<p class="small">Hover over a community</p>';
+        };
+
+        WhereToBuy.info.addTo(WhereToBuy.map);
+
         // Define GeoJSON styles
         var layerStyle = {
             'color': '#FF6600',
@@ -59,7 +86,6 @@ var WhereToBuy = {
         };
 
         // Define GeoJSON feature UX
-
         var highlightFeature = function(e) {
             var layer = e.target;
 
@@ -80,27 +106,38 @@ var WhereToBuy = {
             geojsonLayer.resetStyle(e.target);
         };
 
+        // Bind GeoJSON UX to the feature
         var onEachFeature = function(feature, layer) {
             // Bind popup on click
+            // if (feature.properties && feature.properties.name) {
+            //     layer.bindPopup(feature.properties.name);
+            // }
+
             if (feature.properties && feature.properties.name) {
-                layer.bindPopup(feature.properties.name);
+                var props = feature.properties;
+                layer.on('mouseover', function(e) {
+                    highlightFeature(e);
+                    WhereToBuy.info.update(props);
+                });
+                layer.on('mouseout', function(e) {
+                    resetHighlight(e);
+                    WhereToBuy.info.clear(props);
+                });
             }
 
-            layer.on({
-                mouseover: highlightFeature,
-                mouseout: resetHighlight,
-            });
+            // layer.on({
+            //     mouseover: highlightFeature,
+            //     mouseout: resetHighlight,
+            // });
         };
 
-        // Layer options for geoJSON
         var layerOpts = {
             style: layerStyle,
             onEachFeature: onEachFeature
         };
 
-        // Get boundaries as geoJSON and add them to the map
+        // Get boundaries as GeoJSON and add them to the map
         $.getJSON(WhereToBuy.dataDir + 'places.geojson', function(data) {
-            console.log(data);
             geojsonLayer = L.geoJson(data, layerOpts).addTo(WhereToBuy.map);
         }).done(function() {
 
