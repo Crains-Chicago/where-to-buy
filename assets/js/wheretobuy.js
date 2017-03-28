@@ -22,6 +22,7 @@ var WhereToBuy = {
     info: null,
     workplace: null,
     layerMap: {},
+    marker: null,
 
     // Carto databases
     chicagoBoundaries: 'chicago_community_areas',
@@ -179,6 +180,45 @@ var WhereToBuy = {
             resetHighlight(WhereToBuy.layerMap[community]);
             WhereToBuy.info.clear();
         });
+
+        // Check for workplace parameter in the URL
+        if ($.address.parameter('workplace')) {
+            $("#search-address").val(WhereToBuy.toPlainString($.address.parameter('workplace')));
+            WhereToBuy.addressSearch();
+        }
+    },
+
+    addressSearch: function (e) {
+        if (e) e.preventDefault();
+        var searchAddress = $("#search-address").val();
+        if (searchAddress !== '') {
+
+            if (WhereToBuy.locationScope && WhereToBuy.locationScope.length) {
+                var checkaddress = searchAddress.toLowerCase();
+                var checkcity = WhereToBuy.locationScope.split(",")[0].toLowerCase();
+                if (checkaddress.indexOf(checkcity) == -1) {
+                    searchAddress += ", " + WhereToBuy.locationScope;
+                }
+            }
+
+            $.address.parameter('workplace', encodeURIComponent(searchAddress));
+
+            geocoder.geocode({'address': searchAddress}, function(results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    WhereToBuy.workplace = [results[0].geometry.location.lat(), results[0].geometry.location.lng()];
+
+                    WhereToBuy.map.setView(WhereToBuy.workplace, 8);
+
+                    if (WhereToBuy.marker)
+                        WhereToBuy.map.removeLayer(WhereToBuy.marker);
+
+                    WhereToBuy.marker = L.marker(WhereToBuy.workplace).addTo(WhereToBuy.map);
+                }
+                else {
+                    alert("We could not find your address: " + status);
+                }
+            });
+        }
     },
 
     titleCase: function(s) {
@@ -186,6 +226,12 @@ var WhereToBuy = {
         return s.replace(/\w\S*/g, function(text) {
             return text.charAt(0).toUpperCase() + text.substr(1).toLowerCase();
         });
-    }
+    },
+
+    toPlainString: function(text) {
+        // Converts a slug or query string into readable text
+        if (text === undefined) return '';
+        return decodeURIComponent(text);
+    },
 
 };

@@ -185,6 +185,18 @@ layout: base
       $('.ranking').click(function() {
           $('.modal').modal();
       });
+
+      // Init search address
+      var autocomplete = new google.maps.places.Autocomplete(document.getElementById('search-address'));
+
+      // Bind click and return events for the search bar
+      $('#search-button').on('click', WhereToBuy.addressSearch);
+      $('body').on('keypress', '#search-address', function(e) {
+          if (e.keyCode == 13) {
+              e.preventDefault();
+              $('#search-button').click();
+          }
+      });
   });
 
 </script>
