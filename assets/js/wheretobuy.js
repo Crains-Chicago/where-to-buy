@@ -17,7 +17,8 @@ var WhereToBuy = {
     legend: null,
     locationScope: 'Chicago',
     dataDir: '../../data/final/',
-    geojsonLayer: null,
+    suburbLayer: null,
+    chicagoLayer: null,
     info: null,
 
     // Carto databases
@@ -65,6 +66,8 @@ var WhereToBuy = {
                 text = '';
                 if (props.name) {
                     text += '<p class="small">' + props.name + '</p>';
+                } else if (props.community) {
+                     text += '<p class="small">' + WhereToBuy.titleCase(props.community) + '</p>';
                 }
             }
             this._div.innerHTML = text;
@@ -103,7 +106,8 @@ var WhereToBuy = {
         };
 
         var resetHighlight = function(e) {
-            geojsonLayer.resetStyle(e.target);
+            suburbLayer.resetStyle(e.target);
+            chicagoLayer.resetStyle(e.target);
         };
 
         // Bind GeoJSON UX to the feature
@@ -113,7 +117,7 @@ var WhereToBuy = {
             //     layer.bindPopup(feature.properties.name);
             // }
 
-            if (feature.properties && feature.properties.name) {
+            if (feature.properties && (feature.properties.name || feature.properties.community)) {
                 var props = feature.properties;
                 layer.on('mouseover', function(e) {
                     highlightFeature(e);
@@ -137,10 +141,18 @@ var WhereToBuy = {
         };
 
         // Get boundaries as GeoJSON and add them to the map
-        $.getJSON(WhereToBuy.dataDir + 'places.geojson', function(data) {
-            geojsonLayer = L.geoJson(data, layerOpts).addTo(WhereToBuy.map);
-        }).done(function() {
-
+        var suburbData, chicagoData;
+        $.when(
+            $.getJSON(WhereToBuy.dataDir + 'places.geojson', function(data) {
+                suburbData = data;
+            }),
+            $.getJSON(WhereToBuy.dataDir + 'community_areas.geojson', function(data) {
+                chicagoData = data;
+                console.log(chicagoData);
+            })
+        ).then(function() {
+            suburbLayer = L.geoJson(suburbData, layerOpts).addTo(WhereToBuy.map);
+            chicagoLayer = L.geoJson(chicagoData, layerOpts).addTo(WhereToBuy.map);
         });
 
         // Construct Carto query
@@ -180,6 +192,12 @@ var WhereToBuy = {
         //     console.log(layer);
         //     layer.addTo(WhereToBuy.map);
         // });
+    },
+
+    titleCase: function(s) {
+        return s.replace(/\w\S*/g, function(text) {
+            return text.charAt(0).toUpperCase() + text.substr(1).toLowerCase();
+        });
     }
 
 };
