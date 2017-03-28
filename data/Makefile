@@ -42,7 +42,8 @@ community_areas: raw/shapefiles/community_areas.shp postgis
 final/places.geojson: suburbs places.csv 
 	query=$$(eval csvcut -c 2 places.csv | tail -n +2 | \
 		sed -e ':a' -e 'N' -e '$$!ba' -e "s/\n/', '/g" | \
-		sed -e "s/^/select * from $< where placefp in \('/" -e "s/$$/'\)/") && \
+		sed -e "s/^/select name, placefp, ST_Simplify\(geom,0.001\) from $< where placefp in \('/" | \
+		sed -e "s/$$/'\) and placefp \!= '14000'/") && \
 	ogr2ogr -f "GeoJSON" $@ PG:"dbname=$(PG_DB)" -s_srs EPSG:4269 -t_srs EPSG:4326 -sql "$$query"
 
 final/community_areas.geojson: community_areas
