@@ -172,7 +172,13 @@ p {
     width: 300px;
     height: 200px;
     margin-right: 10px;
-    background: #8bc4dc;
+    background-color: #8bc4dc;
+}
+
+.carousel-cell:hover {    
+    cursor: pointer;
+    background-color: #acdbef;
+    background-color: rgba(139, 196, 220, 0.5);
 }
 
 .carousel-title {

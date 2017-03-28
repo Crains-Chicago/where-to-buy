@@ -210,6 +210,72 @@ var WhereToBuy = {
         }
     },
 
+    viewProfile: function(e) {
+        // Matches a real estate profile to a specific priority order
+        if (e) e.preventDefault();
+        var profileID = e.target.id;
+        var priorities;
+        switch (profileID) {
+            case "suburban-home":
+                priorities = [
+                    'schools',
+                    'crime',
+                    'price',
+                    'diversity',
+                    'commute'
+                ];
+                break;
+            case "city-home":
+                priorities = [
+                    'schools',
+                    'diversity',
+                    'crime',
+                    'price',
+                    'commute'
+                ];
+                break;
+            case "downsized-home":
+                priorities = [
+                    'price',
+                    'commute',
+                    'diversity',
+                    'crime',
+                    'schools'
+                ];
+                break;
+            case "in-town":
+                priorities = [
+                    'commute',
+                    'price',
+                    'crime',
+                    'diversity',
+                    'schools'
+                ];
+                break;
+            case "vacation-home":
+                priorities = [
+                    'price',
+                    'diversity',
+                    'crime',
+                    'schools',
+                    'commute'
+                ];
+                break;
+            default:
+                alert("Sorry, something went wrong.");
+        }
+        WhereToBuy.priorityOrder(priorities);
+    },
+
+    priorityOrder: function(priorities) {
+        // Rearranges priority list and reloads packery
+        $('#' + priorities[4]).prependTo( $('#grid') );
+        for (var i = 3; i >= 0; i--) {
+            $('#' + priorities[i]).insertBefore( $('#' + priorities[i+1]) );
+        }
+        $('.grid').packery('reloadItems').packery();
+    },
+
     titleCase: function(s) {
         // Takes a string and converts it to title case (first character of each word in caps)
         return s.replace(/\w\S*/g, function(text) {

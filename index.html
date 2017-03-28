@@ -21,31 +21,21 @@ layout: base
 <div class="row">
   <div class="col-xs-12">
     <div class="carousel">
-      <a href="#" role="button" id="suburban-home">
-        <div class="carousel-cell text-center">
-          <span class="carousel-title">Suburban family</span>
-        </div>
-      </a>
-      <a href="#" role="button" id="city-home">
-        <div class="carousel-cell text-center">
-          <span class="carousel-title">City family</span>
-        </div>
-      </a>
-      <a href="#" role="button" id="downsized-home">
-        <div class="carousel-cell text-center">
-          <span class="carousel-title">Empty-nesters</span>
-        </div>
-      </a>
-      <a href="#" role="button" id="in-town">
-        <div class="carousel-cell text-center">
-          <span class="carousel-title">Weekenders</span>
-        </div>
-      </a>
-      <a href="#" role="button" id="vacation-home">
-        <div class="carousel-cell text-center">
-          <span class="carousel-title">Vacationers</span>
-        </div>
-      </a>
+      <div class="carousel-cell text-center" id="suburban-home">
+        <span class="carousel-title">Suburban family</span>
+      </div>
+      <div class="carousel-cell text-center" id="city-home">
+        <span class="carousel-title">City family</span>
+      </div>
+      <div class="carousel-cell text-center" id="downsized-home">
+        <span class="carousel-title">Empty-nesters</span>
+      </div>
+      <div class="carousel-cell text-center" id="in-town">
+        <span class="carousel-title">Weekenders</span>
+      </div>
+      <div class="carousel-cell text-center" id="vacation-home">
+        <span class="carousel-title">Vacationers</span>
+      </div>
     </div>
   </div>
 </div>
@@ -194,6 +184,16 @@ layout: base
               $('#search-button').click();
           }
       });
+
+      // Bind click and return events for the profile carousel
+      $('.carousel-cell').on('click', WhereToBuy.viewProfile);
+      $('body').on('keypress', '.carousel-cell', function(e) {
+          if (e.keyCode == 13) {
+              e.preventDefault();
+              $(this).click();
+          }
+      })
+
   });
 
 </script>
