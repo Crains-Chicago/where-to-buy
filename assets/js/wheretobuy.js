@@ -23,6 +23,8 @@ var WhereToBuy = {
     workplace: null,
     layerMap: {},
     marker: null,
+    chicagoData: null,
+    suburbData: null,
 
     initialize: function() {
 
@@ -145,17 +147,17 @@ var WhereToBuy = {
         };
 
         // Get boundaries as GeoJSON and add them to the map
-        var suburbData, chicagoData;
+        var suburbGeojson, chicagoGeojson;
         $.when(
             $.getJSON(WhereToBuy.dataDir + 'places.geojson', function(data) {
-                suburbData = data;
+                suburbGeojson = data;
             }),
             $.getJSON(WhereToBuy.dataDir + 'community_areas.geojson', function(data) {
-                chicagoData = data;
+                chicagoGeojson = data;
             })
         ).then(function() {
-            suburbLayer = L.geoJson(suburbData, layerOpts).addTo(WhereToBuy.map);
-            chicagoLayer = L.geoJson(chicagoData, layerOpts).addTo(WhereToBuy.map);
+            suburbLayer = L.geoJson(suburbGeojson, layerOpts).addTo(WhereToBuy.map);
+            chicagoLayer = L.geoJson(chicagoGeojson, layerOpts).addTo(WhereToBuy.map);
         });
 
         // Allow ranking list to interact with the map
@@ -274,6 +276,43 @@ var WhereToBuy = {
             $('#' + priorities[i]).insertBefore( $('#' + priorities[i+1]) );
         }
         $('.grid').packery('reloadItems').packery();
+    },
+
+    selectCommunity: function(text) {
+        // Parses which community was selected from the list
+        var community = text;
+        if ((WhereToBuy.chicagoData && WhereToBuy.chicagoData.length) && (WhereToBuy.suburbData && WhereToBuy.suburbData.length)) {
+            WhereToBuy.showCommunityInfo(community);
+        } else {
+            $.when(
+                $.get(WhereToBuy.dataDir + 'chicago.csv', function(data) {
+                    WhereToBuy.chicagoData = $.csv.toObjects(data);
+                }),
+                $.get(WhereToBuy.dataDir + 'suburb.csv', function(data) {
+                    WhereToBuy.suburbData = $.csv.toObjects(data);
+                })
+            ).then(function() {
+                WhereToBuy.showCommunityInfo(community);
+            });
+        }
+    },
+
+    showCommunityInfo: function(community) {
+        // Displays a modal with information about a selected community
+        // TODO: better handling to figure out if the community is in Chicago or the suburbs
+        var communityKey = community.toUpperCase();
+        var communityData;
+        var msg = 'No data found.';
+        // Find the relevant data in the CSV object
+        for (var i=0; i<WhereToBuy.chicagoData.length; i++) {
+            if (WhereToBuy.chicagoData[i].community == communityKey) {
+                communityData = $.extend({}, WhereToBuy.chicagoData[i]);
+                msg = JSON.stringify(communityData, null, 2);
+                break;
+            }
+        }
+        $('#property-info').html(msg);
+        $('.modal').modal();
     },
 
     titleCase: function(s) {
