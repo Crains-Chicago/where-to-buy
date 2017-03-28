@@ -20,6 +20,8 @@ var WhereToBuy = {
     suburbLayer: null,
     chicagoLayer: null,
     info: null,
+    workplace: null,
+    layerMap: {},
 
     // Carto databases
     chicagoBoundaries: 'chicago_community_areas',
@@ -34,8 +36,8 @@ var WhereToBuy = {
 
     initialize: function() {
 
+        // Initialize a Leaflet map
         if (!WhereToBuy.map) {
-            // Initialize a Leaflet map
             WhereToBuy.map = L.map('map', {
                 center: WhereToBuy.mapCentroid,
                 zoom: WhereToBuy.defaultZoom,
@@ -112,13 +114,16 @@ var WhereToBuy = {
 
         // Bind GeoJSON UX to the feature
         var onEachFeature = function(feature, layer) {
-            // Bind popup on click
-            // if (feature.properties && feature.properties.name) {
-            //     layer.bindPopup(feature.properties.name);
-            // }
-
             if (feature.properties && (feature.properties.name || feature.properties.community)) {
+                if (feature.properties.name) {
+                    WhereToBuy.layerMap[feature.properties.name.toLowerCase()] = layer;
+                } else if (feature.properties.community) {
+                    WhereToBuy.layerMap[feature.properties.community.toLowerCase()] = layer;
+                }
+
                 var props = feature.properties;
+
+                // Bind hover events
                 layer.on('mouseover', function(e) {
                     highlightFeature(e);
                     WhereToBuy.info.update(props);
@@ -128,11 +133,6 @@ var WhereToBuy = {
                     WhereToBuy.info.clear(props);
                 });
             }
-
-            // layer.on({
-            //     mouseover: highlightFeature,
-            //     mouseout: resetHighlight,
-            // });
         };
 
         var layerOpts = {
@@ -148,11 +148,18 @@ var WhereToBuy = {
             }),
             $.getJSON(WhereToBuy.dataDir + 'community_areas.geojson', function(data) {
                 chicagoData = data;
-                console.log(chicagoData);
             })
         ).then(function() {
             suburbLayer = L.geoJson(suburbData, layerOpts).addTo(WhereToBuy.map);
             chicagoLayer = L.geoJson(chicagoData, layerOpts).addTo(WhereToBuy.map);
+        });
+
+        // Allow ranking list to interact with the map
+        $('.ranking').on('mouseover', function() {
+            var community = $(this).children('span').html();
+        });
+
+        $('.ranking').on('mouseout', function() {
         });
 
         // Construct Carto query
@@ -195,6 +202,7 @@ var WhereToBuy = {
     },
 
     titleCase: function(s) {
+        // Takes a string and converts it to title case (first character of each word in caps)
         return s.replace(/\w\S*/g, function(text) {
             return text.charAt(0).toUpperCase() + text.substr(1).toLowerCase();
         });

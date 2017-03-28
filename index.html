@@ -155,6 +155,7 @@ layout: base
       // Initialize map and other goodies
       WhereToBuy.initialize();
 
+      // Get the profile and priority widgets going
       var $carousel = $('.carousel').flickity();
       var $grid = $('.grid').packery({
           percentPosition: true,
@@ -162,12 +163,13 @@ layout: base
           gutter: 10,
       });
 
+      // Allow user to drag around priorities
       $('.grid-item').each(function(i, gridItem) {
           var drag = new Draggabilly(gridItem);
           $grid.packery('bindDraggabillyEvents', drag);
       });
 
-      // show item order after layout
+      // Show priority order after layout
       function rankPriorities() {
         var items = $grid.packery('getItemElements');
         $(items).each(function(i, item) {
@@ -175,12 +177,14 @@ layout: base
         });
       }
 
+      // Init priority order
       $grid.on('layoutComplete', rankPriorities);
       $grid.on('dragItemPositioned', rankPriorities);
 
+      // Define UX for the community rankings
       $('.ranking').click(function() {
           $('.modal').modal();
-      })
+      });
   });
 
 </script>
