@@ -69,7 +69,7 @@ var WhereToBuy = {
                 if (props.name) {
                     text += '<p class="small">' + props.name + '</p>';
                 } else if (props.community) {
-                     text += '<p class="small">' + WhereToBuy.titleCase(props.community) + '</p>';
+                     text += '<p class="small">' + WhereToBuy.titleCase(props.community) + ' (Chicago)</p>';
                 }
             }
             this._div.innerHTML = text;
@@ -144,7 +144,7 @@ var WhereToBuy = {
                 });
                 layer.on('mouseout', function(e) {
                     resetHighlight(e);
-                    WhereToBuy.info.clear(props);
+                    WhereToBuy.info.clear();
                 });
             }
         };
@@ -171,54 +171,14 @@ var WhereToBuy = {
         // Allow ranking list to interact with the map
         $('.ranking').on('mouseover', function() {
             var community = $(this).children('span').html().toLowerCase();
-            console.log('Highlighting community: ' + community);
-            console.log('Its layer is: ');
-            console.log(WhereToBuy.layerMap[community]);
             highlightFeature(WhereToBuy.layerMap[community]);
+            WhereToBuy.info.update(WhereToBuy.layerMap[community].feature.properties);
         });
-
         $('.ranking').on('mouseout', function() {
             var community = $(this).children('span').html().toLowerCase();
             resetHighlight(WhereToBuy.layerMap[community]);
+            WhereToBuy.info.clear();
         });
-
-        // Construct Carto query
-        //var fields = "";
-        // var layerOpts = {
-        //     user_name: 'datamade',
-        //     type: 'cartodb',
-        //     sublayers: [{
-        //         sql: "SELECT * FROM " + WhereToBuy.suburbBoundaries,
-        //         cartocss: WhereToBuy.boundaries.cartocss,
-        //         //interactivity: fields
-        //     }]
-            // , {
-            //     sql: "SELECT * FROM " + WhereToBuy.suburbBoundaries,
-            //     cartocss: WhereToBuy.boundaries.cartocss,
-            //     //interactivity: fields
-            // }]
-        // };
-
-        // L.tileLayer('https://cartocdn-ashbu.global.ssl.fastly.net/datamade/api/v1/map/413e234246f257a11f5aa25f70741231:1490206179638/0/{z}/{x}/{y}.png').addTo(WhereToBuy.map);
-
-        // Query carto for boundaries
-        // var boundaries = cartodb.createLayer(WhereToBuy.map, layerOpts, { https: true })
-        //     .addTo(WhereToBuy.map);
-        //     function(layer) {
-
-        //         var sublayers = [];
-        //         var sub1 = layer.getSubLayer(0);
-        //         var sub2 = layer.getSubLayer(1);
-        //         sublayers.push(sub1, sub2);
-
-        //         sublayers.forEach(function(sublayer) {
-        //             sublayer.setInteraction(true);
-        //             // Set more interactions here
-        //         });
-        // }).on('done', function(layer) {
-        //     console.log(layer);
-        //     layer.addTo(WhereToBuy.map);
-        // });
     },
 
     titleCase: function(s) {
