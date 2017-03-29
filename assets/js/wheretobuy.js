@@ -316,11 +316,16 @@ var WhereToBuy = {
         $('.modal').modal();
     },
 
-    getDirections: function(routeOptions, origin, destination) {
+    getDirections: function(routeOptions) {
         // Uses Google Maps Directions Service to get directions between two locations.
 
-        var travelTime, directionsLine;
-        var warning, copyright;
+        // Make a JQuery promise object
+        var deferred = $.Deferred();
+
+        var travelTime,
+            directionsLine,
+            warning,
+            copyright;
 
         directions.route(routeOptions, function(results, status) {
             if (status == google.maps.DirectionsStatus.OK) {
@@ -340,34 +345,43 @@ var WhereToBuy = {
                     travelTime = results.routes[0].legs[0].duration.text;
                 }
                 // Get directions line
-                // TODO: Handle more than one leg
-                if (results.routes[0].legs[0].overview_path && results.routes[0].legs[0].overview_path.length) {
+                if (results.routes[0].overview_path && results.routes[0].overview_path.length) {
                     var pathPoints = [];
-                    for (var i=0; i<results.routes[0].legs[0].overview_path.length; i++) {
+                    for (var y=0; y<results.routes[0].overview_path.length; y++) {
                         pathPoints.push([
-                                            results.routes[0].legs[0].overview_path[i].lat(),
-                                            results.routes[0].legs[0].overview_path[i].lng(),
+                                            results.routes[0].overview_path[y].lat(),
+                                            results.routes[0].overview_path[y].lng(),
                                         ]);
                     }
                     directionsLine = L.polyline(pathPoints);
+                } else {
+                    directionsLine = null;
                 }
+
+                var returnValues = {
+                        'time': travelTime,
+                        'line': directionsLine,
+                        'warning': warning,
+                        'copyright': copyright
+                    };
+
+                deferred.resolve(returnValues);
             } else {
-                travelTime = "We could not find a route between this community and your workplace. " +
+                errorString = "We could not find a " + routeOptions.travelMode.toLowerCase() +
+                             " route between this community and your workplace. " +
                              '(Error: "' + status + '")';
-                directionsLine = null;
+                deferred.reject(errorString);
             }
         });
 
-        var returnValues = {
-            'time': travelTime,
-            'line': directionsLine,
-            'warning': warning,
-            'copyright': copyright
-        };
+        return deferred.promise();
     },
 
     customTravelTime: function(origin, destination) {
         // Takes coordinates, returns a dict with trip information while driving and on transit.
+
+        // Make a JQuery promise object
+        var deferred = $.Deferred();
 
         var drivingOptions = {
             origin: origin,
@@ -380,11 +394,46 @@ var WhereToBuy = {
             destination: destination,
             travelMode: 'TRANSIT'
         };
-                
-        var driving = WhereToBuy.getDirections(drivingOptions, origin, destination);
-        var transit = WhereToBuy.getDirections(transitOptions, origin, destination);
 
-        return {'driving': driving, 'transit': transit};
+        var driving, drivingErr,
+            transit, transitErr;
+
+        WhereToBuy.getDirections(drivingOptions, origin, destination)
+          .then(function(drivingValues) {
+            driving = drivingValues;
+            WhereToBuy.getDirections(transitOptions, origin, destination)
+              .then(function(transitValues) {
+                transit = transitValues;
+                deferred.resolve({
+                    'driving': driving,
+                    'transit': transit
+                });
+            }, function(err) {
+                deferred.resolve({
+                    'driving': driving,
+                    'transit': err
+                });
+            });
+        }, function(err) {
+            drivingErr = err;
+            WhereToBuy.getDirections(transitOptions, origin, destination)
+              .then(function(transitValues) {
+                transit = transitValues;
+                deferred.resolve({
+                    'driving': drivingErr,
+                    'transit': transit
+                });
+            }, function(err2) {
+                transitErr = err2;
+                deferred.resolve({
+                    'driving': drivingErr,
+                    'transit': transitErr
+                });
+            });
+        });
+        
+        return deferred.promise();
+    
     },
 
     titleCase: function(s) {
