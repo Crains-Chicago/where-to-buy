@@ -94,10 +94,10 @@ var WhereToBuy = {
             }
 
             layer.setStyle({
-                color: '#666',
+                color: '#2c6b86',
                 weight: 2,
                 opacity: 0.5,
-                fillColor: '#FF6600',
+                fillColor: '#2c6b86',
                 fillOpacity: 1
             });
 
@@ -312,8 +312,94 @@ var WhereToBuy = {
                 break;
             }
         }
+        // Define the HTML for the modal
         $('#property-info').html(msg);
         $('.modal').modal();
+
+        // If the user has set a place of work, calculate a commute time estimate
+        if (WhereToBuy.workplace) {
+            var workplaceString = WhereToBuy.toPlainString($.address.parameter('workplace'));
+            WhereToBuy.customTravelTime(community+', IL', workplaceString)
+              .done(function(results) {
+                var markup = "<div id='travel-time style='display:none;'>";
+                if (results.driving.time) {
+                    markup += "<h4>Driving time to workplace:</h4><p>" + results.driving.time + "</p>";
+                } else if (typeof(results.driving) === 'string') {
+                    markup += "<h4>Driving error:</h4><p>" + results.driving + "</p>";
+                } else {
+                    markup += "<p>Could not find driving time...</p>";
+                }
+                if (results.transit.time) {
+                    markup += "<h4>Transit time to workplace:</h4><p>" + results.transit.time + "</p>";
+                } else if (typeof(results.transit) === 'string') {
+                    markup += "<h4>Transit error:</h4><p>" + results.transit + "</p>";
+                } else {
+                    markup += "<p>Could not find transit time...</p>";
+                }
+                markup += "</div>";
+                $('#property-info').append(markup).show('slow');
+                console.log(results);
+            });
+        }
+    },
+
+    customTravelTime: function(origin, destination) {
+        // Takes coordinates, returns a dict with trip information while driving and on transit.
+
+        // Make a JQuery promise object
+        var deferred = $.Deferred();
+
+        var drivingOptions = {
+            origin: origin,
+            destination: destination,
+            travelMode: 'DRIVING'
+        };
+
+        var transitOptions = {
+            origin: origin,
+            destination: destination,
+            travelMode: 'TRANSIT'
+        };
+
+        var driving, drivingErr,
+            transit, transitErr;
+
+        WhereToBuy.getDirections(drivingOptions, origin, destination)
+          .then(function(drivingValues) {
+            driving = drivingValues;
+            WhereToBuy.getDirections(transitOptions, origin, destination)
+              .then(function(transitValues) {
+                transit = transitValues;
+                deferred.resolve({
+                    'driving': driving,
+                    'transit': transit
+                });
+            }, function(err) {
+                deferred.resolve({
+                    'driving': driving,
+                    'transit': err
+                });
+            });
+        }, function(err) {
+            drivingErr = err;
+            WhereToBuy.getDirections(transitOptions, origin, destination)
+              .then(function(transitValues) {
+                transit = transitValues;
+                deferred.resolve({
+                    'driving': drivingErr,
+                    'transit': transit
+                });
+            }, function(err2) {
+                transitErr = err2;
+                deferred.resolve({
+                    'driving': drivingErr,
+                    'transit': transitErr
+                });
+            });
+        });
+        
+        return deferred.promise();
+    
     },
 
     getDirections: function(routeOptions) {
@@ -375,65 +461,6 @@ var WhereToBuy = {
         });
 
         return deferred.promise();
-    },
-
-    customTravelTime: function(origin, destination) {
-        // Takes coordinates, returns a dict with trip information while driving and on transit.
-
-        // Make a JQuery promise object
-        var deferred = $.Deferred();
-
-        var drivingOptions = {
-            origin: origin,
-            destination: destination,
-            travelMode: 'DRIVING'
-        };
-
-        var transitOptions = {
-            origin: origin,
-            destination: destination,
-            travelMode: 'TRANSIT'
-        };
-
-        var driving, drivingErr,
-            transit, transitErr;
-
-        WhereToBuy.getDirections(drivingOptions, origin, destination)
-          .then(function(drivingValues) {
-            driving = drivingValues;
-            WhereToBuy.getDirections(transitOptions, origin, destination)
-              .then(function(transitValues) {
-                transit = transitValues;
-                deferred.resolve({
-                    'driving': driving,
-                    'transit': transit
-                });
-            }, function(err) {
-                deferred.resolve({
-                    'driving': driving,
-                    'transit': err
-                });
-            });
-        }, function(err) {
-            drivingErr = err;
-            WhereToBuy.getDirections(transitOptions, origin, destination)
-              .then(function(transitValues) {
-                transit = transitValues;
-                deferred.resolve({
-                    'driving': drivingErr,
-                    'transit': transit
-                });
-            }, function(err2) {
-                transitErr = err2;
-                deferred.resolve({
-                    'driving': drivingErr,
-                    'transit': transitErr
-                });
-            });
-        });
-        
-        return deferred.promise();
-    
     },
 
     titleCase: function(s) {
