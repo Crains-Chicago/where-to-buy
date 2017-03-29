@@ -10,6 +10,13 @@ body {
     height: 350px;
 }
 
+/* Mobile margin for the map */
+@media (max-width: 756px) {
+    #map {
+        margin-bottom: 15px;
+    }
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;

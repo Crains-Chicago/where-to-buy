@@ -1,11 +1,12 @@
 var geocoder = new google.maps.Geocoder();
+var directions = new google.maps.DirectionsService();
 
 var WhereToBuy = WhereToBuy || {};
 var WhereToBuy = {
 
     // Map config
     map: null,
-    mapCentroid: [41.9, -87.8],
+    mapCentroid: [41.9, -88],
     googleStyles: [{
         stylers: [
             { saturation: -100 },
@@ -315,6 +316,77 @@ var WhereToBuy = {
         $('.modal').modal();
     },
 
+    getDirections: function(routeOptions, origin, destination) {
+        // Uses Google Maps Directions Service to get directions between two locations.
+
+        var travelTime, directionsLine;
+        var warning, copyright;
+
+        directions.route(routeOptions, function(results, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+                // Get copyrights and warnings
+                if (results.routes[0].warnings && results.routes[0].warnings.length) {
+                    copyright = results.routes[0].copyrights;
+                    warning = results.routes[0].warnings.join(';');
+                }
+                // Get travel time estimate
+                if (results.routes[0].legs && results.routes[0].legs.length > 1) {
+                    var time = 0;
+                    for (var t=0; t<results.routes[0].legs.length; t++) {
+                        time += results.routes[0].legs[i].duration.value;
+                    }
+                    travelTime = WhereToBuy.secondsToTimeString(time);
+                } else {
+                    travelTime = results.routes[0].legs[0].duration.text;
+                }
+                // Get directions line
+                // TODO: Handle more than one leg
+                if (results.routes[0].legs[0].overview_path && results.routes[0].legs[0].overview_path.length) {
+                    var pathPoints = [];
+                    for (var i=0; i<results.routes[0].legs[0].overview_path.length; i++) {
+                        pathPoints.push([
+                                            results.routes[0].legs[0].overview_path[i].lat(),
+                                            results.routes[0].legs[0].overview_path[i].lng(),
+                                        ]);
+                    }
+                    directionsLine = L.polyline(pathPoints);
+                }
+            } else {
+                travelTime = "We could not find a route between this community and your workplace. " +
+                             '(Error: "' + status + '")';
+                directionsLine = null;
+            }
+        });
+
+        var returnValues = {
+            'time': travelTime,
+            'line': directionsLine,
+            'warning': warning,
+            'copyright': copyright
+        };
+    },
+
+    customTravelTime: function(origin, destination) {
+        // Takes coordinates, returns a dict with trip information while driving and on transit.
+
+        var drivingOptions = {
+            origin: origin,
+            destination: destination,
+            travelMode: 'DRIVING'
+        };
+
+        var transitOptions = {
+            origin: origin,
+            destination: destination,
+            travelMode: 'TRANSIT'
+        };
+                
+        var driving = WhereToBuy.getDirections(drivingOptions, origin, destination);
+        var transit = WhereToBuy.getDirections(transitOptions, origin, destination);
+
+        return {'driving': driving, 'transit': transit};
+    },
+
     titleCase: function(s) {
         // Takes a string and converts it to title case (first character of each word in caps)
         return s.replace(/\w\S*/g, function(text) {
@@ -327,5 +399,19 @@ var WhereToBuy = {
         if (text === undefined) return '';
         return decodeURIComponent(text);
     },
+
+    secondsToTimeString: function(d) {
+        // Thanks to Wilson Lee on Stackoverflow for this concise piece of code:
+        // http://stackoverflow.com/questions/37096367/how-to-convert-seconds-to-minutes-and-hours-in-javascript
+        d = Number(d);
+        var h = Math.floor(d / 3600);
+        var m = Math.floor(d % 3600 / 60);
+        var s = Math.floor(d % 3600 % 60);
+
+        var hDisplay = h > 0 ? h + (h == 1 ? " hour, " : " hours, ") : "";
+        var mDisplay = m > 0 ? m + (m == 1 ? " minute, " : " minutes, ") : "";
+        var sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
+        return hDisplay + mDisplay + sDisplay;
+    }
 
 };
