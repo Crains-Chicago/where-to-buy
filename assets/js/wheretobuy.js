@@ -23,9 +23,18 @@ var WhereToBuy = {
     info: null,
     workplace: null,
     layerMap: {},
+    priorityMap: {
+        'price': '',
+        'diversity': 'Diversity Index',
+        'crime': 'THEFT',
+        'schools': '',
+        'commute': 'Time to Loop - Car'
+    },
     marker: null,
+
     chicagoData: null,
     suburbData: null,
+    communityData: [],
 
     initialize: function() {
 
@@ -178,6 +187,18 @@ var WhereToBuy = {
             $("#search-address").val(WhereToBuy.toPlainString($.address.parameter('workplace')));
             WhereToBuy.addressSearch();
         }
+
+        // Get community data and display a ranking (random, for now)
+        $.when(
+            $.get(WhereToBuy.dataDir + 'chicago.csv', function(data) {
+                WhereToBuy.chicagoData = $.csv.toObjects(data);
+            }),
+            $.get(WhereToBuy.dataDir + 'suburb.csv', function(data) {
+                WhereToBuy.suburbData = $.csv.toObjects(data);
+            })
+        ).then(function() {
+            WhereToBuy.displayRanking(WhereToBuy.randomCommunities());
+        });
     },
 
     addressSearch: function (e) {
@@ -267,16 +288,68 @@ var WhereToBuy = {
             default:
                 alert("Sorry, something went wrong.");
         }
-        WhereToBuy.priorityOrder(priorities);
+        WhereToBuy.reorderPriorities(priorities);
     },
 
-    priorityOrder: function(priorities) {
+    reorderPriorities: function(priorities) {
         // Rearranges priority list and reloads packery
         $('#' + priorities[4]).prependTo( $('#grid') );
-        for (var i = 3; i >= 0; i--) {
+        for (var i=3; i>=0; i--) {
             $('#' + priorities[i]).insertBefore( $('#' + priorities[i+1]) );
         }
         $('.grid').packery('reloadItems').packery();
+        $('.grid').trigger('profileSelected');
+    },
+
+    randomCommunities: function() {
+        // Temporary function to randomly rank and display communities.
+        var ranking = [];
+        var possibleCommunities = WhereToBuy.chicagoData.slice();
+        for (var i=0; i<5; i++) {
+            var randomIndex = Math.floor(Math.random()*possibleCommunities.length);
+            var sampleCommunity = possibleCommunities.splice(randomIndex, 1);
+            var community = (sampleCommunity[0]['Place'] ? sampleCommunity[0]['Place'] : sampleCommunity[0]['community']);
+            ranking.push(WhereToBuy.titleCase(community));
+        }
+        return ranking;
+    },
+
+    rankCommunities: function(priorities) {
+        // Takes a priority list and returns a list of top communities based on those priorities
+        //
+        // Future communityData organization:
+        // communityData = [
+        //    {
+        //          community: communityName,
+        //          priorityIndex1: int,
+        //          priorityIndex2: int,
+        //            ...
+        //     },
+        //     {
+        //          community: communityName,
+        //            ...
+        //     }
+        // ]
+        var weights = [
+            0.5,
+            0.4,
+            0.3,
+            0.2,
+            0.1
+        ];
+
+        // for (var j=0; j<WhereToBuy.communityData.length; j++) {
+        //     var communityScore = 0;
+        //     for (var i=0; i<5; i++) {
+        //         (weights[i]*WhereToBuy.communityData[j]priorities[i]
+        //     }        
+    },
+
+    displayRanking: function(ranking) {
+        // Takes an ordered list of communities as input, then ranks them in the UI
+        for (var i=0; i<5; i++) {
+            $('#rank-' + (i+1)).html(ranking[i]);
+        }
     },
 
     selectCommunity: function(text) {
