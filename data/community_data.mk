@@ -4,14 +4,22 @@ PG_DB = wtb
 
 chicago_school_index.csv : final/chicago_schools.csv
 
-# chicago_crime_rate.csv : final/chicago.csv
-# 	csvcut -c "community","HOMICIDE","CRIM SEXUAL ASSAULT","ROBBERY","ASSAULT","BURGLARY","THEFT","MOTOR VEHICLE THEFT","ARSON" $< |\
-# 		python scripts/crime_numbers_to_rates.py > $@
+chicago_population.csv : final/community_areas.geojson
+	cat $< | python scripts/area_population.py > $@
 
-# chicago_crime_index.csv : chicago_crime_rate.csv
-chicago_crime_index.csv : final/chicago.csv
+chicago_crime_rate.csv : final/chicago.csv chicago_population.csv
 	csvcut -c "community","HOMICIDE","CRIM SEXUAL ASSAULT","ROBBERY","ASSAULT","BURGLARY","THEFT","MOTOR VEHICLE THEFT","ARSON" $< |\
-		python scripts/nulls_to_zeroes.py | python scripts/crime_index.py > $@
+		csvjoin -c community - $(word 2,$^) | python scripts/nulls_to_zeroes.py |\
+		python scripts/crime_numbers_to_rates.py > $@
+
+.INTERMEDIATE: crime_index
+crime_index : chicago_crime_rate.csv
+	csvgrep -c 1 -m "LOOP" -i $< | csvgrep -c 1 -m "NEAR NORTH SIDE" -i - |\
+		csvgrep -c 1 -m "NEAR SOUTH SIDE" -i - | csvgrep -c 1 -m "NEAR WEST SIDE" -i - |\
+		python scripts/crime_index.py > $@
+
+chicago_crime_index.csv : crime_index
+	echo "\nLOOP,0\nNEAR NORTH SIDE,0\nNEAR SOUTH SIDE,0\nNEAR WEST SIDE,0" | csvstack $< - > $@
 
 suburb_school_index.csv : final/suburb_schools.csv
 

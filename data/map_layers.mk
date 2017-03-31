@@ -1,14 +1,6 @@
 PG_DB = wtb
 CHECK_RELATION = psql -d $(PG_DB) -c "\d $@" > /dev/null 2>&1
 
-.PHONY: all clean
-
-all: final/places.geojson final/community_areas.geojson
-
-clean:
-	rm -Rf raw/shapefiles/ final/places.geojson final/community_areas.geojson suburbs community_areas raw/*.zip
-	psql -d $(PG_DB) -c "DROP TABLE suburbs,community_areas;"
-
 postgis:
 	psql -d $(PG_DB) -c "CREATE EXTENSION postgis;"
 	touch $@
@@ -22,6 +14,7 @@ raw/shapefiles/community_areas.shp: raw/community_areas.zip
 	mv raw/shapefiles/geo_export*.prj raw/shapefiles/community_areas.prj
 	mv raw/shapefiles/geo_export*.shp raw/shapefiles/community_areas.shp
 	mv raw/shapefiles/geo_export*.shx raw/shapefiles/community_areas.shx
+	touch $@
 
 raw/cb_2015_17_place_500k.zip: 
 	wget -O $@ https://www2.census.gov/geo/tiger/GENZ2015/shp/cb_2015_17_place_500k.zip
