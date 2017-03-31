@@ -1,3 +1,5 @@
 csvkit
 numpy
 sklearn
+scipy
+census_area
