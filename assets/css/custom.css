@@ -261,13 +261,19 @@ p {
     width: 300px;
     height: 200px;
     margin-right: 10px;
-    /*background-color: rgba(139, 196, 220, 0.8)*/
 }
 
 .carousel-cell:hover {    
     cursor: pointer;
-    background-color: #acdbef;
     background-color: rgba(139, 196, 220, 0.5);
+}
+
+.carousel-selected {
+    -webkit-box-shadow: 5px 10px 59px 0px rgba(0,0,0,0.59);
+    -moz-box-shadow: 5px 10px 59px 0px rgba(0,0,0,0.59);
+    box-shadow: 5px 10px 59px 0px rgba(0,0,0,0.59); 
+    -webkit-transition: box-shadow 0.2s, margin 0.2s;
+    transition: box-shadow 0.2s, margin 0.2s;
 }
 
 .carousel-title {

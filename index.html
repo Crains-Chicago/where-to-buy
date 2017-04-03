@@ -189,7 +189,15 @@ layout: base
       });
 
       // Bind click and return events for the profile carousel
-      $('.carousel-cell').on('click', WhereToBuy.viewProfile);
+      $('.carousel-cell').on('click', function(e) {
+          if ($(this).hasClass('carousel-selected')) {
+              $(this).removeClass('carousel-selected');
+          } else {
+            WhereToBuy.viewProfile(e);
+            $('.carousel-cell').removeClass('carousel-selected');
+            $(this).addClass('carousel-selected');
+          }
+      });
   });
 
 </script>
