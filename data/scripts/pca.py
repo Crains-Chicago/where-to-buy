@@ -7,15 +7,18 @@ from sklearn.decomposition import PCA
 reader = csv.reader(sys.stdin)
 writer = csv.writer(sys.stdout)
 
+index_variable = sys.argv[1]
+assert index_variable in ["crime", "schools"]
+
 in_header = next(reader)
-out_header = ["community", "crime"]
+out_header = ["community", index_variable]
 writer.writerow(out_header)
 
-crime_list = list(reader)
-communities = [community[0] for community in crime_list]
-crime_numbers = [community[1:] for community in crime_list]
+reader_list = list(reader)
+communities = [community[0] for community in reader_list]
+numbers = [community[1:] for community in reader_list]
 
-data = np.array(crime_numbers).astype("float")
+data = np.array(numbers).astype("float")
 
 pca = PCA(n_components=1, whiten=True)
 output = pca.fit_transform(data)
