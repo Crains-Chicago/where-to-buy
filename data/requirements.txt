@@ -1,4 +1,4 @@
-csvkit
+https://github.com/wireservice/csvkit/zipball/02ec3aaf86f173c6e8135ff15c590641e6b5522e
 numpy
 sklearn
 scipy
