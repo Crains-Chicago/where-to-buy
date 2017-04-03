@@ -167,6 +167,88 @@ p {
     display:none!important;
 }
 
+/* Carousel images */
+
+.carousel-cell#suburban-home {
+    background: url(../images/suburban-home.jpg);  /* Fallback */
+    background: linear-gradient(rgba(139, 196, 220, 0.5), rgba(139, 196, 220, 0.5)), url(../images/suburban-home.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.carousel-cell#suburban-home:hover {
+    background: url(../images/suburban-home.jpg); /* Fallback */
+    background: linear-gradient(rgba(139, 196, 220, 0.2), rgba(139, 196, 220, 0.2)), url(../images/suburban-home.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.carousel-cell#city-home {
+    background-image: url(../images/city-home.jpg);
+    background: linear-gradient(rgba(139, 196, 220, 0.5), rgba(139, 196, 220, 0.5)), url(../images/city-home.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.carousel-cell#city-home:hover {
+    background-image: url(../images/city-home.jpg);
+    background: linear-gradient(rgba(139, 196, 220, 0.2), rgba(139, 196, 220, 0.2)), url(../images/city-home.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.carousel-cell#downsized-home {
+    background-image: url(../images/downsized-home.jpg);
+    background: linear-gradient(rgba(139, 196, 220, 0.5), rgba(139, 196, 220, 0.5)), url(../images/downsized-home.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.carousel-cell#downsized-home:hover {
+    background-image: url(../images/downsized-home.jpg);
+    background: linear-gradient(rgba(139, 196, 220, 0.2), rgba(139, 196, 220, 0.2)), url(../images/downsized-home.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.carousel-cell#in-town {
+    background-image: url(../images/city-single-buyer.jpg);
+    background: linear-gradient(rgba(139, 196, 220, 0.5), rgba(139, 196, 220, 0.5)), url(../images/city-single-buyer.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.carousel-cell#in-town:hover {
+    background-image: url(../images/city-single-buyer.jpg);
+    background: linear-gradient(rgba(139, 196, 220, 0.2), rgba(139, 196, 220, 0.2)), url(../images/city-single-buyer.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.carousel-cell#vacation-home {
+    background-image: url(../images/lake-house.jpg);
+    background: linear-gradient(rgba(139, 196, 220, 0.5), rgba(139, 196, 220, 0.5)), url(../images/lake-house.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.carousel-cell#vacation-home:hover {
+    background-image: url(../images/lake-house.jpg);
+    background: linear-gradient(rgba(139, 196, 220, 0.2), rgba(139, 196, 220, 0.2)), url(../images/lake-house.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
 /* Profile carousel */
 
 .carousel {
@@ -179,7 +261,7 @@ p {
     width: 300px;
     height: 200px;
     margin-right: 10px;
-    background-color: #8bc4dc;
+    /*background-color: rgba(139, 196, 220, 0.8)*/
 }
 
 .carousel-cell:hover {    
@@ -193,7 +275,7 @@ p {
     position: relative;
     padding: 5px;
     background-color: rgb(255, 255, 255);
-    background-color: rgba(255, 255, 255, 0.75);
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
 .carousel a {
