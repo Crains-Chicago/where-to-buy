@@ -18,9 +18,9 @@ crime_index : chicago_crime_rate.csv
 chicago_crime_index.csv : crime_index
 	echo "\nLOOP,0\nNEAR NORTH SIDE,0\nNEAR SOUTH SIDE,0\nNEAR WEST SIDE,0" | csvstack $< - > $@
 
-.INTERMEDIATE: chicago_school_averages.csv
+.INTERMEDIATE: chicago_school_averages.csv suburb_school_averages.csv
 chicago_school_averages.csv : final/chicago_schools.csv
-	csvcut -c 1,2,3,4,5,6,7,8,9,10,11,13,14,15,16,17,18,19 $< |\
+	csvcut -c 1,2,3,4,5,6,7,14,15,16,17,18,19 $< |\
 		python scripts/nulls_to_zeroes.py | \
 		python scripts/school_averages.py chicago > $@
 
@@ -28,7 +28,7 @@ chicago_school_index.csv : chicago_school_averages.csv
 	cat $< | python scripts/pca.py schools > $@
 
 suburb_school_averages.csv : final/suburb_schools.csv
-	csvcut -C 2 $< | python scripts/nulls_to_zeroes.py |\
+	csvcut -C 2,4,5,6,7,8,9,10,11,12,13,14 $< | python scripts/nulls_to_zeroes.py |\
 		python scripts/school_averages.py suburbs > $@
 
 suburb_school_index.csv : suburb_school_averages.csv
