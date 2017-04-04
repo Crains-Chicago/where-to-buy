@@ -273,10 +273,9 @@ var WhereToBuy = {
         }
     },
 
-    viewProfile: function(e) {
+    viewProfile: function(id) {
         // Matches a real estate profile to a specific priority order
-        if (e) e.preventDefault();
-        var profileID = e.target.id;
+        var profileID = id;
         var priorities;
         switch (profileID) {
             case "suburban-home":
@@ -540,7 +539,7 @@ var WhereToBuy = {
                           "<td class='col-xs-4'><strong><i class='fa fa-fw fa-usd'></i> Price score</strong></td>" +
                           "<td>" + priceScore + "</td>" +
                         "</tr>";
-                        
+
                 // Update the DOM
                 $('#short-description').html(shortDescription);
                 $('#community-info-label').html(community);

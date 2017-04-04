@@ -230,13 +230,19 @@ layout: base
       });
 
       // Bind click and return events for the profile carousel
-      $('.carousel-cell').on('click', function(e) {
-          if ($(this).hasClass('carousel-selected')) {
-              $(this).removeClass('carousel-selected');
+      $('.carousel-cell, .carousel-title').on('click', function(e) {
+          // Handle event where the user clicks on the title
+          if ($(this).is('span')) {
+              $el = $(this).parent('.carousel-cell');
+          } else {  
+              $el = $(this);
+          }
+          if ($el.hasClass('carousel-selected')) {
+              $el.removeClass('carousel-selected');
           } else {
-            WhereToBuy.viewProfile(e);
+            WhereToBuy.viewProfile($el.attr('id'));
             $('.carousel-cell').removeClass('carousel-selected');
-            $(this).addClass('carousel-selected');
+            $el.addClass('carousel-selected');
           }
       });
   });
