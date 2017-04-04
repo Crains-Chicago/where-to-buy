@@ -17,7 +17,7 @@ body {
 
 /* Mobile margin for the map */
 @media (max-width: 756px) {
-    #map {
+    #info-map, #map {
         margin-bottom: 15px;
     }
 }

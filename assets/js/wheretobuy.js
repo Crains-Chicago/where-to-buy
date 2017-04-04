@@ -36,6 +36,7 @@ var WhereToBuy = {
     layerMap: {},
     spellingMap: {},
     priorities: [],
+    rankings: {},
     marker: null,
 
     chicagoData: null,
@@ -347,6 +348,7 @@ var WhereToBuy = {
 
     rankCommunities: function(p) {
         // Takes a priority list and returns a list of top communities based on those priorities
+        // Also assigns a global variable to a complete list of rankings
 
         var priorities = p ? p : WhereToBuy.priorities;
 
@@ -444,8 +446,8 @@ var WhereToBuy = {
     showCommunityInfo: function(community) {
         // Displays a modal with information about a selected community
         var communityInfo,
-            location,
-            dataSource;
+            communityScores,
+            location;
 
         // Fetch the proper map layer and display it on the info map
         if (WhereToBuy.infoMapLayer) {
@@ -462,15 +464,21 @@ var WhereToBuy = {
         WhereToBuy.infoMapLayer = L.geoJson(feature, {style: styles});
         WhereToBuy.infoMapLayer.addTo(WhereToBuy.infoMap);
 
+        // Find the relevant data
         var msg = 'No data found.';
-        // Find the relevant data in the CSV object
         found = false;
+        // First, look in the scoring data
+        for (var k=0; k<WhereToBuy.communityData.length; k++) {
+            if (WhereToBuy.toCommunityString(WhereToBuy.communityData[k].community) == community) {
+                communityScores = $.extend({}, WhereToBuy.communityData[k]);
+                console.log(communityScores);
+                break;
+            }
+        }
         // Search Chicago data
         for (var i=0; i<WhereToBuy.chicagoData.length; i++) {
             if (WhereToBuy.chicagoData[i].community == community) {
                 communityInfo = $.extend({}, WhereToBuy.chicagoData[i]);
-                msg = JSON.stringify(communityInfo, null, 2);
-                dataSource = WhereToBuy.chicagoData[i];
                 location = 'chicago';
                 found = true;
                 break;
@@ -481,8 +489,6 @@ var WhereToBuy = {
             for (var j=0; j<WhereToBuy.suburbData.length; j++) {
                 if (WhereToBuy.suburbData[j]["Place"] == community) {
                     communityInfo = $.extend({}, WhereToBuy.suburbData[j]);
-                    msg = JSON.stringify(communityInfo, null, 2);
-                    dataSource = WhereToBuy.suburbData[i];
                     location = 'suburb';
                     found = true;
                     break;
@@ -490,11 +496,12 @@ var WhereToBuy = {
             }
         }
 
+        var shortDescription;
         if (found) {
-            var shortDescription = "Glenview is an affluent suburban village located in Cook County, Illinois on The North Shore (Chicago). As of the 2010 United States Census, the village population was 44,692.<br/><br/>The magazine Business Insider has recognized Glenview's schools for their exceptional public education. In 2014, Business Insider ranked Glenview's Glenbrook South High School as the 19th best public high school in the United States. In 2015, Glenbrook School District 225 was also ranked 2nd in the state only behind its neighbor New Trier Township, and 10th in the nation by Business Insider. Glenview's Glenbrook South High School is a part of District 225.";
+            shortDescription = "Glenview is an affluent suburban village located in Cook County, Illinois on The North Shore (Chicago). As of the 2010 United States Census, the village population was 44,692.<br/><br/>The magazine Business Insider has recognized Glenview's schools for their exceptional public education. In 2014, Business Insider ranked Glenview's Glenbrook South High School as the 19th best public high school in the United States. In 2015, Glenbrook School District 225 was also ranked 2nd in the state only behind its neighbor New Trier Township, and 10th in the nation by Business Insider. Glenview's Glenbrook South High School is a part of District 225.";
 
-            var commute = dataSource["Avg Commute Time"] ? dataSource["Avg Commute Time"] : dataSource["Average Commute"];
-            var diversity = dataSource["Diversity Index"];
+            var commute = communityInfo["Avg Commute Time"] ? communityInfo["Avg Commute Time"] : communityInfo["Average Commute"];
+            var diversity = communityInfo["Diversity Index"];
             msg +=  "<tr>" +
                       "<td class='col-xs-4'><strong><i class='fa fa-fw fa-car'></i> Typical commute</strong></td>" +
                       "<td>" + parseInt(commute) + " minutes</td>" +
