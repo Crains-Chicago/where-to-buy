@@ -6,6 +6,8 @@ var WhereToBuy = {
 
     // Map config
     map: null,
+    infoMap: null,
+
     mapCentroid: [41.9, -88],
     googleStyles: [{
         stylers: [
@@ -48,9 +50,24 @@ var WhereToBuy = {
             });
         }
 
+        if (!WhereToBuy.infoMap) {
+            WhereToBuy.infoMap = L.map('info-map', {
+                center: WhereToBuy.mapCentroid,
+                zoom: WhereToBuy.defaultZoom,
+                dragging: true,
+                touchZoom: true,
+                zoomControl: true,
+                tap: true,
+                scrollWheelZoom: false
+            });
+        }
+
         // Add streets to the map
         WhereToBuy.streets = new L.Google('ROADMAP', {mapOptions: {styles: WhereToBuy.googleStyles}});
+        WhereToBuy.infoStreets = new L.Google('ROADMAP', {mapOptions: {styles: WhereToBuy.googleStyles}});
+
         WhereToBuy.map.addLayer(WhereToBuy.streets);
+        WhereToBuy.infoMap.addLayer(WhereToBuy.infoStreets);
 
         // Create the community infobox and define its interactivity
         WhereToBuy.info = L.control({position: 'topright'});
@@ -423,7 +440,8 @@ var WhereToBuy = {
     showCommunityInfo: function(community) {
         // Displays a modal with information about a selected community
         var communityInfo,
-            location;
+            location,
+            dataSource;
 
         var msg = 'No data found.';
         // Find the relevant data in the CSV object
@@ -433,6 +451,7 @@ var WhereToBuy = {
             if (WhereToBuy.chicagoData[i].community == community) {
                 communityInfo = $.extend({}, WhereToBuy.chicagoData[i]);
                 msg = JSON.stringify(communityInfo, null, 2);
+                dataSource = WhereToBuy.chicagoData[i];
                 location = 'chicago';
                 found = true;
                 break;
@@ -444,6 +463,7 @@ var WhereToBuy = {
                 if (WhereToBuy.suburbData[j]["Place"] == community) {
                     communityInfo = $.extend({}, WhereToBuy.suburbData[j]);
                     msg = JSON.stringify(communityInfo, null, 2);
+                    dataSource = WhereToBuy.suburbData[i];
                     location = 'suburb';
                     found = true;
                     break;
@@ -451,8 +471,25 @@ var WhereToBuy = {
             }
         }
 
+        if (found) {
+            var shortDescription = "Glenview is an affluent suburban village located in Cook County, Illinois on The North Shore (Chicago). As of the 2010 United States Census, the village population was 44,692.<br/><br/>The magazine Business Insider has recognized Glenview's schools for their exceptional public education. In 2014, Business Insider ranked Glenview's Glenbrook South High School as the 19th best public high school in the United States. In 2015, Glenbrook School District 225 was also ranked 2nd in the state only behind its neighbor New Trier Township, and 10th in the nation by Business Insider. Glenview's Glenbrook South High School is a part of District 225.";
+
+            var commute = dataSource["Avg Commute Time"] ? dataSource["Avg Commute Time"] : dataSource["Average Commute"];
+            var diversity = dataSource["Diversity Index"];
+            msg +=  "<tr>" +
+                      "<td class='col-xs-4'><strong><i class='fa fa-fw fa-car'></i> Typical commute</strong></td>" +
+                      "<td>" + parseInt(commute) + " minutes</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                      "<td class='col-xs-4'><strong><i class='fa fa-fw fa-users'></i> Diversity index</strong></td>" +
+                      "<td>" + parseFloat(diversity).toFixed(2) + "</td>" +
+                    "</tr>";
+        }
+
         // Define the HTML for the modal
-        $('#property-info').html(msg);
+        $('#short-description').html(shortDescription);
+        $('#community-info-label').html(community);
+        $('#community-stats').html(msg);
         $('.modal').modal();
 
         // If the user has set a place of work, calculate a commute time estimate

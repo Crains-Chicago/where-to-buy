@@ -10,6 +10,11 @@ body {
     height: 350px;
 }
 
+#info-map {
+    width: 100%;
+    height: 200px;
+}
+
 /* Mobile margin for the map */
 @media (max-width: 756px) {
     #map {
@@ -32,6 +37,10 @@ p {
 
 .uppercase {
     text-transform: uppercase;
+}
+
+#short-description {
+    line-height: 160%;
 }
 
 #search-address, #search-button {
