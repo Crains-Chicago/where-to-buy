@@ -40,10 +40,10 @@ for row in reader:
         assert len(data['query']['pages']) == 1
         for page in data['query']['pages'].values():
             text = page['extract']
-            text.replace('\n', '<br /><br />')
+            text = text.replace('\n', '<br /><br />')
             extract = text
         out[community] = extract
     else:
         out[community] = 'There was an error querying Wikipedia.'
 
-json.dump(sys.stdout, out)
+json.dump(out, sys.stdout)
