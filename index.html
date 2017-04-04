@@ -43,11 +43,21 @@ layout: base
     </div>
     <div class="well" style="height:350px;">
       <div class="grid">
-        <div class="grid-item text-center" id="diversity"><span class="badge pull-left"></span> High Diversity</div>
-        <div class="grid-item text-center" id="schools"><span class="badge pull-left"></span> Good Schools</div>
-        <div class="grid-item text-center" id="crime"><span class="badge pull-left"></span> Low Crime</div>
-        <div class="grid-item text-center" id="price"><span class="badge pull-left"></span> Solid Price Growth</div>
-        <div class="grid-item text-center" id="commute"><span class="badge pull-left"></span> Short Commutes</div>
+        <div class="grid-item text-center" id="diversity"><span class="badge pull-left"></span>
+          <span class="priority">High Diversity</span>
+        </div>
+        <div class="grid-item text-center" id="schools"><span class="badge pull-left"></span>
+          <span class="priority">Good Schools</span>
+        </div>
+        <div class="grid-item text-center" id="crime"><span class="badge pull-left"></span>
+          <span class="priority">Low Crime</span>
+        </div>
+        <div class="grid-item text-center" id="price"><span class="badge pull-left"></span>
+          <span class="priority">Solid Price </span>
+          Growth</div>
+        <div class="grid-item text-center" id="commute"><span class="badge pull-left"></span>
+          <span class="priority">Short Commutes</span>
+        </div>
       </div>
     </div>
   </div>
@@ -151,8 +161,9 @@ layout: base
         var items = $grid.packery('getItemElements');
         $(items).each(function(i, item) {
             $(item).removeClass('rank-1 rank-2 rank-3 rank-4 rank-5').addClass('rank-' + (i+1).toString());
-            $(item).find('span').html(i+1);
+            $(item).find('span.badge').html(i+1);
         });
+        WhereToBuy.updatePriorityState();
       }
 
       // Init priority order
@@ -161,11 +172,11 @@ layout: base
       // When priorities get reordered, recalculate top communities
       $grid.on('dragItemPositioned', function() {
           rankPriorities();
-          WhereToBuy.displayRanking(WhereToBuy.randomCommunities());
+          WhereToBuy.displayRanking(WhereToBuy.rankCommunities());
       });
 
       $grid.on('profileSelected', function() {
-          WhereToBuy.displayRanking(WhereToBuy.randomCommunities());
+          WhereToBuy.displayRanking(WhereToBuy.rankCommunities());
       })
 
       // Trigger initial priority layout
