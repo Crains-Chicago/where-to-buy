@@ -326,63 +326,63 @@ p {
 }
 
 .grid-item.rank-1 {
-    background: #cde5ef;
-    background: hsla(214, 47%, 49%, 0.2);
-    border: 2px solid #8bc4dc;
-    border: 2px solid hsla(214, 47%, 49%, 0.4);
+    background: #df766d;
+    background: hsla(5, 77%, 48%, 0.4);
+    border: 2px solid #cf3e30;
+    border: 2px solid hsla(5, 77%, 48%, 0.5);
 }
 
 .grid-item.rank-1 .badge {
-    background-color: #348daf !important;
-    background-color: hsla(214, 47%, 49%, 1) !important;
+    background-color: #cf3e30 !important;
+    background-color: hsla(5, 77%, 48%, 1) !important;
 }
 
 .grid-item.rank-2 {
-    background: #cde5ef;
-    background: hsla(203, 53%, 71%, 0.2);
-    border: 2px solid #8bc4dc;
-    border: 2px solid hsla(203, 53%, 71%, 0.5);
-}
-
-.grid-item.rank-2 .badge {
-    background-color: #348daf !important;
-    background-color: hsla(208, 38%, 57%, 1) !important;
-}
-
-.grid-item.rank-3 {
-    background: #cde5ef;
-    background: hsla(45, 100%, 77%, 0.2);
-    border: 2px solid #8bc4dc;
-    border: 2px solid hsla(45, 100%, 77%, 0.7);
-}
-
-.grid-item.rank-3 .badge {
-    background-color: #348daf !important;
-    background-color: hsla(45, 59%, 45%, 1) !important;
-}
-
-.grid-item.rank-4 {
-    background: #cde5ef;
-    background: hsla(21, 99%, 66%, 0.2);
-    border: 2px solid #8bc4dc;
-    border: 2px solid hsla(21, 99%, 66%, 0.5);
-}
-
-.grid-item.rank-4 .badge {
-    background-color: #348daf !important;
-    background-color: hsla(21, 99%, 66%, 1) !important;
-}
-
-.grid-item.rank-5 {
-    background: #cde5ef;
-    background: hsla(5, 77%, 48%, 0.2);
-    border: 2px solid #8bc4dc;
+    background: #e28279;
+    background: hsla(5, 77%, 48%, 0.28);
+    border: 2px solid #cf3e30;
     border: 2px solid hsla(5, 77%, 48%, 0.4);
 }
 
+.grid-item.rank-2 .badge {
+    background-color: #cf3e30 !important;
+    background-color: hsla(5, 77%, 48%, 0.8) !important;
+}
+
+.grid-item.rank-3 {
+    background: #e99e96;
+    background: hsla(5, 77%, 48%, 0.22);
+    border: 2px solid #cf3e30;
+    border: 2px solid hsla(5, 77%, 48%, 0.3);
+}
+
+.grid-item.rank-3 .badge {
+    background-color: #cf3e30 !important;
+    background-color: hsla(5, 77%, 48%, 0.6) !important;
+}
+
+.grid-item.rank-4 {
+    background: #efbdb8;
+    background: hsla(5, 77%, 48%, 0.15);
+    border: 2px solid #cf3e30;
+    border: 2px solid hsla(5, 77%, 48%, 0.2);
+}
+
+.grid-item.rank-4 .badge {
+    background-color: #cf3e30 !important;
+    background-color: hsla(5, 77%, 48%, 0.45) !important;
+}
+
+.grid-item.rank-5 {
+    background: #f7dcd9;
+    background: hsla(5, 77%, 48%, 0.1);
+    border: 2px solid #cf3e30;
+    border: 2px solid hsla(5, 77%, 48%, 0.1);
+}
+
 .grid-item.rank-5 .badge {
-    background-color: #348daf !important;
-    background-color: hsla(5, 77%, 48%, 1) !important;
+    background-color: #cf3e30 !important;
+    background-color: hsla(5, 77%, 48%, 0.45) !important;
 }
 
 .grid-item.is-dragging,
