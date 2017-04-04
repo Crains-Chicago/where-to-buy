@@ -7,6 +7,7 @@ var WhereToBuy = {
     // Map config
     map: null,
     infoMap: null,
+    infoMapLayer: null,
 
     mapCentroid: [41.9, -88],
     googleStyles: [{
@@ -15,6 +16,13 @@ var WhereToBuy = {
             { lightness: 40 }
         ]
     }],
+    layerStyle: {
+        'color': '#FF6600',
+        'weight': 0.5,
+        'opacity': 0.5,
+        'fillColor': '#FF6600',
+        'fillOpacity': 0.5
+    },
     defaultZoom: 8,
     lastClickedLayer: null,
     legend: null,
@@ -97,15 +105,6 @@ var WhereToBuy = {
 
         WhereToBuy.info.addTo(WhereToBuy.map);
 
-        // Define GeoJSON styles
-        var layerStyle = {
-            'color': '#FF6600',
-            'weight': 0.5,
-            'opacity': 0.5,
-            'fillColor': '#FF6600',
-            'fillOpacity': 0.5
-        };
-
         // Define GeoJSON feature UX
         var highlightFeature = function(e) {
             // Different behavior based on the input
@@ -166,7 +165,7 @@ var WhereToBuy = {
         };
 
         var layerOpts = {
-            style: layerStyle,
+            style: WhereToBuy.layerStyle,
             onEachFeature: onEachFeature
         };
 
@@ -202,6 +201,11 @@ var WhereToBuy = {
             $("#search-address").val(WhereToBuy.toPlainString($.address.parameter('workplace')));
             WhereToBuy.addressSearch();
         }
+
+        // Prep modal map for display
+        $('.modal').on('shown.bs.modal', function() {
+            WhereToBuy.infoMap.invalidateSize();
+        });
 
         // Get community data and display a ranking
         $.when(
@@ -426,7 +430,7 @@ var WhereToBuy = {
                 $.get(WhereToBuy.dataDir + 'suburb.csv', function(data) {
                     WhereToBuy.suburbData = $.csv.toObjects(data);
                     for (var i=0; i<WhereToBuy.suburbData.length; i++) {
-                        var suburbName = WheretoBuy.toCommunityString(WhereToBuy.suburbData[i]["Place"]);
+                        var suburbName = WhereToBuy.toCommunityString(WhereToBuy.suburbData[i]["Place"]);
                         WhereToBuy.spellingMap[suburbName] = WhereToBuy.suburbData[i]["Place"];
                         WhereToBuy.suburbData[i]["Place"] = suburbName;
                     }
@@ -442,6 +446,21 @@ var WhereToBuy = {
         var communityInfo,
             location,
             dataSource;
+
+        // Fetch the proper map layer and display it on the info map
+        if (WhereToBuy.infoMapLayer) {
+            WhereToBuy.infoMap.removeLayer(WhereToBuy.infoMapLayer);
+        }
+        var styles = {
+            'color': '#FF6600',
+            'weight': 0.5,
+            'opacity': 0.5,
+            'fillColor': '#FF6600',
+            'fillOpacity': 1
+        };
+        var feature = WhereToBuy.layerMap[community].feature;
+        WhereToBuy.infoMapLayer = L.geoJson(feature, {style: styles});
+        WhereToBuy.infoMapLayer.addTo(WhereToBuy.infoMap);
 
         var msg = 'No data found.';
         // Find the relevant data in the CSV object
