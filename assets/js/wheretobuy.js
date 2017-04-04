@@ -520,9 +520,6 @@ var WhereToBuy = {
                 var schoolsScore = parseFloat(communityScores["schools"]);
                 var priceScore = communityScores["price"].length ? communityScores["price"] : "Price data not found.";
 
-                // switch(crimeScore) {
-                //     case()
-                // }
                 msg +=  "<tr>" +
                           "<td class='col-xs-4'><strong><i class='fa fa-fw fa-car'></i> Typical commute</strong></td>" +
                           "<td>" + parseInt(commute) + " minutes</td>" +
@@ -530,7 +527,20 @@ var WhereToBuy = {
                         "<tr>" +
                           "<td class='col-xs-4'><strong><i class='fa fa-fw fa-users'></i> Diversity index</strong></td>" +
                           "<td>" + parseFloat(diversity).toFixed(2) + "</td>" +
+                        "</tr>" +
+                        "<tr>" +
+                          "<td class='col-xs-4'><strong><i class='fa fa-fw fa-balance-scale'></i> Crime score</strong></td>" +
+                          "<td>" + crimeScore + "</td>" +
+                        "</tr>" +
+                        "<tr>" +
+                          "<td class='col-xs-4'><strong><i class='fa fa-fw fa-graduation-cap'></i> School score</strong></td>" +
+                          "<td>" + schoolsScore + "</td>" +
+                        "</tr>" +
+                        "<tr>" +
+                          "<td class='col-xs-4'><strong><i class='fa fa-fw fa-usd'></i> Price score</strong></td>" +
+                          "<td>" + priceScore + "</td>" +
                         "</tr>";
+                        
                 // Update the DOM
                 $('#short-description').html(shortDescription);
                 $('#community-info-label').html(community);
