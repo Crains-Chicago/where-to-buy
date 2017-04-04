@@ -35,6 +35,12 @@ chicago_school_averages.csv : final/chicago_schools.csv
 chicago_school_index.csv : chicago_school_averages.csv
 	cat $< | python scripts/pca.py schools > $@
 
+# -- prices -- #
+
+.INTERMEDIATE: chicago_prices.csv
+chicago_prices.csv : raw/chicago_price_scoring.csv
+	csvcut -c 1,2 $< > $@
+
 # ======= #
 # Suburbs #
 # ======= #
@@ -59,14 +65,25 @@ suburb_school_averages.csv : final/suburb_schools.csv
 suburb_school_index.csv : suburb_school_averages.csv
 	cat $< | python scripts/pca.py schools > $@
 
+# -- prices -- #
+
+.INTERMEDIATE: suburb_prices.csv
+suburb_prices.csv : raw/suburb_price_scoring.csv places.csv
+	csvjoin --right -c "community","Place" $^ | csvcut -c 1,3 |\
+		sed -e "1s/Place/community/" > $@
+
+# ======== #
+# Combined #
+# ======== #
+
 .INTERMEDIATE: suburb_modified.csv chicago_modified.csv
-suburb_modified.csv : final/suburb.csv places.csv suburb_school_index.csv suburb_crime_index.csv raw/suburb_price_scoring.csv
+suburb_modified.csv : final/suburb.csv places.csv suburb_school_index.csv suburb_crime_index.csv suburb_prices.csv
 	csvjoin -I -c "Place","Place","community","community","community" $^ |\
 		csvcut -c "Place","Avg Commute Time","Diversity Index","crime","schools","price","FIPS" - |\
 		sed -e "1s/Place/community/" -e "1s/Avg Commute Time/commute/" |\
 		sed -e "1s/Diversity Index/diversity/" -e "1s/FIPS/fips/" > $@
 
-chicago_modified.csv : final/chicago.csv chicago_school_index.csv chicago_crime_index.csv raw/chicago_price_scoring.csv
+chicago_modified.csv : final/chicago.csv chicago_school_index.csv chicago_crime_index.csv chicago_prices.csv
 	csvjoin -I -c "community" $^ |\
 		csvcut -c "community","Average Commute","Diversity Index","crime","schools","price" - |\
 		sed -e "1s/Average Commute/commute/" -e "1s/Diversity Index/diversity/" |\
