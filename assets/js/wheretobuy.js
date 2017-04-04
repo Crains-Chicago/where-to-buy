@@ -152,6 +152,7 @@ var WhereToBuy = {
                 }
 
                 var props = feature.properties;
+                var communityName = props.name ? props.name : props.community;
 
                 // Bind hover events
                 layer.on('mouseover', function(e) {
@@ -161,6 +162,9 @@ var WhereToBuy = {
                 layer.on('mouseout', function(e) {
                     resetHighlight(e);
                     WhereToBuy.info.clear();
+                });
+                layer.on('click', function(e) {
+                    WhereToBuy.selectCommunity(WhereToBuy.toCommunityString(communityName));
                 });
             }
         };
