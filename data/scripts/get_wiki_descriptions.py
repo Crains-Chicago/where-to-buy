@@ -42,8 +42,8 @@ for row in reader:
             text = page['extract']
             text = text.replace('\n', '<br /><br />')
             extract = text
-        out[community] = extract
+        out[row[0]] = extract
     else:
-        out[community] = 'There was an error querying Wikipedia.'
+        out[row[0]] = "Sorry! We couldn't find information about this place on Wikipedia."
 
 json.dump(out, sys.stdout)

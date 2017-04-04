@@ -65,7 +65,7 @@ var WhereToBuy = {
                 zoom: WhereToBuy.defaultZoom,
                 dragging: true,
                 touchZoom: true,
-                zoomControl: true,
+                zoomControl: false,
                 tap: true,
                 scrollWheelZoom: false
             });
@@ -454,9 +454,10 @@ var WhereToBuy = {
             WhereToBuy.infoMap.removeLayer(WhereToBuy.infoMapLayer);
         }
         var styles = {
+            // 'color': '#616161',
             'color': '#FF6600',
-            'weight': 0.5,
-            'opacity': 0.5,
+            'weight': 2,
+            'opacity': 1,
             'fillColor': '#FF6600',
             'fillOpacity': 1
         };
@@ -498,25 +499,46 @@ var WhereToBuy = {
 
         var shortDescription;
         if (found) {
-            shortDescription = "Glenview is an affluent suburban village located in Cook County, Illinois on The North Shore (Chicago). As of the 2010 United States Census, the village population was 44,692.<br/><br/>The magazine Business Insider has recognized Glenview's schools for their exceptional public education. In 2014, Business Insider ranked Glenview's Glenbrook South High School as the 19th best public high school in the United States. In 2015, Glenbrook School District 225 was also ranked 2nd in the state only behind its neighbor New Trier Township, and 10th in the nation by Business Insider. Glenview's Glenbrook South High School is a part of District 225.";
+            $.getJSON(WhereToBuy.dataDir + 'short_descriptions.json', function(descriptions) {
+                console.log(descriptions);
+                shortDescription = descriptions[communityScores.community];
+                $('#short-description').html(shortDescription);
 
-            var commute = communityInfo["Avg Commute Time"] ? communityInfo["Avg Commute Time"] : communityInfo["Average Commute"];
-            var diversity = communityInfo["Diversity Index"];
-            msg +=  "<tr>" +
-                      "<td class='col-xs-4'><strong><i class='fa fa-fw fa-car'></i> Typical commute</strong></td>" +
-                      "<td>" + parseInt(commute) + " minutes</td>" +
-                    "</tr>" +
-                    "<tr>" +
-                      "<td class='col-xs-4'><strong><i class='fa fa-fw fa-users'></i> Diversity index</strong></td>" +
-                      "<td>" + parseFloat(diversity).toFixed(2) + "</td>" +
-                    "</tr>";
+                // String data
+                var commute = communityInfo["Avg Commute Time"] ? communityInfo["Avg Commute Time"] : communityInfo["Average Commute"];
+                var diversity = communityInfo["Diversity Index"];
+
+                // Score data
+                var crime,
+                    schools,
+                    price;
+                var crimeScore = parseFloat(communityScores["crime"]);
+                var schoolsScore = parseFloat(communityScores["schools"]);
+                var priceScore = communityScores["price"].length ? communityScores["price"] : "Price data not found.";
+
+                // switch(crimeScore) {
+                //     case()
+                // }
+                msg +=  "<tr>" +
+                          "<td class='col-xs-4'><strong><i class='fa fa-fw fa-car'></i> Typical commute</strong></td>" +
+                          "<td>" + parseInt(commute) + " minutes</td>" +
+                        "</tr>" +
+                        "<tr>" +
+                          "<td class='col-xs-4'><strong><i class='fa fa-fw fa-users'></i> Diversity index</strong></td>" +
+                          "<td>" + parseFloat(diversity).toFixed(2) + "</td>" +
+                        "</tr>";
+                // Update the DOM
+                $('#short-description').html(shortDescription);
+                $('#community-info-label').html(community);
+                $('#community-stats').html(msg);
+                $('.modal').modal();
+            });
+        } else {
+            // Update the DOM
+            $('#community-info-label').html(community);
+            $('#community-stats').html(msg);
+            $('.modal').modal();
         }
-
-        // Define the HTML for the modal
-        $('#short-description').html(shortDescription);
-        $('#community-info-label').html(community);
-        $('#community-stats').html(msg);
-        $('.modal').modal();
 
         // If the user has set a place of work, calculate a commute time estimate
         if (WhereToBuy.workplace) {
