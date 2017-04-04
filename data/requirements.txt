@@ -3,3 +3,4 @@ numpy
 sklearn
 scipy
 census_area
+requests

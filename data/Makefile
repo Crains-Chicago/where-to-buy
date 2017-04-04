@@ -14,3 +14,6 @@ clean:
 	rm -Rf suburb_crime_*.csv suburb_school_*.csv
 	rm -Rf final/community_data.csv
 	psql -d $(PG_DB) -c "DROP TABLE suburbs,community_areas;"
+
+final/short_descriptions.json : places.csv final/chicago.csv
+	csvstack $^ | python scripts/get_wiki_descriptions.py > $@
