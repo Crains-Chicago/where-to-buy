@@ -327,7 +327,7 @@ p {
 
 .grid-item.rank-1 {
     background: #df766d;
-    background: hsla(5, 77%, 48%, 0.4);
+    background: hsla(5, 77%, 48%, 0.43);
     border: 2px solid #cf3e30;
     border: 2px solid hsla(5, 77%, 48%, 0.5);
 }
@@ -339,7 +339,7 @@ p {
 
 .grid-item.rank-2 {
     background: #e28279;
-    background: hsla(5, 77%, 48%, 0.28);
+    background: hsla(5, 77%, 48%, 0.3);
     border: 2px solid #cf3e30;
     border: 2px solid hsla(5, 77%, 48%, 0.4);
 }

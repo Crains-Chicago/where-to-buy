@@ -37,7 +37,8 @@ var WhereToBuy = {
     spellingMap: {},
     priorities: [],
     rankings: {},
-    marker: null,
+    workMarker: null,
+    placeMarker: null,
 
     chicagoData: null,
     suburbData: null,
@@ -199,6 +200,33 @@ var WhereToBuy = {
                 resetHighlight(WhereToBuy.layerMap[community]);
                 WhereToBuy.info.clear();
             });
+
+            // Get community data and display a ranking
+            $.when(
+                $.get(WhereToBuy.dataDir + 'chicago.csv', function(data) {
+                    WhereToBuy.chicagoData = $.csv.toObjects(data);
+                    for (var i=0; i<WhereToBuy.chicagoData.length; i++) {
+                        var chicagoName = WhereToBuy.toCommunityString(WhereToBuy.chicagoData[i].community);
+                        WhereToBuy.spellingMap[chicagoName] = WhereToBuy.chicagoData[i].community;
+                        WhereToBuy.chicagoData[i].community = chicagoName;
+                    }
+                }),
+                $.get(WhereToBuy.dataDir + 'suburb.csv', function(data) {
+                    WhereToBuy.suburbData = $.csv.toObjects(data);
+                    for (var i=0; i<WhereToBuy.suburbData.length; i++) {
+                        var suburbName = WhereToBuy.toCommunityString(WhereToBuy.suburbData[i]["Place"]);
+                        WhereToBuy.spellingMap[suburbName] = WhereToBuy.suburbData[i]["Place"];
+                        WhereToBuy.suburbData[i]["Place"] = suburbName;
+                    }
+                }),
+                $.get(WhereToBuy.dataDir + 'community_data.csv', function(data) {
+                    WhereToBuy.communityData = $.csv.toObjects(data);
+                })
+            ).then(function() {
+                // Update the priority state and rankings
+                WhereToBuy.updatePriorityState();
+                WhereToBuy.displayRanking(WhereToBuy.rankCommunities());
+            });
         });
 
         // Check for workplace parameter in the URL
@@ -210,33 +238,6 @@ var WhereToBuy = {
         // Prep modal map for display
         $('.modal').on('shown.bs.modal', function() {
             WhereToBuy.infoMap.invalidateSize();
-        });
-
-        // Get community data and display a ranking
-        $.when(
-            $.get(WhereToBuy.dataDir + 'chicago.csv', function(data) {
-                WhereToBuy.chicagoData = $.csv.toObjects(data);
-                for (var i=0; i<WhereToBuy.chicagoData.length; i++) {
-                    var chicagoName = WhereToBuy.toCommunityString(WhereToBuy.chicagoData[i].community);
-                    WhereToBuy.spellingMap[chicagoName] = WhereToBuy.chicagoData[i].community;
-                    WhereToBuy.chicagoData[i].community = chicagoName;
-                }
-            }),
-            $.get(WhereToBuy.dataDir + 'suburb.csv', function(data) {
-                WhereToBuy.suburbData = $.csv.toObjects(data);
-                for (var i=0; i<WhereToBuy.suburbData.length; i++) {
-                    var suburbName = WhereToBuy.toCommunityString(WhereToBuy.suburbData[i]["Place"]);
-                    WhereToBuy.spellingMap[suburbName] = WhereToBuy.suburbData[i]["Place"];
-                    WhereToBuy.suburbData[i]["Place"] = suburbName;
-                }
-            }),
-            $.get(WhereToBuy.dataDir + 'community_data.csv', function(data) {
-                WhereToBuy.communityData = $.csv.toObjects(data);
-            })
-        ).then(function() {
-            // Update the priority state and rankings
-            WhereToBuy.updatePriorityState();
-            WhereToBuy.displayRanking(WhereToBuy.rankCommunities());
         });
     },
 
@@ -261,10 +262,10 @@ var WhereToBuy = {
 
                     WhereToBuy.map.setView(WhereToBuy.workplace, 8);
 
-                    if (WhereToBuy.marker)
-                        WhereToBuy.map.removeLayer(WhereToBuy.marker);
+                    if (WhereToBuy.workMarker)
+                        WhereToBuy.map.removeLayer(WhereToBuy.workMarker);
 
-                    WhereToBuy.marker = L.marker(WhereToBuy.workplace).addTo(WhereToBuy.map);
+                    WhereToBuy.workMarker = L.marker(WhereToBuy.workplace).addTo(WhereToBuy.map);
                 }
                 else {
                     alert("We could not find your address: " + status);
@@ -349,9 +350,10 @@ var WhereToBuy = {
         });
     },
 
-    rankCommunities: function(p) {
+    rankCommunities: function(p, update) {
         // Takes a priority list and returns a list of top communities based on those priorities
-        // Also assigns a global variable to a complete list of rankings
+        // Also assigns a global variable to a complete list of rankings, and updates the map
+        // to display the top 5 communities
 
         var priorities = p ? p : WhereToBuy.priorities;
 
@@ -415,6 +417,22 @@ var WhereToBuy = {
             $('#rank-' + (i+1)).html(WhereToBuy.toCommunityString(community));
             WhereToBuy.bestCommunities.push({'community': community, 'score': score});
         }
+
+        // Display the top communities with markers on the map
+        WhereToBuy.rankingMarkers = [];
+        for (j=0; j<WhereToBuy.bestCommunities.length; j++) {
+            var communityName = WhereToBuy.toCommunityString(WhereToBuy.bestCommunities[j].community);
+            var communityLayer = WhereToBuy.layerMap[communityName];
+            var coords = communityLayer.getBounds().getCenter();
+            var centroid = [coords.lat, coords.lng];
+            var num = L.divIcon({
+                className: 'div-icon',
+                html: '<h4>' + j + '</h4>'
+            });
+            console.log(num);
+            WhereToBuy.rankingMarkers.push(L.marker(centroid, {icon: num})
+                                          .addTo(WhereToBuy.map));
+        }
     },
 
     selectCommunity: function(text) {
@@ -458,12 +476,20 @@ var WhereToBuy = {
         }
         var styles = {
             // 'color': '#616161',
-            'color': '#FF6600',
+            'color': '#cf3e30',
             'weight': 2,
             'opacity': 1,
-            'fillColor': '#FF6600',
+            'fillColor': '#cf3e30',
             'fillOpacity': 1
         };
+        var coords = WhereToBuy.layerMap[community].getBounds().getCenter();
+        var centroid = [coords.lat, coords.lng];
+
+        if (WhereToBuy.placeMarker)
+            WhereToBuy.infoMap.removeLayer(WhereToBuy.placeMarker);
+
+        WhereToBuy.placeMarker = L.marker(centroid).addTo(WhereToBuy.infoMap);
+
         var feature = WhereToBuy.layerMap[community].feature;
         WhereToBuy.infoMapLayer = L.geoJson(feature, {style: styles});
         WhereToBuy.infoMapLayer.addTo(WhereToBuy.infoMap);
