@@ -36,7 +36,7 @@ var WhereToBuy = {
     layerMap: {},
     spellingMap: {},
     priorities: [],
-    rankings: {},
+    rankings: [],
     workMarker: null,
     placeMarker: null,
     rankingMarkers: [],
@@ -140,8 +140,8 @@ var WhereToBuy = {
                 layer = e;
             }
 
-            suburbLayer.resetStyle(layer);
-            chicagoLayer.resetStyle(layer);
+            WhereToBuy.suburbLayer.resetStyle(layer);
+            WhereToBuy.chicagoLayer.resetStyle(layer);
         };
 
         // Bind GeoJSON UX to the feature
@@ -187,8 +187,8 @@ var WhereToBuy = {
             })
         ).then(function() {
             // Add each layer to the map
-            suburbLayer = L.geoJson(suburbGeojson, layerOpts).addTo(WhereToBuy.map);
-            chicagoLayer = L.geoJson(chicagoGeojson, layerOpts).addTo(WhereToBuy.map);
+            WhereToBuy.suburbLayer = L.geoJson(suburbGeojson, layerOpts).addTo(WhereToBuy.map);
+            WhereToBuy.chicagoLayer = L.geoJson(chicagoGeojson, layerOpts).addTo(WhereToBuy.map);
 
             // Allow ranking list to interact with the map
             $('.ranking').on('mouseover', function() {
@@ -227,6 +227,7 @@ var WhereToBuy = {
                 // Update the priority state and rankings
                 WhereToBuy.updatePriorityState();
                 WhereToBuy.displayRanking(WhereToBuy.rankCommunities());
+                WhereToBuy.updateMapChoropleth();
             });
         });
 
@@ -240,6 +241,27 @@ var WhereToBuy = {
         $('.modal').on('shown.bs.modal', function() {
             WhereToBuy.infoMap.invalidateSize();
         });
+    },
+
+    updateMapChoropleth: function() {
+        // Updates map choropleth based on the current priorities
+        // (Assumes global rankings exist)
+        for (var i=0; i<WhereToBuy.rankings.length; i++) {
+            var communityName = WhereToBuy.toCommunityString(WhereToBuy.rankings[i].community);
+            console.log(communityName, i);
+            var layer = WhereToBuy.layerMap[communityName];
+            layer.setStyle(WhereToBuy.getStyle(i, WhereToBuy.rankings.length));
+        }
+    },
+
+    getStyle: function(position, total) {
+        return {
+            color: 'white',
+            weight: 0.5,
+            opacity: 0.5,
+            fillColor: '#FF6600',
+            fillOpacity: (total/(position*total))*100
+        };
     },
 
     addressSearch: function (e) {
@@ -378,8 +400,7 @@ var WhereToBuy = {
 
     rankCommunities: function(p, update) {
         // Takes a priority list and returns a list of top communities based on those priorities
-        // Also assigns a global variable to a complete list of rankings, and updates the map
-        // to display the top 5 communities
+        // Also assigns a global variable to a complete list of rankings
 
         var priorities = p ? p : WhereToBuy.priorities;
 
@@ -391,6 +412,7 @@ var WhereToBuy = {
             0.1
         ];
 
+        WhereToBuy.rankings = [];
         var topCommunities = [];
         for (var i=0; i<WhereToBuy.communityData.length; i++) {
             // Score the community based on the priorities
@@ -420,6 +442,23 @@ var WhereToBuy = {
                     topCommunities.splice(k, 0, communityPair);
                     break;
                 }
+            }
+
+            // Place this community in a global list of rankings
+            var last = true;
+            if (WhereToBuy.rankings.length === 0) {
+                WhereToBuy.rankings.push(communityPair);
+            } else {
+                for (var m=0; m<WhereToBuy.rankings.length; m++) {
+                    if (communityScore > WhereToBuy.rankings[m]['score']) {
+                        WhereToBuy.rankings.splice(m, 0, communityPair);
+                        last = false;
+                        break;
+                    }
+                }
+            }
+            if (last) {
+                WhereToBuy.rankings.push(communityPair);
             }
 
             // We need at least five communities...
@@ -465,6 +504,9 @@ var WhereToBuy = {
             WhereToBuy.rankingMarkers.push(L.marker(centroid, {icon: num})
                                           .addTo(WhereToBuy.map));
         }
+
+        // Update map choropleth
+        WhereToBuy.updateMapChoropleth();
     },
 
     selectCommunity: function(text) {
@@ -776,6 +818,7 @@ var WhereToBuy = {
         var string = WhereToBuy.titleCase(text);
         string = string.replace(' City, Illinois', '');
         string = string.replace(' Village, Illinois', '');
+        string = string.replace(' Town, Illinois', '');
         if (~string.indexOf('Mc')) {
             string = 'Mc' + string.charAt(2).toUpperCase() + string.slice(3);
         }
