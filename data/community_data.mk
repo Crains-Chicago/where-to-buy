@@ -45,6 +45,9 @@ chicago_prices.csv : raw/chicago_price_scoring.csv
 # Suburbs #
 # ======= #
 
+places.csv : raw/places.csv
+	cat $< | grep -v '\"Chicago city\, Illinois\"' > $@
+
 # -- crime -- #
 
 suburb_crime_rates.csv : final/suburb.csv
