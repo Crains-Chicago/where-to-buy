@@ -140,8 +140,9 @@ var WhereToBuy = {
                 layer = e;
             }
 
-            WhereToBuy.suburbLayer.resetStyle(layer);
-            WhereToBuy.chicagoLayer.resetStyle(layer);
+            // WhereToBuy.suburbLayer.resetStyle(layer);
+            // WhereToBuy.chicagoLayer.resetStyle(layer);
+            layer.setStyle(WhereToBuy.layerStyle);
         };
 
         // Bind GeoJSON UX to the feature
@@ -245,13 +246,29 @@ var WhereToBuy = {
 
     updateMapChoropleth: function() {
         // Updates map choropleth based on the current priorities
-        // (Assumes global rankings exist)
-        for (var i=0; i<WhereToBuy.rankings.length; i++) {
-            var communityName = WhereToBuy.toCommunityString(WhereToBuy.rankings[i].community);
-            console.log(communityName, i);
-            var layer = WhereToBuy.layerMap[communityName];
-            layer.setStyle(WhereToBuy.getStyle(i, WhereToBuy.rankings.length));
+
+        var layers = [WhereToBuy.chicagoLayer, WhereToBuy.suburbLayer];
+        for (var i=0; i<layers.length; i++) {
+            var comm = (layers[i] == WhereToBuy.chicagoGeojson) ? 'community' : 'name';
+            layers[i].eachLayer(function(layer) {
+                var communityName = layer.feature.properties[comm];
+                // Find the ranking of this community
+                var ranking;
+                for (var i=0; i<WhereToBuy.rankings.length; i++) {
+                    if (WhereToBuy.toCommunityString(WhereToBuy.rankings[i].community) == communityName) {
+                        ranking = i;
+                        break;
+                    }
+                }
+                layer.setStyle(WhereToBuy.getStyle(ranking, WhereToBuy.rankings.length));
+                // Redo the event listeners to use new styles
+                layer.off('mouseout');
+                layer.on('mouseout', function(e) {
+                    e.target.setStyle(WhereToBuy.getStyle(ranking, WhereToBuy.rankings.length));
+                });
+            });
         }
+
     },
 
     getStyle: function(position, total) {
