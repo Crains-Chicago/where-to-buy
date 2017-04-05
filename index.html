@@ -82,6 +82,11 @@ layout: base
     <div class="text-center">
       <h3>Best communities</h3>
       <p class="small help-block">Click to see more information</p>
+      <div class="btn-group" role="group" style="margin-bottom:10px">
+        <button type="button" class="btn btn-default geography-toggle" id="chicago-toggle">Chicago</button>
+        <button type="botton" class="btn btn-default geography-toggle" id="suburbs-toggle">Suburbs</button>
+        <button type="botton" class="btn btn-default geography-toggle active" id="both-toggle">Both</button>
+      </div>
     </div>
     <div class="table-responsive">
       <table class="table table-striped table-bordered table-hover" id="best-communities">
@@ -105,6 +110,7 @@ layout: base
       </table>
     </div>
   </div>
+
 </div>
 
 <!-- Community information modal -->
@@ -245,6 +251,22 @@ layout: base
             $el.addClass('carousel-selected');
           }
       });
+
+      // Bind click events for the geography toggle
+      $('.geography-toggle').click(function(e) {
+          $('.geography-toggle').removeClass('active');
+          $(this).addClass('active');
+          if ($(this).attr('id') == 'chicago-toggle') {
+              WhereToBuy.map.removeLayer(WhereToBuy.suburbLayer);
+              WhereToBuy.map.addLayer(WhereToBuy.chicagoLayer);
+          } else if ($(this).attr('id') == 'suburbs-toggle') {
+              WhereToBuy.map.removeLayer(WhereToBuy.chicagoLayer);
+              WhereToBuy.map.addLayer(WhereToBuy.suburbLayer);
+          } else {
+              WhereToBuy.map.addLayer(WhereToBuy.chicagoLayer);
+              WhereToBuy.map.addLayer(WhereToBuy.suburbLayer);
+          }
+      })
   });
 
 </script>

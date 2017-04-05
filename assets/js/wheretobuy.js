@@ -140,8 +140,6 @@ var WhereToBuy = {
                 layer = e;
             }
 
-            // WhereToBuy.suburbLayer.resetStyle(layer);
-            // WhereToBuy.chicagoLayer.resetStyle(layer);
             layer.setStyle(WhereToBuy.layerStyle);
         };
 
@@ -228,7 +226,6 @@ var WhereToBuy = {
                 // Update the priority state and rankings
                 WhereToBuy.updatePriorityState();
                 WhereToBuy.displayRanking(WhereToBuy.rankCommunities());
-                WhereToBuy.updateMapChoropleth();
             });
         });
 
@@ -249,9 +246,10 @@ var WhereToBuy = {
 
         var layers = [WhereToBuy.chicagoLayer, WhereToBuy.suburbLayer];
         for (var i=0; i<layers.length; i++) {
-            var comm = (layers[i] == WhereToBuy.chicagoGeojson) ? 'community' : 'name';
+            var comm = (layers[i] == WhereToBuy.chicagoLayer) ? 'community' : 'name';
             layers[i].eachLayer(function(layer) {
-                var communityName = layer.feature.properties[comm];
+                var communityName = WhereToBuy.toCommunityString(layer.feature.properties[comm]);
+                console.log(communityName);
                 // Find the ranking of this community
                 var ranking;
                 for (var i=0; i<WhereToBuy.rankings.length; i++) {
