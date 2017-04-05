@@ -126,6 +126,35 @@ p {
     border-radius: 5px;
 }
 
+.div-icon {
+    margin-top: -20px !important;
+}
+
+.ranking-icon {
+    text-align: center;
+    background: white;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 50%;
+}
+
+.work-icon {
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    background: white;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 50%;
+}
+
+.work-icon-red {
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    background: #efbdb8;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 50%;
+}
+
 /* Responsive forms (adapted from Bootswitch Journal Theme) */
 
 .input-group-btn {

@@ -39,6 +39,7 @@ var WhereToBuy = {
     rankings: {},
     workMarker: null,
     placeMarker: null,
+    rankingMarkers: [],
 
     chicagoData: null,
     suburbData: null,
@@ -265,10 +266,35 @@ var WhereToBuy = {
                     if (WhereToBuy.workMarker)
                         WhereToBuy.map.removeLayer(WhereToBuy.workMarker);
 
-                    WhereToBuy.workMarker = L.marker(WhereToBuy.workplace).addTo(WhereToBuy.map);
+                    var workIcon = L.divIcon({
+                        className: 'div-icon',
+                        html: '<div class="work-icon">' +
+                                '<h4><i class="fa fa-briefcase" style="margin-top:5px"></i></h4>' +
+                              '</div>',
+                        riseOnHover: true
+
+                    });
+
+                    var closeIcon = L.divIcon({
+                        className: 'div-icon',
+                        html: '<div class="work-icon-red">' +
+                                '<h4><i class="fa fa-times" style="margin-top:4px"></i></h4>' +
+                              '</div'
+                    });
+
+                    WhereToBuy.workMarker = L.marker(WhereToBuy.workplace, {icon: workIcon}).addTo(WhereToBuy.map);
+
+                    // WIP: Bind marker interactions
+                    WhereToBuy.workMarker.on('mouseover', function(e) {
+                        e.target.setIcon(closeIcon);
+                        console.log('marker hover fired!');
+                    });
+                    WhereToBuy.workMarker.on('mouseout', function(e) {
+                        e.target.setIcon(workIcon);
+                    });
                 }
                 else {
-                    alert("We could not find your address: " + status);
+                    alert("We could not find your work address: " + status);
                 }
             });
         }
@@ -418,6 +444,13 @@ var WhereToBuy = {
             WhereToBuy.bestCommunities.push({'community': community, 'score': score});
         }
 
+        // Remove ranking markers from the map
+        if (WhereToBuy.rankingMarkers.length) {
+            for (k=0; k<WhereToBuy.rankingMarkers.length; k++) {
+                WhereToBuy.map.removeLayer(WhereToBuy.rankingMarkers[k]);
+            }
+        }
+
         // Display the top communities with markers on the map
         WhereToBuy.rankingMarkers = [];
         for (j=0; j<WhereToBuy.bestCommunities.length; j++) {
@@ -427,9 +460,8 @@ var WhereToBuy = {
             var centroid = [coords.lat, coords.lng];
             var num = L.divIcon({
                 className: 'div-icon',
-                html: '<h4>' + j + '</h4>'
+                html: '<h5 class="ranking-icon">' + (j+1) + '</h5>'
             });
-            console.log(num);
             WhereToBuy.rankingMarkers.push(L.marker(centroid, {icon: num})
                                           .addTo(WhereToBuy.map));
         }
@@ -744,6 +776,9 @@ var WhereToBuy = {
         var string = WhereToBuy.titleCase(text);
         string = string.replace(' City, Illinois', '');
         string = string.replace(' Village, Illinois', '');
+        if (~string.indexOf('Mc')) {
+            string = 'Mc' + string.charAt(2).toUpperCase() + string.slice(3);
+        }
         return string;
     },
 
