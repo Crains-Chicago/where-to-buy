@@ -349,12 +349,16 @@ p {
     transition: box-shadow 0.2s, margin 0.2s;
 }
 
-.carousel-title {
+.carousel-title, .carousel-subtitle {
     top: 20px;
     position: relative;
     padding: 5px;
     background-color: rgb(255, 255, 255);
     background-color: rgba(255, 255, 255, 0.9);
+}
+
+.carousel-subtitle {
+    top: 100px;
 }
 
 .carousel a {

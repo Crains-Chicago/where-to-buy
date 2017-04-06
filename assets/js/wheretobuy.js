@@ -349,8 +349,6 @@ var WhereToBuy = {
                         html: '<div class="work-icon">' +
                                 '<h4><i class="fa fa-briefcase" style="margin-top:5px"></i></h4>' +
                               '</div>',
-                        riseOnHover: true
-
                     });
 
                     var closeIcon = L.divIcon({
@@ -359,8 +357,12 @@ var WhereToBuy = {
                                 '<h4><i class="fa fa-times" style="margin-top:4px"></i></h4>' +
                               '</div'
                     });
+                    var markerOpts = {
+                        icon: workIcon,
+                        riseOnHover: true
+                    };
 
-                    WhereToBuy.workMarker = L.marker(WhereToBuy.workplace, {icon: workIcon}).addTo(WhereToBuy.map);
+                    WhereToBuy.workMarker = L.marker(WhereToBuy.workplace, markerOpts).addTo(WhereToBuy.map);
 
                     // WIP: Bind marker interactions
                     WhereToBuy.workMarker.on('mouseover', function(e) {
@@ -626,7 +628,11 @@ var WhereToBuy = {
                 className: 'div-icon',
                 html: '<h5 class="ranking-icon">' + (j+1) + '</h5>'
             });
-            WhereToBuy.rankingMarkers.push(L.marker(centroid, {icon: num})
+            var markerOpts = {
+                icon: num,
+                riseOnHover: true
+            };
+            WhereToBuy.rankingMarkers.push(L.marker(centroid, markerOpts)
                                           .addTo(WhereToBuy.map));
         }
 
