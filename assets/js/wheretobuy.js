@@ -8,6 +8,7 @@ var WhereToBuy = {
     map: null,
     infoMap: null,
     infoMapLayer: null,
+    geography: 'both',
 
     mapCentroid: [41.9, -88],
     googleStyles: [{
@@ -42,7 +43,11 @@ var WhereToBuy = {
     rankingMarkers: [],
 
     chicagoData: null,
+    chicagoScores: null,
+
     suburbData: null,
+    suburbScores: null,
+
     communityData: null,
     bestCommunities: null,
 
@@ -219,11 +224,17 @@ var WhereToBuy = {
                         WhereToBuy.suburbData[i]["Place"] = suburbName;
                     }
                 }),
-                $.get(WhereToBuy.dataDir + 'community_data.csv', function(data) {
-                    WhereToBuy.communityData = $.csv.toObjects(data);
+                $.get(WhereToBuy.dataDir + 'chicago_data.csv', function(data) {
+                    WhereToBuy.chicagoScores = $.csv.toObjects(data);
+                }),
+                $.get(WhereToBuy.dataDir + 'suburb_data.csv', function(data) {
+                    WhereToBuy.suburbScores = $.csv.toObjects(data);
                 })
             ).then(function() {
                 // Update the priority state and rankings
+                var chicagoScores = $.extend([], WhereToBuy.chicagoScores);
+                var suburbScores = $.extend([], WhereToBuy.suburbScores);
+                WhereToBuy.communityData = chicagoScores.concat(suburbScores);
                 WhereToBuy.updatePriorityState();
                 WhereToBuy.displayRanking(WhereToBuy.rankCommunities());
             });
@@ -242,14 +253,29 @@ var WhereToBuy = {
     },
 
     updateMapChoropleth: function() {
-        // Updates map choropleth based on the current priorities
+        // Updates map choropleth based on the current priorities and geography
 
-        var layers = [WhereToBuy.chicagoLayer, WhereToBuy.suburbLayer];
+        var layers;
+        // Figure out which geographies we're concerned with
+        switch(true) {
+            case (WhereToBuy.geography == 'chicago'):
+                layers = [WhereToBuy.chicagoLayer];
+                break;
+            case (WhereToBuy.geography == 'suburbs'):
+                layers = [WhereToBuy.suburbLayer];
+                break;
+            case (WhereToBuy.geography == 'both'):
+                layers = [WhereToBuy.chicagoLayer, WhereToBuy.suburbLayer];
+                break;
+            default:
+                layers = [WhereToBuy.chicagoLayer, WhereToBuy.suburbLayer];
+        }
+
+        // Only do big iteration if we need to look through all communities
         for (var i=0; i<layers.length; i++) {
             var comm = (layers[i] == WhereToBuy.chicagoLayer) ? 'community' : 'name';
             layers[i].eachLayer(function(layer) {
                 var communityName = WhereToBuy.toCommunityString(layer.feature.properties[comm]);
-                console.log(communityName);
                 // Find the ranking of this community
                 var ranking;
                 for (var i=0; i<WhereToBuy.rankings.length; i++) {
@@ -270,12 +296,26 @@ var WhereToBuy = {
     },
 
     getStyle: function(position, total) {
+        var factor;
+        switch(true) {
+            case (WhereToBuy.geography == 'chicago'):
+                factor = 20;
+                break;
+            case (WhereToBuy.geography == 'suburbs'):
+                factor = 50;
+                break;
+            case (WhereToBuy.geography == 'both'):
+                factor = 75;
+                break;
+            default:
+                factor = 75;
+        }
         return {
             color: 'white',
             weight: 0.5,
             opacity: 0.5,
             fillColor: '#FF6600',
-            fillOpacity: (total/(position*total))*100
+            fillOpacity: (total/((position+1)*total))*factor
         };
     },
 
@@ -393,6 +433,16 @@ var WhereToBuy = {
         WhereToBuy.reorderPriorities(priorities);
     },
 
+    rankPriorities: function() {
+        // Gets priority order based on the layout
+        var items = $('.grid').packery('getItemElements');
+        $(items).each(function(i, item) {
+            $(item).removeClass('rank-1 rank-2 rank-3 rank-4 rank-5').addClass('rank-' + (i+1).toString());
+            $(item).find('span.badge').html(i+1);
+        });
+        WhereToBuy.updatePriorityState();
+    },
+
     reorderPriorities: function(priorities) {
         // Rearranges priority list, reloads packery, and ranks communities
         $('#' + priorities[4]).prependTo( $('#grid') );
@@ -413,11 +463,26 @@ var WhereToBuy = {
         });
     },
 
-    rankCommunities: function(p, update) {
+    rankCommunities: function(p) {
         // Takes a priority list and returns a list of top communities based on those priorities
         // Also assigns a global variable to a complete list of rankings
 
         var priorities = p ? p : WhereToBuy.priorities;
+        var dataSource;
+
+        switch(true) {
+            case (WhereToBuy.geography == 'chicago'):
+                dataSource = WhereToBuy.chicagoScores;
+                break;
+            case (WhereToBuy.geography == 'suburbs'):
+                dataSource = WhereToBuy.suburbScores;
+                break;
+            case (WhereToBuy.geography == 'both'):
+                dataSource = WhereToBuy.communityData;
+                break;
+            default:
+                dataSource = WhereToBuy.communityData;
+        }
 
         var weights = [
             0.5,
@@ -429,22 +494,23 @@ var WhereToBuy = {
 
         WhereToBuy.rankings = [];
         var topCommunities = [];
-        for (var i=0; i<WhereToBuy.communityData.length; i++) {
+        for (var i=0; i<dataSource.length; i++) {
             // Score the community based on the priorities
             var communityScore = 0;
             for (var j=0; j<5; j++) {
                 // Handle null values (only price, right now)
-                if (WhereToBuy.communityData[i][priorities[j]]) {
-                    communityScore += (weights[j]*WhereToBuy.communityData[i][priorities[j]]);
+                if (dataSource[i][priorities[j]]) {
+                    communityScore += (weights[j]*dataSource[i][priorities[j]]);
                 } else {
                     console.log('Null value for priority type ' + priorities[j]);
                     communityScore += 0;
                 }
             }
+
             // If this is the first community considered, rank it first automatically
             // Ranking format: array(community, score)
             var communityPair = {
-                'community': WhereToBuy.communityData[i].community,
+                'community': dataSource[i].community,
                 'score': communityScore
             };
             if (topCommunities.length === 0) {
@@ -590,7 +656,6 @@ var WhereToBuy = {
         for (var k=0; k<WhereToBuy.communityData.length; k++) {
             if (WhereToBuy.toCommunityString(WhereToBuy.communityData[k].community) == community) {
                 communityScores = $.extend({}, WhereToBuy.communityData[k]);
-                console.log(communityScores);
                 break;
             }
         }

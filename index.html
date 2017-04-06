@@ -192,22 +192,12 @@ layout: base
           $grid.packery('bindDraggabillyEvents', drag);
       });
 
-      // Show priority order after layout
-      function rankPriorities() {
-        var items = $grid.packery('getItemElements');
-        $(items).each(function(i, item) {
-            $(item).removeClass('rank-1 rank-2 rank-3 rank-4 rank-5').addClass('rank-' + (i+1).toString());
-            $(item).find('span.badge').html(i+1);
-        });
-        WhereToBuy.updatePriorityState();
-      }
-
       // Init priority order
-      $grid.on('layoutComplete', rankPriorities);
+      $grid.on('layoutComplete', WhereToBuy.rankPriorities);
 
       // When priorities get reordered, recalculate top communities
       $grid.on('dragItemPositioned', function() {
-          rankPriorities();
+          WhereToBuy.rankPriorities();
           WhereToBuy.displayRanking(WhereToBuy.rankCommunities());
       });
 
@@ -259,13 +249,18 @@ layout: base
           if ($(this).attr('id') == 'chicago-toggle') {
               WhereToBuy.map.removeLayer(WhereToBuy.suburbLayer);
               WhereToBuy.map.addLayer(WhereToBuy.chicagoLayer);
+              WhereToBuy.geography = 'chicago'; 
           } else if ($(this).attr('id') == 'suburbs-toggle') {
               WhereToBuy.map.removeLayer(WhereToBuy.chicagoLayer);
               WhereToBuy.map.addLayer(WhereToBuy.suburbLayer);
+              WhereToBuy.geography = 'suburbs';
           } else {
               WhereToBuy.map.addLayer(WhereToBuy.chicagoLayer);
               WhereToBuy.map.addLayer(WhereToBuy.suburbLayer);
+              WhereToBuy.geography = 'both';
           }
+          WhereToBuy.rankPriorities();
+          WhereToBuy.displayRanking(WhereToBuy.rankCommunities());
       })
   });
 

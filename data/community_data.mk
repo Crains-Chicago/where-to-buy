@@ -10,7 +10,7 @@ chicago_population.csv : final/community_areas.geojson
 	cat $< | python scripts/area_population.py > $@
 
 .INTERMEDIATE: chicago_crime_rate.csv
-chicago_crime_rate.csv : final/chicago.csv chicago_population.csv
+chicago_crime_rate.csv : raw/chicago.csv chicago_population.csv
 	csvcut -c "community","HOMICIDE","CRIM SEXUAL ASSAULT","ROBBERY","ASSAULT","BURGLARY","THEFT","MOTOR VEHICLE THEFT","ARSON" $< |\
 		csvjoin -c community - $(word 2,$^) | python scripts/nulls_to_zeroes.py |\
 		python scripts/crime_numbers_to_rates.py chicago > $@
@@ -50,7 +50,7 @@ places.csv : raw/places.csv
 
 # -- crime -- #
 
-suburb_crime_rates.csv : final/suburb.csv
+suburb_crime_rates.csv : raw/suburb.csv
 	csvcut -c 1,3,18,4,5,6,7,8,9,10,11,12,13,14,15,16,17,19,20,21,22,23,24,25,26,27,28,29,30,31,32 $< |\
 		python scripts/nulls_to_zeroes.py |\
 		python scripts/crime_numbers_to_rates.py suburbs > $@
@@ -79,18 +79,14 @@ suburb_prices.csv : raw/suburb_price_scoring.csv places.csv
 # Combined #
 # ======== #
 
-.INTERMEDIATE: suburb_modified.csv chicago_modified.csv
-suburb_modified.csv : final/suburb.csv places.csv suburb_school_index.csv suburb_crime_index.csv suburb_prices.csv
+final/suburb_data.csv : raw/suburb.csv places.csv suburb_school_index.csv suburb_crime_index.csv suburb_prices.csv
 	csvjoin -I -c "Place","Place","community","community","community" $^ |\
 		csvcut -c "Place","Avg Commute Time","Diversity Index","crime","schools","price","FIPS" - |\
 		sed -e "1s/Place/community/" -e "1s/Avg Commute Time/commute/" |\
 		sed -e "1s/Diversity Index/diversity/" -e "1s/FIPS/fips/" > $@
 
-chicago_modified.csv : final/chicago.csv chicago_school_index.csv chicago_crime_index.csv chicago_prices.csv
+final/chicago_data.csv : raw/chicago.csv chicago_school_index.csv chicago_crime_index.csv chicago_prices.csv
 	csvjoin -I -c "community" $^ |\
 		csvcut -c "community","Average Commute","Diversity Index","crime","schools","price" - |\
 		sed -e "1s/Average Commute/commute/" -e "1s/Diversity Index/diversity/" |\
 		sed -e "s/$$/,14000/" -e "1s/14000/fips/"> $@
-
-final/community_data.csv : suburb_modified.csv chicago_modified.csv
-	csvstack $^ > $@
