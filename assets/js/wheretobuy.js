@@ -469,8 +469,8 @@ var WhereToBuy = {
         // Also assigns a global variable to a complete list of rankings
 
         var priorities = p ? p : WhereToBuy.priorities;
+        
         var dataSource;
-
         switch(true) {
             case (WhereToBuy.geography == 'chicago'):
                 dataSource = WhereToBuy.chicagoScores;
@@ -553,6 +553,49 @@ var WhereToBuy = {
         }
 
         return topCommunities;
+    },
+
+    summaryStats: function(priority) {
+        // Calculates min, max, quartiles, and median for a given priority
+
+        var dataSource;
+        switch(true) {
+            case (WhereToBuy.geography == 'chicago'):
+                dataSource = WhereToBuy.chicagoScores;
+                break;
+            case (WhereToBuy.geography == 'suburbs'):
+                dataSource = WhereToBuy.suburbScores;
+                break;
+            case (WhereToBuy.geography == 'both'):
+                dataSource = WhereToBuy.communityData;
+                break;
+            default:
+                dataSource = WhereToBuy.communityData;
+        }
+
+        var omega = [];
+        for (i=0; i<dataSource.length; i++) {
+            omega.push(parseFloat(dataSource[i][priority]));
+        }
+
+        omega.sort(function(a, b) {return a-b;});
+        var mid = omega.length / 2;
+
+        var out = {
+            'min': omega[0],
+            'median': (mid % 1) ? omega[mid-0.5] : (omega[mid-1] + omega[mid]) / 2,
+            'max': omega[omega.length-1],
+        };
+
+        var lower = (omega.length % 2) ? omega.slice(0, mid-0.5) : omega.slice(0, out[mid-1]);
+        var lowerMid = lower.length / 2;
+        var upper = (omega.length % 2) ? omega.slice(mid-0.5, omega.length-1) : omega.slice(out[mid], omega.length-1);
+        var upperMid = upper.length / 2;
+
+        out['firstQ'] = (lowerMid % 1) ? lower[lowerMid-0.5] : (lower[lowerMid-1] + lower[lowerMid]) / 2;
+        out['secondQ'] = (upperMid % 1) ? upper[upperMid-0.5] : (upper[upperMid-1] + upper[upperMid]) / 2;
+
+        return out;
     },
 
     displayRanking: function(ranking) {
