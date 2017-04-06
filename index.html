@@ -17,10 +17,10 @@ layout: base
     <h3>Who's looking?</h3>
     <div class="carousel">
       <div class="carousel-cell text-center" id="suburban-home">
-        <span class="carousel-title">Suburban family</span>
+        <span class="carousel-title">Suburban&nbsp;Family</span>
       </div>
       <div class="carousel-cell text-center" id="city-home">
-        <span class="carousel-title">City family</span>
+        <span class="carousel-title">City Family</span>
       </div>
       <div class="carousel-cell text-center" id="downsized-home">
         <span class="carousel-title">Empty-nesters</span>
@@ -38,7 +38,7 @@ layout: base
 <div class="row">
   <div class="col-md-4">
     <div class="text-center">
-      <h3>My priorities</h3>
+      <h3><span id="priority-title">My Priorities</span></h3>
       <p class="small help-block">Drag to change</p>
     </div>
     <div class="well" style="height:350px;">
@@ -80,7 +80,7 @@ layout: base
   </div>
   <div class="col-md-4">
     <div class="text-center">
-      <h3>Best communities</h3>
+      <h3>Best Communities</h3>
       <p class="small help-block">Click to see more information</p>
       <div class="btn-group" role="group" style="margin-bottom:10px">
         <button type="button" class="btn btn-default geography-toggle" id="chicago-toggle">Chicago</button>
@@ -197,6 +197,7 @@ layout: base
 
       // When priorities get reordered, recalculate top communities
       $grid.on('dragItemPositioned', function() {
+          $('#priority-title').html('Custom Priorities');
           WhereToBuy.rankPriorities();
           WhereToBuy.displayRanking(WhereToBuy.rankCommunities());
       });
@@ -236,10 +237,16 @@ layout: base
           if ($el.hasClass('carousel-selected')) {
               $el.removeClass('carousel-selected');
           } else {
-            WhereToBuy.viewProfile($el.attr('id'));
-            $('.carousel-cell').removeClass('carousel-selected, selected');
-            $el.addClass('carousel-selected, selected');
+              WhereToBuy.viewProfile($el.attr('id'));
+              $('.carousel-cell').removeClass('carousel-selected, selected');
+              $el.addClass('carousel-selected, selected');
           }
+          // Update priority title
+          var title = $el.find('.carousel-title').html();
+          // Handle plurals
+          title = (title.slice(-1) == 's') ? ('Priorities for ' + title) : ('Priorities for a ' + title);
+          $('#priority-title').html(title);
+
       });
 
       // Bind click events for the geography toggle
@@ -249,15 +256,18 @@ layout: base
           if ($(this).attr('id') == 'chicago-toggle') {
               WhereToBuy.map.removeLayer(WhereToBuy.suburbLayer);
               WhereToBuy.map.addLayer(WhereToBuy.chicagoLayer);
-              WhereToBuy.geography = 'chicago'; 
+              WhereToBuy.geography = 'chicago';
+              WhereToBuy.map.setView(WhereToBuy.chicagoCentroid, 9, {animate: true}); 
           } else if ($(this).attr('id') == 'suburbs-toggle') {
               WhereToBuy.map.removeLayer(WhereToBuy.chicagoLayer);
               WhereToBuy.map.addLayer(WhereToBuy.suburbLayer);
               WhereToBuy.geography = 'suburbs';
+              WhereToBuy.map.setView(WhereToBuy.mapCentroid, 8, {animate: true}); 
           } else {
               WhereToBuy.map.addLayer(WhereToBuy.chicagoLayer);
               WhereToBuy.map.addLayer(WhereToBuy.suburbLayer);
               WhereToBuy.geography = 'both';
+              WhereToBuy.map.setView(WhereToBuy.mapCentroid, 8, {animate: true}); 
           }
           WhereToBuy.rankPriorities();
           WhereToBuy.displayRanking(WhereToBuy.rankCommunities());

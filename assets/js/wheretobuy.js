@@ -9,8 +9,11 @@ var WhereToBuy = {
     infoMap: null,
     infoMapLayer: null,
     geography: 'both',
-
     mapCentroid: [41.9, -88],
+    chicagoCentroid: [41.8, -87.62],
+    defaultZoom: 8,
+    locationScope: 'Chicago',
+
     googleStyles: [{
         stylers: [
             { saturation: -100 },
@@ -24,13 +27,18 @@ var WhereToBuy = {
         'fillColor': '#FF6600',
         'fillOpacity': 0.5
     },
-    defaultZoom: 8,
-    lastClickedLayer: null,
-    legend: null,
-    locationScope: 'Chicago',
+
     dataDir: '../../data/final/',
     suburbLayer: null,
     chicagoLayer: null,
+    chicagoData: null,
+    chicagoScores: null,
+
+    suburbData: null,
+    suburbScores: null,
+
+    communityData: null,
+    bestCommunities: null,
 
     info: null,
     workplace: null,
@@ -42,14 +50,7 @@ var WhereToBuy = {
     placeMarker: null,
     rankingMarkers: [],
 
-    chicagoData: null,
-    chicagoScores: null,
 
-    suburbData: null,
-    suburbScores: null,
-
-    communityData: null,
-    bestCommunities: null,
 
     initialize: function() {
 
