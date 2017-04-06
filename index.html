@@ -237,8 +237,8 @@ layout: base
               $el.removeClass('carousel-selected');
           } else {
             WhereToBuy.viewProfile($el.attr('id'));
-            $('.carousel-cell').removeClass('carousel-selected');
-            $el.addClass('carousel-selected');
+            $('.carousel-cell').removeClass('carousel-selected, selected');
+            $el.addClass('carousel-selected, selected');
           }
       });
 

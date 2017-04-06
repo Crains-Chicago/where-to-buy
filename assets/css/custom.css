@@ -217,7 +217,14 @@ p {
 
 .carousel-cell#suburban-home:hover {
     background: url(../images/suburban-home.jpg); /* Fallback */
-    background: linear-gradient(rgba(139, 196, 220, 0.2), rgba(139, 196, 220, 0.2)), url(../images/suburban-home.jpg);
+    background: linear-gradient(rgba(139, 196, 220, 0.3), rgba(139, 196, 220, 0.3)), url(../images/suburban-home.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.carousel-cell#suburban-home.selected {
+    background: url(../images/suburban-home.jpg); /* Fallback */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -225,7 +232,7 @@ p {
 
 .carousel-cell#city-home {
     background-image: url(../images/city-home.jpg);
-    background: linear-gradient(rgba(139, 196, 220, 0.5), rgba(139, 196, 220, 0.5)), url(../images/city-home.jpg);
+    background: linear-gradient(rgba(139, 196, 220, 0.3), rgba(139, 196, 220, 0.5)), url(../images/city-home.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -233,7 +240,14 @@ p {
 
 .carousel-cell#city-home:hover {
     background-image: url(../images/city-home.jpg);
-    background: linear-gradient(rgba(139, 196, 220, 0.2), rgba(139, 196, 220, 0.2)), url(../images/city-home.jpg);
+    background: linear-gradient(rgba(139, 196, 220, 0.3), rgba(139, 196, 220, 0.3)), url(../images/city-home.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.carousel-cell#city-home.selected {
+    background: url(../images/city-home.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -249,7 +263,14 @@ p {
 
 .carousel-cell#downsized-home:hover {
     background-image: url(../images/downsized-home.jpg);
-    background: linear-gradient(rgba(139, 196, 220, 0.2), rgba(139, 196, 220, 0.2)), url(../images/downsized-home.jpg);
+    background: linear-gradient(rgba(139, 196, 220, 0.3), rgba(139, 196, 220, 0.3)), url(../images/downsized-home.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.carousel-cell#downsized-home.selected {
+    background: url(../images/downsized-home.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -265,7 +286,14 @@ p {
 
 .carousel-cell#in-town:hover {
     background-image: url(../images/city-single-buyer.jpg);
-    background: linear-gradient(rgba(139, 196, 220, 0.2), rgba(139, 196, 220, 0.2)), url(../images/city-single-buyer.jpg);
+    background: linear-gradient(rgba(139, 196, 220, 0.3), rgba(139, 196, 220, 0.3)), url(../images/city-single-buyer.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.carousel-cell#in-town.selected {
+    background: url(../images/city-single-buyer.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -281,7 +309,14 @@ p {
 
 .carousel-cell#vacation-home:hover {
     background-image: url(../images/lake-house.jpg);
-    background: linear-gradient(rgba(139, 196, 220, 0.2), rgba(139, 196, 220, 0.2)), url(../images/lake-house.jpg);
+    background: linear-gradient(rgba(139, 196, 220, 0.3), rgba(139, 196, 220, 0.3)), url(../images/lake-house.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.carousel-cell#vacation-home.selected {
+    background: url(../images/lake-house.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
