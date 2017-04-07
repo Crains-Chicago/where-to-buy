@@ -483,7 +483,7 @@ p {
     cursor: pointer;
 }
 
-.bar-chart {
+.bar-chart, .bar-chart-example {
     padding-bottom: 5px;
     background-color: #b9b9b9;
     width: 100%;
@@ -534,3 +534,55 @@ p {
     background-color: hsla(5, 77%, 48%, 0.43);
 }
 
+/* Chart legend */
+
+.legend-container {
+    max-width: 100%;
+    position: relative;
+    height: 20px;
+}
+
+.legend-container span {
+    font-size: 0.5em;
+}
+
+.legend-container .min-legend {
+    position: absolute;
+    left: 0;
+}
+
+.legend-container .firstQ-legend {
+    position: absolute;
+    left: 17%;
+}
+
+.legend-container .median-legend {
+    position: absolute;
+    left: 47%;
+}
+
+.legend-container .secondQ-legend {
+    position: absolute;
+    left: 70%;
+}
+
+@media (max-width:450px) {
+    .legend-container .secondQ-legend {
+        left: 67%;
+    }
+}
+
+.legend-container .max-legend {
+    position: absolute;
+    right: 0;
+}
+
+.bar-chart-example {
+    height: 5px;
+    margin-bottom: 20px;
+}
+
+.tick.example {
+    height: 15px;
+    margin-top: -18px;
+}
