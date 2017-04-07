@@ -675,6 +675,8 @@ var WhereToBuy = {
             communityScores,
             location;
 
+        var dataSource = WhereToBuy.getDataSource();
+
         // Fetch the proper map layer and display it on the info map
         if (WhereToBuy.infoMapLayer) {
             WhereToBuy.infoMap.removeLayer(WhereToBuy.infoMapLayer);
@@ -702,14 +704,15 @@ var WhereToBuy = {
         // Find the relevant data
         var msg = 'No data found.';
         found = false;
+
         // First, look in the scoring data
-        for (var k=0; k<WhereToBuy.communityData.length; k++) {
-            if (WhereToBuy.toCommunityString(WhereToBuy.communityData[k].community) == community) {
-                communityScores = $.extend({}, WhereToBuy.communityData[k]);
+        for (var k=0; k<dataSource.length; k++) {
+            if (WhereToBuy.toCommunityString(dataSource[k].community) == community) {
+                communityScores = $.extend({}, dataSource[k]);
                 break;
             }
         }
-        // Search Chicago data
+        // Search Chicago data for extra vars
         for (var i=0; i<WhereToBuy.chicagoData.length; i++) {
             if (WhereToBuy.chicagoData[i].community == community) {
                 communityInfo = $.extend({}, WhereToBuy.chicagoData[i]);
@@ -718,7 +721,7 @@ var WhereToBuy = {
                 break;
             }
         }
-        // Search suburb data
+        // Search suburb data for extra vars
         if (!found) {
             for (var j=0; j<WhereToBuy.suburbData.length; j++) {
                 if (WhereToBuy.suburbData[j]["Place"] == community) {
@@ -730,16 +733,22 @@ var WhereToBuy = {
             }
         }
 
+        // Start to pull together variables
         var shortDescription;
         if (found) {
             $.getJSON(WhereToBuy.dataDir + 'short_descriptions.json', function(descriptions) {
-                console.log(descriptions);
                 shortDescription = descriptions[communityScores.community];
                 $('#short-description').html(shortDescription);
 
+                // Get summary stats for priorities, based on current data source
+                for (var m=0; m<WhereToBuy.priorities.length; m++) {
+
+                }
+
                 // String data
                 var commute = communityInfo["Avg Commute Time"] ? communityInfo["Avg Commute Time"] : communityInfo["Average Commute"];
-                var diversity = communityInfo["Diversity Index"];
+                commute = parseInt(commute);
+                var diversity = parseFloat(communityInfo["Diversity Index"]).toFixed(2);
 
                 // Score data
                 var crime,
@@ -749,31 +758,16 @@ var WhereToBuy = {
                 var schoolsScore = parseFloat(communityScores["schools"]);
                 var priceScore = communityScores["price"].length ? communityScores["price"] : "Price data not found.";
 
-                msg +=  "<tr>" +
-                          "<td class='col-xs-4'><strong><i class='fa fa-fw fa-car'></i> Typical commute</strong></td>" +
-                          "<td>" + parseInt(commute) + " minutes</td>" +
-                        "</tr>" +
-                        "<tr>" +
-                          "<td class='col-xs-4'><strong><i class='fa fa-fw fa-users'></i> Diversity index</strong></td>" +
-                          "<td>" + parseFloat(diversity).toFixed(2) + "</td>" +
-                        "</tr>" +
-                        "<tr>" +
-                          "<td class='col-xs-4'><strong><i class='fa fa-fw fa-balance-scale'></i> Crime score</strong></td>" +
-                          "<td>" + crimeScore + "</td>" +
-                        "</tr>" +
-                        "<tr>" +
-                          "<td class='col-xs-4'><strong><i class='fa fa-fw fa-graduation-cap'></i> School score</strong></td>" +
-                          "<td>" + schoolsScore + "</td>" +
-                        "</tr>" +
-                        "<tr>" +
-                          "<td class='col-xs-4'><strong><i class='fa fa-fw fa-usd'></i> Price score</strong></td>" +
-                          "<td>" + priceScore + "</td>" +
-                        "</tr>";
+                // Update stats in the modal
+                // $('#diversity-score').html(diversity);
+                $('#crime-score').html(crimeScore);
+                $('#school-score').html(schoolsScore);
+                $('#price-score').html(priceScore);
+                $('#commute-score').html(commute);
 
                 // Update the DOM
                 $('#short-description').html(shortDescription);
                 $('#community-info-label').html(community);
-                $('#community-stats').html(msg);
                 $('.modal').modal();
             });
         } else {
@@ -928,6 +922,27 @@ var WhereToBuy = {
         });
 
         return deferred.promise();
+    },
+
+    getDataSource: function() {
+        // Returns the proper data source based on current global vars
+        // (Data must have been fetched already)
+
+        var dataSource;
+        switch(true) {
+            case (WhereToBuy.geography == 'chicago'):
+                dataSource = WhereToBuy.chicagoScores;
+                break;
+            case (WhereToBuy.geography == 'suburbs'):
+                dataSource = WhereToBuy.suburbScores;
+                break;
+            case (WhereToBuy.geography == 'both'):
+                dataSource = WhereToBuy.communityData;
+                break;
+            default:
+                dataSource = WhereToBuy.communityData;
+        }
+        return dataSource;
     },
 
     titleCase: function(s) {

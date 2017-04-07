@@ -472,3 +472,31 @@ p {
           /*transition: transform 0.2s;*/
 }
 
+/* Chart styles */
+
+.bar-chart {
+    padding-bottom: 5px;
+    background-color: #b9b9b9;
+    width: 100%;
+    position: relative;
+    display: block;
+}
+
+.tick {
+    top: 50%;
+    margin-top: -15px;
+    background-color: #252525;
+    width: 3px;
+    height: 30px;
+    position: absolute;
+    display: block;
+}
+
+.min {
+    left: 0;
+}
+
+.max {
+    right: 0;
+}
+

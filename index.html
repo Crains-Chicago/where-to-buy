@@ -17,27 +17,27 @@ layout: base
     <h3>Who's looking?</h3>
     <div class="carousel">
       <div class="carousel-cell text-center" id="suburban-home">
-        <span class="carousel-title">Suburban&nbsp;Family</span>
+        <span class="carousel-title"><strong>Suburban&nbsp;Family</strong></span>
         <br /><span class="carousel-subtitle small"><i class="fa fa-fw fa-arrow-up"></i>schools</span>
         <br /><span class="carousel-subtitle small"><i class="fa fa-fw fa-arrow-down"></i>commute</span>
       </div>
       <div class="carousel-cell text-center" id="city-home">
-        <span class="carousel-title">City Family</span>
+        <span class="carousel-title"><strong>City Family</strong></span>
         <br /><span class="carousel-subtitle small"><i class="fa fa-fw fa-arrow-up"></i>diversity</span>
         <br /><span class="carousel-subtitle small"><i class="fa fa-fw fa-arrow-down"></i>price growth</span>
       </div>
       <div class="carousel-cell text-center" id="downsized-home">
-        <span class="carousel-title">Empty-nesters</span>
+        <span class="carousel-title"><strong>Empty-nesters</strong></span>
         <br /><span class="carousel-subtitle small"><i class="fa fa-fw fa-arrow-up"></i>price growth</span>
         <br /><span class="carousel-subtitle small"><i class="fa fa-fw fa-arrow-down"></i>schools</span>
       </div>
       <div class="carousel-cell text-center" id="in-town">
-        <span class="carousel-title">Weekenders</span>
+        <span class="carousel-title"><strong>Weekenders</strong></span>
         <br /><span class="carousel-subtitle small"><i class="fa fa-fw fa-arrow-up"></i>commute</span>
         <br /><span class="carousel-subtitle small"><i class="fa fa-fw fa-arrow-down"></i>schools</span>
       </div>
       <div class="carousel-cell text-center" id="vacation-home">
-        <span class="carousel-title">Vacationers</span>
+        <span class="carousel-title"><strong>Vacationers</strong></span>
         <br /><span class="carousel-subtitle small"><i class="fa fa-fw fa-arrow-up"></i>price growth</span>
         <br /><span class="carousel-subtitle small"><i class="fa fa-fw fa-arrow-down"></i>commute</span>
       </div>
@@ -154,12 +154,33 @@ layout: base
                 <table class="table table-bordered table-striped">
                   <tbody id="community-stats">
                     <tr>
-                      <td class="col-xs-4"><strong>Average commute</strong></td>
-                      <td>31 minutes</td>
+                      <td class='col-xs-4'><strong><i class='fa fa-fw fa-users'></i> Diversity score</strong></td>
+                      <td class="chart-container">
+                        <span class="bar-chart" id="diversity-score">
+                          <span class="tick min"></span>
+                          <span class="tick firstQ"></span>
+                          <span class="tick median"></span>
+                          <span class="tick secondQ"></span>
+                          <span class="tick max"></span>
+                          <span class="bar"></span>
+                        </span>
+                      </td>
                     </tr>
                     <tr>
-                      <td class="col-xs-4"><strong>Diversity index</strong></td>
-                      <td>1.84</td>
+                      <td class='col-xs-4'><strong><i class='fa fa-fw fa-balance-scale'></i> Crime score</strong></td>
+                      <td class="bar-chart" id="crime-score"></td>
+                    </tr>
+                    <tr>
+                      <td class='col-xs-4'><strong><i class='fa fa-fw fa-graduation-cap'></i> School score</strong></td>
+                      <td class="bar-chart" id="school-score"></td>
+                    </tr>
+                    <tr>
+                      <td class='col-xs-4'><strong><i class='fa fa-fw fa-usd'></i> Price score</strong></td>
+                      <td id="price-score"></td>
+                    </tr>
+                    <tr>
+                      <td class='col-xs-4'><strong><i class='fa fa-fw fa-car'></i> Typical commute</strong></td>
+                      <td id="commute-score"></td>
                     </tr>
                   </tbody>
                 </table>
