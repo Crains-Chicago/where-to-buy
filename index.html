@@ -156,7 +156,7 @@ layout: base
                     <tr>
                       <td class='col-xs-4'><strong><i class='fa fa-fw fa-users'></i> Diversity score</strong></td>
                       <td class="chart-container">
-                        <span class="bar-chart" id="diversity-score">
+                        <span class="bar-chart diversity" id="diversity-score">
                           <span class="tick min"></span>
                           <span class="tick firstQ"></span>
                           <span class="tick median"></span>
@@ -168,15 +168,33 @@ layout: base
                     </tr>
                     <tr>
                       <td class='col-xs-4'><strong><i class='fa fa-fw fa-balance-scale'></i> Crime score</strong></td>
-                      <td class="bar-chart" id="crime-score"></td>
+                      <td class="chart-container">
+                        <span class="bar-chart crime" id="crime-score">
+                          <span class="tick min"></span>
+                          <span class="tick firstQ"></span>
+                          <span class="tick median"></span>
+                          <span class="tick secondQ"></span>
+                          <span class="tick max"></span>
+                          <span class="bar"></span>
+                        </span>
+                      </td>
                     </tr>
                     <tr>
                       <td class='col-xs-4'><strong><i class='fa fa-fw fa-graduation-cap'></i> School score</strong></td>
-                      <td class="bar-chart" id="school-score"></td>
+                      <td class="chart-container">
+                        <span class="bar-chart schools" id="schools-score">
+                          <span class="tick min"></span>
+                          <span class="tick firstQ"></span>
+                          <span class="tick median"></span>
+                          <span class="tick secondQ"></span>
+                          <span class="tick max"></span>
+                          <span class="bar"></span>
+                        </span>
+                      </td>
                     </tr>
                     <tr>
                       <td class='col-xs-4'><strong><i class='fa fa-fw fa-usd'></i> Price score</strong></td>
-                      <td id="price-score"></td>
+                      <td class="price" id="price-score"></td>
                     </tr>
                     <tr>
                       <td class='col-xs-4'><strong><i class='fa fa-fw fa-car'></i> Typical commute</strong></td>

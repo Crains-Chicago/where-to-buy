@@ -500,3 +500,28 @@ p {
     right: 0;
 }
 
+.bar {
+    padding-bottom: 5px;
+    height: 20px;
+    position: absolute;
+    display: block;
+    top: 50%;
+    margin-top: -10px;
+}
+
+/* Bar chart colors */
+.diversity .bar {
+    background-color: #df766d; /* Fallback */
+    background-color: hsla(5, 77%, 48%, 0.43);
+}
+
+.crime .bar {
+    background-color: #df766d;
+    background-color: hsla(5, 77%, 48%, 0.43);
+}
+
+.schools .bar {
+    background-color: #df766d;
+    background-color: hsla(5, 77%, 48%, 0.43);
+}
+

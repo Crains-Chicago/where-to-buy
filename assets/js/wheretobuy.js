@@ -560,20 +560,7 @@ var WhereToBuy = {
     summaryStats: function(priority) {
         // Calculates min, max, quartiles, and median for a given priority
 
-        var dataSource;
-        switch(true) {
-            case (WhereToBuy.geography == 'chicago'):
-                dataSource = WhereToBuy.chicagoScores;
-                break;
-            case (WhereToBuy.geography == 'suburbs'):
-                dataSource = WhereToBuy.suburbScores;
-                break;
-            case (WhereToBuy.geography == 'both'):
-                dataSource = WhereToBuy.communityData;
-                break;
-            default:
-                dataSource = WhereToBuy.communityData;
-        }
+        var dataSource = WhereToBuy.getDataSource();
 
         var omega = [];
         for (i=0; i<dataSource.length; i++) {
@@ -733,6 +720,12 @@ var WhereToBuy = {
             }
         }
 
+        // Finally, get summary statistics based on the current data source
+        var stats = {};
+        for (var m=0; m<WhereToBuy.priorities.length; m++) {
+            stats[WhereToBuy.priorities[m]] = WhereToBuy.summaryStats(WhereToBuy.priorities[m]);
+        }
+
         // Start to pull together variables
         var shortDescription;
         if (found) {
@@ -740,38 +733,54 @@ var WhereToBuy = {
                 shortDescription = descriptions[communityScores.community];
                 $('#short-description').html(shortDescription);
 
-                // Get summary stats for priorities, based on current data source
-                for (var m=0; m<WhereToBuy.priorities.length; m++) {
-
-                }
-
                 // String data
                 var commute = communityInfo["Avg Commute Time"] ? communityInfo["Avg Commute Time"] : communityInfo["Average Commute"];
                 commute = parseInt(commute);
-                var diversity = parseFloat(communityInfo["Diversity Index"]).toFixed(2);
 
                 // Score data
-                var crime,
-                    schools,
-                    price;
+                var diversityScore = parseFloat(communityInfo["Diversity Index"]).toFixed(2);
                 var crimeScore = parseFloat(communityScores["crime"]);
                 var schoolsScore = parseFloat(communityScores["schools"]);
                 var priceScore = communityScores["price"].length ? communityScores["price"] : "Price data not found.";
 
-                // Update stats in the modal
+                // Calculate bar chart positions and update charts
+                var scoreMap = {
+                    'diversity': diversityScore,
+                    'crime': crimeScore,
+                    'schools': schoolsScore,
+                    'price': priceScore
+                };
+                $('.bar-chart').each(function() {
+                    var priority = $(this).attr('id').replace('-score', '');
+                    var priorityStats = stats[priority];
+                    var range = priorityStats.max - priorityStats.min;
+
+                    var bar = parseInt(((scoreMap[priority] - priorityStats.min) / range) * 100);
+                    $(this).find('span.bar').css('width', bar + '%');
+
+                    var firstQ = parseInt(((priorityStats['firstQ'] - priorityStats.min) / range) * 100);
+                    $(this).find('span.firstQ').css('left', firstQ + '%');
+
+                    var median = parseInt(((priorityStats['median'] - priorityStats.min) / range) * 100);
+                    $(this).find('span.median').css('left', median + '%');
+
+                    var secondQ = parseInt(((priorityStats['secondQ'] - priorityStats.min) / range) * 100);
+                    $(this).find('span.secondQ').css('left', secondQ + '%');
+                });
+
                 // $('#diversity-score').html(diversity);
-                $('#crime-score').html(crimeScore);
-                $('#school-score').html(schoolsScore);
+                // $('#crime-score').html(crimeScore);
+                // $('#school-score').html(schoolsScore);
                 $('#price-score').html(priceScore);
                 $('#commute-score').html(commute);
 
-                // Update the DOM
+                // Update the modal with information
                 $('#short-description').html(shortDescription);
                 $('#community-info-label').html(community);
                 $('.modal').modal();
             });
         } else {
-            // Update the DOM
+            // Update the modal
             $('#community-info-label').html(community);
             $('#community-stats').html(msg);
             $('.modal').modal();
