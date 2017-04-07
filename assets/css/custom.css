@@ -474,6 +474,15 @@ p {
 
 /* Chart styles */
 
+.chart-header {
+    text-decoration: none !important;
+    color: inherit;
+}
+
+.chart-header:hover {
+    cursor: pointer;
+}
+
 .bar-chart {
     padding-bottom: 5px;
     background-color: #b9b9b9;

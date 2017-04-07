@@ -149,12 +149,18 @@ layout: base
             <br />
             <hr />
             <div class="row">
-              <h3 style="margin-bottom: 20px;">Community stats</h3>
+              <h3 style="margin-bottom: 20px;">Community stats
+                <small>Hover for more information</small>
+              </h3>
               <div class="table-responsive">
                 <table class="table table-bordered table-striped">
                   <tbody id="community-stats">
                     <tr>
-                      <td class='col-xs-4'><strong><i class='fa fa-fw fa-users'></i> Diversity score</strong></td>
+                      <td class='col-xs-4 text-left'>
+                        <a title="What's this?" data-content="We calculated the diversity score for this area using US Census  data and the Shannon index, a measure of diversity that quantifies how easily we could guess a random resident's race if all we knew was the overall composition of the area." tabindex="0" class="chart-header pull-left" role="button" data-toggle="popover" data-trigger="hover" data-placement="auto" aria-label="Info">
+                          <strong><i class='fa fa-fw fa-users'></i> Diversity score</strong>
+                        </a>
+                      </td>
                       <td class="chart-container">
                         <span class="bar-chart diversity" id="diversity-score">
                           <span class="tick min"></span>
@@ -320,7 +326,10 @@ layout: base
           }
           WhereToBuy.rankPriorities();
           WhereToBuy.displayRanking(WhereToBuy.rankCommunities());
-      })
+      });
+
+      // Init popovers
+      $("[data-toggle='popover']").popover();
   });
 
 </script>
