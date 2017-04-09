@@ -733,9 +733,30 @@ var WhereToBuy = {
                 shortDescription = descriptions[communityScores.community];
                 $('#short-description').html(shortDescription);
 
-                // String data
+                // Figure out commute time
                 var commute = communityInfo["Avg Commute Time"] ? communityInfo["Avg Commute Time"] : communityInfo["Average Commute"];
                 commute = parseInt(commute);
+                $('#commute-score').html(commute + ' mins');
+
+                // Use the input workplace, if it exists
+                if (WhereToBuy.workplace) {
+                    var destination = WhereToBuy.toPlainString($.address.parameter('workplace'));
+                    var origin = (WhereToBuy.isChicago(community)) ? community + ', Chicago, IL' : community + ', IL';
+                    WhereToBuy.customTravelTime(origin, destination)
+                      .done(function(results) {
+                        if (results.driving.time) {
+                            commute = results.driving.time;
+                            $('#commute-type').html('Your commute');
+                            $('#commute-score').html(commute);
+                        } else if (typeof(results.driving) === 'string') {
+                            // Show errors in console, but use the old time
+                            console.log("Driving error: ", results.driving);
+                        } else {
+                            // Mystery errors – requires more debugging
+                            console.log("Could not find driving time");
+                        }
+                    });
+                }
 
                 // Score data
                 var diversityScore = parseFloat(communityInfo["Diversity Index"]).toFixed(2);
@@ -772,7 +793,6 @@ var WhereToBuy = {
                 // $('#crime-score').html(crimeScore);
                 // $('#school-score').html(schoolsScore);
                 $('#price-score').html(priceScore);
-                $('#commute-score').html(commute);
 
                 // Update the modal with information
                 $('#short-description').html(shortDescription);
@@ -784,32 +804,6 @@ var WhereToBuy = {
             $('#community-info-label').html(community);
             $('#community-stats').html(msg);
             $('.modal').modal();
-        }
-
-        // If the user has set a place of work, calculate a commute time estimate
-        if (WhereToBuy.workplace) {
-            var workplaceString = WhereToBuy.toPlainString($.address.parameter('workplace'));
-            WhereToBuy.customTravelTime(community+', IL', workplaceString)
-              .done(function(results) {
-                var markup = "<div id='travel-time style='display:none;'>";
-                if (results.driving.time) {
-                    markup += "<h4>Driving time to workplace:</h4><p>" + results.driving.time + "</p>";
-                } else if (typeof(results.driving) === 'string') {
-                    markup += "<h4>Driving error:</h4><p>" + results.driving + "</p>";
-                } else {
-                    markup += "<p>Could not find driving time...</p>";
-                }
-                if (results.transit.time) {
-                    markup += "<h4>Transit time to workplace:</h4><p>" + results.transit.time + "</p>";
-                } else if (typeof(results.transit) === 'string') {
-                    markup += "<h4>Transit error:</h4><p>" + results.transit + "</p>";
-                } else {
-                    markup += "<p>Could not find transit time...</p>";
-                }
-                markup += "</div>";
-                $('#property-info').append(markup).show('slow');
-                console.log(results);
-            });
         }
     },
 
@@ -991,6 +985,19 @@ var WhereToBuy = {
         var mDisplay = m > 0 ? m + (m == 1 ? " minute, " : " minutes, ") : "";
         var sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
         return hDisplay + mDisplay + sDisplay;
+    },
+
+    isChicago: function(community) {
+        // Simple function to determine if a community is in Chicago or not.
+        for (var i=0; i<WhereToBuy.chicagoScores.length; i++) {
+            var c = WhereToBuy.chicagoScores[i].community;
+            if (c == community) {
+                return true;
+            } else if (WhereToBuy.toCommunityString(c) == community) {
+                return true;
+            }
+        }
+        return false;
     }
 
 };
