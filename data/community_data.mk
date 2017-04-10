@@ -45,8 +45,10 @@ chicago_prices.csv : raw/chicago_price_scoring.csv
 # Suburbs #
 # ======= #
 
-places.csv : raw/places.csv
-	cat $< | grep -v '\"Chicago city\, Illinois\"' > $@
+places.csv : raw/places.csv raw/places_to_delete.xlsx
+	in2csv -H $(word 2,$^) | head -n 4 | tail -n 1 | csvcut -C 1,2,3 | tr "," "\n" > bad_places.csv
+	cat $< | grep -v '\"Chicago city\, Illinois\"' | grep -v -f bad_places.csv > $@
+	rm bad_places.csv 
 
 # -- crime -- #
 

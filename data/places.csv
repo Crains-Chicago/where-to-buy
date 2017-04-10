@@ -12,7 +12,6 @@ Place,FIPS
 "Batavia city, Illinois",04078
 "Beach Park village, Illinois",04303
 "Bedford Park village, Illinois",04572
-"Beecher village, Illinois",04585
 "Bellwood village, Illinois",04975
 "Bensenville village, Illinois",05248
 "Berkeley village, Illinois",05404
@@ -22,7 +21,6 @@ Place,FIPS
 "Blue Island city, Illinois",06704
 "Bolingbrook village, Illinois",07133
 "Braceville village, Illinois",07640
-"Braidwood city, Illinois",07770
 "Bridgeview village, Illinois",08225
 "Broadview village, Illinois",08446
 "Brookfield village, Illinois",08576
@@ -38,7 +36,6 @@ Place,FIPS
 "Carol Stream village, Illinois",11332
 "Carpentersville village, Illinois",11358
 "Cary village, Illinois",11592
-"Channahon village, Illinois",12476
 "Chicago Heights city, Illinois",14026
 "Chicago Ridge village, Illinois",14065
 "Cicero town, Illinois",14351
@@ -46,7 +43,6 @@ Place,FIPS
 "Coal City village, Illinois",15170
 "Country Club Hills city, Illinois",16691
 "Countryside city, Illinois",16873
-"Crest Hill city, Illinois",17458
 "Crestwood village, Illinois",17497
 "Crete village, Illinois",17523
 "Crystal Lake city, Illinois",17887
@@ -144,7 +140,6 @@ Place,FIPS
 "Long Grove village, Illinois",44524
 "Lynwood village, Illinois",45421
 "Lyons village, Illinois",45434
-"Manhattan village, Illinois",46357
 "Maple Park village, Illinois",46604
 "Marengo city, Illinois",46786
 "Markham city, Illinois",47007
@@ -160,7 +155,6 @@ Place,FIPS
 "Minooka village, Illinois",49607
 "Mokena village, Illinois",49854
 "Monee village, Illinois",49945
-"Montgomery village, Illinois",50218
 "Morton Grove village, Illinois",50647
 "Mount Prospect village, Illinois",51089
 "Mundelein village, Illinois",51349
@@ -192,7 +186,6 @@ Place,FIPS
 "Park City city, Illinois",57654
 "Park Forest village, Illinois",57732
 "Park Ridge city, Illinois",57875
-"Peotone village, Illinois",59052
 "Phoenix village, Illinois",59572
 "Pingree Grove village, Illinois",59988
 "Plainfield village, Illinois",60287
@@ -221,7 +214,6 @@ Place,FIPS
 "Sauk Village village, Illinois",67769
 "Schaumburg village, Illinois",68003
 "Schiller Park village, Illinois",68081
-"Shorewood village, Illinois",69758
 "Skokie village, Illinois",70122
 "Sleepy Hollow village, Illinois",70161
 "South Barrington village, Illinois",70564
@@ -263,7 +255,6 @@ Place,FIPS
 "Willow Springs village, Illinois",82049
 "Willowbrook village, Illinois",81919
 "Wilmette village, Illinois",82075
-"Wilmington city, Illinois",82101
 "Winfield village, Illinois",82400
 "Winnetka village, Illinois",82530
 "Winthrop Harbor village, Illinois",82686
