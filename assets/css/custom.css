@@ -242,8 +242,27 @@ p {
     height: 60px !important;
 }
 
+.table tr.profile-tr {
+    height: 0px !important;
+    margin-bottom: -10px !important;
+}
+
+.table tr.profile-tr td {
+    padding: 0px !important;
+}
+
+.profile-table {
+    margin-top: 110px;
+    background-color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
 .table > tbody > tr > td {
     vertical-align: middle;
+}
+
+.center-block {
+    float: none;
 }
 
 /* Additional text color styling */
