@@ -1,13 +1,52 @@
 <!DOCTYPE html>
 <html lang='en'>
     <head>
-        <title>
-            Crain's Where to Buy
-        </title>
         <meta charset='utf-8' />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta content="Helping Crain's readers buy real estate in the Chicagoland area." name='description' />
+        <meta content="Find the right Chicagoland real estate for you." name='description' />
         <meta content='datamade.us' name='author' />
+
+         <!--Facebook info--> 
+        <meta property="og:title" content="Crain's Where to Buy">
+        <meta property="og:type" content="article"/>
+        <meta property="og:site_name" content="Crain's Chicago Business">
+        <meta property="og:image" content="wheretobuy.datamade.us/assets/images/suburban-home.jpg">
+        <meta property="og:description" content="Find the right Chicagoland real estate for you.">
+        <meta property="og:url" content="http://www.chicagobusiness.com/section/XXXXXXXXXXXXX" />
+        
+        <!--Twitter info--> 
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@CrainsChicago">
+        <meta name="twitter:title" content="Crain's Where to Buy">
+        <meta name="twitter:description" content="Find the right Chicagoland real estate for you.">
+        <meta name="twitter:creator" content="@DataMadeCo">
+        <meta name="twitter:image:src" content="wheretobuy.datamade.us/assets/images/suburban-home.jpg">
+        <meta name="twitter:domain" content="http://www.chicagobusiness.com">
+
+        <title>Crain's Chicago Business - Where to Buy</title>
+        <link href="http://www.chicagobusiness.com/assets/favicon.ico" rel="Shortcut Icon" />
+
+        <script>
+            //THIS IS FOR IE9
+            var browser = {
+                isIe: function () {
+                    return navigator.appVersion.indexOf("MSIE") != -1;
+                },
+                navigator: navigator.appVersion,
+                getVersion: function() {
+                    var version = 999; // we assume a sane browser
+                    if (navigator.appVersion.indexOf("MSIE") != -1)
+                        // bah, IE again, lets downgrade version number
+                        version = parseFloat(navigator.appVersion.split("MSIE")[1]);
+                    return version;
+                }
+            };
+
+            if (browser.isIe() && browser.getVersion() <= 10) {
+                alert("You are currently using Internet Explorer " + browser.getVersion() + " or are viewing the site in Compatibility View. This page may not load properly in older Internet Explorer browsers. If you experience difficulty, view this in Internet Explorer 10 or higher or in Chrome, Firefox or Safari.")
+            }
+        </script>
 
         <!-- Bootstrap core CSS -->
         <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -16,11 +55,11 @@
         <!-- Custom styles for this template -->
         <link href="assets/css/custom.css" rel="stylesheet">
 
-        <!-- Leaflet styles -->
+        <!-- Leaflet plugin styles -->
         <link href="assets/css/leaflet.css" rel="stylesheet">
         <link href="assets/css/leaflet.label.css" rel="stylesheet">
 
-        <!-- Flickity styles -->
+        <!-- Flickity plugin styles -->
         <link href="assets/css/flickity.css" rel="stylesheet">
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -33,23 +72,139 @@
         <link rel="stylesheet" href="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/themes/css/cartodb.css" />
         <script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/cartodb.js"></script>
         <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false&libraries=places&v=3.17&key=AIzaSyCSg3bQurfz0U61uKn_8CYgPHzcl_Y2JE8"></script>
-        <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300, 400|Oswald:400,700|Raleway:600" rel="stylesheet"> -->
+
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400|Montserrat:500,400" rel="stylesheet">
 
+        <!-- JQuery -->
         <script src="assets/js/jquery-1.10.1.min.js"></script>
         <script src="assets/js/jquery.address.js"></script>
+
+        <!-- Social + analytics + ads -->
+        <!--#include virtual="/includes/social-sharing.inc"-->
+        <!--#include virtual="/includes/google_analytics.inc"-->
+        <!--#include virtual="/includes/services-dx.inc"-->
+
+        <!-- omniture/sitecatalyst -->
+        <!--#include virtual="/includes/omniture.inc"-->
+
+        <!-- Styles for share buttons and ads -->
+        <style>
+            #topAd{
+            padding-bottom: 3%;
+            }
+
+            #sharetool{
+            margin-top:1em;
+            margin-bottom:1em;
+            }   
+        </style>
     </head>
     
     <body>
+
+        <!-- Navbar -->
+        <nav id="projectNav" class="navbar navbar-custom navbar-fixed-top navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header ">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#read-more-collapse" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="http://www.chicagobusiness.com">
+                        <img alt="Crain's Chicago Business" class="img-responsive clearfix" id="logo" src="assets/images/crains-nearblack-logo-2015.png">
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="read-more-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown2">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Read more<span class="caret"></span></a>
+                    
+                            <ul class="dropdown-menu scrollable-menu ">
+                    
+                                <!--These links ago to an old project and will need to be updated or removed-->
+                                <li id="listItemName">
+                                    <a href="http://www.chicagobusiness.com/section/housing-crash-naperville">
+                                        <p><span class="referText">&#8226; Ten years after the crash: Naperville's Ashwood Park</span></p>
+                                    </a>
+                                </li>
+                                <li id="listItemName">
+                                    <a href="http://www.chicagobusiness.com/section/housing-crash-numbers">
+                                        <p><span class="referText">&#8226; Interactive graphic: How well has your ZIP code fared?</span></p>
+                                    </a>
+                                </li>
+                                <li id="listItemName">
+                                    <a href="http://www.chicagobusiness.com/section/housing-crash-condos">
+                                        <p><span class="referText">&#8226; Chicago's condo market: Ten years lost&mdash;and counting</span></p>
+                                    </a>
+                                </li>
+                                <li id="listItemName">
+                                    <a href="http://www.chicagobusiness.com/section/housing-crash-two-zipcodes">
+                                        <p><span class="referText">&#8226; Chicago's uneven recovery: A tale of two ZIP codes</span></p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Top social media buttons -->
+        <div class="row myDarkBackground2 noMargin">
+            <div id="" class="col-xs-12">
+                <div id="sharetool" align="center">       
+                    <pbs:macro name="gigyaShareBar" notext=1 large=1>
+                </div>
+            </div>
+        </div>
+
+        <!-- Give some breathing room to the navbar -->
+        <!-- <div class="navbar-buffer"></div> -->
+
+        <!--Top ad-->
+        <div class="container">
+            <div id="topAd" class="row adPlacement">
+                <div class="col-xs-12 well" style="height:150px;margin-top:70px;margin-bottom:-20px">
+                    <div id="admoover" align="center" >
+                        <div id="oas_x01">
+                            <h4 class="text-center help-block">Potential ad placement</h4>
+                        </div>        
+                    </div>
+                </div>
+            </div>
+        </div> 
+
+        <!-- Primary content -->
         <div class="container">
             <div class="col-sm-12">
                 {{ content }}
             </div>
         </div>
-        <div class="container-fluid">
-            <div class="row footer-text">
-                <p class='small text-center'>&copy; <a href='http://www.worldbusinesschicago.com/'>Crain's Chicago Business</a>. Website by <a href='https://datamade.us'>DataMade</a>.</p>
+
+        <!-- Bottom ad -->
+        <div class="container">
+            <div id="bottomAd" class="row">
+                <div class="col-xs-12 well" style="height:150px;margin-top:30px" id="movingonup" align="center">
+                    <div id="oas_x02">
+                        <h4 class="text-center help-block">Potential ad placement</h4>
+                    </div>
+                </div>
             </div>
         </div>
+
+        <!-- Footer -->
+        <div class="container-fluid">
+            <div class="row footer-text">
+                <p class="small text-center">&copy; <a href="http://www.chicagobusiness.com/">Crain's Chicago Business</a>. Website by <a href="https://datamade.us">DataMade</a>.</p>
+                <p class="small text-center">
+                    <a href="http://www.chicagobusiness.com/section/privacy-policy">Privacy Policy</a> | 
+                    <a href="http://www.chicagobusiness.com/section/contact-us">Contact Us</a> | 
+                    <a href="http://www.chicagobusiness.com">Crain Communications Inc.</a>
+                </p>
+            </div>
+        </div>
+
     </body>
 </html>
