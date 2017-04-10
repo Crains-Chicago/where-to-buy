@@ -429,6 +429,18 @@ p {
     text-decoration: none;
 }
 
+/* Carousel arrows */
+
+@media (min-width: 768px) {
+    .flickity-prev-next-button.previous {
+    left: -50px !important;
+    }
+
+    .flickity-prev-next-button.next {
+        right: -50px !important;
+    }
+}
+
 /* Priority grid */
 
 .grid-item {
