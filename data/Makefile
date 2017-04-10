@@ -1,6 +1,6 @@
 PG_DB = wtb
 
-include map_layers.mk community_data.mk
+include map_layers.mk community_data.mk real_estate.mk
 
 .PHONY: all clean
 

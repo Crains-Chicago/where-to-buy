@@ -4,3 +4,4 @@ sklearn
 scipy
 census_area
 requests
+lxml
