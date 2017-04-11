@@ -13,6 +13,7 @@ clean:
 	rm -Rf chicago_crime_index.csv chicago_school_index.csv
 	rm -Rf suburb_crime_*.csv suburb_school_*.csv
 	rm -Rf final/community_data.csv
+	rm -Rf raw/pdfs/*.pdf pdfs
 	psql -d $(PG_DB) -c "DROP TABLE suburbs,community_areas;"
 
 final/short_descriptions.json : places.csv final/chicago.csv
