@@ -1,4 +1,5 @@
 import os
+import sys
 
 import requests
 import lxml.html
@@ -9,9 +10,10 @@ from secrets import CAR_USER, CAR_PASS
 class RequestException(Exception):
     pass
 
+YEAR = sys.argv[1]
 BASE_URL = "http://car.stats.10kresearch.com"
 LOGIN_URL = BASE_URL + "/login"
-LIST_URL = BASE_URL + "/docs/lmu/2016-12/list"  # recent reports
+LIST_URL = BASE_URL + "/docs/lmu/" + YEAR + "-12/list"  # recent reports
 
 # Get the verification token
 raw_login = requests.get(LOGIN_URL)

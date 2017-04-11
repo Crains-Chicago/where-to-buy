@@ -1,3 +1,5 @@
+year = 2016
+
 tabula = java -jar ./tabula-java/target/tabula-0.9.1-jar-with-dependencies.jar
 pdf-pages = `pdfinfo "$$pdf" | grep Pages | perl -p -e 's/[^[0-9]*//'`
 
@@ -19,27 +21,36 @@ tabula-java :
 
 pdfs: 
 	mkdir -p raw/pdfs
-	python scripts/retrieve_pdfs.py
+	python scripts/retrieve_pdfs.py $(year)
 	touch $@
 
-csvs: pdfs
+raw_csvs: pdfs
 	mkdir -p raw/csvs
 	for pdf in raw/pdfs/*.pdf; do \
-		if [[ $(pdf-pages) > 1 ]]; then \
-			$(tabula) -p 1 -a $(p1-bounds-county) -c $(p1-cols) "$$pdf" > raw/csvs/$$pdf_summary.csv \
-			$(tabula) -p 2 -a $(p24-bounds) -c $(p24-cols) "$$pdf" > raw/csvs/$$pdf_2.csv \
-			$(tabula) -p 3 -a $(p3-bounds) -c $(p3-cols) "$$pdf" > raw/csvs/$$pdf_3.csv \
-			$(tabula) -p 2-4 -a $(p24-bounds) -c $(p24-cols) "$$pdf" > raw/csvs/$$pdf_4.csv; \
+		if [[ $(pdf-pages) == 4 ]]; then \
+			$(tabula) -p 1 -a $(p1-bounds-county) -c $(p1-cols) "$$pdf" > $$pdf_summary.csv && \
+			$(tabula) -p 2 -a $(p24-bounds) -c $(p24-cols) "$$pdf" > $$pdf_2.csv && \
+			$(tabula) -p 3 -a $(p3-bounds) -c $(p3-cols) "$$pdf" > $$pdf_3.csv && \
+			$(tabula) -p 4 -a $(p24-bounds) -c $(p24-cols) "$$pdf" > $$pdf_4.csv; \
 		else \
-			$(tabula) -p all -a $(p1-bounds-chciago) -c $(p1-cols) "$$pdf" > raw/csvs/$$pdf.csv; \
+			$(tabula) -p 1 -a $(p1-bounds-chciago) -c $(p1-cols) "$$pdf" > $$pdf.csv; \
 		fi \
 	done
 	touch $@
 
 .PHONY: test-county
-test-county: 
+test-county:
 	$(tabula) -p 1 -a $(p1-bounds-county) -c $(p1-cols) raw/pdfs/Will_County.pdf > raw/csvs/Will_County_summary.csv && \
 	$(tabula) -p 2 -a $(p24-bounds) -c $(p24-cols) raw/pdfs/Will_County.pdf > raw/csvs/Will_County_2.csv && \
 	$(tabula) -p 3 -a $(p3-bounds) -c $(p3-cols) raw/pdfs/Will_County.pdf > raw/csvs/Will_County_3.csv && \
 	$(tabula) -p 2-4 -a $(p24-bounds) -c $(p24-cols) raw/pdfs/Will_County.pdf > raw/csvs/Will_County_4.csv;
+
+.PHONY: clean-county
+clean-county:
+	for csv in raw/csvs/Will_County_*.csv; do \
+		cat $$csv | python scripts/clean_price_data.py $$csv $(year) > $$csv_clean.csv
+
+.PHONY: test-chicago
+test-chicago:
+	$(tabula) -p 1 -a $(p1-bounds-chicago) -c $(p1-cols) raw/pdfs/Albany_Park.pdf > raw/csvs/Albany_Park.csv;
 
