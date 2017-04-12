@@ -2,11 +2,13 @@ PG_DB = wtb
 
 include map_layers.mk community_data.mk real_estate.mk
 
-.PHONY: all clean
+.PHONY: all clean geojson yearly_price_data
 
 all: final/places.geojson final/community_areas.geojson final/community_data.csv
 
 geojson: final/places.geojson final/community_areas.geojson
+
+yearly_price_data: final/chicago_yearly_price_data.csv final/suburb_yearly_price_data.csv
 
 clean:
 	rm -Rf raw/shapefiles/ final/places.geojson final/community_areas.geojson suburbs community_areas raw/*.zip
