@@ -15,7 +15,7 @@ for row in reader:
             new_val = val.strip('%')
             new_val = float(new_val.replace('+ ', '').replace('- ', '-'))
             new_val /= 100
-            cleaned.append(round(new_val, 2))
+            cleaned.append(round(new_val, 4))
         else:
             cleaned.append(val)
     writer.writerow(cleaned)

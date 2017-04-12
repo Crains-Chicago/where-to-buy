@@ -37,6 +37,7 @@ chicago_school_index.csv : chicago_school_averages.csv
 
 # -- prices -- #
 
+.INTERMEDIATE: chicago_prices.csv
 chicago_prices.csv : final/chicago_yearly_price_data.csv
 	csvcut -c "community","detached_median_price_change","attached_median_price_change" $< |\
 		python scripts/percents_to_floats.py | python scripts/nulls_to_zeroes.py |\
@@ -77,12 +78,17 @@ suburb_school_index.csv : suburb_school_averages.csv
 
 # -- prices -- #
 
+.INTERMEDIATE: places_crosswalk.csv
 places_crosswalk.csv: final/suburb_yearly_price_data.csv places.csv 
-	python scripts/create_place_crosswalk.py "$<" $(word 2,$^)
+	python scripts/create_place_crosswalk.py "$<" $(word 2,$^) > $@
 
-suburb_prices.csv : final/suburb_yearly_price_data.csv places.csv places_crosswalk.csv
-	csvjoin --right -c "community","Place" $^ | csvcut -c 1,3 |\
-		sed -e "1s/Place/community/" > $@
+.INTERMEDIATE: suburb_prices.csv
+suburb_prices.csv : final/suburb_yearly_price_data.csv places_crosswalk.csv places.csv 
+	csvjoin --right -c "community" "$<" "$(word 2,$^)" |\
+		csvjoin --outer -c "Place" - "$(word 3,$^)" |\
+		csvcut -c "Place2","median_price_change","median_price_2016" |\
+		python scripts/percents_to_floats.py |\
+		sed -e "1s/median_price_change/price/" -e "1s/Place2/community/" > $@
 
 # ======== #
 # Combined #
@@ -90,9 +96,9 @@ suburb_prices.csv : final/suburb_yearly_price_data.csv places.csv places_crosswa
 
 final/suburb_data.csv : raw/suburb.csv places.csv suburb_school_index.csv suburb_crime_index.csv suburb_prices.csv
 	csvjoin -I -c "Place","Place","community","community","community" $^ |\
-		csvcut -c "Place","Avg Commute Time","Diversity Index","crime","schools","price","FIPS" - |\
+		csvcut -c "Place","Avg Commute Time","Diversity Index","crime","schools","price","FIPS","median_price_2016" - |\
 		sed -e "1s/Place/community/" -e "1s/Avg Commute Time/commute/" |\
-		sed -e "1s/Diversity Index/diversity/" -e "1s/FIPS/fips/" > $@
+		sed -e "1s/Diversity Index/diversity/" -e "1s/FIPS/fips/" -e "1s/_2016//" > $@
 
 final/chicago_data.csv : raw/chicago.csv chicago_school_index.csv chicago_crime_index.csv chicago_prices.csv
 	csvjoin -I -c "community" $^ |\
