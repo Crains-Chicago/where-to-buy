@@ -27,27 +27,28 @@ pdfs:
 raw_csvs: pdfs
 	mkdir -p raw/csvs/chicago raw/csvs/suburbs
 	for pdf in raw/pdfs/*.pdf; do \
-		export fname=$$(eval basename $$pdf .pdf) \
+		export fname=$$(basename "$$pdf" .pdf); \
 		if [[ $(pdf-pages) == 4 ]]; then \
-			$(tabula) -p 1 -a $(p1-bounds-county) -c $(p1-cols) "$$pdf" > raw/csvs/chicago/$${fname}.csv && \
-			$(tabula) -p 2 -a $(p24-bounds) -c $(p24-cols) "$$pdf" > raw/csvs/suburbs/$${fname}_2.csv && \
-			$(tabula) -p 3 -a $(p3-bounds) -c $(p3-cols) "$$pdf" > raw/csvs/suburbs/$${fname}_3.csv && \
-			$(tabula) -p 4 -a $(p24-bounds) -c $(p24-cols) "$$pdf" > raw/csvs/suburbs/$${fname}_4.csv; \
+			$(tabula) -p 1 -a $(p1-bounds-county) -c $(p1-cols) "$$pdf" > "raw/csvs/chicago/$${fname}.csv" && \
+			$(tabula) -p 2 -a $(p24-bounds) -c $(p24-cols) "$$pdf" > "raw/csvs/suburbs/$${fname}_2.csv" && \
+			$(tabula) -p 3 -a $(p3-bounds) -c $(p3-cols) "$$pdf" > "raw/csvs/suburbs/$${fname}_3.csv" && \
+			$(tabula) -p 4 -a $(p24-bounds) -c $(p24-cols) "$$pdf" > "raw/csvs/suburbs/$${fname}_4.csv"; \
 		else \
-			$(tabula) -p 1 -a $(p1-bounds-chciago) -c $(p1-cols) "$$pdf" > raw/csvs/chicago/$$pdf.csv; \
+			$(tabula) -p 1 -a $(p1-bounds-chicago) -c $(p1-cols) "$$pdf" > "raw/csvs/chicago/$${fname}.csv"; \
 		fi \
 	done
 	touch $@
 
 cleaned_csvs: raw_csvs
 	mkdir -p raw/csvs/chicago/clean raw/csvs/suburbs/clean
-	for csv in raw/csvs/chicago/*.csv; do \
-		export fname=$$(eval basename $$csv .csv) \
-		cat $$csv | python scripts/clean_price_data.py $$csv $(year) > raw/csvs/chicago/clean/$${fname}.csv;
+	for csv in raw/csvs/chicago/*.csv; \
+	do \
+		export fname=$$(basename "$$csv" .csv); \
+		cat "$$csv" | python scripts/clean_price_data.py "$$fname" $(year) > "raw/csvs/chicago/clean/$${fname}.csv"; \
 	done
 	for csv in raw/csvs/suburbs/*.csv; do \
-		export fname=$$(eval basename $$csv .csv) \
-		cat $$csv | python scripts/clean_price_data.py $$csv $(year) > raw/csvs/suburbs/clean/$${fname}.csv;
+		export fname=$$(eval basename $$csv .csv); \
+		cat "$$csv" | python scripts/clean_price_data.py "$$fname" $(year) > "raw/csvs/suburbs/clean/$${fname}.csv"; \
 	done
 	touch $@
 
@@ -55,9 +56,10 @@ final/chicago_prices.csv: cleaned_csvs
 	csvstack raw/csvs/chicago/clean/*.csv > $@
 
 final/suburb_prices.csv: cleaned_csvs
-	for csv in raw/csvs/suburbs/clean/*_2.csv; do
-		export fname=$$(eval basename $$csv _2.csv) \
-		csvjoin -c "community" raw/csvs/suburbs/clean/$${fname}_*.csv > raw/csvs/suburbs/clean/$${fname}_final.csv;
+	for csv in raw/csvs/suburbs/clean/*_2.csv; do \
+		export fname=$$(basename "$$csv" _2.csv); \
+		export fnames=$$(echo raw/csvs/suburbs/clean/$${fname}_*.csv); \
+		csvjoin -c "community" $$fnames > "raw/csvs/suburbs/clean/$${fname}_final.csv"; \
 	done
 	csvstack raw/csvs/suburbs/clean/*_final.csv > $@
 
@@ -75,7 +77,7 @@ clean-county:
 		cat $$csv | python scripts/clean_price_data.py $$csv $(year); \
 	done
 
-.PHONY: test-chicago
-test-chicago:
-	$(tabula) -p 1 -a $(p1-bounds-chicago) -c $(p1-cols) raw/pdfs/Albany_Park.pdf > raw/csvs/Albany_Park.csv;
+.PHONY: test-ohare
+test-ohare:
+	$(tabula) -p 1 -a $(p1-bounds-chicago) -c $(p1-cols) "raw/pdfs/O'hare.pdf" > "raw/csvs/chicago/O'hare.csv";
 

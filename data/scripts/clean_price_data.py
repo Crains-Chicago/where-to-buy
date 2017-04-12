@@ -16,7 +16,7 @@ except IndexError as e:
                        "that you included both.")
 
 # Global vars
-FILENAME = sys.argv[1].split('/')[2]
+FILENAME = sys.argv[1]
 YEAR = sys.argv[2]
 PREV_YEAR = str(int(YEAR)-1)
 CHANGE = 'change'
@@ -115,12 +115,7 @@ if len(in_header) <= 8:
     fieldnames = ['community'] + ['_'.join(name) for name in zipped]
 
     # Figure out the name of this community and add it to the dict of values
-    if '.pdf' in FILENAME:
-        place = FILENAME.split('.pdf')[0].replace('_', ' ').upper()
-    else:
-        # For debugging
-        assert '.csv' in FILENAME
-        place = FILENAME.split('.csv')[0].replace('_', ' ').upper()
+    place = FILENAME.replace('_', ' ').upper()
     output['community'] = place
 
     # Wrap the output in a list, for generalization
