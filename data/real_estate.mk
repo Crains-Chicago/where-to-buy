@@ -96,5 +96,5 @@ final/suburb_yearly_price_data.csv: cleaned_csvs
 		export fnames=$$(echo raw/csvs/suburbs/clean/$${fname}_*.csv); \
 		csvjoin -c "community" $$fnames > "raw/csvs/suburbs/clean/$${fname}_final.csv"; \
 	done
-	csvstack raw/csvs/suburbs/clean/*_final.csv > $@
+	csvstack raw/csvs/suburbs/clean/*_final.csv | sort -r -u | csvsort -c 1 > $@
 	rm raw/csvs/suburbs/clean/*_final.csv
