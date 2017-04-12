@@ -37,9 +37,13 @@ chicago_school_index.csv : chicago_school_averages.csv
 
 # -- prices -- #
 
-.INTERMEDIATE: chicago_prices.csv
-chicago_prices.csv : raw/chicago_price_scoring.csv
-	csvcut -c 1,2 $< > $@
+chicago_prices.csv : final/chicago_yearly_price_data.csv
+	csvcut -c "community","detached_median_price_change","attached_median_price_change" $< |\
+		python scripts/percents_to_floats.py | python scripts/nulls_to_zeroes.py |\
+		python scripts/pca.py price > chicago_price_index.csv
+	csvcut -c "community","detached_median_price_2016","attached_median_price_2016" $< |\
+		csvjoin -c "community" chicago_price_index.csv - > $@ 
+	rm chicago_price_index.csv
 
 # ======= #
 # Suburbs #
@@ -90,6 +94,6 @@ final/suburb_data.csv : raw/suburb.csv places.csv suburb_school_index.csv suburb
 
 final/chicago_data.csv : raw/chicago.csv chicago_school_index.csv chicago_crime_index.csv chicago_prices.csv
 	csvjoin -I -c "community" $^ |\
-		csvcut -c "community","Average Commute","Diversity Index","crime","schools","price" - |\
+		csvcut -c "community","Average Commute","Diversity Index","crime","schools","price","detached_median_price_2016","attached_median_price_2016" - |\
 		sed -e "1s/Average Commute/commute/" -e "1s/Diversity Index/diversity/" |\
-		sed -e "s/$$/,14000/" -e "1s/14000/fips/"> $@
+		sed -e "s/$$/,14000/" -e "1s/14000/fips/" -e "1s/_2016//g" > $@

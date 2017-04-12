@@ -8,7 +8,7 @@ reader = csv.reader(sys.stdin)
 writer = csv.writer(sys.stdout)
 
 index_variable = sys.argv[1]
-assert index_variable in ["crime", "schools"]
+assert index_variable in ["crime", "schools", "price"]
 
 in_header = next(reader)
 out_header = ["community", index_variable]

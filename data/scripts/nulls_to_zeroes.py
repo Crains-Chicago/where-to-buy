@@ -9,6 +9,6 @@ writer.writerow(header)
 
 for row in reader:
     for i, x in enumerate(row):
-        if len(x) < 1:
+        if len(x) < 1 or x == '--':
             x = row[i] = 0
     writer.writerow(row)
