@@ -25,11 +25,11 @@ pdfs:
 	touch $@
 
 raw_csvs: pdfs
-	mkdir -p raw/csvs/chicago raw/csvs/suburbs
+	mkdir -p raw/csvs/chicago raw/csvs/suburbs raw/csvs/county-summaries
 	for pdf in raw/pdfs/*.pdf; do \
 		export fname=$$(basename "$$pdf" .pdf); \
 		if [[ $(pdf-pages) == 4 ]]; then \
-			$(tabula) -p 1 -a $(p1-bounds-county) -c $(p1-cols) "$$pdf" > "raw/csvs/chicago/$${fname}.csv" && \
+			$(tabula) -p 1 -a $(p1-bounds-county) -c $(p1-cols) "$$pdf" > "raw/csvs/county-summaries/$${fname}.csv" && \
 			$(tabula) -p 2 -a $(p24-bounds) -c $(p24-cols) "$$pdf" > "raw/csvs/suburbs/$${fname}_2.csv" && \
 			$(tabula) -p 3 -a $(p3-bounds) -c $(p3-cols) "$$pdf" > "raw/csvs/suburbs/$${fname}_3.csv" && \
 			$(tabula) -p 4 -a $(p24-bounds) -c $(p24-cols) "$$pdf" > "raw/csvs/suburbs/$${fname}_4.csv"; \
@@ -62,22 +62,3 @@ final/suburb_prices.csv: cleaned_csvs
 		csvjoin -c "community" $$fnames > "raw/csvs/suburbs/clean/$${fname}_final.csv"; \
 	done
 	csvstack raw/csvs/suburbs/clean/*_final.csv > $@
-
-.PHONY: test-county
-test-county:
-	$(tabula) -p 1 -a $(p1-bounds-county) -c $(p1-cols) raw/pdfs/Will_County.pdf > raw/csvs/Will_County.pdf_summary.csv && \
-	$(tabula) -p 2 -a $(p24-bounds) -c $(p24-cols) raw/pdfs/Will_County.pdf > raw/csvs/Will_County.pdf_2.csv && \
-	$(tabula) -p 3 -a $(p3-bounds) -c $(p3-cols) raw/pdfs/Will_County.pdf > raw/csvs/Will_County.pdf_3.csv && \
-	$(tabula) -p 4 -a $(p24-bounds) -c $(p24-cols) raw/pdfs/Will_County.pdf > raw/csvs/Will_County.pdf_4.csv;
-
-.PHONY: clean-county
-clean-county:
-	mkdir -p test
-	for csv in raw/csvs/Will_County.pdf_*.csv; do \
-		cat $$csv | python scripts/clean_price_data.py $$csv $(year); \
-	done
-
-.PHONY: test-ohare
-test-ohare:
-	$(tabula) -p 1 -a $(p1-bounds-chicago) -c $(p1-cols) "raw/pdfs/O'hare.pdf" > "raw/csvs/chicago/O'hare.csv";
-
