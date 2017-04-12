@@ -31,5 +31,5 @@ p3-south-cols = $(p3-will-cols)
 
 # West Cook
 p24-west-cols = $(p3-will-cols)
-p3-south-cols = $(p3-will-cols)
+p3-west-cols = $(p3-will-cols)
 

@@ -1,8 +1,5 @@
 import csv
 import sys
-import time
-
-start = time.time()
 
 reader = csv.reader(sys.stdin)
 header = next(reader)
@@ -66,7 +63,7 @@ for row in reader:
                 print('Row value:', round(val_as_float, 1))
                 print('Calculated delta:', round(delta*100, 1))
                 print('(Note: calculated deltas should be within +-1 of' +
-                      ' the row value.')
+                      ' the row value.)')
                 print('====================')
         elif "median_price" in header[i] and val != '--':
             # Value must start with a dollar sign
