@@ -77,8 +77,10 @@ suburb_school_index.csv : suburb_school_averages.csv
 
 # -- prices -- #
 
-.INTERMEDIATE: suburb_prices.csv
-suburb_prices.csv : raw/suburb_price_scoring.csv places.csv
+places_crosswalk.csv: final/suburb_yearly_price_data.csv places.csv 
+	python scripts/create_place_crosswalk.py "$<" $(word 2,$^)
+
+suburb_prices.csv : final/suburb_yearly_price_data.csv places.csv places_crosswalk.csv
 	csvjoin --right -c "community","Place" $^ | csvcut -c 1,3 |\
 		sed -e "1s/Place/community/" > $@
 
