@@ -19,7 +19,7 @@ chicago_crime_rate.csv : raw/chicago.csv chicago_population.csv
 crime_index : chicago_crime_rate.csv
 	csvgrep -c 1 -m "LOOP" -i $< | csvgrep -c 1 -m "NEAR NORTH SIDE" -i - |\
 		csvgrep -c 1 -m "NEAR SOUTH SIDE" -i - | csvgrep -c 1 -m "NEAR WEST SIDE" -i - |\
-		python scripts/pca.py crime > $@
+		python scripts/pca.py crime | python scripts/flip_signs.py 2 > $@
 
 chicago_crime_index.csv : crime_index
 	echo "\nLOOP,0\nNEAR NORTH SIDE,0\nNEAR SOUTH SIDE,0\nNEAR WEST SIDE,0" | csvstack $< - > $@
