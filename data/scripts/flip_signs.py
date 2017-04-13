@@ -3,19 +3,25 @@
 import csv
 import sys
 
-assert sys.argv[1]
+try:
+    cols = sys.argv[1]
+    cols = cols.split(',')
+except IndexError as e:
+    raise Exception("Please provide names for the columns whose signs" +
+                    " you'd like to flip.").with_traceback(e.__traceback__)
 
-cols = sys.argv[1]
-cols = cols.split(',')
+reader = csv.DictReader(sys.stdin)
+fieldnames = reader.fieldnames
 
-reader = csv.reader(sys.stdin)
-writer = csv.writer(sys.stdout)
-
-header = next(reader)
-writer.writerow(header)
+writer = csv.DictWriter(sys.stdout, fieldnames=fieldnames)
+writer.writeheader()
 
 for row in reader:
-    for i, val in enumerate(row):
-        if str(i+1) in cols:
-            row[i] = float(val) * -1
+    for col in cols:
+        try:
+            row[col] = float(row[col]) * -1
+        except KeyError as e:
+            exception = "Couldn't find the column '" + e.args[0] + \
+                        "'. Double-check the columns you passed as input."
+            raise Exception(exception).with_traceback(e.__traceback__)
     writer.writerow(row)

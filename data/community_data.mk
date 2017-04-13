@@ -13,13 +13,13 @@ chicago_population.csv : final/community_areas.geojson
 chicago_crime_rate.csv : raw/chicago.csv chicago_population.csv
 	csvcut -c "community","HOMICIDE","CRIM SEXUAL ASSAULT","ROBBERY","ASSAULT","BURGLARY","THEFT","MOTOR VEHICLE THEFT","ARSON" $< |\
 		csvjoin -I -c community - $(word 2,$^) | python scripts/nulls_to_zeroes.py |\
-		python scripts/crime_numbers_to_rates.py chicago > $@
+		python scripts/crime_numbers_to_rates.py "chicago" > $@
 
 .INTERMEDIATE: crime_index
 crime_index : chicago_crime_rate.csv
 	csvgrep -c 1 -m "LOOP" -i $< | csvgrep -c 1 -m "NEAR NORTH SIDE" -i - |\
 		csvgrep -c 1 -m "NEAR SOUTH SIDE" -i - | csvgrep -c 1 -m "NEAR WEST SIDE" -i - |\
-		python scripts/pca.py crime | python scripts/flip_signs.py 2 > $@
+		python scripts/pca.py "crime" > $@
 
 chicago_crime_index.csv : crime_index
 	echo "\nLOOP,0\nNEAR NORTH SIDE,0\nNEAR SOUTH SIDE,0\nNEAR WEST SIDE,0" | csvstack $< - > $@
@@ -30,10 +30,10 @@ chicago_crime_index.csv : crime_index
 chicago_school_averages.csv : final/chicago_schools.csv
 	csvcut -c 1,2,3,4,5,6,7,14,15,16,17,18,19 $< |\
 		python scripts/nulls_to_zeroes.py | \
-		python scripts/school_averages.py chicago > $@
+		python scripts/school_averages.py "chicago" > $@
 
 chicago_school_index.csv : chicago_school_averages.csv
-	cat $< | python scripts/pca.py schools > $@
+	cat $< | python scripts/pca.py "schools" > $@
 
 # -- prices -- #
 
@@ -41,7 +41,7 @@ chicago_school_index.csv : chicago_school_averages.csv
 chicago_prices.csv : final/chicago_yearly_price_data.csv
 	csvcut -c "community","detached_median_price_change","attached_median_price_change" $< |\
 		python scripts/percents_to_floats.py | python scripts/nulls_to_zeroes.py |\
-		python scripts/pca.py price > chicago_price_index.csv
+		python scripts/pca.py "price" > chicago_price_index.csv
 	csvcut -c "community","detached_median_price_2016","attached_median_price_2016" $< |\
 		csvjoin -I -c "community" chicago_price_index.csv - > $@ 
 	rm chicago_price_index.csv
@@ -58,22 +58,23 @@ places.csv : raw/places.csv raw/places_to_delete.xlsx
 
 # -- crime -- #
 
+.INTERMEDIATE: suburb_crime_rates.csv
 suburb_crime_rates.csv : raw/suburb.csv places.csv suburbs
 	csvjoin -I -c "Place" "$<" "$(word 2,$^)" |\
 		csvcut -c 1,3,18,4,5,6,7,8,9,10,11,12,13,14,15,16,17,19,20,21,22,23,24,25,26,27,28,29,30,31,32,41 - |\
-		python scripts/crime_numbers_to_rates.py suburbs $(PG_DB) > $@
+		python scripts/crime_numbers_to_rates.py "suburbs" $(PG_DB) > $@
 
 suburb_crime_index.csv : suburb_crime_rates.csv
-	cat $< | python scripts/pca.py crime > $@
+	cat $< | python scripts/pca.py "crime" > $@
 
 # -- schools -- #
 
 suburb_school_averages.csv : final/suburb_schools.csv
 	csvcut -C 2,4,5,6,7,8,9,10,11,12,13,14 $< | python scripts/nulls_to_zeroes.py |\
-		python scripts/school_averages.py suburbs > $@
+		python scripts/school_averages.py "suburbs" > $@
 
 suburb_school_index.csv : suburb_school_averages.csv
-	cat $< | python scripts/pca.py schools > $@
+	cat $< | python scripts/pca.py "schools" > $@
 
 # -- prices -- #
 
@@ -98,7 +99,8 @@ suburb_zscores.csv: raw/suburb.csv suburb_school_index.csv suburb_crime_index.cs
 	csvjoin -I -c "Place","community","community","community" $^ |\
 		csvcut -c "Place","Avg Commute Time","Diversity Index","crime","schools","price" - |\
 		sed -e "1s/Place/community/" -e "1s/Avg Commute Time/commute/" |\
-		sed -e "1s/Diversity Index/diversity/" | python scripts/normalize_values.py > $@
+		sed -e "1s/Diversity Index/diversity/" |\
+		python scripts/normalize_values.py | python scripts/flip_signs.py "crime","commute" > $@
 
 final/suburb_data.csv : places.csv suburb_zscores.csv suburb_prices.csv
 	csvjoin -I -c "Place","community","community" $^ |\
@@ -110,7 +112,7 @@ chicago_zscores.csv: raw/chicago.csv chicago_school_index.csv chicago_crime_inde
 	csvjoin -I -c "community" $^ |\
 		csvcut -c "community","Average Commute","Diversity Index","crime","schools","price" - |\
 		sed -e "1s/Average Commute/commute/" -e "1s/Diversity Index/diversity/" |\
-		python scripts/normalize_values.py > $@
+		python scripts/normalize_values.py | python scripts/flip_signs.py "crime","commute" > $@
 
 final/chicago_data.csv : chicago_zscores.csv chicago_prices.csv
 	csvjoin -I -c "community" $^ |\
