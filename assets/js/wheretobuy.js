@@ -50,6 +50,8 @@ var WhereToBuy = {
     placeMarker: null,
     rankingMarkers: [],
 
+    charts: [],
+
     initialize: function() {
 
         // Initialize a Leaflet map
@@ -555,34 +557,42 @@ var WhereToBuy = {
         return topCommunities;
     },
 
-    summaryStats: function(priority) {
-        // Calculates min, max, quartiles, and median for a given priority
+    getHistogram: function(priority, step) {
+        // Returns distribution of the current data source for a given priority
 
         var dataSource = WhereToBuy.getDataSource();
 
-        var omega = [];
-        for (i=0; i<dataSource.length; i++) {
-            omega.push(parseFloat(dataSource[i][priority]));
+        var data = [];
+        for (var i=0; i<dataSource.length; i++) {
+            data.push(parseFloat(dataSource[i][priority]));
         }
 
-        omega.sort(function(a, b) {return a-b;});
-        var mid = omega.length / 2;
+        var histo = {},
+            arr = [],
+            x;
 
-        var out = {
-            'min': omega[0],
-            'median': (mid % 1) ? omega[mid-0.5] : (omega[mid-1] + omega[mid]) / 2,
-            'max': omega[omega.length-1],
-        };
+        // Group down based on step resolution
+        for (var j=0; j<data.length; j++) {
+            x = Math.floor(data[j] / step) * step;
+            if (!histo[x]) {
+                histo[x] = 0;
+            }
+            histo[x]++;
+        }
 
-        var lower = (omega.length % 2) ? omega.slice(0, mid-0.5) : omega.slice(0, out[mid-1]);
-        var lowerMid = lower.length / 2;
-        var upper = (omega.length % 2) ? omega.slice(mid-0.5, omega.length-1) : omega.slice(out[mid], omega.length-1);
-        var upperMid = upper.length / 2;
+        // Make the histo group into an array
+        for (x in histo) {
+            if (histo.hasOwnProperty((x))) {
+                arr.push([parseFloat(x), histo[x]]);
+            }
+        }
 
-        out['firstQ'] = (lowerMid % 1) ? lower[lowerMid-0.5] : (lower[lowerMid-1] + lower[lowerMid]) / 2;
-        out['secondQ'] = (upperMid % 1) ? upper[upperMid-0.5] : (upper[upperMid-1] + upper[upperMid]) / 2;
+        // Finally, sort the array
+        arr.sort(function (a, b) {
+            return a[0] - b[0];
+        });
 
-        return out;
+        return arr;
     },
 
     displayRanking: function(ranking) {
@@ -718,12 +728,6 @@ var WhereToBuy = {
             }
         }
 
-        // Finally, get summary statistics based on the current data source
-        var stats = {};
-        for (var m=0; m<WhereToBuy.priorities.length; m++) {
-            stats[WhereToBuy.priorities[m]] = WhereToBuy.summaryStats(WhereToBuy.priorities[m]);
-        }
-
         // Start to pull together variables
         var shortDescription;
         if (found) {
@@ -771,11 +775,12 @@ var WhereToBuy = {
                                                     communityScores.attached_median_price
                                                     : "Price data for apartments is not available" +
                                                       " for this community.";
+                    $('#median-price').html(detachedPrice);
                 } else {
                     var medianPrice = communityScores.median_price.length ? communityScores.median_price
                                             : "Price data is not available for this community.";
+                    $('#median-price').html(medianPrice);
                 }
-
 
                 // Calculate bar chart positions and update charts
                 var scoreMap = {
@@ -784,31 +789,46 @@ var WhereToBuy = {
                     'schools': schoolsScore,
                     'price': priceScore
                 };
-                $('.bar-chart').each(function() {
-                    var priority = $(this).attr('id').replace('-score', '');
-                    var priorityStats = stats[priority];
-                    var range = priorityStats.max - priorityStats.min;
-
-                    var bar = parseInt(((scoreMap[priority] - priorityStats.min) / range) * 100);
-                    $(this).find('span.bar').css('width', bar + '%');
-
-                    var firstQ = parseInt(((priorityStats['firstQ'] - priorityStats.min) / range) * 100);
-                    $(this).find('span.firstQ').css('left', firstQ + '%');
-
-                    var median = parseInt(((priorityStats['median'] - priorityStats.min) / range) * 100);
-                    $(this).find('span.median').css('left', median + '%');
-
-                    var secondQ = parseInt(((priorityStats['secondQ'] - priorityStats.min) / range) * 100);
-                    $(this).find('span.secondQ').css('left', secondQ + '%');
+                $('.modal').on('shown.bs.modal', function() {
+                    $('.sparkline').each(function() {
+                        var currentID = $(this).attr('id');
+                        var priority = $(this).attr('id').replace('-score', '');
+                        var priorityScores = WhereToBuy.getHistogram(priority, 0.5);
+                        var dataPoint = scoreMap[priority];
+                        var chart = WhereToBuy.makeSparkLine(currentID, dataPoint, priorityScores);
+                        WhereToBuy.charts.push({
+                            'chart': chart,
+                            'dataPoint': dataPoint
+                        });
+                    });
+                    $first = WhereToBuy.charts[0];
+                    var redLine = parseFloat($first.dataPoint);
+                    $first.chart.update({
+                        xAxis: {
+                            plotLines: [{
+                                color: '#FF0000',
+                                width: 2,
+                                value: redLine,
+                                label: {
+                                    useHTML: true,
+                                    text: 'This community',
+                                    rotation: 0,
+                                    verticalAlign: "middle"
+                                }
+                            }, {
+                                color: '#aaaaaa',
+                                width: 1,
+                                value: 0,
+                                dashStyle: 'ShortDash',
+                                label: {
+                                    text: 'Average',
+                                    rotation: 0,
+                                    verticalAlign: "top"
+                                }
+                            }]
+                        }
+                    });
                 });
-
-                // Display up median price info
-                if (WhereToBuy.isChicago(communityScores.community)) {
-                    $('#median-price').html(detachedPrice);
-                } else {
-                    $('#median-price').html(medianPrice);
-                }
-                
 
                 // Update the modal with information
                 $('#short-description').html(shortDescription);
@@ -1014,6 +1034,117 @@ var WhereToBuy = {
             }
         }
         return false;
-    }
+    },
 
+    /**
+     * Create a constructor for sparklines that takes some sensible defaults and merges in the individual
+     * chart options. This function is also available from the jQuery plugin as $(element).highcharts('SparkLine').
+     */
+    makeSparkLine: function (a, b, c) {
+        // a: id of the div to generate a chart in
+        // b: point at which to draw a line
+        // c: series data for the sparkline
+        var options = {
+                chart: {
+                    renderTo: a,
+                    backgroundColor: null,
+                    borderWidth: 0,
+                    type: 'areaspline',
+                    margin: [2, 0, 2, 0],
+                    height: 100,
+                    style: {
+                        overflow: 'visible'
+                    },
+
+                    // small optimalization, saves 1-2 ms each sparkline
+                    skipClone: true
+                },
+                series: [{
+                    data: c
+                }],
+                title: {
+                    text: ''
+                },
+                credits: {
+                    enabled: false
+                },
+                xAxis: {
+                    labels: {
+                        enabled: false
+                    },
+                    title: {
+                        text: null
+                    },
+                    startOnTick: false,
+                    endOnTick: false,
+                    plotLines: [{
+                        color: '#FF0000',
+                        width: 2,
+                        value: b,
+                    }, {
+                        color: '#aaaaaa',
+                        width: 1,
+                        value: 0,
+                        dashStyle: 'ShortDash',
+                    }],
+                    tickPositions: []
+                },
+                yAxis: {
+                    endOnTick: false,
+                    startOnTick: false,
+                    labels: {
+                        enabled: false
+                    },
+                    title: {
+                        text: null
+                    },
+                    tickPositions: [0]
+                },
+                legend: {
+                    enabled: false
+                },
+                tooltip: {
+                    backgroundColor: null,
+                    borderWidth: 0,
+                    shadow: false,
+                    useHTML: true,
+                    hideDelay: 0,
+                    shared: true,
+                    padding: 0,
+                    positioner: function (w, h, point) {
+                        return { x: point.plotX - w / 2, y: point.plotY - h };
+                    }
+                },
+                plotOptions: {
+                    series: {
+                        animation: false,
+                        lineWidth: 1,
+                        shadow: false,
+                        states: {
+                            hover: {
+                                lineWidth: 1
+                            }
+                        },
+                        marker: {
+                            radius: 1,
+                            states: {
+                                hover: {
+                                    radius: 2
+                                }
+                            }
+                        },
+                        fillOpacity: 0.25
+                    },
+                    areaspline: {
+                        fillOpacity: 0.5
+                    },
+                    column: {
+                        negativeColor: '#910000',
+                        borderColor: 'silver'
+                    }
+                }
+            };
+
+        return new Highcharts.Chart(a, options);
+    },
 };

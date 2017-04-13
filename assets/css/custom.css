@@ -251,6 +251,10 @@ p {
     padding: 0px !important;
 }
 
+.table tr.stats-tr {
+    height: 100px !important;
+}
+
 .profile-table {
     margin-top: 110px;
     background-color: rgb(255, 255, 255);

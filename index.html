@@ -221,95 +221,45 @@ layout: base
               <h3 style="margin-bottom: 20px;">Community stats
                 <small>Hover for more information</small>
               </h3>
-              <div class="col-xs-12 col-md-6">
-                <div class="legend-container">
-                  <span class="small min-legend">Minimum</span>
-                  <span class="small firstQ-legend">First quartile</span>
-                  <span class="small median-legend">Median</span>
-                  <span class="small secondQ-legend">Third quartile</span>
-                  <span class="small max-legend">Maximum</span>
-                </div>
-              </div>
-              <br />
-              <div class="col-xs-12 col-md-6">
-                <span class="legend-container bar-chart-example"></span>
-                <span class="tick example" style="left: 15px"></span>
-                <span class="tick example" style="left: 25%"></span>
-                <span class="tick example" style="left: 50%"></span>
-                <span class="tick example" style="left: 75%"></span>
-                <span class="tick example" style="right: 15px"></span>
-              </div>
             </div>
             <div class="row">
               <div class="table-responsive">
                 <table class="table table-bordered table-striped">
                   <tbody id="community-stats">
-                    <tr>
+                    <tr class="stats-tr">
                       <td class='col-xs-4 text-left'>
                         <a title="What's this?" data-content="We calculated the diversity score for this area using US Census data and the Shannon index, a measure of diversity that quantifies how easily we could guess a random resident's race if all we knew was the overall composition of the area." tabindex="0" class="chart-header pull-left" role="button" data-toggle="popover" data-trigger="hover" data-placement="auto" aria-label="Info">
                           <strong><i class='fa fa-fw fa-users'></i> Diversity</strong>
                         </a>
                       </td>
-                      <td class="chart-container">
-                        <span class="bar-chart diversity" id="diversity-score">
-                          <span class="tick min"></span>
-                          <span class="tick firstQ"></span>
-                          <span class="tick median"></span>
-                          <span class="tick secondQ"></span>
-                          <span class="tick max"></span>
-                          <span class="bar"></span>
-                        </span>
+                      <td class="sparkline diversity" id="diversity-score">
                       </td>
                     </tr>
-                    <tr>
+                    <tr class="stats-tr">
                       <td class='col-xs-4'>
                         <a title="What's this?" data-content="We calculated the crime score for this area by performing primary component analysis on the 2015 Uniform Crime Report from the State of Illinois Police, which tracks a number of different kinds of violent crime across the state. Crime numbers were matched by police jurisdiction and adjusted for population." tabindex="0" class="chart-header pull-left" role="button" data-toggle="popover" data-trigger="hover" data-placement="auto" aria-label="Info">
                           <strong><i class='fa fa-fw fa-balance-scale'></i> Crime</strong>
                         </a>
                       </td>
-                      <td class="chart-container">
-                        <span class="bar-chart crime" id="crime-score">
-                          <span class="tick min"></span>
-                          <span class="tick firstQ"></span>
-                          <span class="tick median"></span>
-                          <span class="tick secondQ"></span>
-                          <span class="tick max"></span>
-                          <span class="bar"></span>
-                        </span>
+                      <td class="sparkline crime" id="crime-score">
                       </td>
                     </tr>
-                    <tr>
+                    <tr class="stats-tr">
                       <td class='col-xs-4'>
                         <a title="What's this?" data-content="We calculated the school score for this area by performing primary component analysis on 2015 data from the School Report Card, a report published annually by the Illinois State Board of Education. Test scores were our primary variables, but we also included teacher salary when available." tabindex="0" class="chart-header pull-left" role="button" data-toggle="popover" data-trigger="hover" data-placement="auto" aria-label="Info">
                           <strong><i class='fa fa-fw fa-graduation-cap'></i> Schools</strong>
                         </a>
                       </td>
-                      <td class="chart-container">
-                        <span class="bar-chart schools" id="schools-score">
-                          <span class="tick min"></span>
-                          <span class="tick firstQ"></span>
-                          <span class="tick median"></span>
-                          <span class="tick secondQ"></span>
-                          <span class="tick max"></span>
-                          <span class="bar"></span>
-                        </span>
+                      <td class="sparkline schools" id="schools-score">
                       </td>
                     </tr>
-                    <tr>
+                    <tr class="stats-tr">
                       <td class='col-xs-4'>
                         <a title="What's this?" data-content="We calculated price growth scores for this area by using the percent increase in median home prices between 2015 and 2016 as reported by the Chicago Association of Realtors. Where data was available for both attached and detached home prices, we performed primary component analysis to determine an overall trend." tabindex="0" class="chart-header pull-left" role="button" data-toggle="popover" data-trigger="hover" data-placement="auto" aria-label="Info">
                           <strong><i class='fa fa-fw fa-usd'></i> Price growth</strong>
                         </a>
                       </td>
-                      <td class="chart-container">
-                        <span class="bar-chart price" id="price-score">
-                          <span class="tick min"></span>
-                          <span class="tick firstQ"></span>
-                          <span class="tick median"></span>
-                          <span class="tick secondQ"></span>
-                          <span class="tick max"></span>
-                          <span class="bar"></span>
-                        </span>
+                      <td class="sparkline price" id="price-score">
                       </td>
                     </tr>
                     <tr>
@@ -339,6 +289,7 @@ layout: base
   </div>
 </div>
 
+<!-- JS libs -->
 <script src="assets/js/leaflet.js"></script>
 <script src="assets/js/leaflet-google.js"></script>
 <script src="assets/js/tether.min.js"></script>
@@ -347,6 +298,9 @@ layout: base
 <script src="assets/js/packery.pkgd.min.js"></script>
 <script src="assets/js/flickity.pkgd.min.js"></script>
 <script src="assets/js/jquery.csv.min.js"></script>
+<script src="assets/js/highcharts.js"></script>
+
+<!-- custom JS -->
 <script src="assets/js/wheretobuy.js"></script>
 <script>
 
