@@ -12,7 +12,7 @@ chicago_population.csv : final/community_areas.geojson
 .INTERMEDIATE: chicago_crime_rate.csv
 chicago_crime_rate.csv : raw/chicago.csv chicago_population.csv
 	csvcut -c "community","HOMICIDE","CRIM SEXUAL ASSAULT","ROBBERY","ASSAULT","BURGLARY","THEFT","MOTOR VEHICLE THEFT","ARSON" $< |\
-		csvjoin -c community - $(word 2,$^) | python scripts/nulls_to_zeroes.py |\
+		csvjoin -I -c community - $(word 2,$^) | python scripts/nulls_to_zeroes.py |\
 		python scripts/crime_numbers_to_rates.py chicago > $@
 
 .INTERMEDIATE: crime_index
@@ -43,7 +43,7 @@ chicago_prices.csv : final/chicago_yearly_price_data.csv
 		python scripts/percents_to_floats.py | python scripts/nulls_to_zeroes.py |\
 		python scripts/pca.py price > chicago_price_index.csv
 	csvcut -c "community","detached_median_price_2016","attached_median_price_2016" $< |\
-		csvjoin -c "community" chicago_price_index.csv - > $@ 
+		csvjoin -I -c "community" chicago_price_index.csv - > $@ 
 	rm chicago_price_index.csv
 
 # ======= #
@@ -84,8 +84,8 @@ places_crosswalk.csv: final/suburb_yearly_price_data.csv places.csv
 
 .INTERMEDIATE: suburb_prices.csv
 suburb_prices.csv : final/suburb_yearly_price_data.csv places_crosswalk.csv places.csv 
-	csvjoin --right -c "community" "$<" "$(word 2,$^)" |\
-		csvjoin --outer -c "Place" - "$(word 3,$^)" |\
+	csvjoin -I --right -c "community" "$<" "$(word 2,$^)" |\
+		csvjoin -I --outer -c "Place" - "$(word 3,$^)" |\
 		csvcut -c "Place2","median_price_change","median_price_2016" |\
 		python scripts/percents_to_floats.py |\
 		sed -e "1s/median_price_change/price/" -e "1s/Place2/community/" > $@
@@ -94,14 +94,26 @@ suburb_prices.csv : final/suburb_yearly_price_data.csv places_crosswalk.csv plac
 # Combined #
 # ======== #
 
-final/suburb_data.csv : raw/suburb.csv places.csv suburb_school_index.csv suburb_crime_index.csv suburb_prices.csv
-	csvjoin -I -c "Place","Place","community","community","community" $^ |\
-		csvcut -c "Place","Avg Commute Time","Diversity Index","crime","schools","price","FIPS","median_price_2016" - |\
+.INTERMEDIATE: suburb_zscores.csv
+suburb_zscores.csv: raw/suburb.csv suburb_school_index.csv suburb_crime_index.csv suburb_prices.csv
+	csvjoin -I -c "Place","community","community","community" $^ |\
+		csvcut -c "Place","Avg Commute Time","Diversity Index","crime","schools","price" - |\
 		sed -e "1s/Place/community/" -e "1s/Avg Commute Time/commute/" |\
-		sed -e "1s/Diversity Index/diversity/" -e "1s/FIPS/fips/" -e "1s/_2016//" > $@
+		sed -e "1s/Diversity Index/diversity/" | python scripts/normalize_values.py > $@
 
-final/chicago_data.csv : raw/chicago.csv chicago_school_index.csv chicago_crime_index.csv chicago_prices.csv
+final/suburb_data.csv : places.csv suburb_zscores.csv suburb_prices.csv
+	csvjoin -I -c "Place","community","community" $^ |\
+		csvcut -c "Place","commute","diversity","crime","schools","price","FIPS","median_price_2016" - |\
+		sed -e "1s/Place/community/" -e "1s/FIPS/fips/" -e "1s/_2016//" > $@
+
+.INTERMEDIATE: chicago_zscores.csv
+chicago_zscores.csv: raw/chicago.csv chicago_school_index.csv chicago_crime_index.csv chicago_prices.csv
 	csvjoin -I -c "community" $^ |\
-		csvcut -c "community","Average Commute","Diversity Index","crime","schools","price","detached_median_price_2016","attached_median_price_2016" - |\
+		csvcut -c "community","Average Commute","Diversity Index","crime","schools","price" - |\
 		sed -e "1s/Average Commute/commute/" -e "1s/Diversity Index/diversity/" |\
+		python scripts/normalize_values.py > $@
+
+final/chicago_data.csv : chicago_zscores.csv chicago_prices.csv
+	csvjoin -I -c "community" $^ |\
+		csvcut -c "community","commute","diversity","crime","schools","price","detached_median_price_2016","attached_median_price_2016" - |\
 		sed -e "s/$$/,14000/" -e "1s/14000/fips/" -e "1s/_2016//g" > $@
