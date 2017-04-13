@@ -624,6 +624,11 @@ p {
     background-color: hsla(5, 77%, 48%, 0.43);
 }
 
+.price .bar {
+    background-color: #df766d;
+    background-color: hsla(5, 77%, 48%, 0.43);
+}
+
 /* Chart legend */
 
 .legend-container {

@@ -50,8 +50,6 @@ var WhereToBuy = {
     placeMarker: null,
     rankingMarkers: [],
 
-
-
     initialize: function() {
 
         // Initialize a Leaflet map
@@ -692,7 +690,7 @@ var WhereToBuy = {
         var msg = 'No data found.';
         found = false;
 
-        // First, look in the scoring data
+        // First, look for the scoring data
         for (var k=0; k<dataSource.length; k++) {
             if (WhereToBuy.toCommunityString(dataSource[k].community) == community) {
                 communityScores = $.extend({}, dataSource[k]);
@@ -762,7 +760,22 @@ var WhereToBuy = {
                 var diversityScore = parseFloat(communityInfo["Diversity Index"]).toFixed(2);
                 var crimeScore = parseFloat(communityScores["crime"]);
                 var schoolsScore = parseFloat(communityScores["schools"]);
-                var priceScore = communityScores["price"].length ? communityScores["price"] : "Price data not found.";
+                var priceScore = parseFloat(communityScores["price"]);
+
+                if (WhereToBuy.isChicago(communityScores.community)) {
+                    var detachedPrice = communityScores.detached_median_price.length ?
+                                                    communityScores.detached_median_price
+                                                    : "Price data for freestanding homes is not available" +
+                                                      " for this community.";
+                    var attachedPrice = communityScores.attached_median_price.length ?
+                                                    communityScores.attached_median_price
+                                                    : "Price data for apartments is not available" +
+                                                      " for this community.";
+                } else {
+                    var medianPrice = communityScores.median_price.length ? communityScores.median_price
+                                            : "Price data is not available for this community.";
+                }
+
 
                 // Calculate bar chart positions and update charts
                 var scoreMap = {
@@ -789,10 +802,13 @@ var WhereToBuy = {
                     $(this).find('span.secondQ').css('left', secondQ + '%');
                 });
 
-                // $('#diversity-score').html(diversity);
-                // $('#crime-score').html(crimeScore);
-                // $('#school-score').html(schoolsScore);
-                $('#price-score').html(priceScore);
+                // Display up median price info
+                if (WhereToBuy.isChicago(communityScores.community)) {
+                    $('#median-price').html(detachedPrice);
+                } else {
+                    $('#median-price').html(medianPrice);
+                }
+                
 
                 // Update the modal with information
                 $('#short-description').html(shortDescription);
