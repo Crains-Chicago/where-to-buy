@@ -226,7 +226,7 @@ layout: base
               <div class="table-responsive">
                 <table class="table table-bordered table-striped">
                   <tbody id="community-stats">
-                    <tr class="stats-tr">
+                    <tr class="stats-tr" id="diversity-row">
                       <td class='col-xs-4 text-left'>
                         <a title="What's this?" data-content="We calculated the diversity score for this area using US Census data and the Shannon index, a measure of diversity that quantifies how easily we could guess a random resident's race if all we knew was the overall composition of the area." tabindex="0" class="chart-header pull-left" role="button" data-toggle="popover" data-trigger="hover" data-placement="auto" aria-label="Info">
                           <strong><i class='fa fa-fw fa-users'></i> Diversity</strong>
@@ -235,7 +235,7 @@ layout: base
                       <td class="sparkline diversity" id="diversity-score">
                       </td>
                     </tr>
-                    <tr class="stats-tr">
+                    <tr class="stats-tr" id="crime-row">
                       <td class='col-xs-4'>
                         <a title="What's this?" data-content="We calculated the crime score for this area by performing primary component analysis on the 2015 Uniform Crime Report from the State of Illinois Police, which tracks a number of different kinds of violent crime across the state. Crime numbers were matched by police jurisdiction and adjusted for population." tabindex="0" class="chart-header pull-left" role="button" data-toggle="popover" data-trigger="hover" data-placement="auto" aria-label="Info">
                           <strong><i class='fa fa-fw fa-balance-scale'></i> Crime</strong>
@@ -244,7 +244,7 @@ layout: base
                       <td class="sparkline crime" id="crime-score">
                       </td>
                     </tr>
-                    <tr class="stats-tr">
+                    <tr class="stats-tr" id="schools-row">
                       <td class='col-xs-4'>
                         <a title="What's this?" data-content="We calculated the school score for this area by performing primary component analysis on 2015 data from the School Report Card, a report published annually by the Illinois State Board of Education. Test scores were our primary variables, but we also included teacher salary when available." tabindex="0" class="chart-header pull-left" role="button" data-toggle="popover" data-trigger="hover" data-placement="auto" aria-label="Info">
                           <strong><i class='fa fa-fw fa-graduation-cap'></i> Schools</strong>
@@ -253,7 +253,7 @@ layout: base
                       <td class="sparkline schools" id="schools-score">
                       </td>
                     </tr>
-                    <tr class="stats-tr">
+                    <tr class="stats-tr" id="price-row">
                       <td class='col-xs-4'>
                         <a title="What's this?" data-content="We calculated price growth scores for this area by using the percent increase in median home prices between 2015 and 2016 as reported by the Chicago Association of Realtors. Where data was available for both attached and detached home prices, we performed primary component analysis to determine an overall trend." tabindex="0" class="chart-header pull-left" role="button" data-toggle="popover" data-trigger="hover" data-placement="auto" aria-label="Info">
                           <strong><i class='fa fa-fw fa-usd'></i> Price growth</strong>

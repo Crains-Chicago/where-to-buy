@@ -447,7 +447,7 @@ var WhereToBuy = {
     },
 
     reorderPriorities: function(priorities) {
-        // Rearranges priority list, reloads packery, and ranks communities
+        // Rearranges priority list and modal rows, reloads packery, and ranks communities
         $('#' + priorities[4]).prependTo( $('#grid') );
         for (var i=3; i>=0; i--) {
             $('#' + priorities[i]).insertBefore( $('#' + priorities[i+1]) );
@@ -459,11 +459,24 @@ var WhereToBuy = {
 
     updatePriorityState: function() {
         // Updates persistent state of priorities based on the DOM interactions
+        // (Also reorers rows in the modal to match the current state)
         WhereToBuy.priorities = [];
         var items = $('.grid').packery('getItemElements');
         $(items).each(function(i, item) {
             WhereToBuy.priorities.push($(item).attr('id'));
         });
+        // Find commute and remove it
+        editedPriorities = WhereToBuy.priorities.slice();
+        var commuteIndex = $.inArray('commute', editedPriorities);
+        if (commuteIndex > -1) {
+            console.log('Reordering modal rows...');
+            editedPriorities.splice(commuteIndex, 1);
+            // Reorder modal rows
+            $('#' + editedPriorities[3] + '-row').prependTo( $('#community-stats') );
+            for (var j=2; j>=0; j--) {
+                $('#' + editedPriorities[j] + '-row').insertBefore( $('#' + editedPriorities[j+1] + '-row') );
+            }
+        }
     },
 
     rankCommunities: function(p) {
@@ -790,6 +803,7 @@ var WhereToBuy = {
                     'price': priceScore
                 };
                 $('.modal').on('shown.bs.modal', function() {
+                    WhereToBuy.charts = [];
                     $('.sparkline').each(function() {
                         var currentID = $(this).attr('id');
                         var priority = $(this).attr('id').replace('-score', '');
