@@ -1070,7 +1070,7 @@ var WhereToBuy = {
                     borderWidth: 0,
                     type: 'areaspline',
                     margin: [2, 0, 2, 0],
-                    height: 100,
+                    height: 80,
                     style: {
                         overflow: 'visible'
                     },

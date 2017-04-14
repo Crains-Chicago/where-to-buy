@@ -72,11 +72,12 @@ body {
 #info-map {
     width: 100%;
     height: 300px;
+    margin-bottom:20px;
 }
 
 /* Mobile margin for the map */
 @media (max-width: 756px) {
-    #info-map, #map {
+    #map {
         margin-bottom: 15px;
     }
 }
