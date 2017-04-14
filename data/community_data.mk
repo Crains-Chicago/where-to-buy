@@ -39,8 +39,9 @@ chicago_school_index.csv : chicago_school_averages.csv
 
 .INTERMEDIATE: chicago_prices.csv
 chicago_prices.csv : final/chicago_yearly_price_data.csv
-	csvcut -c "community","detached_median_price_change","attached_median_price_change" $< |\
+	csvcut -c "community","detached_median_price_change","attached_median_price_change","detached_closed_sales_2016","attached_closed_sales_2016" $< |\
 		python scripts/percents_to_floats.py | python scripts/nulls_to_zeroes.py |\
+		python scripts/weight_price_change.py | csvcut -C "attached_closed_sales_2016","detached_closed_sales_2016" |\
 		python scripts/pca.py "price" > chicago_price_index.csv
 	csvcut -c "community","detached_median_price_2016","attached_median_price_2016" $< |\
 		csvjoin -I -c "community" chicago_price_index.csv - > $@ 
