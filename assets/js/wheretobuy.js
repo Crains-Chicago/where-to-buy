@@ -72,10 +72,10 @@ var WhereToBuy = {
             WhereToBuy.infoMap = L.map('info-map', {
                 center: WhereToBuy.mapCentroid,
                 zoom: WhereToBuy.defaultZoom,
-                dragging: true,
-                touchZoom: true,
+                dragging: false,
+                touchZoom: false,
                 zoomControl: false,
-                tap: true,
+                tap: false,
                 scrollWheelZoom: false
             });
         }
@@ -707,8 +707,11 @@ var WhereToBuy = {
         WhereToBuy.placeMarker = L.marker(centroid).addTo(WhereToBuy.infoMap);
 
         var feature = WhereToBuy.layerMap[community].feature;
+        var bounds = WhereToBuy.layerMap[community].getBounds();
+
         WhereToBuy.infoMapLayer = L.geoJson(feature, {style: styles});
         WhereToBuy.infoMapLayer.addTo(WhereToBuy.infoMap);
+        // WhereToBuy.infoMap.fitBounds(bounds);
 
         // Find the relevant data
         var msg = 'No data found.';
@@ -818,6 +821,12 @@ var WhereToBuy = {
                     });
                     $first = WhereToBuy.charts[0];
                     var redLine = parseFloat($first.dataPoint);
+                    var align = community == 'Lincoln Park' ? 'right' : 'center';
+                    var labelStyle = {
+                        'background-color': '#f9f9f9',
+                        'padding': '1px',
+                        'border-radius': '3px'
+                    };
                     $first.chart.update({
                         xAxis: {
                             plotLines: [{
@@ -826,10 +835,11 @@ var WhereToBuy = {
                                 value: redLine,
                                 label: {
                                     useHTML: true,
-                                    text: 'This community',
+                                    text: community,
                                     rotation: 0,
-                                    verticalAlign: 'middle',
-                                    align: 'left'
+                                    verticalAlign: 'top',
+                                    align: align,
+                                    style: labelStyle
                                 }
                             }, {
                                 color: '#aaaaaa',
@@ -839,7 +849,8 @@ var WhereToBuy = {
                                 label: {
                                     text: 'Average',
                                     rotation: 0,
-                                    verticalAlign: 'top'
+                                    verticalAlign: 'middle',
+                                    align: 'center'
                                 }
                             }]
                         }
@@ -1125,16 +1136,7 @@ var WhereToBuy = {
                     enabled: false
                 },
                 tooltip: {
-                    backgroundColor: null,
-                    borderWidth: 0,
-                    shadow: false,
-                    useHTML: true,
-                    hideDelay: 0,
-                    shared: true,
-                    padding: 0,
-                    positioner: function (w, h, point) {
-                        return { x: point.plotX - w / 2, y: point.plotY - h };
-                    }
+                    enabled: false
                 },
                 plotOptions: {
                     series: {
@@ -1143,16 +1145,11 @@ var WhereToBuy = {
                         shadow: false,
                         states: {
                             hover: {
-                                lineWidth: 1
+                                enabled: false,
                             }
                         },
                         marker: {
-                            radius: 1,
-                            states: {
-                                hover: {
-                                    radius: 2
-                                }
-                            }
+                            enabled: false,
                         },
                         fillOpacity: 0.25
                     },
