@@ -766,6 +766,7 @@ var WhereToBuy = {
                       .done(function(results) {
                         if (results.driving.time) {
                             commute = results.driving.time;
+                            $('#commute-info').attr('data-content', 'We used Google Maps to get an estimate for travel time between this community and the workplace you provided. Note that this estimate is affected by current traffic conditions.');
                             $('#commute-type').html('Your commute');
                             $('#commute-score').html(commute);
                         } else if (typeof(results.driving) === 'string') {
@@ -822,7 +823,7 @@ var WhereToBuy = {
                     });
                     $first = WhereToBuy.charts[0];
                     var redLine = parseFloat($first.dataPoint);
-                    var align = community == 'Lincoln Park' ? 'right' : 'center';
+                    var align = (community == 'Lincoln Park' || community == 'Archer Heights') ? 'right' : 'center';
                     var labelStyle = {
                         'background-color': '#f9f9f9',
                         'padding': '1px',
@@ -860,7 +861,7 @@ var WhereToBuy = {
 
                 // Update the modal with information
                 $('#short-description').html(shortDescription);
-                $('#community-info-label').html(community);
+                $('#community-info-label, .community-name').html(community);
                 $('.modal').modal();
             });
         } else {
