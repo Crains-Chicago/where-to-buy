@@ -51,6 +51,7 @@ var WhereToBuy = {
     rankingMarkers: [],
 
     charts: [],
+    binSize: 0.5,
 
     initialize: function() {
 
@@ -807,7 +808,7 @@ var WhereToBuy = {
                     $('.sparkline').each(function() {
                         var currentID = $(this).attr('id');
                         var priority = $(this).attr('id').replace('-score', '');
-                        var priorityScores = WhereToBuy.getHistogram(priority, 0.5);
+                        var priorityScores = WhereToBuy.getHistogram(priority, WhereToBuy.binSize);
                         var dataPoint = scoreMap[priority];
                         var chart = WhereToBuy.makeSparkLine(currentID, dataPoint, priorityScores);
                         WhereToBuy.charts.push({
@@ -827,7 +828,8 @@ var WhereToBuy = {
                                     useHTML: true,
                                     text: 'This community',
                                     rotation: 0,
-                                    verticalAlign: "middle"
+                                    verticalAlign: 'middle',
+                                    align: 'left'
                                 }
                             }, {
                                 color: '#aaaaaa',
@@ -837,7 +839,7 @@ var WhereToBuy = {
                                 label: {
                                     text: 'Average',
                                     rotation: 0,
-                                    verticalAlign: "top"
+                                    verticalAlign: 'top'
                                 }
                             }]
                         }
@@ -1058,6 +1060,9 @@ var WhereToBuy = {
         // a: id of the div to generate a chart in
         // b: point at which to draw a line
         // c: series data for the sparkline
+        var scores = c.map(function(x) { return x[0]; });
+        var max = Math.max.apply(null, scores);
+        var min = Math.min.apply(null, scores);
         var options = {
                 chart: {
                     renderTo: a,
@@ -1083,6 +1088,8 @@ var WhereToBuy = {
                     enabled: false
                 },
                 xAxis: {
+                    max: max + WhereToBuy.binSize,
+                    min: min - WhereToBuy.binSize,
                     labels: {
                         enabled: false
                     },
