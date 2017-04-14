@@ -18,6 +18,11 @@ body {
     margin-bottom: -10px;
 }
 
+/* Page title */
+.title {
+    margin-top: 50px;
+}
+
 /* Title */
 .navbar-custom .navbar-left {
     color: #777;
@@ -26,6 +31,7 @@ body {
 .navbar-custom .navbar-left:focus {
     color: #5E5E5E;
 }
+
 /* Link */
 .navbar-custom .navbar-nav > li > a {
     color: #ffffff;
@@ -382,24 +388,24 @@ p {
     background-position: center center;
 }
 
-.carousel-cell#vacation-home {
-    background-image: url(../images/lake-house.jpg);
-    background: linear-gradient(rgba(139, 196, 220, 0.5), rgba(139, 196, 220, 0.5)), url(../images/lake-house.jpg);
+.carousel-cell#weekender {
+    background-image: url(../images/weekender.jpg);
+    background: linear-gradient(rgba(139, 196, 220, 0.5), rgba(139, 196, 220, 0.5)), url(../images/weekender.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
 }
 
-.carousel-cell#vacation-home:hover {
-    background-image: url(../images/lake-house.jpg);
-    background: linear-gradient(rgba(139, 196, 220, 0.3), rgba(139, 196, 220, 0.3)), url(../images/lake-house.jpg);
+.carousel-cell#weekender:hover {
+    background-image: url(../images/weekender.jpg);
+    background: linear-gradient(rgba(139, 196, 220, 0.3), rgba(139, 196, 220, 0.3)), url(../images/weekender.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
 }
 
-.carousel-cell#vacation-home.selected {
-    background: url(../images/lake-house.jpg);
+.carousel-cell#weekender.selected {
+    background: url(../images/weekender.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;

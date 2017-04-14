@@ -8,10 +8,10 @@ var WhereToBuy = {
     map: null,
     infoMap: null,
     infoMapLayer: null,
-    geography: 'both',
+    geography: 'chicago',
     mapCentroid: [41.9, -88],
     chicagoCentroid: [41.8, -87.62],
-    defaultZoom: 8,
+    defaultZoom: 9,
     locationScope: 'Chicago',
 
     googleStyles: [{
@@ -58,7 +58,7 @@ var WhereToBuy = {
         // Initialize a Leaflet map
         if (!WhereToBuy.map) {
             WhereToBuy.map = L.map('map', {
-                center: WhereToBuy.mapCentroid,
+                center: WhereToBuy.chicagoCentroid,
                 zoom: WhereToBuy.defaultZoom,
                 dragging: true,
                 touchZoom: true,
@@ -193,7 +193,7 @@ var WhereToBuy = {
             })
         ).then(function() {
             // Add each layer to the map
-            WhereToBuy.suburbLayer = L.geoJson(suburbGeojson, layerOpts).addTo(WhereToBuy.map);
+            WhereToBuy.suburbLayer = L.geoJson(suburbGeojson, layerOpts);
             WhereToBuy.chicagoLayer = L.geoJson(chicagoGeojson, layerOpts).addTo(WhereToBuy.map);
 
             // Allow ranking list to interact with the map
@@ -340,7 +340,8 @@ var WhereToBuy = {
                 if (status == google.maps.GeocoderStatus.OK) {
                     WhereToBuy.workplace = [results[0].geometry.location.lat(), results[0].geometry.location.lng()];
 
-                    WhereToBuy.map.setView(WhereToBuy.workplace, 8);
+                    var searchZoom = (WhereToBuy.geography == 'suburbs') ? 8 : 9;
+                    WhereToBuy.map.setView(WhereToBuy.workplace, searchZoom);
 
                     if (WhereToBuy.workMarker)
                         WhereToBuy.map.removeLayer(WhereToBuy.workMarker);
@@ -422,7 +423,7 @@ var WhereToBuy = {
                     'schools'
                 ];
                 break;
-            case "vacation-home":
+            case "weekender":
                 priorities = [
                     'price',
                     'diversity',
