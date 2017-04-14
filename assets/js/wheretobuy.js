@@ -750,8 +750,9 @@ var WhereToBuy = {
         var shortDescription;
         if (found) {
             $.getJSON(WhereToBuy.dataDir + 'short_descriptions.json', function(descriptions) {
-                shortDescription = descriptions[communityScores.community];
+                shortDescription = descriptions[communityScores.community]['text'];
                 $('#short-description').html(shortDescription);
+                $('#wikipedia-link').attr('href', descriptions[communityScores.community]['url']);
 
                 // Figure out commute time
                 var commute = communityInfo["Avg Commute Time"] ? communityInfo["Avg Commute Time"] : communityInfo["Average Commute"];
@@ -815,14 +816,27 @@ var WhereToBuy = {
                         var priority = $(this).attr('id').replace('-score', '');
                         var priorityScores = WhereToBuy.getHistogram(priority, WhereToBuy.binSize);
                         var dataPoint = scoreMap[priority];
-                        var chart = WhereToBuy.makeSparkLine(currentID, dataPoint, priorityScores);
+                        var chart = WhereToBuy.makeSparkLine(currentID, dataPoint, priorityScores, priority);
                         WhereToBuy.charts.push({
                             'chart': chart,
-                            'dataPoint': dataPoint
+                            'dataPoint': dataPoint,
+                            'scores': priorityScores,
+                            'priority': priority
                         });
                     });
                     $first = WhereToBuy.charts[0];
                     var redLine = parseFloat($first.dataPoint);
+                    var p = $first.priority;
+                    var s = $first.scores;
+                    var l = WhereToBuy.getLabels(p, s);
+                    var leftside = (p == 'crime') ? 'High crime'
+                                 : (p == 'schools') ? 'Low performing'
+                                 : (p == 'diversity') ? 'Low diversity'
+                                 : 'Low growth';
+                    var rightside = (p == 'crime') ? 'Low crime'
+                                  : (p == 'schools') ? 'High performing'
+                                  : (p == 'diversity') ? 'High diversity'
+                                  : 'Solid growth';
                     var align = (community == 'Lincoln Park' || community == 'Archer Heights') ? 'right' : 'center';
                     var labelStyle = {
                         'background-color': '#f9f9f9',
@@ -853,6 +867,33 @@ var WhereToBuy = {
                                     rotation: 0,
                                     verticalAlign: 'middle',
                                     align: 'center'
+                                }
+                            }, {
+                                color: null,
+                                width: 0,
+                                value: l.min - WhereToBuy.binSize,
+                                label: {
+                                    text: l.leftside,
+                                    verticalAlign: 'bottom',
+                                    rotation: 0,
+                                    useHTML: true,
+                                    style: {
+                                        'font-size': '0.6em'
+                                    }
+                                }
+                            }, {
+                                color: null,
+                                width: 0,
+                                value: l.max + WhereToBuy.binSize,
+                                label: {
+                                    text: l.rightside,
+                                    verticalAlign: 'bottom',
+                                    align: 'right',
+                                    rotation: 0,
+                                    useHTML: true,
+                                    style: {
+                                        'font-size': '0.6em'
+                                    }
                                 }
                             }]
                         }
@@ -1069,13 +1110,11 @@ var WhereToBuy = {
      * Create a constructor for sparklines that takes some sensible defaults and merges in the individual
      * chart options. This function is also available from the jQuery plugin as $(element).highcharts('SparkLine').
      */
-    makeSparkLine: function (a, b, c) {
+    makeSparkLine: function (a, b, c, priority) {
         // a: id of the div to generate a chart in
         // b: point at which to draw a line
         // c: series data for the sparkline
-        var scores = c.map(function(x) { return x[0]; });
-        var max = Math.max.apply(null, scores);
-        var min = Math.min.apply(null, scores);
+        var l = WhereToBuy.getLabels(priority, c);
         var options = {
                 chart: {
                     renderTo: a,
@@ -1101,8 +1140,8 @@ var WhereToBuy = {
                     enabled: false
                 },
                 xAxis: {
-                    max: max + WhereToBuy.binSize,
-                    min: min - WhereToBuy.binSize,
+                    max: l.max + WhereToBuy.binSize,
+                    min: l.min - WhereToBuy.binSize,
                     labels: {
                         enabled: false
                     },
@@ -1120,6 +1159,33 @@ var WhereToBuy = {
                         width: 1,
                         value: 0,
                         dashStyle: 'ShortDash',
+                    }, {
+                        color: null,
+                        width: 0,
+                        value: l.min - WhereToBuy.binSize,
+                        label: {
+                            text: l.leftside,
+                            verticalAlign: 'bottom',
+                            rotation: 0,
+                            useHTML: true,
+                            style: {
+                                'font-size': '0.6em'
+                            }
+                        }
+                    }, {
+                        color: null,
+                        width: 0,
+                        value: l.max + WhereToBuy.binSize,
+                        label: {
+                            text: l.rightside,
+                            verticalAlign: 'bottom',
+                            align: 'right',
+                            rotation: 0,
+                            useHTML: true,
+                            style: {
+                                'font-size': '0.6em'
+                            }
+                        }
                     }],
                     tickPositions: []
                 },
@@ -1167,4 +1233,27 @@ var WhereToBuy = {
 
         return new Highcharts.Chart(a, options);
     },
+
+    getLabels: function(priority, c) {
+        // Returns chart label data for a given priority and scores.
+        var leftside = (priority == 'crime') ? 'High crime'
+                     : (priority == 'schools') ? 'Low performing'
+                     : (priority == 'diversity') ? 'Low diversity'
+                     : 'Low growth';
+        var rightside = (priority == 'crime') ? 'Low crime'
+                     : (priority == 'schools') ? 'High performing'
+                     : (priority == 'diversity') ? 'High diversity'
+                     : 'Solid growth';
+        var scores = c.map(function(x) { return x[0]; });
+        var max = Math.max.apply(null, scores);
+        var min = Math.min.apply(null, scores);
+
+        return {
+            'leftside': leftside,
+            'rightside': rightside,
+            'scores': scores,
+            'max': max,
+            'min': min
+        };
+    }
 };

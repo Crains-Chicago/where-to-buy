@@ -8,6 +8,7 @@ reader = csv.reader(sys.stdin)
 header = next(reader)
 
 endpoint = 'https://en.wikipedia.org/w/api.php?'
+article_base = 'https://en.wikipedia.org/wiki/'
 params = {
     'format': 'json',
     'action': 'query',
@@ -42,7 +43,9 @@ for row in reader:
             text = page['extract']
             text = text.replace('\n', '<br /><br />')
             extract = text
-        out[row[0]] = extract
+        out[row[0]] = {}
+        out[row[0]]['text'] = extract
+        out[row[0]]['url'] = article_base + community.replace(' ', '_')
     else:
         out[row[0]] = "Sorry! We couldn't find information about this place on Wikipedia."
 
