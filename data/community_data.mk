@@ -62,6 +62,7 @@ places.csv : raw/places.csv raw/places_to_delete.xlsx raw/places_to_delete_2.xls
 	in2csv -H $(word 3,$^) | csvcut -c 1 | tail -n 14 > bad_places_2.csv
 	cat $< | grep -v '\"Chicago city\, Illinois\"' | grep -v '\"Symerton village, Illinois\"' |\
 		grep -v -f bad_places.csv | grep -v -f bad_places_2.csv > $@
+	rm bad_places*.csv 
 
 # -- crime -- #
 
@@ -69,7 +70,8 @@ places.csv : raw/places.csv raw/places_to_delete.xlsx raw/places_to_delete_2.xls
 suburb_crime_rates.csv : raw/suburb.csv places.csv suburbs
 	csvjoin -I -c "Place" "$<" "$(word 2,$^)" |\
 		csvcut -c 1,3,18,4,5,6,7,8,9,10,11,12,13,14,15,16,17,19,20,21,22,23,24,25,26,27,28,29,30,31,32,41 - |\
-		python scripts/crime_numbers_to_rates.py "suburbs" $(PG_DB) > $@
+		python scripts/crime_numbers_to_rates.py "suburbs" $(PG_DB) |\
+		python scripts/nulls_to_zeroes.py > $@
 
 suburb_crime_index.csv : suburb_crime_rates.csv
 	cat $< | python scripts/pca.py "crime" > $@
