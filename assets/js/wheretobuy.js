@@ -572,44 +572,6 @@ var WhereToBuy = {
         return topCommunities;
     },
 
-    getHistogram: function(priority, step) {
-        // Returns distribution of the current data source for a given priority
-
-        var dataSource = WhereToBuy.getDataSource();
-
-        var data = [];
-        for (var i=0; i<dataSource.length; i++) {
-            data.push(parseFloat(dataSource[i][priority]));
-        }
-
-        var histo = {},
-            arr = [],
-            x;
-
-        // Group down based on step resolution
-        for (var j=0; j<data.length; j++) {
-            x = Math.floor(data[j] / step) * step;
-            if (!histo[x]) {
-                histo[x] = 0;
-            }
-            histo[x]++;
-        }
-
-        // Make the histo group into an array
-        for (x in histo) {
-            if (histo.hasOwnProperty((x))) {
-                arr.push([parseFloat(x), histo[x]]);
-            }
-        }
-
-        // Finally, sort the array
-        arr.sort(function (a, b) {
-            return a[0] - b[0];
-        });
-
-        return arr;
-    },
-
     displayRanking: function(ranking) {
         // Takes an ordered list of communities as input, then ranks them in the UI
         WhereToBuy.bestCommunities = [];
@@ -810,94 +772,123 @@ var WhereToBuy = {
                     'price': priceScore
                 };
                 $('.modal').on('shown.bs.modal', function() {
-                    WhereToBuy.charts = [];
-                    $('.sparkline').each(function() {
-                        var currentID = $(this).attr('id');
-                        var priority = $(this).attr('id').replace('-score', '');
-                        var priorityScores = WhereToBuy.getHistogram(priority, WhereToBuy.binSize);
-                        var dataPoint = scoreMap[priority];
-                        var chart = WhereToBuy.makeSparkLine(currentID, dataPoint, priorityScores, priority);
-                        WhereToBuy.charts.push({
-                            'chart': chart,
-                            'dataPoint': dataPoint,
-                            'scores': priorityScores,
-                            'priority': priority
+                    WhereToBuy.makeBarCharts(scoreMap);
+                    $(window).resize(WhereToBuy.makeBarCharts(scoreMap));
+                });
+                
+                // Allow the user to change the chart type
+                $('.distribution-toggle').click(function() {
+                    // Case charts are currently bars
+                    if (! ($(this).hasClass('active')) ) {
+                        // Update the toggle button
+                        $(this).addClass('active');
+                        $(this).html('View charts as bar graphs');
+
+                        // Change the chart type
+                        WhereToBuy.charts = [];
+                        // Update each chart to make a sparkline
+                        $('.sparkline').each(function() {
+                            var currentID = $(this).attr('id');
+                            var priority = $(this).attr('id').replace('-score', '');
+                            var priorityScores = WhereToBuy.getHistogram(priority, WhereToBuy.binSize);
+                            var dataPoint = scoreMap[priority];
+                            var chart = WhereToBuy.makeSparkLine(currentID, dataPoint, priorityScores, priority);
+                            WhereToBuy.charts.push({
+                                'chart': chart,
+                                'dataPoint': dataPoint,
+                                'scores': priorityScores,
+                                'priority': priority
+                            });
                         });
-                    });
-                    $first = WhereToBuy.charts[0];
-                    var redLine = parseFloat($first.dataPoint);
-                    var p = $first.priority;
-                    var s = $first.scores;
-                    var l = WhereToBuy.getLabels(p, s);
-                    var leftside = (p == 'crime') ? 'High crime'
-                                 : (p == 'schools') ? 'Low performing'
-                                 : (p == 'diversity') ? 'Low diversity'
-                                 : 'Low growth';
-                    var rightside = (p == 'crime') ? 'Low crime'
-                                  : (p == 'schools') ? 'High performing'
-                                  : (p == 'diversity') ? 'High diversity'
-                                  : 'Solid growth';
-                    var align = (community == 'Lincoln Park' || community == 'Archer Heights') ? 'right' : 'center';
-                    var labelStyle = {
-                        'background-color': '#f9f9f9',
-                        'padding': '1px',
-                        'border-radius': '3px'
-                    };
-                    $first.chart.update({
-                        xAxis: {
-                            plotLines: [{
-                                color: '#FF0000',
-                                width: 2,
-                                value: redLine,
-                                label: {
-                                    useHTML: true,
-                                    text: community,
-                                    rotation: 0,
-                                    verticalAlign: 'top',
-                                    align: align,
-                                    style: labelStyle
-                                }
-                            }, {
-                                color: '#aaaaaa',
-                                width: 1,
-                                value: 0,
-                                dashStyle: 'ShortDash',
-                                label: {
-                                    text: 'Average',
-                                    rotation: 0,
-                                    verticalAlign: 'middle',
-                                    align: 'center'
-                                }
-                            }, {
-                                color: null,
-                                width: 0,
-                                value: l.min - WhereToBuy.binSize,
-                                label: {
-                                    text: l.leftside,
-                                    verticalAlign: 'bottom',
-                                    rotation: 0,
-                                    useHTML: true,
-                                    style: {
-                                        'font-size': '0.6em'
+                        // Update the first chart to add the appropriate key
+                        $first = WhereToBuy.charts[0];
+                        var redLine = parseFloat($first.dataPoint);
+                        var p = $first.priority;
+                        var s = $first.scores;
+                        var l = WhereToBuy.getLabels(p, s);
+                        var leftside = (p == 'crime') ? 'High crime'
+                                     : (p == 'schools') ? 'Low performing'
+                                     : (p == 'diversity') ? 'Low diversity'
+                                     : 'Low growth';
+                        var rightside = (p == 'crime') ? 'Low crime'
+                                      : (p == 'schools') ? 'High performing'
+                                      : (p == 'diversity') ? 'High diversity'
+                                      : 'Solid growth';
+                        var align = (community == 'Lincoln Park' || community == 'Archer Heights') ? 'right' : 'center';
+                        var labelStyle = {
+                            'background-color': '#f9f9f9',
+                            'padding': '1px',
+                            'border-radius': '3px'
+                        };
+                        $first.chart.update({
+                            xAxis: {
+                                plotLines: [{
+                                    color: '#FF0000',
+                                    width: 2,
+                                    value: redLine,
+                                    label: {
+                                        useHTML: true,
+                                        text: community,
+                                        rotation: 0,
+                                        verticalAlign: 'top',
+                                        align: align,
+                                        style: labelStyle
                                     }
-                                }
-                            }, {
-                                color: null,
-                                width: 0,
-                                value: l.max + WhereToBuy.binSize,
-                                label: {
-                                    text: l.rightside,
-                                    verticalAlign: 'bottom',
-                                    align: 'right',
-                                    rotation: 0,
-                                    useHTML: true,
-                                    style: {
-                                        'font-size': '0.6em'
+                                }, {
+                                    color: '#aaaaaa',
+                                    width: 1,
+                                    value: 0,
+                                    dashStyle: 'ShortDash',
+                                    label: {
+                                        text: 'Average',
+                                        rotation: 0,
+                                        verticalAlign: 'middle',
+                                        align: 'center'
                                     }
-                                }
-                            }]
+                                }, {
+                                    color: null,
+                                    width: 0,
+                                    value: l.min - WhereToBuy.binSize,
+                                    label: {
+                                        text: l.leftside,
+                                        verticalAlign: 'bottom',
+                                        rotation: 0,
+                                        useHTML: true,
+                                        style: {
+                                            'font-size': '0.6em'
+                                        }
+                                    }
+                                }, {
+                                    color: null,
+                                    width: 0,
+                                    value: l.max + WhereToBuy.binSize,
+                                    label: {
+                                        text: l.rightside,
+                                        verticalAlign: 'bottom',
+                                        align: 'right',
+                                        rotation: 0,
+                                        useHTML: true,
+                                        style: {
+                                            'font-size': '0.6em'
+                                        }
+                                    }
+                                }]
+                            }
+                        });
+                    // Case charts are currently distributions
+                    } else {
+                        // Update the toggle button
+                        $(this).removeClass('active');
+                        $(this).html('View charts as distributions');
+
+                        // Remove charts
+                        for (var z=0; i<WhereToBuy.charts.length; z++) {
+                            WhereToBuy.charts[z].chart.destroy();
                         }
-                    });
+
+                        // Add bars back in 
+                        WhereToBuy.makeBarCharts(scoreMap);
+                    }
                 });
 
                 // Update the modal with information
@@ -1114,9 +1105,11 @@ var WhereToBuy = {
         // a: id of the div to generate a chart in
         // b: point at which to draw a line
         // c: series data for the sparkline
+        // d: the priority that this chart represents
         var l = WhereToBuy.getLabels(priority, c);
         var options = {
                 chart: {
+                    reflow: false,
                     renderTo: a,
                     backgroundColor: null,
                     borderWidth: 0,
@@ -1234,16 +1227,76 @@ var WhereToBuy = {
         return new Highcharts.Chart(a, options);
     },
 
+    // Function to generate bar charts in the table div
+    makeBarCharts: function(scoreMap) {
+        // Get summary statistics for current data source
+        var stats = {};
+        for (var m=0; m<WhereToBuy.priorities.length; m++) {
+            stats[WhereToBuy.priorities[m]] = WhereToBuy.getSummaryStats(WhereToBuy.priorities[m]);
+        }
+
+        // Update each chart div to add a chart
+        $('.sparkline').each(function() {
+            $(this).html('<span class="bar-chart">' +
+                            '<span class="bar"></span>' +
+                            '<span class="tick average"></span>' +
+                         '</span>' +
+                         '<span class="bar-label leftside"></span>' +
+                         '<span class="bar-label rightside"></span>' +
+                         '<span class="bar-label average-tick">Average</span>');
+            var priority = $(this).attr('id').replace('-score', '');
+            var priorityStats = stats[priority];
+            var priorityScores = WhereToBuy.getHistogram(priority, WhereToBuy.binSize);
+            var range = priorityStats.max - priorityStats.min;
+
+            var labels = WhereToBuy.getLabels(priority, priorityScores);
+            var dataPoint = scoreMap[priority];
+            
+            // Add bar for current community
+            var bar = parseInt(((scoreMap[priority] - priorityStats.min) / range) * 100);
+            $(this).find('span.bar').css('width', bar + '%');
+
+            // Add tick for the average
+            var average = parseInt(((0 - priorityStats.min) / range) * 100);
+            $(this).find('span.average').css('left', average + '%');
+
+            // Add labels
+            $(this).find('.bar-label.leftside').html(labels.leftside);
+            $(this).find('.bar-label.rightside').html(labels.rightside);
+
+            // Get position for average label
+            var tdwidth = $('#' + priority + '-title').width();
+            var avgleft = $(this).find('span.average').position().left;
+            var tablewidth = $('#community-stats').width();
+            var averageTick = parseInt(((tdwidth + 16 + avgleft - 12) / tablewidth) * 100);
+            console.log(averageTick);
+            $(this).find('.bar-label.average-tick').css('left', averageTick + '%');
+        });
+    },
+
     getLabels: function(priority, c) {
         // Returns chart label data for a given priority and scores.
-        var leftside = (priority == 'crime') ? 'High crime'
-                     : (priority == 'schools') ? 'Low performing'
-                     : (priority == 'diversity') ? 'Low diversity'
-                     : 'Low growth';
-        var rightside = (priority == 'crime') ? 'Low crime'
-                     : (priority == 'schools') ? 'High performing'
-                     : (priority == 'diversity') ? 'High diversity'
-                     : 'Solid growth';
+        var leftside,
+            rightside;
+        if ($(window).width() > 420) {
+            leftside = (priority == 'crime') ? 'High crime'
+                         : (priority == 'schools') ? 'Low performing'
+                         : (priority == 'diversity') ? 'Low diversity'
+                         : 'Low growth';
+            rightside = (priority == 'crime') ? 'Low crime'
+                         : (priority == 'schools') ? 'High performing'
+                         : (priority == 'diversity') ? 'High diversity'
+                         : 'Solid growth';
+        } else {
+            leftside = (priority == 'crime') ? 'High'
+                         : (priority == 'schools') ? 'Bad'
+                         : (priority == 'diversity') ? 'Low'
+                         : 'Low';
+            rightside = (priority == 'crime') ? 'Low'
+                         : (priority == 'schools') ? 'Good'
+                         : (priority == 'diversity') ? 'High'
+                         : 'Solid';
+        }
         var scores = c.map(function(x) { return x[0]; });
         var max = Math.max.apply(null, scores);
         var min = Math.min.apply(null, scores);
@@ -1255,5 +1308,73 @@ var WhereToBuy = {
             'max': max,
             'min': min
         };
-    }
+    },
+
+    getHistogram: function(priority, step) {
+        // Returns distribution of the current data source for a given priority
+
+        var dataSource = WhereToBuy.getDataSource();
+
+        var data = [];
+        for (var i=0; i<dataSource.length; i++) {
+            data.push(parseFloat(dataSource[i][priority]));
+        }
+
+        var histo = {},
+            arr = [],
+            x;
+
+        // Group down based on step resolution
+        for (var j=0; j<data.length; j++) {
+            x = Math.floor(data[j] / step) * step;
+            if (!histo[x]) {
+                histo[x] = 0;
+            }
+            histo[x]++;
+        }
+
+        // Make the histo group into an array
+        for (x in histo) {
+            if (histo.hasOwnProperty((x))) {
+                arr.push([parseFloat(x), histo[x]]);
+            }
+        }
+
+        // Finally, sort the array
+        arr.sort(function (a, b) {
+            return a[0] - b[0];
+        });
+
+        return arr;
+    },
+
+    getSummaryStats: function(priority) {
+        // Calculates min, max, quartiles, and median for a given priority
+
+        var dataSource = WhereToBuy.getDataSource();
+
+        var omega = [];
+        for (var i=0; i<dataSource.length; i++) {
+            omega.push(parseFloat(dataSource[i][priority]));
+        }
+
+        omega.sort(function(a, b) {return a-b;});
+        var mid = omega.length / 2;
+
+        var out = {
+            'min': omega[0],
+            'median': (mid % 1) ? omega[mid-0.5] : (omega[mid-1] + omega[mid]) / 2,
+            'max': omega[omega.length - 1],
+        };
+
+         var lower = (omega.length % 2) ? omega.slice(0, mid-0.5) : omega.slice(0, out[mid-1]);
+         var lowerMid = lower.length / 2;
+         var upper = (omega.length % 2) ? omega.slice(mid-0.5, omega.length-1) : omega.slice(out[mid], omega.length-1);
+         var upperMid = upper.length / 2;
+
+         out['firstQ'] = (lowerMid % 1) ? lower[lowerMid-0.5] : (lower[lowerMid-1] + lower[lowerMid]) / 2;
+         out['secondQ'] = (upperMid % 1) ? upper[upperMid-0.5] : (upper[upperMid-1] + upper[upperMid]) / 2;
+
+         return out;
+    },
 };

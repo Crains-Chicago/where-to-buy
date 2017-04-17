@@ -592,6 +592,32 @@ p {
     display: block;
 }
 
+.bar-label {
+    font-size: 0.6em;
+    position: absolute;
+    margin-top: 5%;
+}
+
+.rightside {
+    right: 4%;
+}
+
+.average-tick {
+    margin-top: -8%;
+}
+
+@media (max-width: 768px) and (min-width: 600px) {
+    .average-tick {
+        margin-top: -6%;
+    }
+}
+
+@media (max-width: 430px) {
+    .average-tick {
+        margin-top: -10%
+    }
+}
+
 .tick {
     top: 50%;
     margin-top: -15px;
