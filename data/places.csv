@@ -20,7 +20,6 @@ Place,FIPS
 "Bloomingdale village, Illinois",06587
 "Blue Island city, Illinois",06704
 "Bolingbrook village, Illinois",07133
-"Braceville village, Illinois",07640
 "Bridgeview village, Illinois",08225
 "Broadview village, Illinois",08446
 "Brookfield village, Illinois",08576
@@ -61,7 +60,6 @@ Place,FIPS
 "Elk Grove Village village, Illinois",23256
 "Elmhurst city, Illinois",23620
 "Elmwood Park village, Illinois",23724
-"Elwood village, Illinois",23945
 "Evanston city, Illinois",24582
 "Evergreen Park village, Illinois",24634
 "Flossmoor village, Illinois",26571
@@ -78,8 +76,6 @@ Place,FIPS
 "Glencoe village, Illinois",29652
 "Glendale Heights village, Illinois",29730
 "Glenview village, Illinois",29938
-"Glenwood village, Illinois",30029
-"Godley village, Illinois",30120
 "Golf village, Illinois",30328
 "Grayslake village, Illinois",31121
 "Green Oaks village, Illinois",31446
@@ -152,9 +148,6 @@ Place,FIPS
 "Merrionette Park village, Illinois",48554
 "Mettawa village, Illinois",48671
 "Midlothian village, Illinois",48892
-"Minooka village, Illinois",49607
-"Mokena village, Illinois",49854
-"Monee village, Illinois",49945
 "Morton Grove village, Illinois",50647
 "Mount Prospect village, Illinois",51089
 "Mundelein village, Illinois",51349
@@ -202,7 +195,6 @@ Place,FIPS
 "Riverside village, Illinois",64421
 "Riverwoods village, Illinois",64538
 "Robbins village, Illinois",64616
-"Rockdale village, Illinois",64902
 "Rolling Meadows city, Illinois",65338
 "Romeoville village, Illinois",65442
 "Roselle village, Illinois",65806
@@ -228,7 +220,6 @@ Place,FIPS
 "Streamwood village, Illinois",73157
 "Sugar Grove village, Illinois",73391
 "Summit village, Illinois",73638
-"Symerton village, Illinois",74275
 "Third Lake village, Illinois",75081
 "Thornton village, Illinois",75185
 "Tinley Park village, Illinois",75484

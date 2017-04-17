@@ -57,6 +57,12 @@ places.csv : raw/places.csv raw/places_to_delete.xlsx
 		grep -v -f bad_places.csv > $@
 	rm bad_places.csv 
 
+places.csv : raw/places.csv raw/places_to_delete.xlsx raw/places_to_delete_2.xlsx
+	in2csv -H $(word 2,$^) | head -n 4 | tail -n 1 | csvcut -C 1,2,3 | tr "," "\n" > bad_places.csv
+	in2csv -H $(word 3,$^) | csvcut -c 1 | tail -n 14 > bad_places_2.csv
+	cat $< | grep -v '\"Chicago city\, Illinois\"' | grep -v '\"Symerton village, Illinois\"' |\
+		grep -v -f bad_places.csv | grep -v -f bad_places_2.csv > $@
+
 # -- crime -- #
 
 .INTERMEDIATE: suburb_crime_rates.csv
