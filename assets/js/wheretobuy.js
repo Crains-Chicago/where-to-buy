@@ -71,7 +71,7 @@ var WhereToBuy = {
         if (!WhereToBuy.infoMap) {
             WhereToBuy.infoMap = L.map('info-map', {
                 center: WhereToBuy.mapCentroid,
-                zoom: WhereToBuy.defaultZoom,
+                zoom: 8,
                 dragging: false,
                 touchZoom: false,
                 zoomControl: false,
