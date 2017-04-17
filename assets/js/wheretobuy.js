@@ -776,6 +776,9 @@ var WhereToBuy = {
                     $(window).resize(WhereToBuy.makeBarCharts(scoreMap));
                 });
                 
+                // Remove distribution toggle events (in case we've switched geographies)
+                $('.distribution-toggle').off('click');
+
                 // Allow the user to change the chart type
                 $('.distribution-toggle').click(function() {
                     // Case charts are currently bars
