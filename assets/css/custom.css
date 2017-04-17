@@ -88,6 +88,13 @@ body {
     }
 }
 
+/* Pull best communities to the right on big screens */
+@media (min-width: 992px) {
+    #best-communities-div {
+        float: right !important;
+    }
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
