@@ -44,15 +44,14 @@ writer.writerow(out_header)
 # Group school data by community
 grouped = {}
 for row in reader:
-    community = row[0]
-    if community not in grouped.keys():
-        grouped[community] = []
-    grouped[community].append(row[2:])
+    community, school = row[0], row[2:]
+    grouped.setdefault(community, []).append(school)
 
 # Generate weighted average scores for each community
-for community in grouped:
-    average_scores = [0 for i in range(len(out_header)-1)]
-    for school in grouped[community]:
+for community, schools in grouped.items():
+    average_scores = [0] * (len(out_header) - 1)
+    total_coverage = 0.0
+    for school in schools:
         coverage = float(school.pop())
         for i, score in enumerate(school):
             if '$' in score:
@@ -60,4 +59,6 @@ for community in grouped:
             if ',' in score:
                 score = score.replace(',', '')
             average_scores[i] += (coverage * float(score))
+        total_coverage += coverage
+    average_scores = [score/total_coverage for score in average_scores]
     writer.writerow([community] + average_scores)
