@@ -87,9 +87,10 @@ places_crosswalk.csv: final/suburb_yearly_price_data.csv places.csv
 suburb_prices.csv : final/suburb_yearly_price_data.csv places_crosswalk.csv places.csv 
 	csvjoin -I --right -c "community" "$<" "$(word 2,$^)" |\
 		csvjoin -I --outer -c "Place" - "$(word 3,$^)" |\
-		csvcut -c "Place2","median_price_change","median_price_2016" |\
+		csvcut -c "Place2","median_price_change","closed_sales_2016","median_price_2016" |\
 		python scripts/percents_to_floats.py |\
-		sed -e "1s/median_price_change/price/" -e "1s/Place2/community/" > $@
+		python scripts/nulls_to_zeroes.py |\
+		python scripts/suburb_price_index.py > $@
 
 # ======== #
 # Combined #
