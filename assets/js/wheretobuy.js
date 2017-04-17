@@ -743,7 +743,7 @@ var WhereToBuy = {
                 }
 
                 // Score data
-                var diversityScore = parseFloat(communityInfo["Diversity Index"]).toFixed(2);
+                var diversityScore = parseFloat(communityScores["diversity"]);
                 var crimeScore = parseFloat(communityScores["crime"]);
                 var schoolsScore = parseFloat(communityScores["schools"]);
                 var priceScore = parseFloat(communityScores["price"]);

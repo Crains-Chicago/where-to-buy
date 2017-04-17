@@ -26,7 +26,7 @@ chicago_crime_index.csv : crime_index
 
 # -- schools -- #
 
-.INTERMEDIATE: chicago_school_averages.csv suburb_school_averages.csv
+.INTERMEDIATE: chicago_school_averages.csv
 chicago_school_averages.csv : final/chicago_schools.csv
 	csvcut -c community,school_name,meet_benchmark_english,meet_benchmark_reading,meet_benchmark_math,meet_benchmark_science,meet_benchmark_all_four,act_english,act_math,act_reading,act_science,act_composite,school_coverage $< |\
 		python scripts/nulls_to_zeroes.py | \
