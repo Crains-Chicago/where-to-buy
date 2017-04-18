@@ -1,8 +1,7 @@
 https://github.com/wireservice/csvkit/zipball/02ec3aaf86f173c6e8135ff15c590641e6b5522e
-numpy
-sklearn
-scipy
-census_area
-requests
-lxml
-psycopg2
+https://github.com/datamade/census_area/zipball/f515d9b4c1c6ae0b3045a70cd26790358cc8fede
+numpy==1.12.1
+scipy==0.19.0
+scikit-learn==0.18.1
+requests==2.13.0
+psycopg2==2.7.1

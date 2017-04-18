@@ -1,4 +1,9 @@
-PG_DB = wtb
+# ====================== #
+# Wikipedia descriptions #
+# ====================== #
+
+final/short_descriptions.json : places.csv final/chicago.csv
+	csvstack $^ | python scripts/get_wiki_descriptions.py > $@
 
 # ======= #
 # Chicago #
@@ -100,9 +105,9 @@ suburb_prices.csv : final/suburb_yearly_price_data.csv places_crosswalk.csv plac
 		python scripts/nulls_to_zeroes.py |\
 		python scripts/suburb_price_index.py > $@
 
-# ======== #
-# Combined #
-# ======== #
+# ====== #
+# Output #
+# ====== #
 
 .INTERMEDIATE: suburb_zscores.csv
 suburb_zscores.csv: raw/suburb.csv suburb_school_index.csv suburb_crime_index.csv suburb_prices.csv

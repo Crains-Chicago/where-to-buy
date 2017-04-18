@@ -1,4 +1,3 @@
-PG_DB = wtb
 CHECK_RELATION = psql -d $(PG_DB) -c "\d $@" > /dev/null 2>&1
 
 postgis:
