@@ -416,7 +416,7 @@ layout: base
       $grid.packery();
 
       // Define UX for the community rankings
-      $('.ranking').on('click', function(e) {
+      $('.ranking').on('click touchend', function(e) {
           e.preventDefault();
           console.log('clicked!');
           WhereToBuy.selectCommunity($(this).find('span').text());
