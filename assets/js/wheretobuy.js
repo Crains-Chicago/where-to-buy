@@ -41,6 +41,7 @@ var WhereToBuy = {
     bestCommunities: null,
 
     priceRange: [],
+    priceMax: null,
 
     info: null,
     workplace: null,
@@ -542,10 +543,10 @@ var WhereToBuy = {
             };
 
             // Place this community in a global list of rankings
-            var last = true;
             if (WhereToBuy.rankings.length === 0) {
                 WhereToBuy.rankings.push(communityPair);
             } else {
+                var last = true;
                 for (var m=0; m<WhereToBuy.rankings.length; m++) {
                     if (communityScore > WhereToBuy.rankings[m]['score']) {
                         WhereToBuy.rankings.splice(m, 0, communityPair);
@@ -553,9 +554,9 @@ var WhereToBuy = {
                         break;
                     }
                 }
-            }
-            if (last) {
-                WhereToBuy.rankings.push(communityPair);
+                if (last) {
+                    WhereToBuy.rankings.push(communityPair);
+                }
             }
 
             // Determine the top communities 
@@ -574,11 +575,8 @@ var WhereToBuy = {
                     }
                 }
 
-                // We need at least five communities...
-                if (topCommunities.length < 5) {
-                    topCommunities.push(communityPair);
-                // ... but no more than five!
-                } else if (topCommunities.length > 5) {
+                // No more than five communities
+                if (topCommunities.length > 5) {
                     topCommunities.pop();
                 }
             }
@@ -589,12 +587,23 @@ var WhereToBuy = {
 
     displayRanking: function(ranking) {
         // Takes an ordered list of communities as input, then ranks them in the UI
-        WhereToBuy.bestCommunities = [];
-        for (var i=0; i<5; i++) {
-            var community = ranking[i]['community'];
-            var score = ranking[i]['score'];
-            $('#rank-' + (i+1)).html(WhereToBuy.toCommunityString(community));
-            WhereToBuy.bestCommunities.push({'community': community, 'score': score});
+
+        // Wipe current rankings
+        for (var l=1; l<6; l++) {
+            $('#rank-' + l).html('');
+        }
+
+        // Update ranking list
+        if (ranking.length === 0) {
+            $('#rank-1').html('<em>No communities match this price range.</em>');
+        } else {
+            WhereToBuy.bestCommunities = [];
+            for (var i=0; i<ranking.length; i++) {
+                var community = ranking[i]['community'];
+                var score = ranking[i]['score'];
+                $('#rank-' + (i+1)).html(WhereToBuy.toCommunityString(community));
+                WhereToBuy.bestCommunities.push({'community': community, 'score': score});
+            }
         }
 
         // Remove ranking markers from the map

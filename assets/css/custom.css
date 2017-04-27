@@ -279,6 +279,11 @@ p {
     vertical-align: middle;
 }
 
+.table-link {
+    text-decoration: underline;
+    color: #158cba;
+}
+
 .center-block {
     float: none;
 }
