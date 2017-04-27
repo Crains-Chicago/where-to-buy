@@ -40,6 +40,8 @@ var WhereToBuy = {
     communityData: null,
     bestCommunities: null,
 
+    priceRange: [],
+
     info: null,
     workplace: null,
     layerMap: {},
@@ -525,23 +527,19 @@ var WhereToBuy = {
                 }
             }
 
-            // If this is the first community considered, rank it first automatically
+            // Check if the community is in the price range
+            var medianPrice = dataSource[i].detached_median_price ?
+                              dataSource[i].detached_median_price :
+                              dataSource[i].median_price;
+            medianPrice = accounting.unformat(medianPrice);
+            var isInRange = (medianPrice >= WhereToBuy.priceRange[0] &&
+                             medianPrice <= WhereToBuy.priceRange[1]);
+
             // Ranking format: array(community, score)
             var communityPair = {
                 'community': dataSource[i].community,
                 'score': communityScore
             };
-            if (topCommunities.length === 0) {
-                topCommunities.push(communityPair);
-            }
-
-            // See if this community beats any of the top communities
-            for (var k=0; k<topCommunities.length; k++) {
-                if (communityScore > topCommunities[k]['score']) {
-                    topCommunities.splice(k, 0, communityPair);
-                    break;
-                }
-            }
 
             // Place this community in a global list of rankings
             var last = true;
@@ -560,12 +558,29 @@ var WhereToBuy = {
                 WhereToBuy.rankings.push(communityPair);
             }
 
-            // We need at least five communities...
-            if (topCommunities.length < 5) {
-                topCommunities.push(communityPair);
-            // ... but no more than five!
-            } else if (topCommunities.length > 5) {
-                topCommunities.pop();
+            // Determine the top communities 
+            if (isInRange) { // Don't add communities outside the ranking to the top
+
+                // If this is the first community considered, rank it first automatically
+                if (topCommunities.length === 0) {
+                    topCommunities.push(communityPair);
+                }
+
+                // See if this community beats any of the top communities
+                for (var k=0; k<topCommunities.length; k++) {
+                    if (communityScore > topCommunities[k]['score']) {
+                        topCommunities.splice(k, 0, communityPair);
+                        break;
+                    }
+                }
+
+                // We need at least five communities...
+                if (topCommunities.length < 5) {
+                    topCommunities.push(communityPair);
+                // ... but no more than five!
+                } else if (topCommunities.length > 5) {
+                    topCommunities.pop();
+                }
             }
         }
 

@@ -727,6 +727,10 @@ p {
 }
 
 /* Price range slider styles */
+#price-range-control {
+    padding-top: 10px;
+}
+
 .ui-slider {
     background-color: #cacaca;
 }
