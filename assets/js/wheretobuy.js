@@ -598,10 +598,26 @@ var WhereToBuy = {
                     }
                 }
             } else {
-                // Put communities outside the range in their own dict
-                outOfRange.push(communityPair);
+                // Put communities outside the range in their own dict and rank them
+                if (outOfRange.length === 0) {
+                    outOfRange.push(communityPair);
+                } else {
+                    var eol = true;
+                    for (var n=0; n<outOfRange.length; n++) {
+                        if (communityScore > outOfRange[n]['score']) {
+                            outOfRange.splice(n, 0, communityPair);
+                            eol = false;
+                            break;
+                        }
+                    }
+                    if (eol) {
+                        outOfRange.push(communityPair);
+                    }
+                }
             }
         }
+
+        //
 
         // Add communities out of range to the bottom of the ranking list
         WhereToBuy.rankings = WhereToBuy.rankings.concat(outOfRange);
