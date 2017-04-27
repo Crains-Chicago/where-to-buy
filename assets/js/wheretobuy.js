@@ -41,7 +41,8 @@ var WhereToBuy = {
     bestCommunities: null,
 
     priceRange: [],
-    priceMax: null,
+    priceMax: 2250000,
+    priceMin: 10000,
 
     info: null,
     workplace: null,
@@ -515,6 +516,7 @@ var WhereToBuy = {
 
         WhereToBuy.rankings = [];
         var topCommunities = [];
+        var outOfRange = [];
         for (var i=0; i<dataSource.length; i++) {
             // Score the community based on the priorities
             var communityScore = 0;
@@ -540,6 +542,7 @@ var WhereToBuy = {
             }
 
             medianPrice = accounting.unformat(medianPrice);
+            medianPrice = (medianPrice === 0) ? WhereToBuy.priceMin : medianPrice;
             var isInRange = (medianPrice >= WhereToBuy.priceRange[0] &&
                              medianPrice <= WhereToBuy.priceRange[1]);
 
@@ -549,25 +552,25 @@ var WhereToBuy = {
                 'score': communityScore
             };
 
-            // Place this community in a global list of rankings
-            if (WhereToBuy.rankings.length === 0) {
-                WhereToBuy.rankings.push(communityPair);
-            } else {
-                var last = true;
-                for (var m=0; m<WhereToBuy.rankings.length; m++) {
-                    if (communityScore > WhereToBuy.rankings[m]['score']) {
-                        WhereToBuy.rankings.splice(m, 0, communityPair);
-                        last = false;
-                        break;
-                    }
-                }
-                if (last) {
-                    WhereToBuy.rankings.push(communityPair);
-                }
-            }
-
             // Determine the top communities 
             if (isInRange) { // Don't add communities outside the ranking to the top
+
+                // Place this community in a global list of rankings
+                if (WhereToBuy.rankings.length === 0) {
+                    WhereToBuy.rankings.push(communityPair);
+                } else {
+                    var last = true;
+                    for (var m=0; m<WhereToBuy.rankings.length; m++) {
+                        if (communityScore > WhereToBuy.rankings[m]['score']) {
+                            WhereToBuy.rankings.splice(m, 0, communityPair);
+                            last = false;
+                            break;
+                        }
+                    }
+                    if (last) {
+                        WhereToBuy.rankings.push(communityPair);
+                    }
+                }
 
                 // If this is the first community considered, rank it first automatically
                 if (topCommunities.length === 0) {
@@ -594,8 +597,14 @@ var WhereToBuy = {
                         topCommunities.pop();
                     }
                 }
+            } else {
+                // Put communities outside the range in their own dict
+                outOfRange.push(communityPair);
             }
         }
+
+        // Add communities out of range to the bottom of the ranking list
+        WhereToBuy.rankings = WhereToBuy.rankings.concat(outOfRange);
 
         return topCommunities;
     },

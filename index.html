@@ -345,8 +345,8 @@ layout: base
 
       // Get the price range slider going
       $('#price-range-slider').slider({
-          min: 0,
-          max: 2250000,
+          min: WhereToBuy.priceMin,
+          max: WhereToBuy.priceMax,
           step: 5000,
           range: true,
           values: [250000, 1750000],  // Default price range
