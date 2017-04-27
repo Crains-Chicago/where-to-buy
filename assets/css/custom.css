@@ -749,3 +749,10 @@ p {
     border-radius: 4px;
     background-color: #eee;
 }
+
+/* Explanation of links for mobile users */
+@media (min-width:992px) {
+    .mobile-users {
+        display: none;
+    }
+}

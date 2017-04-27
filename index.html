@@ -154,28 +154,31 @@ layout: base
     <div class="text-center">
       <h3>Best Communities for You</h3>
       <p class="small help-block">Changing your priorities will update this list</p>
+      <p class="small help-block mobile-users">
+        <em><strong>Mobile users:</strong> Double-tap on a community name to see more information</em>
+      </p>
       <div class="btn-group" role="group" style="margin-bottom:10px">
         <button type="button" class="btn btn-default geography-toggle active" id="chicago-toggle">Chicago</button>
         <button type="botton" class="btn btn-default geography-toggle" id="suburbs-toggle">Suburbs</button>
       </div>
     </div>
     <div class="table-responsive">
-      <table class="table table-striped table-bordered" id="best-communities">
+      <table class="table table-striped table-bordered table-hover" id="best-communities">
         <tbody>
           <tr>
-            <a href="#" class="ranking"><td class="ranking">1. <span class="table-link" id="rank-1"></span></td></a>
+            <td class="ranking">1. <span class="table-link" id="rank-1"></span></td>
           </tr>
           <tr>
-            <a href="#" class="ranking"><td class="ranking">2. <span class="table-link" id="rank-2"></span></td></a>
+            <td class="ranking">2. <span class="table-link" id="rank-2"></span></td>
           </tr>
           <tr>
-            <a href="#" class="ranking"><td class="ranking">3. <span class="table-link" id="rank-3"></span></td></a>
+            <td class="ranking">3. <span class="table-link" id="rank-3"></span></td>
           </tr>
           <tr>
-            <a href="#" class="ranking"><td class="ranking">4. <span class="table-link" id="rank-4"></span></td></a>
+            <td class="ranking">4. <span class="table-link" id="rank-4"></span></td>
           </tr>
           <tr>
-            <a href="#" class="ranking"><td class="ranking">5. <span class="table-link" id="rank-5"></span></td></a>
+            <td class="ranking">5. <span class="table-link" id="rank-5"></span></td>
           </tr>
         </tbody>
       </table>
@@ -416,7 +419,7 @@ layout: base
       $grid.packery();
 
       // Define UX for the community rankings
-      $('.ranking').on('click touchend', function(e) {
+      $('.ranking').on('click', function(e) {
           e.preventDefault();
           console.log('clicked!');
           WhereToBuy.selectCommunity($(this).find('span').text());
