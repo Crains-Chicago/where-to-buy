@@ -798,8 +798,10 @@ var WhereToBuy = {
                     var selectedPrice = (detachedPrice > attachedPrice) ? detachedPrice : attachedPrice;
                     $('#median-price').html(selectedPrice);
                 } else {
-                    var medianPrice = communityScores.median_price.length ? communityScores.median_price
-                                            : "Price data is not available for this community.";
+                    var medianPrice = accounting.unformat(communityScores.median_price);
+                    medianPrice = (medianPrice > 0) ?
+                                   communityScores.median_price :
+                                   "Price data is not available for this community.";
                     $('#median-price').html(medianPrice);
                 }
 
