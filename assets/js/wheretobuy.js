@@ -531,9 +531,10 @@ var WhereToBuy = {
             // Check if the community is in the price range
             var medianPrice;
             if (dataSource[i].detached_median_price) {
-                medianPrice = (dataSource[i].detached_median_price > dataSource[i].attached_median_price) ?
-                              dataSource[i].detached_median_price :
-                              dataSource[i].attached_median_price;
+                medianPrice = (accounting.unformat(dataSource[i].detached_median_price) >
+                               accounting.unformat(dataSource[i].attached_median_price)) ?
+                                dataSource[i].detached_median_price :
+                                dataSource[i].attached_median_price;
             } else {
                 medianPrice = dataSource[i].median_price;
             }
@@ -795,7 +796,9 @@ var WhereToBuy = {
                                                     communityScores.attached_median_price
                                                     : "Price data for apartments is not available" +
                                                       " for this community.";
-                    var selectedPrice = (detachedPrice > attachedPrice) ? detachedPrice : attachedPrice;
+                    var selectedPrice = (accounting.unformat(detachedPrice) > accounting.unformat(attachedPrice)) ?
+                                         detachedPrice :
+                                         attachedPrice;
                     $('#median-price').html(selectedPrice);
                 } else {
                     var medianPrice = accounting.unformat(communityScores.median_price);
