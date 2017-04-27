@@ -31,6 +31,8 @@ for row in reader:
         elif row[0] == 'OHARE':
             community = "O'Hare"
         community += ", Chicago"
+        if row[0] == 'LOOP':
+            community = "Chicago Loop"
     params['titles'] = community
 
     r = requests.get(endpoint, params=params)
