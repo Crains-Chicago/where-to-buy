@@ -491,20 +491,7 @@ var WhereToBuy = {
 
         var priorities = p ? p : WhereToBuy.priorities;
         
-        var dataSource;
-        switch(true) {
-            case (WhereToBuy.geography == 'chicago'):
-                dataSource = WhereToBuy.chicagoScores;
-                break;
-            case (WhereToBuy.geography == 'suburbs'):
-                dataSource = WhereToBuy.suburbScores;
-                break;
-            case (WhereToBuy.geography == 'both'):
-                dataSource = WhereToBuy.communityData;
-                break;
-            default:
-                dataSource = WhereToBuy.communityData;
-        }
+        var dataSource = WhereToBuy.getDataSource();
 
         var weights = [
             0.5,

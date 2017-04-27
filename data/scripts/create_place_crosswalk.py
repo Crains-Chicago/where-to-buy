@@ -30,8 +30,12 @@ duped_places = []
 for place in car_places:
     if ' and ' in place:
         split_list = place.split(' and ')
-        for item in split_list:
-            duped_places.append((place, item))
+        # Handle double reporting for Vernon Hills
+        if 'Vernon Hills' in split_list[1]:
+            duped_places.append((split_list[0], split_list[0]))
+        else:
+            for item in split_list:
+                duped_places.append((place, item))
     elif ', ' in place:
         split_list = place.split(', ')
         for item in split_list:
