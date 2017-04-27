@@ -120,7 +120,7 @@ layout: base
       <h3><span id="priority-title">My Priorities</span></h3>
       <p class="small help-block">Drag to change</p>
     </div>
-    <div class="well" style="height:350px;">
+    <div class="well" style="height:400px;">
       <div class="grid">
         <div class="grid-item text-center" id="diversity"><span class="badge pull-left"></span>
           <span class="priority">High Diversity</span>
@@ -137,6 +137,16 @@ layout: base
         <div class="grid-item text-center" id="commute"><span class="badge pull-left"></span>
           <span class="priority">Short Commutes</span>
         </div>
+      </div>
+      <div id="price-range-control">
+        <h4>Price range
+          <small id="price-range-text">
+            <span id="price-range-lower-bound"></span>
+             &mdash; 
+            <span id="price-range-upper-bound"></span>
+          </small>
+        </h4>
+        <div id="price-range-slider"></div>
       </div>
     </div>
   </div>
@@ -310,6 +320,9 @@ layout: base
 <script src="assets/js/flickity.pkgd.min.js"></script>
 <script src="assets/js/jquery.csv.min.js"></script>
 <script src="assets/js/highcharts.js"></script>
+<script src="assets/js/jquery-ui.min.js"></script>
+<script src="assets/js/jquery.ui.touch-punch.js"></script>
+<script src="assets/js/accounting.min.js"></script>
 
 <!-- custom JS -->
 <script src="assets/js/wheretobuy.js"></script>
@@ -328,6 +341,28 @@ layout: base
           percentPosition: true,
           itemSelector: '.grid-item',
           gutter: 10,
+      });
+
+      // Get the price range slider going
+      $('#price-range-slider').slider({
+          min: 0,
+          max: 2000000,
+          step: 5000,
+          range: true,
+          values: [250000, 1750000],  // Default price range
+          change: function(e, ui) {
+              // Update price range text
+              var $bound = ui.handleIndex == 1 ? $('#price-range-upper-bound') : $('#price-range-lower-bound');
+              $bound.html(accounting.formatMoney(ui.value, {precision: 0}));
+              // TODO: Trigger re-ranking of priorities
+          },
+          create: function(e, ui) {
+              // Set price range index
+              var range = $('#price-range-slider').slider('values');
+              $('#price-range-lower-bound').html(accounting.formatMoney(range[0], {precision: 0}));
+              $('#price-range-upper-bound').html(accounting.formatMoney(range[1], {precision: 0}));
+              // TODO: Trigger re-ranking of priorities
+          }
       });
 
       // Bind click and return events for the profile carousel
