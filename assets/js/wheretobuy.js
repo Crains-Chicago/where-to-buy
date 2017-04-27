@@ -529,9 +529,15 @@ var WhereToBuy = {
             }
 
             // Check if the community is in the price range
-            var medianPrice = dataSource[i].detached_median_price ?
+            var medianPrice;
+            if (dataSource[i].detached_median_price) {
+                medianPrice = (dataSource[i].detached_median_price > dataSource[i].attached_median_price) ?
                               dataSource[i].detached_median_price :
-                              dataSource[i].median_price;
+                              dataSource[i].attached_median_price;
+            } else {
+                medianPrice = dataSource[i].median_price;
+            }
+
             medianPrice = accounting.unformat(medianPrice);
             var isInRange = (medianPrice >= WhereToBuy.priceRange[0] &&
                              medianPrice <= WhereToBuy.priceRange[1]);
@@ -565,19 +571,27 @@ var WhereToBuy = {
                 // If this is the first community considered, rank it first automatically
                 if (topCommunities.length === 0) {
                     topCommunities.push(communityPair);
-                }
+                } else {
 
-                // See if this community beats any of the top communities
-                for (var k=0; k<topCommunities.length; k++) {
-                    if (communityScore > topCommunities[k]['score']) {
-                        topCommunities.splice(k, 0, communityPair);
-                        break;
+                    // See if this community beats any of the top communities
+                    var inserted = false;
+                    for (var k=0; k<topCommunities.length; k++) {
+                        if (communityScore > topCommunities[k]['score']) {
+                            topCommunities.splice(k, 0, communityPair);
+                            inserted = true;
+                            break;
+                        }
                     }
-                }
 
-                // No more than five communities
-                if (topCommunities.length > 5) {
-                    topCommunities.pop();
+                    // Rank up to five communities
+                    if (!inserted && topCommunities.length < 5) {
+                        topCommunities.push(communityPair);
+                    }
+
+                    // No more than five communities
+                    if (topCommunities.length > 5) {
+                        topCommunities.pop();
+                    }
                 }
             }
         }
@@ -781,7 +795,8 @@ var WhereToBuy = {
                                                     communityScores.attached_median_price
                                                     : "Price data for apartments is not available" +
                                                       " for this community.";
-                    $('#median-price').html(detachedPrice);
+                    var selectedPrice = (detachedPrice > attachedPrice) ? detachedPrice : attachedPrice;
+                    $('#median-price').html(selectedPrice);
                 } else {
                     var medianPrice = communityScores.median_price.length ? communityScores.median_price
                                             : "Price data is not available for this community.";
@@ -1296,7 +1311,6 @@ var WhereToBuy = {
             var avgleft = $(this).find('span.average').position().left;
             var tablewidth = $('#community-stats').width();
             var averageTick = parseInt(((tdwidth + 16 + avgleft - 12) / tablewidth) * 100);
-            console.log(averageTick);
             $(this).find('.bar-label.average-tick').css('left', averageTick + '%');
         });
     },
