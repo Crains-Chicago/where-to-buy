@@ -489,7 +489,6 @@ var WhereToBuy = {
         editedPriorities = WhereToBuy.priorities.slice();
         var commuteIndex = $.inArray('commute', editedPriorities);
         if (commuteIndex > -1) {
-            console.log('Reordering modal rows...');
             editedPriorities.splice(commuteIndex, 1);
             // Reorder modal rows
             $('#' + editedPriorities[3] + '-row').prependTo( $('#community-stats') );
