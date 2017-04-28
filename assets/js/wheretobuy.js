@@ -208,7 +208,21 @@ var WhereToBuy = {
             });
             $('.ranking').on('mouseout', function() {
                 var community = $(this).children('span').html();
-                resetHighlight(WhereToBuy.layerMap[community]);
+                var rankingLayer = WhereToBuy.layerMap[community];
+
+                // Find the ranking of this community
+                var ranking;
+                for (var i=0; i<WhereToBuy.rankings.length; i++) {
+                    if (WhereToBuy.toCommunityString(WhereToBuy.rankings[i].community) == community) {
+                        ranking = i;
+                        break;
+                    }
+                }
+
+                // Set style back
+                rankingLayer.setStyle(WhereToBuy.getStyle(ranking, WhereToBuy.rankings.length));
+
+                // Clear infobox
                 WhereToBuy.info.clear();
             });
 
