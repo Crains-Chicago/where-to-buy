@@ -82,7 +82,7 @@ body {
 }
 
 /* Mobile margin for the map */
-@media (max-width: 756px) {
+@media (max-width: 991px) {
     #map {
         margin-bottom: 15px;
     }
