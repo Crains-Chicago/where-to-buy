@@ -378,8 +378,8 @@ layout: base
       });
 
       // Bind click and return events for the profile carousel
-      $('.carousel-cell, .carousel-title').on('click', function(e) {
-          // Handle event where the user clicks on the title
+      function carouselHandler() {
+          $('.carousel-cell, .carousel-title').off('click', carouselHandler);
           if ($(this).is('span')) {
               $el = $(this).parent('.carousel-cell');
           } else {  
@@ -397,7 +397,7 @@ layout: base
           // Handle plurals
           title = (title.slice(-1) == 's') ? ('Priorities for ' + title) : ('Priorities for a ' + title);
           $('#priority-title').html(title);
-      });
+      }
 
       $('#city-home').click();
 
@@ -408,7 +408,10 @@ layout: base
       });
 
       // Init priority order
-      $grid.on('layoutComplete', WhereToBuy.rankPriorities);
+      $grid.on('layoutComplete', function() {
+          $('.carousel-cell, .carousel-title').on('click', carouselHandler);
+          WhereToBuy.rankPriorities();
+      });
 
       // When priorities get reordered, recalculate top communities
       $grid.on('dragItemPositioned', function() {
