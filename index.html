@@ -379,21 +379,23 @@ layout: base
 
       // Bind click and return events for the profile carousel
       function carouselHandler() {
-          if ($(this).is('span')) {
-              $el = $(this).parent('.carousel-cell');
-          } else {  
-              $el = $(this);
+          if (WhereToBuy.getDataSource()) {
+              if ($(this).is('span')) {
+                  $el = $(this).parent('.carousel-cell');
+              } else {
+                  $el = $(this);
+              }
+              if (!$el.hasClass('carousel-selected')) {
+                  WhereToBuy.viewProfile($el.attr('id'));
+                  $('.carousel-cell').removeClass('carousel-selected selected');
+                  $el.addClass('carousel-selected selected');
+              }
+              // Update priority title
+              var title = $el.find('.carousel-title strong').html();
+              // Handle plurals
+              title = (title.slice(-1) == 's') ? ('Priorities for ' + title) : ('Priorities for a ' + title);
+              $('#priority-title').html(title);
           }
-          if (!$el.hasClass('carousel-selected')) {
-              WhereToBuy.viewProfile($el.attr('id'));
-              $('.carousel-cell').removeClass('carousel-selected selected');
-              $el.addClass('carousel-selected selected');
-          }
-          // Update priority title
-          var title = $el.find('.carousel-title strong').html();
-          // Handle plurals
-          title = (title.slice(-1) == 's') ? ('Priorities for ' + title) : ('Priorities for a ' + title);
-          $('#priority-title').html(title);
       }
 
       function resetCarouselHandler() {
