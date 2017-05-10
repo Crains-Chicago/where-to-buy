@@ -35,7 +35,7 @@ layout: base
           </div>
         </div>
       </div>
-      <div class="carousel-cell text-center is-selected" id="city-home">
+      <div class="carousel-cell carousel-selected selected text-center" id="city-home">
         <span class="carousel-title"><strong>City Family</strong></span>
         <br />
         <div class="row">
@@ -384,12 +384,10 @@ layout: base
           } else {  
               $el = $(this);
           }
-          if ($el.hasClass('carousel-selected')) {
-              $el.removeClass('carousel-selected');
-          } else {
+          if (!$el.hasClass('carousel-selected')) {
               WhereToBuy.viewProfile($el.attr('id'));
-              $('.carousel-cell').removeClass('carousel-selected, selected');
-              $el.addClass('carousel-selected, selected');
+              $('.carousel-cell').removeClass('carousel-selected selected');
+              $el.addClass('carousel-selected selected');
           }
           // Update priority title
           var title = $el.find('.carousel-title strong').html();
@@ -406,7 +404,6 @@ layout: base
       }
 
       $('.carousel-cell, .carousel-title').on('click', carouselHandler);
-      $('#city-home').click();
 
       // Events for selecting a profile
       $grid.on('profileSelected', function() {
