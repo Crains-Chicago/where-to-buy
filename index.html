@@ -379,7 +379,6 @@ layout: base
 
       // Bind click and return events for the profile carousel
       function carouselHandler() {
-          $('.carousel-cell, .carousel-title').off('click', carouselHandler);
           if ($(this).is('span')) {
               $el = $(this).parent('.carousel-cell');
           } else {  
@@ -399,7 +398,23 @@ layout: base
           $('#priority-title').html(title);
       }
 
+      function resetCarouselHandler() {
+          // Rebind the carousel handler
+          $('.carousel-cell, .carousel-title').on('click', carouselHandler);
+          // Since this event handler is temporary, remove it at the end
+          $grid.off('layoutComplete', resetCarouselHandler);
+      }
+
+      $('.carousel-cell, .carousel-title').on('click', carouselHandler);
       $('#city-home').click();
+
+      // Events for selecting a profile
+      $grid.on('profileSelected', function() {
+          // Temporarily disable carousel click events during animation
+          $('.carousel-cell, .carousel-title').off('click', carouselHandler);
+          $grid.on('layoutComplete', resetCarouselHandler);
+          WhereToBuy.displayRanking(WhereToBuy.rankCommunities());
+      })
 
       // Allow user to drag around priorities
       $('.grid-item').each(function(i, gridItem) {
@@ -409,20 +424,15 @@ layout: base
 
       // Init priority order
       $grid.on('layoutComplete', function() {
-          $('.carousel-cell, .carousel-title').on('click', carouselHandler);
           WhereToBuy.rankPriorities();
       });
 
-      // When priorities get reordered, recalculate top communities
+      // When priorities get dragged around, recalculate top communities
       $grid.on('dragItemPositioned', function() {
           $('#priority-title').html('Custom Priorities');
           WhereToBuy.rankPriorities();
           WhereToBuy.displayRanking(WhereToBuy.rankCommunities());
       });
-
-      $grid.on('profileSelected', function() {
-          WhereToBuy.displayRanking(WhereToBuy.rankCommunities());
-      })
 
       // Trigger initial priority layout
       $grid.packery();
@@ -430,7 +440,6 @@ layout: base
       // Define UX for the community rankings
       $('.ranking').on('click', function(e) {
           e.preventDefault();
-          console.log('clicked!');
           WhereToBuy.selectCommunity($(this).find('span').text());
       });
 
