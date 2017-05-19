@@ -1,6 +1,6 @@
 # Where to Buy
 
-A web tool that visualizes [Book of Lists](https://github.com/datamade/book-of-lists) data and [Chicagoland real estate reports](https://github.com/datamade/car-scraper) to help Crain's readers decide where to buy real estate.
+A web tool that visualizes data about schools, crime, housing prices, commutes, and diversity to help Crain's readers decide where to buy real estate.
 
 ## Running locally
 
@@ -27,14 +27,6 @@ bundle exec jekyll serve -w
 ```
 
 Then open your web browser and navigate to http://localhost:4000 (or whatever server address Jekyll printed to your console).
-
-## Deployment
-
-Crain's handles production deployment on their end. To deploy to our staging site, push to the `deploy` branch:
-
-```bash
-git push origin master && git push origin master:deploy
-```
 
 ## Updating data
 
